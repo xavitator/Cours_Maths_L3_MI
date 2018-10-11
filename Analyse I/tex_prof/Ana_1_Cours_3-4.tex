@@ -1,0 +1,403 @@
+\documentclass[10pt,a4paper]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[applemac]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lastpage}
+
+\setlength\textwidth{15.9cm}
+\setlength\oddsidemargin{0cm}
+\setlength\evensidemargin{0cm}
+\setlength\marginparwidth{0cm}
+\setlength\marginparsep{0.4cm}
+\setlength\marginparpush{0.4cm}
+\setlength\topmargin{0cm}
+\setlength\headheight{0.59cm}
+\setlength\headsep{1cm}
+\setlength\textheight{21.5cm}
+\setlength\footskip{2.2cm}
+
+\def\Nd{\mathbf{N}}
+\def\Zd{\mathbf{Z}}
+\def\Pd{\mathbf{P}}
+\def\Qd{\mathbf{Q}}
+\def\Rd{\mathbf{R}}
+
+\newtheorem{lemme}{Lemme}
+\newtheorem{theoreme}{Th\'eor\`eme}
+\newtheorem{algorithme}{Algorithme}
+\newtheorem{exercice}{Exercice}
+\newtheorem*{exemple*}{Exemple}
+\newtheorem{exemple}[subsection]{Exemple}
+\newtheorem*{rem*}{Remarque}
+\newtheorem{rem}[subsection]{Remarque}
+\newtheorem*{defn*}{D\'efinition}
+\newtheorem{defn}[subsection]{D\'efinition}
+\newtheorem*{lem*}{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem*{cor*}{Corollaire}
+
+\pagestyle{fancy}
+\lhead{{\bf Universit\'e Paris Diderot Paris 7}}
+\chead{}
+\rhead{Analyse I}
+\lfoot{Patrice Perrin}
+\cfoot{Espaces vectoriels normés -- Ann\'ee 2018-2019}
+\rfoot{Page \thepage/\pageref{LastPage}}
+
+%------ Commandes symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\bigskip
+
+\bigskip
+
+\centerline{\bf Analyse I}
+\centerline{\bf Espaces vectoriels normés}
+\centerline{Normes}
+
+
+
+\begin{section}{\bf Normes. Définitions générales.} 
+\end{section}
+
+\begin{section}{\bf Exemples de normes.} 
+\end{section}
+
+\begin{section}{\bf Normes, distances et topologie.} 
+Nous avons introduit précédemment les notions de norme, de distance et de topologie. Nous allons approfondir ces notions dans ce chapitre.
+
+Un espace vectoriel normé est donc un espace (vectoriel) métrique et un espace topologique. Mais toute distance ne provient pas d'une norme.
+
+\begin{rem} Soit $E$ un espace vectoriel réel de dimension au moins $1$ . On appelle distance discrète la distance suivante:
+$$d(x,y)=\left\{\begin{matrix}0&{\rm si}&x=y\\
+1&{\rm si}&x\neq y\end{matrix}\right.$$
+La distance discrète (associée à la topologie discrète) ne provient pas d'une norme. \end{rem}
+
+D'une façon analogue toute topologie ne provient pas d'une distance mais il existe des conditions nécessaires et suffisantes pour qu'une topologie soit dite "métrisable". Il s'agit là de résultats plus délicats qui sortent de notre champ d'étude.
+
+Nous avons vu enfin que la donnée d'une boule ouverte (dans un espace normé ou un espace métrique) permet de définir une topologie pour laquelle les boules ouvertes sont des ouverts. Pour certaines distances, certaines propriétés peuvent être contre-intuitives!
+
+\begin{rem} Dans un espace métrique quelconque, l'adhérence d'une boule ouverte n'est pas toujours la boule fermée associée (cf exercices).\end{rem}
+
+\begin{rem} Soit $\Q$ le corps des rationnels. Tout entier (donc tout rationnel) admet une décomposition unique en produit de puissances de nombres premiers. On pose
+$$|r|_p=p^{-v_p(r)}\ {\rm si}\ r=\pm p^{v_p(r)}\prod_{q\neq p\ ;\ q\ {\rm premier}}q^{v_q(r)}\ .$$
+On convient que $|0|_p=0$ . Ainsi $|2|_2=\frac{1}{2}$ et $|\frac{1}{2}|_2=2$ . Cette distance est dite ultramétrique car elle vérifie une inégalité plus forte que l'inégalité triangulaire:
+$$|r_1+r_2|_p\leq {\rm Max}\left(|r_1|_p;|r_2|_p\right)\ .$$
+Pour de telles distances, on vérifie que toute boule est à la fois ouverte et fermée ou que tout point d'une boule en est son centre.
+\end{rem}
+
+Nous avons défini la notion d'adhérence, d'intérieur et de frontière d'une partie. Nous allons les caractériser dans le cas où notre espace est normé ou métrique.
+
+\begin{prop} Soit $(E,N)$ un espace normé ou $(X,d)$ un espace métrique. Soit $A$ une partie de $E$ ou de $X$ . Alors
+$$\mathring{A}=\{x\in E\ ;\ \exists r>0\ B(x,r)\in A\}$$
+$$\overline{A}=\{x\in E\ ;\ \forall r>0\ B(x,r)\cap A\neq \emptyset\}$$
+$${\rm Fr}(A)=\{x\in E\ ;\ \forall r>0\ B(x,r)\cap A\neq \emptyset\ {\rm et}\ B(x,r)\cap (E\smallsetminus A)\neq \emptyset\}$$
+\end{prop}
+
+\smallskip Démonstration.
+
+Si $x$ est intérieur à $A$ , il existe un ouvert $U$ contenu dans $A$ et contenant $x$ . Pa définition, $U$ contient une boule ouverte contenant $x$ donc une boule ouverte centrée en $x$ . Inversement un point $x$ tel que $B(x,r)\subset A$ pour un $r>0$ est contenu dans un ouvert donc dans l'intérieur de $A$ .
+
+Soit $x$ un point adhérent à $A$ . Alors, si $F$ est un fermé quelconque contenant $A$ , $x$ lui appartient. Soit $r>0$ . Si la boule (ouverte) $B(x,r)$ ne rencontre pas $A$ c'est qu'elle est contenue dans le complémentaire $E\smallsetminus A$ . Son complémentaire est donc un fermé contenant $A$ . C'est absurde puisque $x$ doit appartenir à un tel fermé. Réciproquement soit $x$ un point tel que toute boule $B(x,r)$ rencontre $A$ . Soit $F$ un fermé contenant $A$ . Si $x$ n'appartient pas à $F$ , c'est qu'il appartient à son complémentaire (qui est ouvert) et qu'une boule centrée en $x$ est contenue dans le complémentaire de $F$ donc dans celui de $A$ . C'est contraire à l'hypothèse faite sur $x$ . Donc $x$ appartient à tous les fermés contenant $A$ et lui est adhérent.
+
+Par définition, la frontière de $A$ est $\overline{A}\smallsetminus\mathring{A}=\overline{A}\cap (E\smallsetminus \mathring{A})$ . Il suffit donc d'appliquer les deux résultats précédents.
+
+\begin{rem} On a montré que
+$$x\notin \overline{A}\Leftrightarrow \exists r>0\ ;\ B(x,r)\cap A= \emptyset\ .$$
+\end{rem}
+
+\begin{defn} Soit $x$ un point d'un espace topologique. On dit que $\mathcal V$ est un voisinage de $x$ si $\mathcal V$ contient un ouvert $U$ qui contient $x$ .\end{defn}
+
+\begin{rem} Lorsque l'espace topologique est un espace normé $(E,N)$ ou un espace métrique $(X,d)\ ,$ un voisinage de $x$ est une partie contenant une boule ouverte centrée en $x$ . On dit que l'ensemble des boules ouvertes forme une base des voisinages de $E$ ou $X$ .\end{rem}
+
+\begin{defn} [Continuité en un point] Une application $f$ d'un espace topologique $X$ dans un espace topologique $Y$ est continue en un point $x_0$ de $X$ si et seulement si, pour tout voisinage $\mathcal V$ de $f(x_0)$ dans $Y$ il existe un voisinage $\mathcal U$ de $x_0$ dans $X$ tel que $f({\mathcal U})$ est contenu dans $\mathcal V$ . Lorsque $X$ est un espace métrique ou un espace vectoriel normé, cette notion de continuité de $f$ coïncide avec la notion introduite plus haut à l'aide de la distance ou de la norme. \end{defn}
+
+\begin{defn} [Continuité globale] Une application $f$ d'un espace topologique $X$ dans un espace topologique $Y$ est dite continue sur $X$ si et seulement si elle est continue en tout point $x_0$ de $X$ .\end{defn}
+
+\begin{rem} Nous avons vu que, dans le cas d'une application linéaire, la continuité en l'origine équivalait à la continuité globale de l'application. \end{rem}
+
+\begin{prop} Soit $(E,N)$ un espace vectoriel normé et $F$ un sous-espace vectoriel de $E$ . Alors l'adhérence $\overline{F}$ de $F$ est un sous-espace vectoriel fermé de $E$ .\end{prop}
+
+\smallskip Démonstration. Bien sûr $\overline{F}$ est une partie fermée. Toute la question est donc de savoir si elle est stable par combinaison linéaire ou stable pour l'addition et la multiplication par un scalaire.
+
+Prenons donc deux points quelconques $x$ et $y$ de $\overline{F}$ . Nous allons utiliser la caractérisation donnée ci-dessus. Soit $B(x+y,r)$ ($r>0$) une boule centrée en $x+y$ . Comme $x$ est adhérent à $F$ , on sait que la boule $B(x,\frac{r}{2})$ contient un point $z$ de $F$ . Il en est de même pour $B(y,\frac{r}{2})$ qui contient un point $t$ de $F$ . Alors
+$$N(z+t-x-y)\leq N(z-x)+N(t-y)< \frac{r}{2}+\frac{r}{2}=r\ .$$
+Bref le point $z+t$ (qui appartient à $F$) est dans la boule $B(x+y,r)$ . Donc, $r$ étant quelconque, le point $x+y$ est bien adhérent à $F$ et c'est un point de $\overline{F}$ .
+
+Soit $\lambda$ un réel quelconque et $x$ un point de  $\overline{F}$ . Si $\lambda=0$ , le point $\lambda x=0$ appartient à $F$ donc à $\overline{F}$ . Nous pouvons donc supposer que $\lambda$ n'est pas nul. Soit $B(\lambda x,r)$ une boule centrée en $\lambda x$ . Puisque $x$ est adhérent à $F$ , il existe $z$ dans la boule $B\left(x,\frac{r}{|\lambda|}\right)$ . Alors
+$$N(\lambda z-\lambda x)=|\lambda|N(z-x)<|\lambda|\frac{r}{|\lambda|}=r\ .$$
+Donc le point $\lambda z$ appartient à $B(\lambda x,r)$ et le point $\lambda x$ est bien adhérent à $F$ .
+
+
+\end{section}
+
+\begin{section}{\bf Espaces de Banach.} 
+
+\begin{defn} Soit $(u_n)_{n\geq 0}$ une suite d'éléments d'un espace vectoriel normé $(E,N)$ . On dit que la suite $u_n$ est convergente et converge vers $l$ , vecteur de $E$ si et seulement si
+$$\forall \epsilon>0\ \exists n_0\in\N\ ;\ n\geq n_0\Rightarrow N(u_n-l)<\epsilon\ .$$
+\end{defn}
+
+\begin{exemple} La suite de réels $\frac{(-1)^n}{n}$ converge vers $0$ dans $\R$ . La suite de réels $(-1)^n$ ne converge pas dans $\R$ de même que la suite $n^2$ . Pour cette dernière, on dit qu'elle tend vers $+\infty$ lorsque $n$ tend vers $+\infty$ .
+\end{exemple}
+
+\begin{prop} [Unicité de la limite] Soit $u_n$ une suite d'éléments d'un espace vectoriel normé $(E,N)$ convergente. Sa limite est alors unique.
+\end{prop}
+\smallskip Démonstration. Si $l_1$ et $l_2$ étaient deux limites distinctes, on aurait $N_E(l_1-l_2)=r\neq 0$ . Par définition de la notion de limite:
+$$\exists n_0\ ;\ n\geq n_0\Rightarrow N_E(u_n-l_1)<\frac{r}{2}$$
+et
+$$\exists n_1\ ;\ n\geq n_1\Rightarrow N_E(u_n-l_2)<\frac{r}{2}\ .$$
+Donc, pour $n\geq {\sup}(n_0,n_1)$ , $u_n\in B(l_1,\frac{r}{2})\cap B(l_2,\frac{r}{2})\ .$
+Or, par l'inégalité triangulaire, ces deux boules sont disjointes.
+
+\begin{prop} Soit $\lambda$ un réel. Soient $u_n$ et $v_n$ deux suites d'éléments d'un espace vectoriel normé $(E,N)$ convergentes. On note $l$ et $l'$ leurs limites.
+\begin{itemize}
+\item La suite $\lambda u_n$ est convergente et sa limite est $\lambda l$ ;
+\item La suite $u_n+v_n$ est convergente et sa limite est $l+l'$ .
+\end{itemize}
+\end{prop}
+\smallskip Démonstration. Laissée au lecteur.
+
+\begin{prop} Soit $(u_n)_{n\geq 0}$ une suite convergente dans un espace vectoriel normé $(E,N)$ . Elle est bornée. \end{prop}
+
+\smallskip Démonstration. On a
+$$\exists n_0\ ; n\geq n_0\Rightarrow N(l-u_n)\leq 1$$
+(où $l$ est la limite de la suite  $(u_n)_{n\geq 0}$).
+En particulier, $N(u_n)\leq 1+N(l)$ dès que $n$ est au moins égal à $n_0$ . Soit
+$$A={\rm Sup}\{N(u_0),\hdots,N(u_{n_0}),N(l)+1\}\ .$$
+Alors
+$$\forall i\in\N\ ,\ N(u_i)\leq A\ .$$
+
+\begin{prop} Soit $(E,N)$ un espace vectoriel normé et $A$ une partie non vide de $E$ . Alors un point est adhérent à $A$ (il est élément de l'adhérence $\overline{A}$ de $A$) si et seulement si il est limite d'une suite de points de $A$ . \end{prop}
+
+\smallskip Démonstration. Si $x$ est élément de $A$ , il est évidemment limite de la suite constante et égale à $x$ . Il suffit donc d'étudier les points $x$ de $\overline{A}-A$ . 
+
+Soit $x$ un tel point. Soit $n$ un entier non nul. Si la boule ouverte $B\left(x,\frac{1}{n}\right)$ ne contient aucun point de $A$ c'est qu'elle est contenue dans le complémentaire de $A$ . Son complémentaire est donc un fermé $F_n$ contenant $A$ . Il existe donc un fermé contenant $A$ et ne contenant pas $x$ . C'est absurde puisque $x$ appartient à l'adhérence de $A$ . Donc $B\left(x,\frac{1}{n}\right)$ contient au moins un point $x_n$ de $A$ (qui n'est pas $x$ puisque $x$ n'appartient pas à $A$). On construit alors facilement par récurrence une suite de points de $A$ tendant vers $x$ .
+
+Inversement, si $x$ est limite d'une suite de points $x_n$ de $A$ , prenons un fermé $F$ contenant $A$ . Son complémentaire $O=X\smallsetminus F$ est ouvert. S'il contenait $x$ , il existerait une boule centrée en $x$ et contenue dans $O$ . Cette boule contiendrait un des points $x_n$ ce qui est absurde. Donc $x$ appartient à tout fermé contenant $A$ . Il est bien adhérent à $A$ .
+
+\begin{rem} Cette démonstration fonctionne encore dans les espaces métriques. \end{rem} 
+
+On a également:
+
+\begin{prop} Soient $(X,d_X)$ et $(Y,D_Y)$ deux espaces métriques . Soit $f$ une application de $X$ dans $Y$ /. Alors $f$ est continue en $x_0$ de $X$ si et seulement si, pour toute suite $x_n$ convergeant vers $x_0$ , la suite $f(x_n)$ converge vers $y_0=f(x_0)$ . \end{prop}
+\smallskip Démonstration. Si $f$ est continue en $x_0$ alors
+$$\forall \epsilon>0\ \exists \eta>0\ N_E(x-x_0)<\eta\Rightarrow N_F(f(x)-f(x_0))<\epsilon\ .$$
+Si $x_n$ tend vers $x_0$ alors $x_n$ appartient à $B(x_0,\eta)$ pour $n$ assez grand et donc $f(x_n)$ appartient à $B(y_0,\epsilon)$ .
+
+Réciproquement, raisonnons par l'absurde. Si $f$ n'est pas continue en $x_0$ c'est que
+$$\exists \epsilon>0\ \forall \eta>0\ \exists x\in B(x_0,\eta)\ {\rm et}\ f(x)\in B(y_0,\epsilon)\ .$$
+En particulier si l'on prend $\eta=\frac{1}{n}$ on obtient une suite tendant vers $x_0$ telle que $f(x_n)$ ne tend pas vers $y_0$ .
+
+\begin{defn} Soit $(E,N)$ un espace normé et $A$ une partie de $E$ . On dit que le point $a$ est un point d'accumulation de $A$ si et seulement toute boule ouverte épointée centrée en $a$ contient un point de $A$ soit
+$$\forall r>0\ \exists x\in A\ ;\ x\neq a\ {\rm et}\ x\in B(a,r)\ .$$
+On dit que $a$ est un point d'accumulation de la suite $(u_n)_{n\geq 0}$ si et seulement si $a$ est un point d'accumulation de l'ensemble $A$ des valeurs de la suite soit
+$$A=\{x\in E\ ;\ \exists n\in\N\ x=u_n\}\ .$$
+Un point de $A$ qui n'est pas un point d'accumulation de $A$ est appelé point isolé.
+\end{defn}
+
+\begin{exemple} Si $E=\R$ et $A=[0,1[\cup]2,3[\cup\{4\}$ alors $A'=[0,1]\cup[2,3]$ est l'ensemble des points d'accumulation de $A$ . Si on prend la suite $u_n=\frac{1}{n}$ (pour $n\geq 1$), l'ensemble de ses points d'accumulation est réduit à $\{0\}$ .\end{exemple}
+
+\begin{defn} On dit qu'une suite $(u_n)_{n\geq 0}$ d'éléments d'un espace vectoriel normé $(E,N)$ est de Cauchy si et seulement si
+$$\forall \epsilon>0\ \exists n_0\in\N\ ;\ n\geq n_0\ {\rm et}\ m\geq n_0\Rightarrow N(u_n-u_m)<\epsilon\ .$$
+\end{defn}
+
+\begin{rem} [Variante] On utilise parfois la variante suivante:
+$$\forall \epsilon>0\ \exists n_0\in\N\ ;\ n\geq n_0\Rightarrow \forall p\in\N N(u_{n+p}-u_m)<\epsilon\ .$$
+\end{rem}
+
+\begin{exemple} Toute suite convergente est de Cauchy. \end{exemple}
+
+\begin{prop} Soit $(u_n)_{n\geq 0}$ une suite de Cauchy dans un espace vectoriel normé $(E,N)$ . Elle est bornée. \end{prop}
+
+\smallskip Démonstration. On a
+$$\exists n_0\ ; n\geq n_0\ {\rm et}\ m\geq n_0\Rightarrow N(u_n-u_m)\leq 1\ .$$
+En particulier, $N(u_n-u_{n_0})\leq 1$ . Soit
+$$A={\rm Sup}\{N(u_0),\hdots,N(u_{n_0}),N(u_{n_0})+1\}\ .$$
+Alors
+$$\forall i\in\N\ ,\ N(u_i)\leq A\ .$$
+
+\begin{defn} Soit $(E,N)$ un espace vectoriel normé. On dira que $(E,N)$ est complet ou que $(E,N)$ est un espace de Banach si et seulement si toute suite de Cauchy dans $E$ est convergente. \end{defn}
+
+\begin{exemple} L'espace $\R^n$ est un espace de Banach pour chacune des normes $\|.\|_p$ ou $\|.\|_{\infty}$ .\end{exemple}
+
+\smallskip Si $\R$ est construit à partir de $\Q$ (par exemple avec la notion de coupure: partie non vide de $\Q$ stable pour les minorants et sans plus grand élément comme par exemple $\{q<0\ {\rm ou}\ q^2<2\}$), on sait que $\R$ vérifie la propriété de la borne supérieure. Toute partie non vide et majorée admet une borne supérieure dans $\R$ . A toute suite de Cauchy $(u_n)_{n\geq 0}$ , on peut associer
+$$v_p={\rm Inf}\{u_i\ ; i\geq p\}\ {\rm et}\ w_p={\rm Sup}\{u_i\ ; i\geq p\}\ .$$
+On vérifie immédiatement que la suite $v_i$ est croissante et la suite $w_i$ est décroissante. On vérifie également que les termes de la première suite sont majorés par ceux de la deuxième et qu'elles sont adjacentes (puisque la suite $u_i$ est de Cauchy. Elles ont donc une limite commune $l$ dans $\R$ (borne supérieure des $v_i$ et borne inférieure des $w_i$). Comme 
+$$\forall i\ v_i\leq u_i\leq w_i\ ,$$
+le théorème des gendarmes permet de conclure que la suite $u_i$ est convergente vers $l$ .
+
+Pour $\R^n$ , il suffit de remarquer que, pour la norme uniforme $\|.\|_{\infty}$ , chaque coordonnée forme une suite de Cauchy donc est convergente. Donc toute suite de Cauchy de vecteurs de $\R^n$ est convergente. Comme les normes $\|.\|_{p}$ sont équivalentes à la norme uniforme, $\R^n$ est aussi complet pour ces normes.
+
+\begin{exemple} Considérons l'espace $E={\mathcal C}([0,1];\R)$ . Il est normé pour la borne supérieure. Montrons qu'il est complet pour cette norme. Soit $f_n$ une suite de Cauchy de telles fonctions. Soit $x$ un point de $[0,1]$ . Alors la suite $f_n(x)$ est une suite de réelle qui vérifie
+$$|f_n(x)-f_m(x)|=|(f_n-f_m)(x)|\leq\|f_n-f_m\|_{\infty}\ .$$
+Comme la suite $f_n$ est de Cauchy, cela signifie donc que toutes les suites $f_n(x)$ sont également de Cauchy. Il existe donc un réel $l(x)$ qui est limite des $f_n(x)$ pour tout $x$ dans $[0,1]$ . Montrons que $\|l-f_n\|_{\infty}$ tend vers $0$ puis que $l$ est continue sur $[0,1]$ . Soit à montrer donc que
+$$\forall \epsilon>0\ \exists n_0\ ; n\geq n_0\Rightarrow \|l-f_n\|_{\infty}<\epsilon\ .$$
+Si $\epsilon>0$ , $x$ est un point de $[0,1]$ et $n$ un entier, on a ($n'$ à choisir)
+$$|l(x)-f_n(x)|\leq |l(x)-f_{n'}(x)|+|f_{n'}(x)-f_n(x)|\leq |l(x)-f_{n'}(x)|+\|f_{n'}-f_n\|_{\infty}\ .$$
+Pour $n$ et $n'$ assez grands (($n\geq n_0$ et $n'\geq n_0$), on sait que $\|f_{n'}-f_n\|_{\infty}$ peut être majoré par $\frac{\epsilon}{2}$ (suite de Cauchy). Par ailleurs $|l(x)-f_{n'}(x)|$ peut être lui aussi majoré par $\frac{\epsilon}{2}$ pour $n'$ assez grand. D'où
+$$\forall \epsilon>0\,\exists n_0\ n\geq n_0\Rightarrow |l(x)-f_n(x)|\leq\epsilon\ .$$
+
+Reste à étudier la continuité de $l$ . Soit $\epsilon>0$ et $t_0$ un point de $[0,1]$ . Etudions
+$$|l(t)-l(t_0)|\leq |l(t)-f_n(t)|+|f_n(t)-f_n(t_0)|+|f_n(t_0)-l(t_0)|\leq 2\|l-f_n\|_{\infty}+|f_n(t)-f_n(t_0)|\ .$$
+Nous venons de voir que l'on peut choisir $n$ assez grand ($n\geq n_0$) pour que $2\|l-f_n\|_{\infty}\leq \frac{2\epsilon}{3}$ . Pour un tel $n$ , la fonction $f_n$ est continue en $t_0$ donc $|f_n(t)-f_n(t_0)|\leq \frac{\epsilon}{3}$ pour $t$ assez proche de $t_0$ . D'où la continuité de $l$ en tout point $t_0$ de $[0,1]$ .
+\end{exemple}
+
+\begin{exemple} Soit $\R[X]$ l'anneau des polynômes à coefficients réels muni que la norme
+$$\|P\|_2=\sqrt{\sum_{i=0}^n|a_i|^2}$$
+où $P=\sum_{i=0}^na_iX^i$ . Considérons la suite de polynômes
+$$P_n=1+\sum_{i=1}^n\frac{X^i}{i}\ .$$
+\'Etudions $\|P_{n+p}-P_n\|_2$ . On a
+$$\|P_{n+p}-P_n\|_2^2=\sum_{i=n+1}^{n+p}\frac{1}{(n+i)^2}\leq \sum_{i=n+1}^{+\infty}\frac{1}{(n+i)^2}\ .$$
+Comme la série de Riemann $\frac{1}{n^2}$ est convergente, cette expression tend vers $0$ avec $n$ . Donc notre suite est de Cauchy dans $\R[X]$ pour cette norme. Cette suite ne peut converger vers le polynôme nul. En effet
+$$\|P_{n}-0\|_2=\sqrt{1+\sum_{i=1}^n\frac{1}{i^2}}\ ,$$
+expression qui ne tend pas vers $0$ . Soit $P$ un polynôme non nul de degré $m$ . Si $P$ est limite de la suite $P_n$ , on a
+$$\|P_{n}-P\|_2=\sqrt{|a_0-1|^2+\sum_{i=1}^m\left|a_i-\frac{1}{i}\right|^2+\sum_{i=m+1}^n\left|\frac{1}{i}\right|^2}\geq \sqrt{|a_0-1|^2+\sum_{i=1}^m\left|a_i-\frac{1}{i}\right|^2}$$
+(pour $n\geq m$). Si $\|P_{n}-P\|_2$ tend vers $0$ , on doit donc avoir $\sqrt{|a_0-1|^2+\sum_{i=1}^m\left|(a_i-\frac{1}{i^2}\right|^2}=0$ soit $a_0=1$ et $(1\leq i\leq m) \ a_i=\frac{1}{i}$ . Alors 
+$$\|P_{n}-P\|_2=\sqrt{\sum_{i=m+1}^n\left|\frac{1}{i}\right|^2}\ ,$$
+expression qui tend vers
+$$\sqrt{\sum_{i=m+1}^{+\infty}\left|\frac{1}{i}\right|^2}\ .$$
+C'est un réel non nul. Cet espace ne peut donc être complet.
+\end{exemple}
+
+\begin{prop} Soit $(E,N)$ un espace de Banach. Une partie $F$ de $E$ est fermée si et seulement si elle est complète. \end{prop}
+
+\smallskip Démonstration. Soit $F$ est une partie fermée de $E$ . Soit $(x_i)_{i\geq 0}$ une suite de Cauchy d'éléments de $F$ . Comme $E$ est complet, la suite $x_i$ converge vers un point $\xi$ de $E$ . Or, si $\xi$ n'appartenait pas à $F$ , ce point serait dans le complémentaire de $F$ qui est ouvert. Il y aurait donc (au moins) une boule ouverte centrée en $\xi$ contenue dans cet ouvert donc ne rencontrant $F$ en aucun point. Ce qui contredit le fait que $x_i$ tend vers $\xi$ . Donc $F$ est complète.
+
+Si maintenant on suppose que $F$ est une partie complète, il suffit de remarquer qu'un point adhérent à $F$ est soit élément de $F$ soit limite d'une suite de points de $F$ . En effet, sinon il existerait une boule ouverte centrée en ce point et contenue dans le complémentaire de $F$ . Il existerait ainsi un fermé contenant $F$ mais ne contenant pas ce point ce qui est absurde. Si une suite converge vers notre point, cette suite est de Cauchy donc est convergente dans $F$ . Bref $F={\overline F}$ .
+
+\begin{rem} Soit $F$ un sous-espace vectoriel d'un espace de Banach $(E,N)$ . Alors $\overline F$ est un sous-espace vectoriel complet de $(E,N)$ . \end{rem}
+
+Nous savons en effet que $\overline F$ est un sous-espace vectoriel de $E$ . Comme partie fermée, elle est donc nécessairement complète. 
+
+Introduisons, à titre d'exemple, la notion de série dans un espace vectoriel normé. Soit $(u_i)_{i\geq 0}$ une suite d'éléments d'un espace vectoriel normé $(E,N)$ . Nous noterons $U_n$ la somme des sommes partielles:
+$$U_n=\sum_{i=0}^n u_i\ .$$
+
+\begin{defn} On dira que la série $(u_i)_{i\geq 0}$ est convergente si et seulement si la suite des sommes partielles est convergente.\end{defn}
+
+\begin{defn} On dira que la série $(u_i)_{i\geq 0}$ est de Cauchy si et seulement si la suite des sommes partielles est de Cauchy.\end{defn}
+
+\begin{defn} On dira que la série $(u_i)_{i\geq 0}$ est normalement convergente si et seulement si la série $N(u_i)_{i\geq 0}$ est convergente (dans $\R$).\end{defn}
+
+\begin{prop} Soit $(E,N)$ un espace de Banach. Alors toute série de Cauchy est convergente. En particulier toute série normalement convergente est convergente.\end{prop}
+
+\medskip Démonstration. Il nous suffit d'étudier donc $U_m-U_n$ pour $n$ et $m$ assez grands. On suppose que $n$ est le plus petit des deux entiers et on pose $m=n+p$ . Alors
+$$U_m-U_n=\sum_{i=n}^{n+p}u_i\ {\rm et}\ N(U_m-U_n)\leq N(\sum_{i=n}^{n+p}u_i)\leq \sum_{i=n}^{n+p}N(u_i)\ .$$
+Si la série est de Cauchy, la première inégalité suffit. Et si la série de terme général $N(u_i)$ est convergente donc de Cauchy., la suite $U_i$ est donc de Cauchy et elle converge puisque $(E,N)$ est de Banach.
+
+\begin{exemple} L'exponentielle. Soit $(A,N)$ une algèbre unifère (munie d'un élément identité pour la multiplication) munie d'une norme qui vérifie
+$$\forall n\geq 0\ N(a^n)\leq N(a)^n$$
+et qui rende complet l'espace vectoriel sous-jacent. Alors la série de terme général $\frac{a^n}{n!}$ est normalement convergente quelque soit l'élément $a$ de $A$ . On appelle $\exp{(a)}$ sa somme dans $A$ . C'est le cas des algèbres de matrices ou de certaines algèbres d'opérateurs ${\mathcal L}(E,F)$ comme on le verra plus loin. \end{exemple}
+
+\begin{exemple} Soit $(A,N)$ une algèbre unifère (munie d'un élément identité pour la multiplication) munie d'une norme qui vérifie
+$$\forall n\geq 0\ N(a^n)\leq N(a)^n$$
+et qui rende complet l'espace vectoriel sous-jacent. Soit $x$ un élément de $E$ appartenant à la boule unité ouverte ($N_E(x)<1$). Alors l'élément $1-x$ admet un inverse dans $A$ .\end{exemple}
+\medskip Démonstration. On va utiliser l'égalité
+$$1-x^{n+1}=(1-x)(1+x+\hdots+x^n)\ .$$
+La série (géométrique) de terme général $x^n$ est normalement convergente donc de Cauchy. Notons $\xi$ sa limite. La suite $x^n$ tend vers $0$ dans $A$ . On a donc $1=(1-x)\xi$ .
+
+\begin{defn} Soit $(X,d)$ un espace métrique. Soit $f$ une application de $X$ dans $X$ . On dit que $f$ est contractante ou $k$-contractantes si et seulement s'il existe $k\in]0,1[$ tel que
+$$\forall (x,y)\in X^2\ d(f(x),f(y))\leq kd(x,y)\ .$$\end{defn}
+
+\begin{rem} On notera qu'une telle application est évidemment continue de $X$ dans $X$ .\end{rem}
+
+\begin{defn} On dit qu'une application $f$ de $X$ dans $X$ admet un point fixe $x$ si et seulement si $f(x)=x$ . \end{defn}
+
+\begin{theoreme} [Théorème du pont fixe] Soit $(X,d)$ un espace métrique complet (non vide). Alors toute application contractante admet un unique point fixe dans $X$ .\end{theoreme}
+
+\medskip Démonstration. Soit $f$ une application $k$-contractante.
+
+Montrons tout d'abord qu'un tel point fixe est unique. Si $x$ et $y$ étaient deux points fixes, on aurait
+$$d(x,y)=d(f(x),f(y))\leq kd(x,y)\ .$$
+Ceci n'est possible que si $d(x,y)=0$ puisque $k<1$ .
+
+Soit $x_0$ un point quelconque de $X$ . Etudions la suite $x_n$ définie par $x_0$ et la relation de récurrence $x_{n+1}=f(x_n)$ soit $x_n=f^{n}(x_0)$ (suite des itérées de $f$). On a
+$$d(x_{n+p+1},x_{n+p})=d\left(f(x_{n+p}),f(x_{n+p-1})\right)\leq kd(x_{n+p},x_{n+p-1})$$
+d'où par une simple récurrence
+$$d(x_{n+p+1},x_{n+p})\leq k^pd(x_{n+1},x_{n})\leq k^{p+n}d(x_1,x_0)\ .$$
+D'où
+$$d(x_{n+p},x_n)\leq \sum_{i=1}^p d(x_{n+i}-x_{n+i-1})\leq \sum_{i=1}^pk^{n+i-1}d(x_1,x_0)=\frac{k^n(1-k^p)}{1-k}\,d(x_1,x_0)\leq \frac{k^nd(x_1,x_0)}{1-k}\ .$$
+Mais $k^n$ tend vers $0$ si $n$ tend vers $+\infty$ . Donc
+$$\forall \epsilon>0\ \exists n_0\ n\geq n_0\Rightarrow \forall p\geq 1\ d(x_{n+p},x_n)\leq \epsilon\ .$$
+Notre suite est donc une suite de Cauchy. Comme l'espace est complet, cette suite est convergente. Soit $l$ sa limite. On a
+$$d(f(l),l)\leq d(f(l),f(x_n))+d(f(x_n),x_n)+d(x_n,l)\leq d(x_{n+1},x_n)+(1+k)d(x_n,l)\ .$$
+Mais $x_n$ est de Cauchy et tend vers $l$ donc cette expression tend vers $0$ si $n$ tend vers $+\infty$ . Donc
+$$d(f(l),l)=0\Leftrightarrow l=f(l)\ .$$
+
+\begin{rem} Il y a deux applications fondamentales de ce résultat en calcul différentiel. Nous en verrons l'une (théorème dit des fonctions implicites). La seconde concerne la théorie des équations différentielles (Résultat de Cauchy-Lipschitz). \end{rem}
+
+\begin{theoreme}[Séparé complété d'un espace vectoriel normé] Soit $(E,N)$ un espace vectoriel normé. On note $\mathcal E$ (resp.  ${\mathcal E}_0$) l'espace des suites de Cauchy de $E$ (resp. des suites de Cauchy convergeant vers $0$). On note $\overline{E}$ l'espace quotient ${\mathcal E}/{\mathcal E}_0$ . C'est un espace vectoriel normé contenant $E$ et complet. \end{theoreme}
+
+\smallskip Démonstration. L'espace des suites de vecteurs de $E$ est un espace vectoriel pour la somme (et le produit par un scalaire) de suites. Il est facile de vérifier que la somme de deux suites de Cauchy (et le produit par un scalaire d'une suite de Cauchy) reste de Cauchy. L'espace ${\mathcal E}_0$ en est évidemment un sous-espace vectoriel. Tout vecteur $u$ de $E$ peut être associé à la classe de la suite constante et égale à $u\ .$ Donc il y a une application linéaire de $E$ dans ${\mathcal E}$ donc dans $\overline{E}$ . Cette dernière est injective car la suite constante et égale à $u$ ne peut converger vers $0$ que si $u=0$ .
+
+Soit $(u_i)_{i\geq 0}$ une suite de Cauchy d'éléments de $E$ . Considérons la suite $N(u_i)_{i\geq 0}$ . On a
+$$\forall (i,j)\ \left|N(u_i)-N(u_j)\right|\leq N(u_i-u_j)\ .$$
+La suite $N(u_i)_{i\geq 0}$ est donc de Cauchy dans $\R^+$ . Elle y est donc convergente. On notera $\overline{N}\left((u_i)_{i\geq 0}\right)$ cette limite. Mais $\overline{N}$ est-elle définie sur $\overline{E}$ ? Prenons pour cela deux suites de Cauchy $(u_i)_{i\geq 0}$ et $(u'_i)_{i\geq 0}$ équivalentes (c'est à dire que leur différence tend vers $0$). Soit $\epsilon>0$ quelconque. Alors
+$$\exists i_{\epsilon}\ i\geq i_{\epsilon}\Rightarrow N(u_i-u'_i)<\frac{\epsilon}{3}\ .$$
+Mais
+$$\exists  i'_{\epsilon}\ i\geq i'_{\epsilon}\Rightarrow \left|\overline{N}\left((u_i)_{i\geq 0}\right)-N(u_i)\right|<\frac{\epsilon}{3}
+\ {\rm et}\ \exists  i"_{\epsilon}\ i\geq i"_{\epsilon}\Rightarrow \left|\overline{N}\left((u'_i)_{i\geq 0}\right)-N(u'_i)\right|<\frac{\epsilon}{3}\ .$$
+Alors, pour $i\geq {\rm Sup}\{i_{\epsilon},i'_{\epsilon},i"_{\epsilon}\}$ ,
+$$\left|\overline{N}\left((u_i)_{i\geq 0}\right)-\overline{N}\left((u'_i)_{i\geq 0}\right) \right|
+\leq \left|\overline{N}\left((u_i)_{i\geq 0}\right)-N(u_i)\right|+\left|N(u_i)-N(u'_i)\right|+\left|N\left(u_i\right)-\overline{N}\left((u'_i)_{i\geq 0}\right) \right|$$
+soit
+$$\left|\overline{N}\left((u_i)_{i\geq 0}\right)-\overline{N}\left((u'_i)_{i\geq 0}\right) \right|\leq 3\,\frac{\epsilon}{3}=\epsilon\ .$$
+Bref, $\epsilon$ étant quelconque, $\overline{N}\left((u_i)_{i\geq 0}\right)=\overline{N}\left((u'_i)_{i\geq 0}\right)$ . Donc $\overline{N}$ est définie sur $\overline{E}$ . Si $\overline u$ désigne la classe d'une suite de Cauchy $(u_i)_{i\geq 0}$ dans $\overline E$ , on peut donc poser
+$$\overline{N}(\overline{u})=\overline{N}\left((u_i)_{i\geq 0}\right)$$
+puisque, si $(u'_i)_{i\geq 0}$ est un autre élément de cette classe, on a $\overline{N}\left((u_i)_{i\geq 0}\right)=\overline{N}\left((u'_i)_{i\geq 0}\right)$ .
+Il reste à vérifier les propriétés d'une norme. 
+
+Pour quelles classes cette fonction est-elle nulle? Si la classe est nulle c'est que la suite de Cauchy converge vers $0$ . Il est alors facile de voir que la suite $N(u_i)$ correspondante tend vers $0$ donc la norme d'une classe nulle est nulle. Réciproquement, si $\overline{N}(\overline{u})=0$ , cela signifie que la suite $N(u_i)$ des normes d'une suite de cette classe tend vers $0$ . Cela signifie que la suite elle-même tend vers $0$ . Donc
+$$\overline{N}(\overline{u})=0\Leftrightarrow \overline{u}=0\ .$$
+Il est facile de vérifier que
+$$\overline{N}(\lambda\overline{u})=|\lambda|\overline{N}(\overline{u})\ .$$
+Il reste donc à vérifier l'inégalité triangulaire. Soient $(u_i)_{i\geq 0}$ et $(u'_i)_{i\geq 0}$ deux suites appartenant à $\overline{u}$ et $\overline{u'}\ .$ La suite $(u_i+u'_i)_{i\geq 0}$ appartient à $\overline{u+u'}$ donc
+$$ \overline{N}\left(\overline{u}+\overline{u'}\right)=\overline{N}\left((u+u')_{i\geq 0}\right)\ .$$
+Mais 
+$$\forall i\geq 0\ ,\ N(u_i+u'_i)\leq N(u_i)+N(u'_i)\ .$$
+
+Par passage à la limite,
+$$\overline{N}(\overline{(u+u')}\leq \overline{N}(\overline{u})+\overline{N}(\overline{u'})\ .$$
+
+Il reste à vérifier que $\overline{E}$ est complet pour $\overline{N}$ . Soit donc $(\overline{u}(i))_{i\geq 0}$ une suite de Cauchy dans $\overline{E}$ pour $\overline{N}\ .$ Chaque $\overline{u}(i)$ est une classe de suite de Cauchy. Soit $({u(i)}_j)_{j\geq 0}$ une suite appartenant à cette classe. Soit $n\geq 0$ un entier quelconque. Comme $\overline{N}\left(\overline{u(n)}\right)$ est la limite des $N\left(u(n)_j\right)$ lorsque $j$ tend vers $+\infty$ , il existe $v_n=u(n)_{j(n)}$ tel que
+$$\left|\overline{N}\left(\overline{u(n)}\right)-N\left(u(n)_{j(n)}\right)\right|=\left|\overline{N}\left(\overline{u(n)}\right)-N(v_n)\right|\leq\frac{1}{2^n}\ .$$
+Cette suite $v=(v_i)_{i\geq 0}$ est-elle de Cauchy? On a
+$$\left|N(v_p)-N(v_q)\right|\leq \frac{1}{2^p}+\frac{1}{2^q}+ \left|\overline{N}\left(\overline{u(p)}\right)-\overline{N}\left(\overline{u(q)}\right) \right|$$
+puisque 
+$$\left|N(v_p)-N(v_q)\right|=\left|\overline{N}((v_p))-\overline{N}((v_q))\right|\leq \overline{N}((v_{n+p}-(v_n))\ .$$
+On note $(v_i)$ la suite (de Cauchy) stationnaire et égale à $v_i$ .
+
+Soit alors $\epsilon>0$ quelconque. Comme la suite $\overline{u(n)}$ est de Cauchy, on peut choisir $p$ et $q$ assez grand pour que 
+$$\frac{1}{2^p}+\frac{1}{2^q}+N\left(\overline{u(p)}-\overline{u(q)}\right)<\epsilon\ .$$
+Ainsi nous avons construit $\overline{v}$ un élément de $\overline{E}$ . il reste à montrer que notre suite initiale $(\overline{u}(i))_{i\geq 0}$ converge vers cet élément. \'Etudions donc
+$$\overline{N}\left(\overline{v}-(\overline{u}(i))_{i\geq 0}\right)\ .$$
+Pour cela examinons les $N(v_n-u(i)_n)$ ($i$ à déterminer). Par construction
+
+$$N(v_n-u(i)_n)\leq |N(v_n)-\overline{N}\left(\overline{u(n)}\right)|+\left|\overline{N}\left(\overline{u(n)}\right)-N\left(u(i)_{n}\right)\right| 
+=\frac{1}{2^n}+\left|\overline{N}\left(\overline{u(n)}\right)-N\left(u(i)_{n}\right)\right|$$
+soit
+$$N(v_n-u(i)_n)\leq\frac{1}{2^n}+\left|\overline{N}\left(\overline{u(n)}\right)-\overline{N}\left(\overline{u(i)}\right)\right|+\left|\overline{N}\left(\overline{u(i)}\right)-N\left(u(i)_{n}\right)\right|\ .$$
+En utilisant que la suite $\overline{u(i)}$ est de Cauchy, le terme $\left|\overline{N}\left(\overline{u(n)}\right)-\overline{N}\left(\overline{u(i)}\right)\right|$ peut être rendu plus petit que $\frac{\epsilon}{3}$ pour $n$ et $i$ assez grand de même que le premier facteur.
+
+\begin{rem} Nous avons montré que $E$ est dense dans $\overline E$ . \end{rem}
+
+Plus généralement on a:
+\begin{theoreme} Soit $(E,N)$ un espace normé. Il existe, à isométrie près, un unique espace $\overline E$ dans lequel $E$ est dense (son adhérence est $\overline E$) et dont la norme prolonge celle de $E$ .\end{theoreme}
+
+\end{section}
+
+\end{document}

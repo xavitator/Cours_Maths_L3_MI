@@ -1,0 +1,399 @@
+\documentclass[10pt,a4paper]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[applemac]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lastpage}
+
+\setlength\textwidth{15.9cm}
+\setlength\oddsidemargin{0cm}
+\setlength\evensidemargin{0cm}
+\setlength\marginparwidth{0cm}
+\setlength\marginparsep{0.4cm}
+\setlength\marginparpush{0.4cm}
+\setlength\topmargin{0cm}
+\setlength\headheight{0.59cm}
+\setlength\headsep{1cm}
+\setlength\textheight{21.5cm}
+\setlength\footskip{2.2cm}
+
+\def\Nd{\mathbf{N}}
+\def\Zd{\mathbf{Z}}
+\def\Pd{\mathbf{P}}
+\def\Qd{\mathbf{Q}}
+\def\Rd{\mathbf{R}}
+
+\newtheorem{lemme}{Lemme}
+\newtheorem{theoreme}{Th\'eor\`eme}
+\newtheorem{algorithme}{Algorithme}
+\newtheorem{exercice}{Exercice}
+\newtheorem*{exemple*}{Exemple}
+\newtheorem{exemple}[subsection]{Exemple}
+\newtheorem*{rem*}{Remarque}
+\newtheorem{rem}[subsection]{Remarque}
+\newtheorem*{defn*}{D\'efinition}
+\newtheorem{defn}[subsection]{D\'efinition}
+\newtheorem*{lem*}{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem*{cor*}{Corollaire}
+
+\pagestyle{fancy}
+\lhead{{\bf Universit\'e Paris Diderot Paris 7}}
+\chead{}
+\rhead{Analyse I}
+\lfoot{Patrice Perrin}
+\cfoot{Espaces vectoriels normés -- Ann\'ee 2018-2019}
+\rfoot{Page \thepage/\pageref{LastPage}}
+
+%------ Commandes symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\bigskip
+
+\bigskip
+
+\centerline{\bf Analyse I}
+\centerline{\bf Espaces vectoriels normés}
+\centerline{Normes}
+
+\bigskip\bigskip En première année, vous avez étudié l'algèbre linéaire. C'est un exemple de structure algébrique. C'est même l'exemple de base. Rappelons quelques exemples:
+\begin{itemize}
+\item (espaces vectoriels de dimension finie) $\R^n$ ($n\geq 1$), l'espace vectoriel des matrices ayant $n$ lignes et $m$ colonnes; l'espace vectoriel des applications linéaires d'un espace vectoriel $E$ (de dimension finie) dans un espace vectoriel $F$ (de dimension finie);
+\item (espaces vectoriels de dimension infinie) $\R[X]$ l'espace vectoriel des polynômes réels (à une indéterminée), réunion croissante des $\R_n[X]$ (espace vectoriel des polynômes réels de degré au plus $n$); l'espace vectoriel des applications linéaires d'un espace vectoriel $E$ (de dimension quelconque) dans un espace vectoriel $F$ (de dimension quelconque); $\R^{\N}$ espace vectoriel des suites numériques;
+\item (espaces vectoriels de fonctions) $R^{I}$ espace vectoriel des applications de $I$ dans $\R$ (où $I$ est un intervalle de $\R$); ${\mathcal C}(I;\R)$ (resp. ${\mathcal D}(I;\R)$) l'espace vectoriel des applications continues (resp. dérivables) de $I$ dans $\R$ ; ${\mathcal C}^n(I;\R)$ (resp. ${\mathcal C}^{\infty}(I;\R)$) l'espace vectoriel des applications de classe ${\mathcal C}^n$ (resp. de classe ${\mathcal C}^{\infty}$) de $I$ dans $\R$ ; 
+\end{itemize}
+
+\begin{rem*} Tous les exemples donnés sont des espaces vectoriels réels. Mais on sait que l'on peut remplacer le corps des réels par n'importe quel autre corps (commutatif) tel que $\Q$ , $\Q[\sqrt{2}]$ , $\C$ , $F_p$ ou $F_{p^m}$ (où $p$ est un nombre premier et $m$ un entier non nul). Le corps $\Q[\sqrt{2}]$ est le corps obtenu en "ajoutant" à $\Q$ une racine carrée de $2$ c'est à dire l'ensemble des combinaisons linéaires à coefficients rationnels de $1$ et $\sqrt{2}$ .\end{rem*}
+
+\bigskip \`A cette structure algébrique, nous allons ajouter une structure de type topologique (on souhaite savoir si deux éléments de notre ensemble sont proches) et étudier les espaces ainsi munis de ces deux structures (principalement sur $\R$ ou $\C$).
+
+\bigskip \begin{section}{\bf Normes. Définitions générales.} 
+
+\medskip 
+
+\begin{defn} Soit $E$ un espace vectoriel réel. On appelle norme sur $E$ toute application $N$ de $E$ dans $\R^{+}$ qui vérifie les trois propriétés suivantes:
+\begin{itemize}
+\item Soit $u$ un vecteur de $E$ .
+$$N(u)=0\ \Leftrightarrow u=0\ ;$$
+\item Soient $u$ un vecteur de $E$ et $\lambda$ un scalaire réel.
+$$N(\lambda u)=|\lambda| N(u)\ ;$$
+\item (inégalité triangulaire) Soient $u$ et $v$ deux vecteurs de $E$ .
+$$N(u+v)\leq N(u)+N(v)\ .$$
+\end{itemize}
+\end{defn}
+
+\medskip On utilisera à l'occasion la définition suivante:
+
+\begin{defn} Soit $E$ un espace vectoriel réel. On appelle semi-norme sur $E$ toute application $n$ de $E$ dans $\R^{+}$ qui vérifie les deux propriétés suivantes:
+\begin{itemize}
+\item Soient $u$ un vecteur de $E$ et $\lambda$ un scalaire réel.
+$$n(\lambda u)=|\lambda| n(u)\ ;$$
+\item (inégalité triangulaire) Soient $u$ et $v$ deux vecteurs de $E$ .
+$$n(u+v)\leq n(u)+n(v)\ .$$
+\end{itemize}
+Autrement dit, le vecteur nul n'est pas nécessairement le seul vecteur annulant la semi-norme.\end{defn}
+
+\begin{exemple} La valeur absolue sur $\R$ est une norme. En effet 
+$$|x|={\rm Sup}(x,-x)\ .$$
+Donc, si $|x|=0$ , c'est que $x\leq0$ et $-x\leq 0$ soit $x=0$ . Bien sûr $|xy|=|x||y|$ (c'est une conséquence immédiate de la règle des signes). Enfin, si l'on étudie $|x+y|$ , on peut considérer le cas où $x$ et $y$ ont le même signe et le cas où ils ont le signe opposé. Dans le premier cas, $|x+y|=|x|+|y|$ . Dans le second, soit $|x|\geq |y|$ soit $|x|\leq |y|$ . Alors soit $|x+y|=|x|-|y|$ soit $|x+y|=-|x|+|y|$ . Dans tous les cas
+$$|x+y|\leq|x|+|y|\ .$$
+\end{exemple}
+
+\begin{prop} Soit $N$ une norme sur un espace vectoriel réel $E$ . Alors on a les propriétés suivantes:
+\begin{itemize}
+\item (inégalité triangulaire généralisée)
+$$\forall u_1,\hdots,u_n\in E\ N(u_1+\hdots+u_n)\leq N(u_1)+\hdots+ N(u_n)\ ;$$
+\item (norme de l'opposé)
+$$\forall u\in E\ ,\ N(-u)=N(u)\ ;$$
+\item (majoration de la différence de deux normes)
+$$\forall u,v\in E\ ,\ \left|N(u)-N(v)\right|\leq N(u-v)\ .$$
+\end{itemize}
+\end{prop}
+\smallskip Démonstration. La première propriété se montre par une simple récurrence (sur le nombre de termes) à partir de l'inégalité triangulaire. La seconde est immédiate à partir de l'homogénéité puisque $|-1|=1\ .$ Pour la dernière, on remarque que, pour tous vecteur $u$ et $v$ de $E$ , on a
+$$N(u)=N(u-v+v)\leq N(u-v)+N(v)\ {\rm soit}\ N(u)-N(v)\leq N(u-v)\ .$$
+De même
+$$N(v)=N(u-u+v)\leq N(u)+N(v-u)\ {\rm soit}\ N(v)-N(u)\leq N(v-u)=N(u-v)\ .$$
+
+%\medskip\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=6.8cm]{Iso1}
+%\caption{Quelques isoclines pour $x'=\sqrt{|x|}$}
+%\label{default}
+%\end{center}
+%\end{figure}
+
+\begin{rem} La première propriété des normes se traduit souvent par l'équation suivante:
+$$N(\lambda u)=0\Leftrightarrow \lambda=0\ {\rm ou}\ u=0\ .$$
+ \end{rem}
+
+\begin{rem} On notera parfois $\|u\|$ la donnée d'une norme.
+\end{rem}
+
+\begin{defn} Soit $u_0$ un vecteur de $E$ Soit $r>0$ un réel strictement positif. On appelle boule ouverte de centre $u_0$ et de rayon $r$ la partie de $E$
+$$\{u\in E\ ;\ N(u-u_0)<r\}\ .$$
+On la note $B(U_0,r)$ .
+\end{defn}
+
+\begin{defn} Soit $u_0$ un vecteur de $E$ Soit $r>0$ un réel strictement positif. On appelle boule fermée de centre $u_0$ et de rayon $r$ la partie de $E$
+$$\{u\in E\ ;\ N(u-u_0)\leq r\}\ .$$
+On la note $\overline{B}(U_0,r)$ .\end{defn}
+
+\begin{defn} On appelle ouvert de $E$ toute partie $U$ de $E$ telle que
+$$\forall u_0\in U\ \ \exists r>0\  ;\ B(u_0,r)\subset U\ .$$\end{defn}
+
+\begin{rem} La partie vide $\emptyset$ de $E$ est un ouvert de même que $E$ lui-même. Une boule ouverte est un ouvert (penser à l'inégalité triangulaire).
+\end{rem}
+
+\begin{defn} On appelle fermé de $E$ toute partie $F$ de $E$ dont le complémentaire est un ouvert. \end{defn}
+
+\begin{rem} La partie vide $\emptyset$ de $E$ est un fermé de même que $E$ lui-même. Une boule fermée est un fermé (son complémentaire étant ouvert par l'inégalité triangulaire).\end{rem}
+
+\begin{exemple} Un intervalle ouvert non vide $]a,b[$ (où $a<b$) est un ouvert de $\R$ . En effet, si $c\in]a,b[$ (soit $a<c<b$), tout intervalle $]c-h,c+h[$ où $h<b-c$ et $h<c-a$ est une boule ouverte centrée en $c$ et contenue dans $]a,b[$ (on a choisi la norme valeur absolue sur $\R$).
+\end{exemple}
+
+\begin{rem} Une réunion quelconque d'ouverts est encore une partie ouverte. Une intersection finie d'ouverts est encore une partie ouverte.\end{rem}
+
+\begin{exemple} Soient $a<b$ . L'intervalle $[a,b]$ est fermé puisque son complémentaire est $]-\infty,a[\cup]b,+\infty[$ (ouvert comme réunion de deux ouverts).
+\end{exemple}
+
+\begin{rem} On appelle topologie sur un ensemble $E$ la donnée d'une famille de parties (appelées ouverts de la topologie) qui contient $E$ et $\emptyset$ , qui est stable par réunion quelconque et par intersection finie. A la donnée d'une norme sur un espace vectoriel $E$ , on vient donc d'associer la donnée d'une topologie sur $E$ .\end{rem}
+
+\begin{defn} Soit $(E,N)$ un espace vectoriel normé. On dira que la partie $A$ de $E$ est bornée s'il existe un réel $R>0$ et un vecteur $u_0$ de $E$ tels que $A\subset B(u_0,R)$ . \end{defn}
+ 
+\begin{rem} Il revient au même de dire que $A$ est contenu dans une boule ouverte centrée en $0$ de rayon assez grand (prendre $R'=R+N(u_0)$). Car bien sûr
+$$\forall u\in A\ ;\ N(u)=N(u-u_0+u_0)\leq N(u_0)+N(u-u_0)\leq N(u_0)+R\ .$$ \end{rem}
+
+\begin{defn} Soit $A$ une partie quelconque d'un espace vectoriel normé $(E,N)$ . On appelle intérieur de $A$ (et on la note $\mathring{A}$) la plus grande partie ouverte contenue dans $A$ . On appelle adhérence de $A$ (et on la note $\overline{A}$) la plus petite partie fermée contenant $A$ . Enfin on appelle frontière de $A$ le complémentaire de $\mathring{A}$ dans $\overline{A}$ .
+\end{defn}
+
+\medskip Comme $A$ contient au moins une partie ouverte $\emptyset$ et que toute réunion d'ouvert est ouvert, il suffit de prendre pour $\mathring{A}$ la réunion de toutes les parties ouvertes contenue dans $A$ . De même, comme $A$ est contenue dans $E$ (qui est fermé) et que toute intersection de fermé est fermée, il suffit de prendre pour $\overline{A}$ l'intersection de toutes les parties fermées contenant $A$ . On en déduit que
+$$\mathring{A}\subset A\subset \overline{A}\ .$$
+Ainsi ${\rm Fr}(A)=\overline{A}\setminus \mathring{A}$ a un sens.
+
+\begin{defn} Soit $E$ un espace vectoriel. Soient $N_1$ et $N_2$ deux normes sur $E$ . On dira que ces deux normes sont équivalentes si et seulement si il existe deux constantes réelles $m>0$ et $M>0$ telles que
+$$\forall u\in E\ , m\,N_1(u)\leq N_2(u)\leq M\,N_1(u)\ .$$
+\end{defn}
+
+\begin{rem} On a bien sûr
+$$m\,N_1(u)\leq N_2(u)\leq M\,N_1(u)\Leftrightarrow \frac{1}{M}\,N_2(u)\leq N_1(u)\leq \frac{1}{m}\,N_2(u)\ .$$
+ \end{rem}
+
+\begin{rem} Soit $E$ un espace vectoriel. Soient $N_1$ et $N_2$ deux normes équivalentes sur $E$ . Toute partie ouverte pour $N_1$ l'est aussi pour $N_2$ et vice-versa. Autrement dit les topologies associées à chacune de ces normes sont identiques. \end{rem}
+
+\begin{defn}  Soit $X$ un ensemble. On introduit une application $d$ de $X^2$ dans $\R^{+}$ , appelée distance, qui vérifie
+\begin{itemize}
+\item $(u,v)\in X^2\ d(u,v)=0\Leftrightarrow u=v\ ;$
+\item $\forall (u,v)\in X^2\ d(u,v)=d(v,u)\ ;$
+\item $\forall (u,v,w)\in X^3\ ,\ d(u,w)\leq d(u,v)+d(v,w)\ .$
+\end{itemize}
+L'ensemble $(X,d)$ est alors appelé espace métrique.
+Soit $(E,N)$ un espace normé. On pose
+$$d(u,v)=N(u-v)\ .$$
+Cette application de $E\times E=E^2$ dans $\R^+$ est une distance sur $E$ qui en fait un espace métrique.
+\end{defn}
+
+\begin{defn} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application d'un ouvert $\mathcal U$ de $E$ dans $F$ . On dit que $f$ est continue en un point $u_0$ de $\mathcal U$ si et seulement si
+$$\forall \epsilon>0\ \exists \eta\ >0\ ;\ N_E(u-u_0)<\eta\Rightarrow N_F(f(u)-f(u_0))<\epsilon\ .$$ \end{defn}
+
+\begin{defn} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application d'un ouvert $\mathcal U$ de $E$ dans $F$ .  On dira que $f$ est continue sur $\mathcal U$ si et seulement si elle est continue en tout point de $\mathcal U$ . \end{defn}
+
+\begin{exemple} Soient $N_1$ et $N_2$ deux normes équivalentes sur un même espace vectoriel réel. Alors l'application ${\rm Id}$ de $(E,N_1)$ (resp. $(E,N_2)$) dans $(E,N_2)$ (resp. $(E,N_1)$) est continue. \end{exemple}
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application linéaire de $E$ dans $F$ . Alors $f$ est continue de $E$ dans $F$ si et seulement si elle est continue en $0$ . \end{prop}
+
+\smallskip Démonstration. Une application continue en tout point de $E$ l'est en $0$ . Réciproquement, soit $u_0$ un point quelconque de $E$ . Comme $f$ est continue en $0$ ,
+$$\forall \epsilon>0\ \exists \eta>0\ ;\ N_E(h)<\eta\Rightarrow N_F\left(f(h)\right)<\epsilon\ .$$
+Puisque $f$ est linéaire, on en déduit que, si on pose $h=u-u_0$ ,
+$$N_E(u-u_0)<\eta\Rightarrow N_F(f(u-u_0))=N_F(f(u)-f(u_0))<\epsilon$$
+
+\begin{exemple} L'application $(x,y)\mapsto x+y$ de l'espace $(E^2,N\times N)$ dans $(E,N)$ est continue en tout point. De même que l'application $(\lambda,x)$ de l'espace $(\R\times E,|.|\times N)$ dans $(E,N)$ .\end{exemple}
+On a bien sûr
+$$N(x+y-x_0-y_0)\leq N(x-x_0)+N(y-y_0)\ {\rm et}\ N(\lambda x-\lambda_0 x_0)\leq |\lambda-\lambda_0|N(x)+|\lambda_0|N(x-x_0)\ .$$
+
+\end{section}
+
+\clearpage\begin{section}{\bf Exemples de normes.} 
+
+\bigskip Commençons par des exemples de norme sur $\R^n$ .
+
+\medskip\begin{defn} Soit $u=(x_1,\hdots,x_n)$ un point de $\R^n$ . Soit $p$ un entier strictement positif. On pose
+$$\|u\|_p=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\ .$$
+C'est une famille de normes sur $\R^n$ .
+\end{defn}
+
+\smallskip Démonstration. Etudions successivement le cas $p=1$ , $p=2$ et $p$ quelconque.
+
+\smallskip On a donc, pour $p=1$ ,
+$$\|u\|_1=\sum_{i=1}^n|x_i|\ .$$
+Alors
+$$\|u\|_1=\sum_{i=1}^n|x_i|=0\Leftrightarrow \forall i\in\{1,\hdots,n\}\ |x_i|=0\Leftrightarrow u=0\ .$$
+$$\|\lambda u\|_1=\sum_{i=1}^n|\lambda x_i|=|\lambda|\|u\|_1\ .$$
+Enfin
+$$\|u+v\|_1=\sum_{i=1}^n|x_i+y_i|\leq\sum_{i=1}^n\left(|x_i|+|y_i|\right)\leq\|u\|_1+\|v\|_1\ .$$
+
+\smallskip Pour $p=2$ , on a
+$$\|u\|_2=\sqrt{\sum_{i=1}^n|x_i|^2}\ .$$
+Alors
+$$\|u\|_2=\sqrt{\sum_{i=1}^n|x_i|^2}=0\Leftrightarrow \|u\|_2^2=0\Leftrightarrow \forall i\in\{1,\hdots,n\}\ |x_i|^2=0\Leftrightarrow u=0\ .$$
+$$\|\lambda u\|_2=\sqrt{\sum_{i=1}^n|\lambda x_i|^2}=|\lambda|\|u\|_2\ .$$
+Reste l'inégalité triangulaire. L'expression
+$$\sum_{i=1}^n(x_i+\lambda y_i)^2= \sum_{i=1}^nx_i^2+2\sum_{i=1}x_iy_i\lambda+\left(\sum_{i=1}^ny_i^2\right)\lambda^2$$
+est un trinôme en $\lambda$ toujours positif. Donc son discriminant (réduit) est négatif ou nul. Soit
+$$\left(\sum_{i=1}^nx_iy_i\right)^2\leq\left(\sum_{i=1}^nx_i^2\right)\left(\sum_{i=1}^ny_i^2\right)\ .$$
+Cette inégalité est l'inégalité de Cauchy-Schwartz.
+D'où
+$$\|u+v\|_2=\sqrt{\sum_{i=1}^n|x_i+y_i|^2}=\sqrt{\sum_{i=1}^n(x_i+y_i)^2}=\sqrt{\sum_{i=1}^n|x_i|^2+\sum_{i=1}^n|y_i|^2+2\sum_{i=1}^nx_iy_i}$$
+soit
+$$\|u+v\|_2\leq \sqrt{\sum_{i=1}^n|x_i|^2+\sum_{i=1}^n|y_i|^2+2\sum_{i=1}^n|x_i||y_i|}\leq \sqrt{\sum_{i=1}^n|x_i|^2+\sum_{i=1}^n|y_i|^2+2\sqrt{\sum_{i=1}^n|x_i|^2}\sqrt{\sum_{i=1}^n|y_i|^2}}$$
+bref
+$$\|u+v\|_2\leq\sqrt{\left(\|u\|_2+\|v\|_2\right)^2}=\|u\|_2+\|v\|_2\ .$$
+
+\smallskip Si $p$ est entier quelconque ($p>2$), on a
+$$\|u\|_p=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}=0\Leftrightarrow \forall i\in\{1,\hdots,n\}|x_i|^p=0\Leftrightarrow u=0\ .$$
+De même
+$$\|\lambda u\|_p=\left(\sum_{i=1}^n|\lambda x_i|^p\right)^{\frac{1}{p}}=|\lambda|\|u\|_p\ .$$
+Reste l'inégalité triangulaire. On commencera par établir l'inégalité de Hölder (généralisation de l'inégalité de Cauchy-Schwartz):
+$$\sum_{i=1}^n|x_i||y_i|\leq\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}$$
+où l'on a posé $\frac{1}{p}+\frac{1}{q}=1$ (exposant conjugué de $p$). On notera que $q=\frac{p}{p-1}$ . Tout d'abord on remarquera que l'inégalité de Hölder est évidente si $\sum_{i=1}^n|x_i|^p=0$ ou $\sum_{i=1}^n|y_i|^q=0$ . On peut donc supposer que ces deux nombres ne sont pas nuls et introduire
+$$\xi_i=\frac{|x_i|}{\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}}\ {\rm et}\ \zeta_i=\frac{|y_i|}{\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}}\ .$$
+Alors
+$$\sum_{i=1}^n\xi_i^p=\sum_{i=1}^n\frac{x_i^p}{\sum_{i=1}^n|x_i|^p}=1\ {\rm et}\ \sum_{i=1}^n\zeta_i^q=1\ .$$ 
+On est ramené à montrer que
+$$\sum_{i=1}^n|\xi_i||\zeta_i|\leq 1$$
+si $\sum_{i=1}^n|\xi_i|^p=1$ et $\sum_{i=1}^n|\zeta_i|^q=1$ . Mais, si $a$ et $b$ sont des réels strictement positifs,
+$$ab=\exp{(\ln{ab})}=\exp{(\ln{(a)}+\ln{(b)})}=\exp{\left(\frac{\ln{(a^p)}}{p}+\frac{\ln{(b^q)}}{q}\right)}\ .$$
+Par concavité de la fonction $\ln$ , on alors
+$$ab\leq \exp{\left(\ln{\left(\frac{a^p}{p}+\frac{b^q}{q}\right)}\right)}=\frac{a^p}{p}+\frac{b^q}{q}\ .$$
+Dans notre cas on a donc
+$$\sum_{i=1}^n|\xi_i||\zeta_i|\leq \sum_{i=1}^n\left(\frac{|\xi_i|^p}{p}+\frac{|\zeta_i|^q}{q}\right)=\frac{1}{p}+\frac{1}{q}=1\ .$$
+Il nous reste à établir l'inégalité triangulaire. On a
+$$\sum_{i=1}^n|x_i+y_i|^p=\sum_{i=1}^n|x_i+y_i|x_i+y_i|^{p-1}\leq\sum_{i=1}^n|x_i||x_i+y_i|^{p-1}+\sum_{i=1}^n|y_i||x_i+y_i|^{p-1}\ .$$
+Appliquons alors deux fois l'inégalité de Hölder:
+$$\sum_{i=1}^n|x_i+y_i|^p\leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}} + \left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}}\ .$$
+Mais $q=\frac{p}{p-1}$ soit:
+$$\sum_{i=1}^n|x_i+y_i|^p\leq\left(\|u\|_p+\|v\|_p\right)\left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{\frac{p-1}{p}}$$
+et finalement
+$$\|u+v\|_p\leq \|u\|_p+\|v\|_p\ .$$
+
+\begin{defn} Soit $u=(x_1,\hdots,x_n)$ un point de $\R^n$ On pose
+$$\|u\|_{\infty}={\rm Sup}_{i=1}^n|x_i|\ .$$
+C'est une norme sur $\R^n$ .
+\end{defn}
+
+\smallskip Démonstration.
+
+(i) 
+$$\|u\|_{\infty}={\rm Sup}_{i=1}^n|x_i|=0\Leftrightarrow |x_1|=\hdots=|x_n|=0\Leftrightarrow u=(x_1,\hdots,x_n)=0\ ;$$
+
+(ii) Soit $\lambda$ un réel et $u$ un vecteur de $\R^n$ .
+$$\|\lambda u\|_{\infty}={\rm Sup}_{i=1}^n|\lambda x_i|={\rm Sup}_{i=1}^n|\lambda||x_i|=|\lambda|\|u\|_{\infty}\ ;$$
+
+(iii) Soient $u$ et $v$ deux vecteurs de $\R^n$ .
+$$\|u+v\|_{\infty}={\rm Sup}_{i=1}^n|x_i+y_i|\ .$$
+Mais
+$$|x_i+y_i|\leq |x_i|+|y_i|\leq {\rm Sup}_{i=1}^n(|x_i|+|y_i|)\leq \|u\|_{\infty}+\|v\|_{\infty}\ .$$
+Soit
+$$\|u+v\|_{\infty}\leq  \|u\|_{\infty}+\|v\|_{\infty}\ .$$
+
+\begin{rem} Nous allons comparer les normes $\|\ \|_1$ , $\|\ \|_2$ et $\|\ \|_{\infty}$ . On a
+$$\|u\|_1=\sum_{i=1}^n|x_i|\leq n\,{\rm Sup}_{i=1}^n|x_i|=n\|u\|_{\infty}\ .$$
+De même
+$$\|u\|_2=\sqrt{\sum_{i=1}^n|x_i|^2}\leq \sqrt{n\,{\rm Sup}_{i=1}^n|x_i|^2}=\sqrt{n}\|u\|_{\infty}\ .$$
+De manière immédiate, on a également
+$$\|u\|_{\infty}\leq\|u\|_{1}\ {\rm et}\ \|u\|_{\infty}\leq\|u\|_{2}\ .$$
+D'où
+$$\|u\|_{1}\leq n\|u\|_{2}\ {\rm et}\ \|u\|_{2}\leq\sqrt{n}\|u\|_{1}\ .$$
+
+Nous venons de constater que ces trois normes sur $\R^n$ sont équivalentes deux à deux (et définissent donc la même topologie sur $\R^n$).
+\end{rem}
+
+\bigskip Continuons par des exemples de norme sur $\R[X]$ .
+
+\begin{defn} Soit $P$ un élément de $\R[X]$ . Si $P$ est non nul, on notera $n$ son degré et $a_i$ ses coefficients ($P=\sum_{i=0}^na_iX^i$). On pose alors
+$$\|P\|_p=\left(\sum_{i=0}^n|a_i|^p\right)^{\frac{1}{p}}\ ,\ \|P\|_{\infty}={\rm Max}(|a_i])_{0\leq i\leq n}.$$
+On convient que $\|0\|_p=0$ ainsi que $\|0\|_{\infty}=0$ .
+\end{defn}
+
+\begin{rem} Les inégalités précédentes étudiées sur $\R^n$ permettent de montrer que ces normes ne sont plus équivalentes sur $\R[X]$ .\end{rem}
+
+Nous avons rappelé l'existence de l'espace vectoriel $\R^{\N}$ des suites numériques. Soit $l_{\infty}(\R)$ le sous-espace vectoriel des suites bornées (suites $n\mapsto u_n$ telles que $\exists M>0\ ;\forall n\in\N\  |u_n|\leq M$). On peut vérifier qu'il s'agit d'un espace vectoriel normé. On peut introduire de façon analogue des espaces $l_{p}(\R)$ pour $p$ entier non nul (voir exercices).
+
+\bigskip Terminons par des exemples de norme sur des espaces de fonctions. Soit $I=[a,b]$ un intervalle fermé et borné (on dit aussi compact) de la droite réelle $\ R$ . Considérons $E={\mathcal C}(I;\R)$ l'espace des fonctions numériques continues sur $I$ .
+
+\begin{defn} Soit $\varphi$ un élément de $E$ . On pose $\|\varphi\|_{\infty}={\rm Sup}_{x\in I}|\varphi(x)|\ .$ C'est une norme.
+\end{defn}
+
+\smallskip Démonstration. La première question consiste à savoir si ce nombre existe. Mais on sait que toute fonction continue sur un intervalle compact est bornée et atteint ses bornes. D'où l'existence de $\|\varphi\|_{\infty}$ . Ensuite on a bien sûr:
+\begin{itemize}
+\item 
+$$\|\varphi\|_{\infty}=0\Leftrightarrow {\rm Sup}_{x\in I}|\varphi(x)|=0\Leftrightarrow \forall x\in I\ , |\varphi(x)|=0\Leftrightarrow \varphi=0\ .$$
+\item Si $\lambda$ est réel et $\varphi$ un élément de $E={\mathcal C}(I;\R)$ ,
+$$\|\lambda\varphi\|_{\infty}={\rm Sup}_{x\in I}|\lambda\varphi(x)|=|\lambda|\|\varphi\|_{\infty}\ .$$
+\item Reste l'inégalité triangulaire. Soient $\varphi$ et $\psi$ deux éléments de $E={\mathcal C}(I;\R)$ . Alors, si $x$ est élément de $I=[a,b]$ , on a
+$$|\varphi(x)+\psi(x)|\leq |\varphi(x)|+|\psi(x)|\leq {\rm Sup}_{x\in I}|\varphi(x)|+{\rm Sup}_{x\in I}|\psi(x)|=\|\varphi\|_{\infty}+\|\psi\|_{\infty}\ ;$$
+soit
+$$\|\varphi+\psi\|_{\infty}\leq\|\varphi\|_{\infty}+\|\psi\|_{\infty}\ .$$
+\end{itemize}
+
+\begin{defn} Soit $p$ un entier non nul. Soit $\varphi$ un élément de $E$ . On pose 
+$$\|\varphi\|_{p}=\left(\int_I|\varphi(t)|^p\,dt\right)^{\frac{1}{p}}=\left(\int_a^b|\varphi(t)|^p\,dt\right)^{\frac{1}{p}}\ .$$
+ 
+C'est une norme.\end{defn}
+
+\smallskip Démonstration. On n'étudiera ici que le cas $p=1$ . Les autres cas utilisent des inégalités de Cauchy ou de Minkovski analogues à celles données plus haut. On a donc
+$$\|\varphi\|_{1}=\int_I|\varphi(t)|\,dt=\int_a^b|\varphi(t)|\,dt\ .$$
+
+Cette expression existe parce que toute fonction continue sur un intervalle compact $I=[a,b]$ y est intégrable au sens de Riemann. On sait par ailleurs que, si la fonction continue est positive ou nulle en étant strictement positive au moins en un point, son intégrale est non nulle. Ainsi
+$$\|\varphi\|_{1}=\int_I|\varphi(t)|\,dt=\int_a^b|\varphi(t)|\,dt=0\Leftrightarrow \forall x\in [a,b]\ , \varphi(x)=0\Leftrightarrow \varphi=0\ .$$
+
+Les deux autres propriétés des normes à vérifier sont assez simples:
+$$\|\lambda\varphi\|_{1}=\int_I|\lambda\varphi(t)|\,dt=\int_a^b|\lambda\varphi(t)|\,dt=|\lambda|\int_a^b|\varphi(t)|\,dt= |\lambda|\|\varphi\|_{1}\ .$$
+De même
+$$\|\varphi+\psi\|_{1}=\int_I|\varphi(t)+\psi(t)|\,dt=\int_a^b|\varphi(t)+\psi(t)|\,dt\leq\int_a^b|\varphi(t)|\,dt+\int_a^b|\psi(t)|\,dt=\|\varphi\|_{1}+\|\psi\|_{1}\ .$$
+
+\begin{rem} Supposons que l'intervalle $[a,b]$ soit borné (ou compact). Voyons alors si l'on peut comparer ces normes. Bien sûr:
+$$\|\varphi\|_1=\int_a^b|\varphi(t)|\,dt\leq\int_a^b\|\varphi(t)\|_{\infty}\,dt\leq|b-a| \|\varphi(t)\|_{\infty}\ .$$
+De même
+$$\|\varphi\|_2=\sqrt{\int_a^b|\varphi(t)|^2\,dt}\leq\sqrt{\int_a^b\|\varphi(t)\|_{\infty}^2\,dt}\leq\sqrt{|b-a|} \|\varphi(t)\|_{\infty}\ .$$
+Mais on vérifiera (par exemple en TD) qu'il ne peut y avoir d'inégalité de la forme
+$$ \|\varphi(t)\|_{\infty}\leq C \|\varphi(t)\|_{1}\ {\rm ou}\  \|\varphi(t)\|_{\infty}\leq C' \|\varphi(t)\|_{2}\ .$$
+\end{rem}
+
+\begin{prop} Soient $(E,N)$ et $(F,N')$ deux espaces vectoriels normés. Alors l'espace $E\times F$ est normé.\end{prop}
+
+\medskip Démonstration. Soit $(x,y)\in E\times F$ . Posons $N"(x,y)={\rm Sup}(N(x),N'(y))$ . 
+
+On a
+$$N"(x,y)=0\Leftrightarrow {\rm Sup}(N(x),N'(y))=0\Leftrightarrow N(x)=N'(y)=0\Leftrightarrow x=0\ {\rm et}\ y=0\ .$$
+De même
+$$N"\left(\lambda(x,y)\right)=N"\left(\lambda x,\lambda y\right)={\rm Sup}(N(\lambda x),N'(\lambda y))={\rm Sup}(\lambda N(x),\lambda N'(y))=\lambda N"(x,y)\ .$$
+Et enfin
+$$N"\left((x,y)+(x',y')\right)=N"(x+x',y+y')={\rm Sup}(N(x+x');N'(y+y'))\leq {\rm Sup}(N(x)+N(x');N'(y)+N'(y'))\ ;$$
+or
+$$N"(x,y)+N"(x',y')={\rm Sup}(N(x),N'(y))+{\rm Sup}(N(x'),N'(y'))\geq N(x)+N(x')$$
+et
+$$N"(x,y)+N"(x',y')={\rm Sup}(N(x),N'(y))+{\rm Sup}(N(x'),N'(y'))\geq N'(y)+N'(y')\ .$$
+Et $N"$ est bien une norme.
+
+\begin{rem} Nous aurions pu choisir également
+$$N_1(x,y)=N(x)+N'(y)$$
+(comparer cette norme à la précédente - exercice -).\end{rem}
+
+\begin{rem} La donnée de l'une ou l'autre de ces normes (elles sont équivalentes et définissent donc la même topologie) permet de donner une sens à la continuité des applications $(x,y)\mapsto x+y$ de l'espace $(E^2,N\times N)$ dans $(E,N)$ et $(\lambda,x)$ de l'espace $(\R\times E,|.|\times N)$ dans $(E,N)$ .\end{rem}
+\end{section}
+
+\end{document}
