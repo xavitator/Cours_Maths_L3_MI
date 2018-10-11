@@ -1,0 +1,1150 @@
+\documentclass[a4paper, oneside]{report}
+\usepackage[top=3cm, bottom = 3cm, left = 3cm, right = 3cm]{geometry}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+\usepackage{polynom}
+\usepackage[T1]{fontenc}
+\usepackage{mathenv}
+\usepackage{mdwtab}
+\usepackage{array}
+\usepackage{tikz} % \begin{tikzpicture}
+\usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+
+\newcommand{\x}{\times}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rb}{\bar{\R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\displayastyle}{\displaystyle}
+\newcommand{\sev}{sous espace vectoriel }
+\newcommand{\sevs}{sous espaces vectoriels }
+\newcommand{\ev}{espace vectoriel }
+\newcommand{\mdg}{morphisme de groupes }
+\newcommand{\mdgs}{morphismes de groupes }
+\newcommand{\aut}{automorphisme }
+\newcommand{\auts}{automorphismes }
+\newcommand{\defi}{\subsubsection{Définition}}
+\newcommand{\dem}{\subsubsection{Démonstration}}
+\newcommand{\propr}{\subsubsection{Propriété}}
+\newcommand{\propo}{\subparagraph{Proposition}}
+\newcommand{\remar}{\subsubsection{Remarque}}
+\newcommand{\exem}{\subsubsection{Exemple}}
+\newcommand{\cor}{\subsubsection{Corollaire}}
+\newcommand{\theo}{\subsubsection{Théorème}}
+\newcommand{\fong}{\overset{\sim}{\rightarrow}}
+\newcommand{\fracun}[1]{\frac{1}{#1}}
+
+\begin{document}
+
+\title{Cours d'Algèbre et géométrie I}
+\date{11/09/2018}
+\author{Bernard Keller}
+\maketitle
+
+\tableofcontents{}
+\chapter{Groupes}
+
+\section{Motivation}
+
+\subsection{Éléments de symétrie}
+\begin{itemize}
+\item 3 symétries orthogonales : $\sigma_A$, $\sigma_B$, $\sigma_C$
+\item rotation $\rho$ d'angle $\frac{2\pi}{3}$
+\item rotation $\rho^2$ d'angle $\frac{4\pi}{3}$
+\item l'identité
+\end{itemize}
+
+$D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ est un groupe diédal.\\
+On peut composer les éléments de l'ensemble $D_3$ et on restera dans $D_3$.\\
+La composition est associative.\\
+Elle admet un élément neutre, l'identité.\\
+Chaque élément admet un inverse.
+
+\section{Définition et premiers exemples}
+
+\subsubsection{Définition}
+Un groupe est un couple $(G,*)$, où $G$ est un ensemble et :
+$$*:G\x G \rightarrow G, (g,h)\mapsto g*h$$
+est son appellation telle que :
+\begin{enumerate}
+\item $*$ est associative, c'est à dire :
+$$(x*y)*z=x*(y*z)$$
+\item $*$ admet un élément neutre e, c'est à dire :
+$$e*x = x = x*e$$
+\item tout élément $x\in G$ admet un inverse x', c'est à dire :
+$$x*x'=e=x'*x$$
+\end{enumerate}
+
+\subsubsection{Remarques}
+\begin{enumerate}
+\item Souvent, on écrit $xy$ au lieu de $x*y$\\
+\item L'élément neutre e est unique : en effet, si e' est un deuxième élément neutre, on a :
+$$ e = e'e = e'$$
+\item L'inverse est unique : en effet, soit x'' un deuxième inverse. On a :
+$$x''=ex''=(x'x)x''=x'(xx'')=x'e=x'$$
+On note désormais $x^{-1}$ l'inverse de $x$.\\
+\item Pour tous $x,y\in G$, on a $(xy)^{-1}=y^{-1}x^{-1}$.\\
+En effet, on a :
+$$(xy)(y^{-1}x^{-1})=(x(yy^{-1}))x^{-1} = (xe)x^{-1}=e$$
+$$(y^{-1}x^{-1})(xy)=y^{-1}(x^{-1}(xy))=y^{-1}(ey)$$
+\end{enumerate}
+
+\subsubsection{Définition}
+Un groupe G est abélien ou commutatif si xy=yx, pour tous $x,y\in G$.
+
+\subsubsection{Remarque}
+Souvent, on notre $+$ la loi de groupe d'un groupe abélien. On note alors 0, l'élément neutre et -x l'élément inverse de $x\in G$.
+
+\subsubsection{Exemples}
+\begin{enumerate}
+\item $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ n'est pas commutatif car $\sigma_C \circ \sigma_A = \rho$ et $\sigma_A \circ \sigma_C = \rho^{-1} = \rho ^2 \neq \rho$.
+\item $(\Z, +)$ est un groupe abélien.
+\item $(\Q,+), (\R,+), (\C,+)$ sont des groupes abéliens.
+\item $\Q^*=\Q \backslash \{0\}$ est un groupe abélien pour la multiplication. De même pour $\R^*$ et $\C^*$.
+\item Si E est un \ev sur $\R$ ou $\C$, alors $(E,+)$ est un groupe abélien.
+\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi n=1.\\
+De même pour $GL_n(\Q)$ et $GL_n(\C)$.\\
+\item Soit X un ensemble (fini ou infini). Le groupe symétrique $\sigma_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
+$$\sigma_n = \sigma_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
+Notons que $|\sigma_n|=n!$.
+\end{enumerate}
+
+\subsubsection{Notation}
+Soit G un groupe. Soient $g\in G$ et $n\in \N$.\\
+On note $g^n$, l'élément de G défini par récurrence :
+$$\begin{array}{lll}
+g^0&=&e\\
+g^{n+1}&=&g^ng~,~\forall n \geq 0
+\end{array}$$
+Si $n>0$, on pose $g^{-n}=(g^n)^{-1}$.
+
+\subsubsection{Lemme}
+Soient G un groupe et $m,n\in\Z$. On a $g^{m+n}=g^mg^n$ et $(g^n)^{-1}=g^{-n}$.
+
+\subsubsection{Démonstration}
+Il faut distinguer des cas. Les détails sont laissés en exercice.
+
+\subsubsection{Lemme}
+Soient G et H deux groupes.\\
+Posons :
+$$K=G\x H=\{(g,h)|g\in G, h\in H \}$$
+Alors K est un groupe pour la loi :
+$$K\x K \rightarrow K,~((g,h),(g',h'))\mapsto (gg',hh')$$
+
+\subsubsection{Démonstration}
+Clairement la loi est associative. Elle admet $e_K=(e_G,e_H)$ pour élément neutre et l'inverse de $(g,h)$ est $(g^{-1}, h^{-1})$, $\forall g\in G, h\in H$.\\
+
+\subsubsection{Définition}
+$G\x H$ muni de cette loi est le groupe produit de G par H.\\
+
+\subsubsection{Exercice}
+$G\x H$ est abélien ssi G et H sont abéliens.
+
+\section{Sous-groupe}
+\subsubsection{Définition}
+Soit G un groupe. Un sous-groupe de G est une partie de $H\subseteq G$ telle que :
+\begin{enumerate}
+\item $e_G \in H$
+\item $\forall h,h' \in H$, on a $hh' \in H$
+\item $\forall h\in H$, on a $h^{-1}\in H$
+\end{enumerate}
+
+\subsubsection{Notation}
+On note $H\leq G$ lorsque H est un sous-groupe de G.\\
+
+\subsubsection{Lemme}
+Une partie $H\subseteq G$ est un sous-groupe ssi $H\neq \emptyset$ et pour tous $h_1,h_2\in H$, on a $h_1h_2^{-1}\in H$.
+
+\subsubsection{Démonstration}
+"$\Rightarrow$" $H\neq \emptyset$ car $e_G \in H$. Si $h_1,h_2\in H$ alors $h_2^{-1}\in H$ (c) et donc $h_1h_2^{-1}\in H$ (b).\\
+"$\Leftarrow$" Comme H est non vide, on peut choisir un $h\in H$. Alors $hh^{-1}=e_G \in H$. Soient $h_1,h_2 \in H$. On a $h_2^{-1}=eh_2^{-1}\in H$. Donc $h_1h_2=h_1(h_2^{-1})^{-1}\in H$
+
+\subsubsection{Remarque}
+
+\begin{enumerate}
+\item Soit H un sous-groupe de G. Alors la loi de G induit une application $H\x H \mapsto H$, $(h_1,h_2)\mapsto h_1h_2$ (bien définie par b)). Muni de cette loi, H devient un groupe d'élément neutre $e_H=e_G$. Désormais tout sous-groupe d'un groupe est considéré comme un groupe de cette façon.
+\item Si $H\leq G$ et $K\leq H$, alors $K\leq G$
+
+\end{enumerate}
+
+
+\subsubsection{Exemple}
+Soit G un groupe.
+
+\begin{enumerate}
+\item {e}$\leq G$
+\item $G\leq G$
+\item Posons $Z(G)=\{g\in G | hg=gh, \forall h\in G \}$
+Clairement, on a $e\in Z(G)$. On montre ensuite que la multiplication de deux éléments de $Z(G)$ est toujours dans $Z(G)$.\\
+Enfin, on montre que soient $g\in Z(G)$ et $h\in G$, on a $hg^{-1}=g^{-1}h$, donc $g^{-1}\in Z(G)$.\\
+Par conséquent, $Z(G)$ est un sous-groupe de G.
+\end{enumerate}
+
+\subsubsection{Définition}
+Z(G) est appelé le centre de G.
+
+\subsubsection{Exemple}
+$Z(GL_n(\R)) = \R^* . I_n$
+
+\subsubsection{Exemples de sous-groupes (suite)}
+Soit $n\geq 1$. Les parties suivantes sont des sous-groupes de $GL_n(\R)$ :
+\begin{itemize}
+\item $SL_n(\R)=\{A\in GL_n(\R) | det A=1 \}$
+\item $O_n(\R) = \{A\in GL_n(\R) | A^tA=I_n \}$
+\item $SO_n(\R) = SL_n(\R) \cap O_n(\R)$
+\end{itemize}
+
+\subsubsection{Notation}
+$\U = \{z\in \C | |z|=1 \}$\\
+$\U_n = \{z\in \C | z^n =1 \}$ où $n\geq 1$\\
+$\U_n$ = {racines n-ièmes de 1}\\
+Ce sont des sous-groupes de $\C^*$\\
+
+\subsubsection{Remarque}
+On a $\U_n \leq \U \leq \C^*$ et $\U_n \leq \U_{mn}$ $\forall n,m\geq 1$.\\
+
+\subsubsection{Notation}
+Pour $n\in \Z$, on pose :
+$$n\Z = \{nk| k\in \Z \}$$
+
+\subsubsection{Théorème}
+\begin{enumerate}
+\item $n\Z \leq \Z$
+\item Soit H un sous-groupe de $\Z$. Il existe un et un seul $n\in \N$ tq $H=n\Z$.\\
+Si $H\neq \{0\}$, alors n est le plus petit entier strictement positif contenu dans H.
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item est clair
+\item Soit $H \leq \Z$. Si $H=\{0\}$, alors $H=0.\Z$. Supposons donc que $H\neq \{0\}$.\\
+Soit $0\neq x\in H$. Alors $-x\in H$. Donc H contient au moins un entier strictement positif. Soit $E=\{x\in H | x>0 \}$. Alors E est une partie non vide de $\N$.\\
+Donc il existe dans E un plus petit élément n. Comme $n\in H$, on a $n\Z \subseteq H$.\\
+Montrons que $n\Z \supseteq H$. Soit $x\in H$. Supposons $x>0$, alors $x\in E$ et $x\geq n$.\\
+La division euclidienne de x par n s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r\leq n$.\\
+Comme x et nq sont dans H, r est dans H.\\
+Or on a $0\leq r<n$ et n était le plus petit entier positif contenu dans H. Donc r=0 et $x=nq \in n\Z$.\\
+Donc $H=n\Z$. Finalement, si m,n sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
+\end{enumerate}
+
+\section{Sous-groupe engendré par une partie}
+Soit G un groupe.
+
+\subsubsection{Lemme}
+Si $(G_i)_{i\in I}$ est une famille de sous-groupes, alors $\cap_{i\in I}G_i$ est encore un sous-groupe.
+
+\subsubsection{Démonstration}
+Exercice facile.\\
+
+\subsubsection{Définition}
+Soit S une partie de G. Si $S=\emptyset$, on pose $<S>=\{e\}$.\\
+Si $S\neq \emptyset$, on pose :
+$$<S> = \cap_{H~sous-groupe~tq~H\supseteq S}H$$
+On appelle $<S>$ le sous-groupe engendré par S.\\
+
+\subsubsection{Remarque}
+$<S>$ est le plus petit des sous-groupe contenant S.\\
+
+\subsubsection{Définition}
+$S\subseteq G$ est une partie génératrice si $<S>=G$.\\
+G est monogène s'il admet un singleton comme partie génératrice.\\
+G est cyclique s'il est monogène et fini.
+
+\subsubsection{Exemples}
+$(\Z,+)$ est monogène (engendré par S={1}) et infini.\\
+$\U_n$, $n\geq 1$, est monogène et fini, donc cyclique.
+
+\subsubsection{Lemme}
+Soit S une partie non vide de G. On a :
+$$<S> = \{g_1g_2...g_n | n\in \N, g_i\in S~ou~g_i^{-1}\in S~pour~tout~i  \}$$
+
+\subsubsection{Démonstration}
+Notons H le membre de droite. Clairement, H est un sous-groupe et contient S. Donc $H \supseteq <S>$.\\
+Soit K un autre sous-groupe contenant S. Alors pour tout $s\in S$, on a $s\in K$ et $s^{-1}\in K$.\\
+Comme K est stable par produit, K contient H donc H est le plus petit sous-groupe de G contenant S, cad $H=<S>$.
+
+
+\section{Morphismes de groupes}
+
+\subsubsection{Définition}
+Soient $G$ et $H$ deux groupes. Un morphisme de groupes (appelé aussi homomorphisme) est une application $f:G\rightarrow H$ tq $f(xy)=f(x)f(y)$ $\forall x,y\in G$
+
+\subsubsection{Remarque}
+Dans ce cas, on a automatiquement $f(e_H)=e_H$ et $f(x^{-1})= f(x)^{-1},~\forall x\in G$\\
+En effet, on a :\\
+$f(e)=f(ee)=f(e)f(e)$. En multipliant à gauche par $f(e)^{-1}$, on trouve $e=f(e)$\\
+$f(x^{-1})f(x)=f(x^{-1}x)=f(e)=e$. En multipliant à droite par $f(x)^{-1}$, on trouve $f(x^{-1})=f(x)^{-1}$\\
+
+\subsubsection{Exemples}
+\begin{enumerate}
+\item $x\mapsto exp(x)$ est un morphisme de groupe de $(\R,+)$ vers $(\R^*, \cdot)$
+\item $x\mapsto ln(x)$ est un morphisme de groupe de $(\R^*, \cdot)$ vers $(\R,+)$
+\item $det~:~GL_n(\R)\rightarrow \R^*$ est un morphisme de groupes. De même pour $GL_n(\C)$ et $GL_n(\Q)$
+\item Soient $E$ et $F$ deux espaces vectoriels sur $\R$, soit $f:E\rightarrow F$ une application linéaire.\\
+Alors en particulier, $f$ est un morphisme de groupes de $(E,+)$ vers $(F,+)$.
+\item Soient $G$ un groupe et $H\leq G$ un sous-groupe. Alors l'inclusion $H\mapsto G$ est un morphisme de groupe
+\end{enumerate}
+
+\subsubsection{Théorème}
+Soit $G$ un groupe. Pour tout $g\in G$, il existe un unique \mdg $f:(\Z,+)\rightarrow G$ tel que $f(1)=g$.
+
+\subsubsection{Démonstration}
+Pour l'existence, posons $f(n)=g^n, n\in \Z$, alors $f(1)=g^1=g$ et $f(m+n)=g^{n+m}=g^ng^m=f(n)f(m)$ pour tous $n,m\in \Z$\\
+Pour l'unicité, notons que si $n>1$, on a $f(n)= f(1+...+1)=f(1)...f(1)=g...g=g^n$\\
+On doit aussi avoir $f(0)=e$ et $f(-n)=f(n)^{-1}=g^{-n}$ pur tout $n>0$.
+
+\subsubsection{Théorème}
+Soient $G$ un groupe et $n\geq 1$. Pour tout $g\in G$ tq $g^n=e$, il existe un unique \mdg $f:\U_n \rightarrow G$ tq $f(c)=g$, où $c=e^{\frac{2\pi i}{n}}$
+
+\subsubsection{Démonstration}
+On a $\U_n = \{1,c,...,c^{n-1}\}$.\\
+Montrons l'unicité. On doit avoir :
+$$f(c^k)=f(c)^k=g^k\hspace{5em}\forall 0\leq k \leq n-1$$
+Pour montrer l'existence, définissons $f$ par cette formule. Vérifions que $f$ est un morphisme.\\
+Soient $0\leq k\leq n-1$. Soit $k+l=qn+r$, la division euclidienne de $k+l$ par $n$. On a :
+$$f(c^kc^l)= f(c^{k+l})=f(c^r)=g^r$$
+$$f(c^k)f(c^l)=g^kg^l=g^{k+l}=g^r$$
+
+\subsubsection{Lemme}
+\begin{enumerate}
+\item La composée de deux \mdgs est un \mdg.
+\item Si $f:G\rightarrow H$ est un \mdg et $f$ est bijectif, alors l'application réciproque $f^{-1}:H\rightarrow G$ est encore un \mdg.
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item Soient $G\overset{\psi}{\rightarrow} H \overset{\varphi}{\rightarrow} K$ des \mdgs. Pour $x,y\in G$, on a :
+$$\varphi\psi (x,y)=\varphi (\psi (xy))=\varphi (\psi(x)\psi(y)) = \varphi(\psi (x))\varphi(\psi(y))=\varphi\circ \psi(x)\cdot \varphi \circ \psi(y)$$
+\item Soient $x,y\in H$. Il s'agit de monter que :
+$$f^{-1}(xy)=f^{-1}(x)f^{-1}(y)$$
+Comme $f$ est injective, il suffit de monter que les images par $f$ des deux cotés sont égales.\\
+En effet, on a :
+$$f(f^{-1}(xy))=xy~et~f(f^{-1}(x)f^{-1}(y))=xy$$
+\end{enumerate}
+
+\subsubsection{Définition}
+Un isomorphisme est un \mdg bijectif. Deux groupes $G$ et $H$ sont isomorphes s'il existe un isomorphisme $f:G\rightarrow H$.\\
+On écrit alors $G\cong H$, et on écrit une flèche $\fong$ pour désigner un isomorphisme.\\
+
+\subsubsection{Exemples}
+\begin{enumerate}
+\item On a des isomorphismes inverses l'un de l'autre ($exp$ et $ln$)
+\item Soit $\sigma \in O_2$ tq $\sigma(1)=2$ et $\sigma(2)=1$. On a un isomorphisme :
+$$\begin{array}{lll}
+(\{\pm 1\}, \cdot)&\fong & O_2\\
+1&\mapsto &Id\\
+-1&\mapsto&\sigma
+\end{array}$$
+
+\item Soit $D_3$ le groupe des symétries d'un triangle équilatéral ($D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$), on a : 
+$$f:D_3 \fong O_3$$
+en envoyant chaque élément de symétrie $g$ sur la permutation des sommets $f(g)$ qu'il induit.
+\end{enumerate}
+
+
+\subsubsection{Définition}
+Soit $G$ un groupe. Un automorphisme de $G$ est un isomorphisme $f:G\rightarrow G$.\\
+On note $Aut(G)$ l'ensemble des automorphismes de $G$. C'est un sous-groupe du groupe symétrique $O_G$ de l'ensemble $G$.
+
+\subsubsection{Exemple}
+Pour tout $g\in G$, on a l'application de conjugaison par $g$ :
+$$cg : G \rightarrow G,~x\mapsto gxg^{-1}$$
+C'est un \mdg  car $cg(xy)=cg(x)cg(y)$\\
+C'est bijectif : sa réciproque est $cg^{-1}$ car $cg^{-1}(cg(x))=x$ $\forall x\in G$ et $cg(cg^{-1}(x)) = x$ $ \forall x\in G$\\
+Donc $cg$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
+
+\subsubsection{Propriété}
+\begin{enumerate}
+\item L'application $G\rightarrow Aut(G)$, $g\mapsto cg$ est un \mdg
+\item L'ensemble des \auts intérieurs est un sous-groupe de $Aut(G)$
+\end{enumerate}
+
+
+\subsubsection{Démonstration}
+En exercice\\
+
+Soient $G$ et $H$ deux groupes et $f:G\rightarrow H$ un morphisme.
+
+\subsubsection{Définition}
+Le noyau de $f$ est :
+$$Ker(f)=\{g\in G | f(g) =e \} \subseteq G$$
+L'image de $f$ est :
+$$Im(f)=\{f(g)| g\in G\} \subseteq H$$
+
+\subsubsection{Théorème}
+\begin{enumerate}
+\item $Ker(f)\leq G$\\
+\item $Ker(f)=\{e\}$ ssi $f$ est injective
+\item $Im(f)\leq H$
+\item $Im(f)=H$ ssi $f$ est surjective
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item On a $e\in Ker(f)$ car $f(e)=e$. Soient $x,y\in Ker(f)$, alors :
+$$f(xy^{-1})=f(x)f(y)^{-1}=e.e^{-1}$$
+Donc $xy^{-1}\in Ker(f)$
+
+\item Supposons $f$ injective. Alors $f(g)=e=f(e)$ implique $g=e$. Donc $Ker(f)=\{e\}$.\\
+Réciproquement, supposons que $Ker(f)=\{e\}$. Soient $x,y\in G$ tq $f(x)=f(y)$.\\
+Alors $f(xy^{-1})=f(x)f(y)^{-1}=e$. Donc $xy^{-1}\in Ker(f)=\{ e \}$.\\
+Donc $xy^{-1}=e$ et $x=y$.
+
+\item On a $e=f(e)\in Im(f)$. Soient $f(x),f(y)\in Im(f)$. Alors :
+$$f(x)f(y)^{-1}=f(x)f(y^{-1})=f(xy^{-1})\in Im(f)$$
+
+\item est clair.
+\end{enumerate}
+
+\subsubsection{Théorème}
+\begin{enumerate}
+\item Soit $G'$ un sous-groupe de $G$. Alors $f(G')$ est un sous-groupe de $Im(f)$
+\item Soit $H'$ un sous-groupe de $H$. Alors $f^{-1}(H')$ est un sous-groupe de $G$ contenant $Ker(f)$
+\item Les applications $G'\mapsto f(G')$ et $H'\mapsto f^{-1}(H')$ sont des bijections inverses l'une de l'autre entre l'ensemble des sous-groupes de $G$ contenant $Ker(f)$ et l'ensemble des sous-groupes de $Im(f)$
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item On a $e=f(e)\in f(G')$. Si $x,y\in G'$ et donc $f(x),f(y)\in f(G')$, alors :
+$$f(x)f(y)^{-1}=f(xy^{-1})\in f(G')$$
+
+\item On a $f(e)=e \in H'$ donc $e\in f^{-1}(H')$.\\
+Soient $x,y\in f^{-1}(H')$, alors :
+$$f(xy^{-1})=f(x)f(y)^{-1} \in H'$$
+Donc $xy^{-1}\in H'$.
+
+\item Soit $G'\leq G$ un sous-groupe contenant $Ker(f)$, alors clairement $G'\subseteq f^{-1}(f(G'))$\\
+Réciproquement, soit $x\in f^{-1}(f(G'))$. Alors $f(x)\in f(G')$. Soit $y\in G'$ tq $f(x)=f(y)$.\\
+Alors $y^{-1}x\in Ker(f)\subseteq G'$. Donc :
+$$x = y.y^{-1}x \in G'$$
+Soit $H'$ un sous-groupe de $Im(f)$. Alors clairement $H'\supseteq f(f^{-1}(H'))$.\\
+Réciproquement, soit $f(g)\in H'$. Alors $g\in f^{-1}(H')$ et $f(g)\in f(f^{-1}(H'))$.
+\end{enumerate}
+
+
+\section{Ordre d'un élément}
+Soit $G$ un groupe.\\
+
+\subsubsection{Définition}
+L'ordre de $G$ est le cardinal $|G|$ de l'ensemble $G$.
+
+\subsubsection{Exemples}
+\begin{enumerate}
+\item L'ordre de $(\Z,+)$ est infini
+\item L'ordre de $\U_n$ est $n$
+\end{enumerate}
+
+\subsubsection{Notation}
+Pour $g\in G$, on pose $<g> := <\{ g \}>$.
+
+\subsubsection{Propriété}
+Soit $g\in G$. On suppose qu'il existe $n\geq 1$ tq $g^n=e$.
+\begin{enumerate}
+\item On a $<g> = \{g^i | 0\leq i \leq n-1 \}$. En particulier, l'ordre de $<g>$ est $\leq n$
+\item Si on note $d$ l'ordre de $<g>$, alors :
+$$d=min\{t\geq 1 | g^t=e \}$$
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item $"\supseteq"$ est clair. Réciproquement, on sait que tout élément de $<g>$ est de la forme $g^i$ pour un $i \in \Z$.\\
+Soit $i=qn+r$ la division euclidienne de $i$ par $n$. Alors on a :
+$$g^i=g^{qn+r}=g^r \in \{g^k | 0\leq k \leq n-1 \}$$
+
+\item Posons $s=min\{t \geq 1 | g^t=e \}$. Alors par 1), on a :
+$$<g> = \{g^i | 0\leq i \leq s-1 \}$$
+Pour $0\leq i < j \leq s-1$, les puissances $g^i$ et $g^j$ sont distinctes. Sinon, on aurait $g^{j-i}=e$ mais $j-i<s$. Donc $s=|<g>| = d$.
+\end{enumerate}
+
+\subsubsection{Définition}
+Soit $g\in G$. Si $<g>$ est infini, l'ordre de $g$ est infini.\\
+Si $<g>$ est fini, l'ordre de $g$ est le plus petit entier $d\geq 1$ tq $g^d=e$
+
+\subsubsection{Remarque}
+\begin{enumerate}
+\item Donc on a que l'ordre de $g$ est égale à l'ordre de $<g>$
+\item Si $d<\infty$ est l'ordre de $G$, alors :
+$$d\Z=\{n\in \Z | g^n =e \}$$
+\item Etant donné $t\geq 1$, l'élément $g$ est d'ordre $t$ ssi $g^t=e$ et $g^{t'}\neq e$ pour tout diviseur strict $t'$ de $t$.
+\end{enumerate}
+
+\subsubsection{Exemple}
+Soient $n\geq 1$ et $k\in \Z$. Soit $c=e^{\frac{2\pi i}{n}}\in \U$.\\
+Alors $c^k\in \U_n$ est d'ordre $\displayastyle\frac{ppcm(n,k)}{k}$
+
+\subsubsection{Théorème de Lagrange}
+Soit $G$ un groupe fini. Alors, l'ordre de tout sous-groupe $G'\leq G$ divise l'ordre de $G$.
+
+\subsubsection{Corollaire}
+Soit $G$ un groupe fini, alors tout élément $g\in G$ est d'ordre fini et son ordre divise l'ordre de $G$.
+
+\subsubsection{Conséquence}
+Soit $G$ un groupe fini dont l'ordre est un nombre premier.\\
+Alors tout sous-groupe de $G$ est égal à $G$ ou à $\{e\}$.\\
+En particulier, si $e\neq g\in G$, alors $G=<g>$. Donc $G$ est cyclique.
+
+\subsubsection{Démonstration}
+Soit $H$ un sous-groupe de $G$.\\
+Pour $g\in G$, on pose :
+$$gH=\{gh | h\in H \}$$
+alors $|gH|=|H|$, $\forall g\in G$, car on a les bijections réciproques l'une de l'autre.\\
+Montrons que pour tous $g,g'\in G$, on a :
+$$gH\cap g'H \neq 0 \Rightarrow gH=g'H$$
+En effet, si on a $gh=g'h'$, pour $h,h'\in H$, alors pour $h''\in H$, on a :
+$$gh''=g'g'^{-1}gh''=g'h'h^{-1}h'' \in g'H$$
+Donc $gH\subseteq g'H$ et de même $g'H \subseteq gH$. Donc $gH=g'H$.\\
+Notons que la réunion des $gH$, $g\in G$, est $G$ car $g=g.e \in gH$, pour $g\in G$. Il s'ensuit que $\{gH| g\in G \}$ est une partition de $G$.\\
+Chaque $gH$ a le même nombre d'éléments : $|H|$\\
+Donc 
+$$|G| = |H|.|\{gH | g\in G \}|$$
+
+\section{Les treillis des sous-groupes}
+
+\subsubsection{Définition}
+Soit $X$ un ensemble. Une relation $R$ sur $X$ est un sous-ensemble $R\subseteq X\x X$.\\
+On note $xRy$ ("$x$ est en relation avec $y$") lorsque $(x,y)\in R$.\\
+
+\subsubsection{Définition}
+Une relation $R$ est une relation d'ordre ssi :
+\begin{itemize}
+\item (réflexivité) $\forall x \in X$, $xRx$
+\item (antisymétrique) $\forall x,y\in X$ $(xRy~et~yRx)\Rightarrow x=y$
+\item (transitive) $\forall x,y,z\in X$ $(xRy~et~yRz) \Rightarrow xRz$
+\end{itemize}
+
+\subsubsection{Définition}
+Un ensemble $(X,R)$ muni d'une relation d'ordre s'appelle un ensemble ordonné.
+
+\subsubsection{Exemple}
+\begin{enumerate}
+\item $(\R,\leq )$ est un ensemble ordonné.
+\item Soit $n\geq 1$, $X$ l'ensemble des diviseurs positifs de $n$, avec $R$ la relation $xRy \Leftrightarrow x~divise~y$, est un ensemble ordonné.\\
+\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$ avec $ARB\Rightarrow A\subseteq B$
+\end{enumerate}
+
+\subsubsection{Définition}
+Soit $(X,R)$ un ensemble ordonné et soit $A\subseteq X$ un ensemble. Un minorant (resp majorant) de A est un $x\in X$ tq $xRa$ $\forall a \in A$ (resp $aRx,~\forall a\in A$), le plus petit (resp le plus grand) élément de A est un minorant (resp un majorant) qui est dans A.\\
+
+Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.\\
+
+\subsubsection{Définition}
+Un treillis est un ensemble ordonné $(X, \leq )$ tq $\forall (x,y)\in X\x X$ il existe dans $X$ un plus petit majorant $Sup(x,y)$ de $\{x,y\}$ et un plus grand minorant $Inf(x,y)$ de $\{x,y\}$.
+
+\subsubsection{Exemples}
+\begin{enumerate}
+\item $(\R , \leq)$ est un treillis (évident)
+\item Soit $n\geq 1$ un entier, $X=\{d\in \N | d~divise~n \}$ muni de $x\leq y \Leftrightarrow x|y$ est un treillis pour $sup(k,l)=ppcm(k,l)$ (qui est encore un diviseur de $n$) et $inf(k,l)=pgcd(k,l)$
+\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$. $(P(x),\subseteq)$ est un treillis avec $A,B\in P(x)$ $sup(A,B)=A\cup B$ et $inf(A,B)=A\cap B$
+\item $V$ un $K$-\ev, $K$ un corps ($\R,\C,...$), $Gr(V)$ l'ensemble des sous $K$-\ev de $V$ est un treillis pour $\subseteq$ car :\\
+$\forall U,W\in Gr(V)$ $sup(U,W)=\{u+w\in V |u\in U,w\in W \}$ est le plus petit \sev de $V$ qui contient $U$ et $W$, et $inf(U,W)=U\cap W$ est le plus grand \sev de $V$ inclus dans $U$ et dans $V$.\\
+\item $G$ un groupe, $L(G)$ l'ensemble des sous-groupes de $G$ est un treillis pour $\subseteq$ car :\\
+$H,H'\in L(G)$ $sup(H,H')=<H,H'>$ (groupe engendré par $H$ et $H'$), et $inf(H,H')=H\cap H'$
+\end{enumerate}
+
+\subsubsection{Définition}
+Soit $(X,\leq )$ un treillis. Son diagramme de Hasse est le graphe orienté où :
+\begin{itemize}
+\item les sommets sont les éléments $x\in X$
+\item on met une flèche $x\rightarrow y$ si $y$ est minimal parmi les éléments $\geq x$ distincts.
+\end{itemize}
+
+\subsubsection{Exemple}
+\begin{enumerate}
+\item $(P(\{1,2\},\subseteq))$ :\\
+\textcolor{red}{prendre une photo de l'exemple}
+
+\item $(X=\{\text{ensemble des diviseurs de 20}\}, |)$, on a $X=\{1,2,4,5,10,20\}$ :\\
+\textcolor{red}{prendre une photo de l'exemple}
+\end{enumerate}
+
+\subsubsection{Lemme}
+Soit $n\geq 1$ un entier, $\zeta = e^{\frac{2i\pi}{n}}\in \U_n$.\\
+Les sous-groupes de $\U_n$ sont exactement les $\zeta^{d\Z}$ avec $d|n$. De plus $\zeta^{d\Z} \subseteq \zeta^{d'\Z} \Leftrightarrow d'|d$
+
+\subsubsection{Démonstration}
+Soit $e : \begin{array}{lll}
+\Z &\rightarrow &\U_n\\
+k&\mapsto& \zeta^k
+\end{array}$.\\
+C'est un morphisme de groupes. Donc $\forall H$ sous-groupe de $\U_n$, $e^{-1}(H)=\{k\in \Z |e(k)\in H \}$ est un sous-groupe de $\Z$.\\
+De plus $e^{-1}(H)\supseteq e^{-1}(1)$ (car $1\in H$).\\
+On connaît les sous-groupes de $\Z$ : les $d\Z$.\\
+$\exists d\in \N~tq~ e^{-1}(H)=d\Z$ donc $e^{-1}(1)=\{k\in \Z | \zeta^k= e^{\frac{2i\pi k}{n}} =1 \}=n\Z$\\
+Donc $n\in n\Z \subseteq d\Z \Rightarrow d|n$. Donc $H=\zeta^{d\Z}$ avec $d|n$.
+$$\zeta^{d\Z}\subseteq \zeta^{d'\Z}\Leftrightarrow d\Z \subseteq d'\Z \Leftrightarrow d'|d$$
+
+\subsubsection{Exemple}
+\begin{enumerate}
+\item Treillis de $\U_{20}$ :\\
+D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $<\zeta^{20}>,<\zeta^{10}>,<\zeta^{5}>,<\zeta^{4}>,<\zeta^{2}>,<\zeta^{1}>$ :\\
+prendre une photo du diagramme de Hasse
+
+\item Treillis des sous-groupes de $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$.\\
+Soit $H$ un sous-groupe de $D_3$, $|H|\in \{1,2,3,6 \}$, donc on a :
+\begin{itemize}
+\item $|H| = 1\Rightarrow H=\{Id\}$
+\item $|H|=2\Rightarrow H=<\sigma_A>, <\sigma_B>, <\sigma_C>$
+\item $|H|=3 \Rightarrow H= <\rho>, <\rho^2>$
+\end{itemize}
+image du diagramme de Hasse
+
+\item Treillis des sous-groupes de $D_4$, on pose :
+\begin{itemize}
+\item $\tau_i$ la réflexion par rapport à $\Delta_i$
+\item $\rho$ la rotation d'angle $\frac{2\pi}{4}$
+\end{itemize}
+On a $D_4=\{Id, \rho,\rho^2,\rho^3,\tau_1,\tau_2, \tau_3, \tau_4 \}$.\\
+Soit $H$ un sous-groupe de $D_4$, $|H|\in \{1,2,4,8 \}$, donc on a :
+\begin{itemize}
+\item $|H| = 1\Rightarrow H=\{Id\}$
+\item $|H|=2\Rightarrow H=<\rho^2>,<\tau_1>,<\tau_2>,<\tau_3>,<\tau_4>$
+\item $|H|=4 \Rightarrow H= <\rho>, <\tau_1,\tau_3>,<\tau_2,\tau_4>$
+\end{itemize}
+image du diagramme de Hasse
+
+\end{enumerate}
+
+\chapter{Actions de groupes}
+
+\section{Relations d'équivalence}
+
+\subsubsection{Définition}
+$X$ un ensemble. Une relation $R$ sur $X$ est une relation d'équivalence ssi :
+\begin{enumerate}
+\item (réflexivité) $\forall x\in X$ $xRx$
+\item (symétrie) $\forall x,y\in X$ $xRy\Leftrightarrow yRx$
+\item (transitivité) $\forall x,y,z\in X$ $(xRy~et~yRz)\Rightarrow xRz$
+\end{enumerate}
+
+\subsubsection{Exemples}
+Soit $G$ un groupe.
+\begin{enumerate}
+\item $H\subseteq G$ un sous-groupe. On définit $g,g'\in G$ $g\sim_Hg'$ si $\exists h\in H | g'=gh$. C'est une relation d'équivalence.
+\item $\forall g,g'\in G$, on définit $g\sim g'$ si $\exists x\in G | g'=xgx^{-1}$. C'est une relation d'équivalence.
+\item $X=L(G)$ l'ensemble des sous-groupes de G avec la relation $H\sim H'$ si $\exists g\in G | H'=gHg^{-1}$
+\end{enumerate}
+
+\subsubsection{Définition}
+Soit $(X,R)$ un ensemble muni d'une relation d'équivalence.\\
+La classe d'équivalence de $x\in X$ est $\bar{x}=\{y\in X | xRy \}$.\\
+Le quotient de $X$ par $R$ est $X/R=\{\bar{x} | x\in X \}$.\\
+L'application $\begin{array}{lll}
+X&\rightarrow& X/R\\
+x&\mapsto&\bar{x}\\
+\end{array}$ s'appelle la surjection canonique.
+
+\subsubsection{Exemple}
+Dans le cas 1) de l'exemple précédent, $g\in G$, $\bar{g}=\{gh|h\in H \}=gH$ et on note $G/\sim_H=G/H$.\\
+$G/H$ n'est pas un groupe en général.
+
+\subsubsection{Propriété}
+\begin{enumerate}
+\item $X/R$ est une partition de $X$
+\item $\forall x,y\in X$ $xRy\Leftrightarrow \bar{x}=\bar{y}$
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item Soit $\bar{x},\bar{y}\in X/R$. Supposons $\bar{x}\cap \bar{y}\neq \emptyset$ et montrons que $\bar{x}=\bar{y}$.\\
+$\exists z\in \bar{x}~et~z\in \bar{y}$.\\
+Montrons que $\bar{x}\subseteq \bar{y}$ :\\
+Soit $z'\in \bar{x}$, $z'Rz$ et $zRz'$ $\Rightarrow$ $z'Ry$ $\Rightarrow$ $z'\in \bar{y}$.\\
+On montre que $\bar{y}\subseteq \bar{x}$ par un raisonnement identique.\\
+Cela montre que les classes d'équivalences sont disjointes ou confondues.\\
+Et $\forall x\in X$ $x\in \bar{x}$. Donc les classes d'équivalences forment une partition de $X$.\\
+
+\item "$\Rightarrow$" Supposons $xRy$, soit $z\in \bar{x}$, on a $ zRy$ $z\in \bar{y}$.\\
+Donc de même, on a $\bar{y}\subseteq \bar{x}$. Donc $\bar{x}=\bar{y}$\\
+"$\Leftarrow$" Supposons $\bar{x}=\bar{y}$, $y\in \bar{y}=\bar{x}$, $y\in \bar{x}$, donc $yRx$.
+\end{enumerate}
+
+\subsubsection{Théorème}
+Soit $(X,R)$ un ensemble avec une relation d'équivalence.\\
+Soit $\pi$ la surjection canonique.\\
+Soit $f$ une application de $X$ dans $Y$. Les assertions suivantes sont équivalentes :
+\begin{enumerate}
+\item ($\forall x,y \in R~xRy\Rightarrow f(x)=f(y)$)
+\item ($\exists ! \bar{f}: X/R \rightarrow Y$ telle que $f=\bar{f}\circ \pi$)
+\end{enumerate}
+
+\subsubsection{Démonstration}
+Supposons 1).\\
+\begin{itemize}
+\item unicité de $\bar{f}$ :\\
+Si $\bar{f}_1$ et $\bar{f}_2$ vérifient $\bar{f}_1\circ \pi = f = \bar{f}_2 \circ \pi$.\\
+Soit $\bar{x}\in X/R$ $\bar{x}=\pi(x)$, et on a :
+$$\bar{f}_1(\bar{x})=(\bar{f}_1\circ \pi)(x)=f=(\bar{f}_2\circ \pi)(x)=\bar{f}_2(\bar{x})$$
+
+\item Existence de $\bar{f}$ :\\
+Soit $\chi\in X/R,~\exists x\in X | \pi(x)=\bar{x}=\chi$.\\
+On pose $\bar{f}(\chi)=f(x)$. Cette définition est indépendante du choix de $x$, car :\\
+si $y\in X$ vérifie $\pi(y)=\chi\Rightarrow \pi(x)=\pi(y)$\\
+D'après le lemme , on a $xRy \Rightarrow f(x)=f(y)$. Donc cette définition définit une application $\bar{f}:X/R \rightarrow Y$ et elle vérifie $f=\bar{f}\circ \pi$ par construction.\\
+\end{itemize}
+
+Supposons 2). Soit $x,y\in X, xRy \Rightarrow \pi(x)=\pi(y)\Rightarrow (\bar{f}\circ \pi)(x)=(\bar{f}\circ \pi)(y)\Rightarrow f(x)=f(y)$
+
+\subsubsection{Remarques}
+Lorsque $f$ vérifie 1) du théorème, on dit que $f$ passe au quotient par $R$ et que $\bar{f}$ est induite par $f$.\\
+
+\subsubsection{Lemme}
+Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
+\begin{enumerate}
+\item $\bar{f}$ est surjective $\Leftrightarrow$ $f$ l'est aussi
+\item $\bar{f}$ est injective $\Leftrightarrow$ ($\forall x,y\in X,~f(x)=f(y)\Rightarrow xRy$)
+\end{enumerate}
+
+\subsubsection{Démonstration}
+\begin{enumerate}
+\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$, or $\bar{f}$ et $\pi$ sont surjectives.\\
+Supposons $f$ surjective, soit $y\in Y$, $\exists x \in X | f(x)=\bar{f}(\pi(x))=y$, $\bar{f}$ est surjective.
+\item à faire en exercice
+\end{enumerate}
+
+\subsubsection{Propriété}
+Soit $n\geq 1$ entier, soit $e:\begin{array}{lll}
+ \Z &\rightarrow &\U_n\\
+k&\mapsto&e^{\frac{2\pi i k}{n}}
+\end{array}$.\\
+Soit $R$ la relation d'équivalence $xRy\Leftrightarrow n|x-y$.\\
+Notons $\Z/n\Z=\Z/R$, alors $e$ induit une bijection $\bar{e}:\Z/n\Z \rightarrow \U_n$ avec $e=\bar{e}\circ \pi$
+
+\subsubsection{Démonstration}
+L'existence de $\bar{e}$ découle du théorème et de $xRy \Leftrightarrow n|x-y \Leftrightarrow \exists k\in \Z | x=y+nk$.\\
+Ceci implique que $e(x)=e(y)$.\\
+La surjection de $\bar{e}$ découle du lemme et de la surjectivité de $e$.\\
+L'injection de $\bar{e}$ découle de $\forall x,y\in \Z$ $e(x)=e(y)\Leftrightarrow xRy$, et du lemme.
+
+\section{Définition d'une action de groupe}
+
+\subsubsection{Définition}
+Soient $X$ un ensemble, $G$ un groupe. Une action de $G$ sur $X$ est une application $\begin{array}{lll}
+G\x X &\rightarrow & X\\
+(g,x)&\rightarrow & g.x\\
+\end{array}$ telle que :
+\begin{enumerate}
+\item $\forall x\in X$ $e.x=x$\\
+\item $\forall g,h\in G$ $\forall x\in X$ $(gh).x=g.(h.x)$
+\end{enumerate}
+
+\subsubsection{Définition}
+Un $G$-ensemble est un ensemble muni d'une action du groupe $G$.
+
+\exem
+\begin{enumerate}
+\item Le groupe diédral $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ agit sur l'ensemble $\{1,2,3\}$ des sommets du triangle équilatéral.
+\item Le groupe symétrique $\sigma_n$ agit sur l'ensemble $X=\{1,\cdots,n\}$ par $\sigma.x := \sigma(x), ~\forall \sigma \in \sigma_n,~\forall x\in X$.\\
+
+Soit $G$ un groupe.
+\item Soit $H\subseteq G$ un sous-groupe. Alors $H$ agit sur $G$ par :
+$$H\x G \rightarrow G,~ (h,g)\mapsto hg$$
+On appelle cette action, l'action de $H$ sur $G$, par transition à gauche.
+\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e.x = e.x.e^{-1} =x$, $\forall x\in G$ et $(gh).x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
+On l'appelle l'action de conjugaison de $G$ sur lui-même.
+\item Soit $X$ l'ensemble des sous-groupes de $G$. L'application :
+$$G\x X \rightarrow X,~(g,K)\mapsto gKg^{-1}$$
+est une action de groupe. On l'appelle l'action de conjugaison de $G$ sur l'ensemble de ses sous-groupes.
+\item Soit $n\geq 1$. L'application :
+$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto g(v)$$
+est une action de groupe.
+\item Soit $n\geq 1$. L'application :
+$$\begin{array}{lll}
+GL_n(\R)\x M_n(\R)&\rightarrow & M_n(\R)\\
+(P,M)&\mapsto & PMP^{-1}
+\end{array}$$
+
+est une action de groupe de $GL_n(\R)$ sur $M_n(\R)$.
+\end{enumerate}
+
+\propr
+Soient $G$ un groupe et $X$ un ensemble.
+\begin{enumerate}
+\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X,~g\mapsto \varphi_g$ est un morphisme de groupes.
+\item Soit $f:G\rightarrow \sigma_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
+$$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
+Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\sigma_X$
+\end{enumerate}
+
+\dem
+\begin{enumerate}
+\item Pour tout $g\in G$, l'application $\varphi_g$ est bijective de réciproque $\varphi_{g^{-1}}$ car :
+$$\varphi_g\varphi_{g^{-1}}(x)=\varphi_g(g^{-1}x)=g(g^{-1}x)=(gg^{-1})x=ex=x$$
+et de la même façon :
+$$\varphi_{g^{-1}}\varphi_g(x)=ex=x$$
+On a pour $g,h\in G$ :
+$$\varphi_{gh}(x)=(gh)(x)=g(hx)=\varphi_g\circ \varphi_h(x),~~\forall x\in X$$
+Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \sigma_X$
+\item On définit l'application $G\x X \rightarrow X$ par $g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
+$$ex=(f(e))x=Id_X(x)=x,~~\forall x\in X$$
+et 
+$$g(hx)=f(g(hx))=f(g)(f(h)(x))=(f(g)\circ f(h) )(x)=f(gh)(x)=gh.x$$
+pour tous $g,h\in G$ et tout $x\in X$
+\end{enumerate}
+
+\defi
+Soient $G$ un groupe et $X$ un ensemble. Une action à droite de $G$ sur $X$ est une application :
+$$X\x G\rightarrow X,~(x,g)\mapsto xg$$
+telle que :
+\begin{enumerate}
+\item $x.e=x,~\forall x\in X$
+\item $x.(gh)=(xg).h,~\forall g,h\in G,~\forall x\in X$
+\end{enumerate}
+
+\exem
+Soit $n\geq 1$, alors l'application :
+$$\begin{array}{lll}
+M_n(\R)\x GL_n(\R)&\rightarrow & M_n(\R)\\
+(P,M)&\mapsto & MP
+\end{array}$$
+est une action à droite de $GL_n(\R)$ sur $M_n(\R)$.
+
+\remar
+Soit $X$ un ensemble muni d'une action à droite d'un groupe $G$. On définit $g.x := x.g^{-1}$ $\forall g\in G$.\\
+C'est une action à gauche de $G$ sur $X$ car :
+$$ex=xe^{-1}=xe=x$$
+et 
+$$(gh)x=x.(gh)^{-1}=x(h^{-1}g^{-1})=(xh^{-1})g^{-1}=(hx)g^{-1}=g(hx)$$
+$\forall x\in X, ~\forall g,h\in G$.\\
+On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les actions à gauche de $G$ sur $X$.
+
+\section{Orbites et stabilisateurs}
+Soient $G$ un groupe et $X$ un $G$-ensemble.\\
+\textcolor{red}{Récupérer une photo du graphe.}
+\defi 
+Pour $x\in X$, l'orbite de $x$ est :
+$$G.x=\{gx | g\in G \}$$
+Le stabilisateur de $x$ est :
+$$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
+
+\remar
+\begin{enumerate}
+\item Soit $x\in X$. L'orbite $G.x$ contient $x=e.x$. Le stabilisateur $G_x$ est un sous-groupe car $e.x=x$, et $g(hx)=gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
+\item On définit de façon analogue les orbites et stabilisateurs d'une action à droite.
+\end{enumerate}
+
+\exem 
+Soit $H\subseteq G$ un sous-groupe.
+\begin{enumerate}
+\item Pour l'action $H\x G \rightarrow G,~(h,g)\mapsto hg$, l'orbite d'un $g\in G$ est $Hg$, la classe à gauche modulo $H$ de $g$.\\
+Le stabilisateur de $g\in G$ est formé des $h\in H$ tq $hg=g \Leftrightarrow h=e$. Donc $Stab_H(g)=\{e\}$.\\
+\item Pour l'action à droite :
+$$G\x H \rightarrow G,~(g,h)\mapsto gh$$
+l'orbite de $g\in G$ est la classe à droite $gH$. En outre, $Stab_H(g)=\{e\}$
+\end{enumerate}
+
+\subsubsection{Propriété - Définition}
+Soit $\sim$ la relation sur $X$ tq :
+$$x\sim y \Leftrightarrow y\in G_x$$
+Alors $\sim$ est une relation d'équivalence sur $X$ appelée la relation d'équivalence associée à l'action de $G$ sur $X$.
+
+\dem
+On vérifie que $\sim$ est :
+\begin{itemize}
+\item réflexive : $x\sim x$ car $x=ex$
+\item symétrique : $x\sim y$ $\sim$ $y\sim x$ car $y=gx\Leftrightarrow g^{-1}y=x$
+\item transitive : Si $x\sim y$ et $y\sim z$, alors $x\sim z$ car si $y=gx$ et $z=hy$, alors $z=hy=h(gx)=(hg)x$
+\end{itemize}
+
+\remar
+Pour tout $x\in X$, la classe d'équivalence de $x$ est égale à l'orbite $G.x$.
+
+\defi 
+Le quotient de $X$ par $G$ est l'ensemble $G\backslash X := X/\sim$ formé des orbites de $G$ dans $X$.
+
+\remar
+On définit de façon analogue la relation d'équivalence et l'ensemble quotient d'une action à droite de $G$ sur $X$.\\
+L'ensemble quotient est alors noté $X/G$.
+
+\propr
+L'ensemble des orbites est une partition de $X$.
+
+\dem
+En effet, ce sont des classes d'équivalence pour une relation d'équivalence.
+
+\defi 
+Soit $X$ un $G$-ensemble non-vide.\\
+L'action de $G$ sur $X$ est :
+\begin{itemize}
+\item transitive s'il n'y a qu'une seule orbite
+\item fidèle si $\forall g\in G$, on a :
+$$gx=x,~\forall x\in X \Rightarrow g=e$$
+\item libre si tous les stabilisateurs sont triviaux ($Stab_G(x)=\{e\},~\forall x\in X$).
+\end{itemize}
+
+\remar
+\begin{enumerate}
+\item On définit de façon analogue les notions correspondantes pour les actions à droite.
+\item L'action de $G$ sur $X$ est transitive ssi $G\backslash X$ est un singleton.
+\item L'action de $G$ sur $X$ est fidèle ssi le morphisme associé $G\rightarrow \sigma_X$ a pour noyau $\{e\}$, c'est à dire ssi $G\rightarrow \sigma_X$ est injectif.
+\end{enumerate}
+
+\exem
+\begin{enumerate}
+\item Pour tout sous-groupe $H$ de $G$, l'action de $H$ sur $G$ par translations à gauche (ou à droite) est libre (car $Stab_H(g)=\{h\in H |hg=g \}=\{e\}$), donc fidèle.\\
+Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H.e=H$)
+\item Soit $n\geq 1$. Considérons l'action :
+$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
+L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
+L'orbite de $v=0$ est $\{0\}$.\\
+Il y a donc exactement 2 orbites : $\R^n\backslash \{0\}$ et $\{0\}$.\\
+Donc l'action n'est pas transitive.\\
+Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
+Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
+
+\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec * des vecteurs quelconques.
+
+\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ contré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
+L'action :
+$$G\x C \rightarrow C, (g,x)\mapsto gx$$
+est transitive (combiner des rotations et des symétries).\\
+Elle est fidèle (les vecteurs $\left[\begin{array}{l}
+1\\
+1\\
+1
+\end{array}\right]$, $\left[\begin{array}{l}
+1\\
+1\\
+-1
+\end{array}\right]$, $\left[\begin{array}{l}
+1\\
+-1\\
+1
+\end{array}\right]$ forment une base de $\R^3$).\\
+Elle n'est pas libre (la rotation d'angle $\frac{2\pi}{3}$ et d'axe $\R \left[\begin{array}{l}
+1\\
+1\\
+1
+\end{array}\right]$ est dans G et dans le stabilisateur de $\left[\begin{array}{l}
+1\\
+1\\
+1
+\end{array}\right]$).
+\end{enumerate}
+
+\section{Aspects numériques}
+
+Soit $G$ un groupe et soit $X$ un $G$-ensemble (ensemble muni d'une action de $G$).
+
+\theo
+Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.\\
+Il existe une et une seule application :
+$$\varphi : G/Stab_G(x) \rightarrow G.x$$
+telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.\\
+Cette application est bijective.
+
+\dem
+Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
+Soient $g\in G$ et $h\in H$. On a :
+$$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
+Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie$\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
+Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
+Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
+Cela montre que $\varphi$ est injective.
+
+\remar
+L'ensemble $G/Stab_G(x)$ est un $G$-ensemble pour l'action naturelle :
+$$ g.\pi(g') := \pi(gg'),\hspace{5em}\forall g,g'\in G$$
+où $\pi : G\rightarrow G/Stab_G(x)$ est la projection canonique. La bijection canonique $G/Stab_G(x)\fong G.x$ est en fait un isomorphisme de $G$-ensembles.\\
+En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de la forme $G/H$ pour un sous-groupe $H$ de $G$.
+
+\cor
+On suppose $G$ et $X$ finis.
+\begin{enumerate}
+\item Pour tout $x\in G$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
+\item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
+$$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
+\end{enumerate}
+
+\remar
+Ces égalités sont appelées \textbf{équations aux classes}.
+
+\subsection{Applications}
+
+\subsubsection{Application 1}
+
+Soit $p$ un nombre premier. Supposons que $G$ est un $p$-groupe, c'est à dire son ordre est une puissance de $p$.\\
+\subsubsection{Définition}
+Un élément $x$ d'un $G$-ensemble $X$ est un point fixe si $gx=x$ $\forall g\in G$.\\
+
+Soient $G$ un $p$-groupe, et $X$ un $G$-ensemble fini.\\
+Si $x\in X$ n'est pas un point fixe, le cardinal de l'orbite $|G.x|$ est un diviseur $>1$ de $|G|$.\\
+Donc $p$ divise $|G.x|$. D'où :
+
+\cor
+Si $G$ est un $p$-groupe et $X$ un $G$-ensemble fini, alors :
+$$|X| \equiv |X^G|~mod~p$$
+où $X^G$ est l'ensemble des points fixes de $G$ dans $X$.
+
+\subsubsection{Application 2}
+
+\subsubsection{Théorème de Cauchy}
+Soient $G$ un groupe fini et $p$ un nombre premier qui divise $|G|$, alors $G$ contient un élément d'ordre $p$.
+
+\subsubsection{Démonstration (d'après John McKay)}
+Soit :
+$$X=\{(g_1,...,g_p)\in G^p | g_1g_2....g_p =e \}$$
+Notons que :
+$$g_1g_2...g_p = e$$
+$$\Rightarrow g_2...g_p=g_1^{-1}$$
+$$\Rightarrow g_2...g_pg_1=e$$
+Donc $X$ est stable par permutation cyclique des composantes. Donc le groupe cyclique $H=\U_p$ agit sur $X$ par :
+$$\zeta(g_1,g_2...g_p) := (g_2...g_pg_1)$$
+où $\zeta = e^{\frac{2\pi i}{p}}$.\\
+Les points fixes sont les $(g,...,g)\in G^p$ tq $g^p=e$. Cela veut dire que ou bien $g=e$ ou bien $g$ est un élément d'ordre $p$.\\
+Par le corollaire précédent, on a :
+$$|X^H|=|X|~mod~p$$
+Or $X$ est de cardinal $|G|^{p-1}$ (l'application $X \rightarrow G^{p-1},~(g_1,...,g_p)\mapsto (g_2,...,g_p)$ est bijective). Donc :
+$$|X^H|=0~mod~p$$
+Il existe donc au moins un point fixe autre que $(e,...,e)$.
+
+\chapter{Groupes symétriques}
+
+\section{Définition et premières propriétés}
+
+\subsubsection{Rappel}
+Si $E$ est un ensemble, le groupe symétrique $\sigma_E$ est le groupe des bijections $f:E\rightarrow E$ avec la composition des applications pour loi. On note :
+$$\sigma_n := \sigma_{\{1,2,...,n \}} \hspace{5em} n\geq 1$$
+et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
+
+\remar
+Si $E$ et $F$ sont deux ensembles et $\varphi:E\rightarrow F$, une bijection, on a un isomorphisme de groupes :
+$$\sigma_E \rightarrow \sigma_F,~f\mapsto \varphi\circ f \circ \varphi^{-1}$$
+En particulier, l'étude de $\sigma_E$ pour un ensemble fini de cardinal $n$ se ramène à celle de $\sigma_n$.
+
+\subsubsection{Notation}
+Si $\sigma\in \sigma_n$, on le décrit à l'aide du tableau :
+$$\begin{array}{llll}
+1&2&...&n\\
+\sigma(1)&\sigma(2)&...&\sigma(n)
+\end{array}$$
+
+\remar
+\begin{enumerate}
+\item Le groupe $\sigma_n$ agit sur $\{1,...,n\}$ par :
+$$\sigma.i=\sigma(i), \hspace{2em} \forall i\in \{1,...,n\}, \forall \sigma \in \sigma_n$$
+
+\item Cette action est fidèle et transitive
+
+\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\sigma_n$ est isomorphe à $\sigma_{\{1,2,...,n \}\backslash \{i\}}$
+\end{enumerate}
+
+\defi
+Soit $\sigma \in \sigma_n$. Le support de $\sigma$ est l'ensemble :
+$$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
+
+\propr
+\begin{enumerate}
+\item Deux permutations à supports disjoints commutent
+\item Les groupes symétriques $\sigma_1$ et $\sigma_2$ sont abéliens. Pour $n\geq 3$, la centre de $\sigma_n$ est trivial.
+\end{enumerate}
+
+\dem
+\begin{enumerate}
+\item On peut et on va supposer $n\geq 3$. Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
+Si l'une parmi $\sigma_1$ et $\sigma_2$ est l'identité, elles commutent bien.\\
+Supposons $supp(\sigma_1)$ et $supp(\sigma_2)$ non vides ($\sigma_i \neq Id$ $\forall i$).\\
+Soit $i\in supp(\sigma_1)$, alors $i\in supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
+$$\sigma_1 \circ \sigma_2(i)=\sigma_1(i)$$
+$$\sigma_2 \circ \sigma_1(i)=\sigma_1(i)$$
+De même, pour $i\in supp(\sigma_2)$, on a :
+$$\sigma_1 \circ \sigma_2(i)=\sigma_2(i)$$
+$$\sigma_2 \circ \sigma_1(i)=\sigma_2(i)$$
+D'autre part, si $i\notin supp(\sigma_1)\cup supp(\sigma_2)$, alors $\sigma_1 \circ \sigma_2(i) = i = \sigma_2 \circ \sigma_1(i)$.\\
+On conclut que $\sigma_1 \circ \sigma_2(i)= \sigma_2 \circ \sigma_1(i)$
+
+\item Soit $\sigma \in \sigma_n \backslash \{Id\}$.\\
+Soient $i\in \{1,...,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,...,n\}\backslash \{i, \sigma(i) \}$.\\
+Soit $\tau$ la permutation tq :
+$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{i,\sigma(i) \}$$
+Montrons que $\tau \circ \sigma \neq \sigma \circ \tau$. En effet :
+$$\tau \circ \sigma (i) = k$$
+$$\sigma \circ \tau (i) = \sigma(i) \neq k$$
+\end{enumerate}
+
+\subsection{Transpositions et cycles}
+
+\defi
+Soit $n\geq 2$ et soit $2 \leq l \leq n$. Soit $(a_1,...,a_l)$ une suite d'éléments 2 à 2 distincts de $\{1,...,n\}$. \\
+On note encore $(a_1,...,a_l)$ la permutation définition par :
+$$\begin{array}{ll}
+x\mapsto x & \forall x \in \{1,...,n \}\backslash \{a_1,...,a_l\}\\
+a_i\mapsto a_{i+1}& \forall 1\leq i \leq l-1\\
+a_l\mapsto a_1&
+\end{array}
+$$
+
+Une telle permutation est appelée $l$-cycle (ou cycle). Sa longueur est $l$.\\
+Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
+
+\remar
+Soit $\sigma=(a_1,...,a_l)$ un $l$-cycle.
+\begin{enumerate}
+\item Soit $i\in \{1,...,l-1\}$, alors $\sigma^i(a_1)=a_{1+i}$. Plus généralement, on a :
+$$\sigma^i(a_j)= \left\{\begin{array}{ll}
+a_{j+i}& 1\leq j \leq l-i\\
+a_{j+i-l}& l-i+1\leq j \leq l
+\end{array}\right.$$
+Le cycle est d'ordre $l$ dans $\sigma_n$.
+
+\item Pour tout $\tau \in \sigma_n$, on a :
+$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+
+\item 
+$$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
+Le $l$-cycle est produit de $l--1$ transpositions.
+
+\item 
+$$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
+
+\item Soit $\tau_1$ et $\tau_2$ deux transpositions à support disjoint, alors $\tau_1\tau_2 = \tau_2\tau_1$ (qui est d'ordre 2) est appelé une \textbf{double transposition}.
+ 
+\end{enumerate}
+
+\exem
+\begin{enumerate}
+\item $$\sigma_2=\{e, (12)\}$$
+\item $$\sigma_3=\{e, (12), (13), (23), (123), (132)\}$$
+\item
+\begin{center}
+$\sigma_4$=\{e, (12), (13), (23), (14), (24), (34),\\
+(12)(34), (13)(24), (14)(23),\\
+(123), (132), (124),(142),(134),(143),(234),(243),\\
+(1234),(1243),(1324),(1342),(1423),(1432)\}
+\end{center} 
+\end{enumerate}
+
+\theo
+Soit $\sigma\in \sigma_n$.
+\begin{enumerate}
+\item Il existe un entier naturel $k$ et des cycles $c_1,...,c_k$ de $\sigma_n$ à supports disjoints 2 à 2 tq :
+$$\sigma = c_1...c_k$$
+
+\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
+$$\sigma = c_1'...c_s'$$
+alors $k=s$ et il existe une permutation $\tau \in \sigma_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
+\end{enumerate}
+
+\paragraph{Idée de la démonstration :}
+On fait agir le groupe $<\sigma> \subseteq \sigma_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
+
+\exem
+$$\sigma = \left(\begin{array}{llllllllllllll}
+1&2&3&4&5&6&7&8&9&10&11&12&13&14\\
+6&7&9&4&5&10&2&3&12&13&8&11&1&14
+\end{array}\right)$$
+$\sigma = (1~6~10~13)(2~7)(3~9~12~11~8)$ est une décomposition en produit de cycles à supports disjoints 2 à 2 de $\sigma \in \sigma_{14}$.
+
+
+
+
+
+
+\end{document}
