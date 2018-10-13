@@ -901,7 +901,7 @@ Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
 
 \item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec * des vecteurs quelconques.
 
-\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ contré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
+\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
 L'action :
 $$G\x C \rightarrow C, (g,x)\mapsto gx$$
 est transitive (combiner des rotations et des symétries).\\
@@ -944,7 +944,7 @@ Cette application est bijective.
 Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
 Soient $g\in G$ et $h\in H$. On a :
 $$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
-Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie$\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
+Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
 Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
 Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
 Cela montre que $\varphi$ est injective.
@@ -958,7 +958,7 @@ En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de 
 \cor
 On suppose $G$ et $X$ finis.
 \begin{enumerate}
-\item Pour tout $x\in G$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
+\item Pour tout $x\in X$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
 \item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
 $$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
 \end{enumerate}
@@ -1051,7 +1051,7 @@ $$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
 \item On peut et on va supposer $n\geq 3$. Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
 Si l'une parmi $\sigma_1$ et $\sigma_2$ est l'identité, elles commutent bien.\\
 Supposons $supp(\sigma_1)$ et $supp(\sigma_2)$ non vides ($\sigma_i \neq Id$ $\forall i$).\\
-Soit $i\in supp(\sigma_1)$, alors $i\in supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
+Soit $i\in supp(\sigma_1)$, alors $i\notin supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
 $$\sigma_1 \circ \sigma_2(i)=\sigma_1(i)$$
 $$\sigma_2 \circ \sigma_1(i)=\sigma_1(i)$$
 De même, pour $i\in supp(\sigma_2)$, on a :
@@ -1099,7 +1099,7 @@ $$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
 
 \item 
 $$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
-Le $l$-cycle est produit de $l--1$ transpositions.
+Le $l$-cycle est produit de $l-1$ transpositions.
 
 \item 
 $$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
