@@ -23,8 +23,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\displayastyle}{\displaystyle}
-\newcommand{\sev}{sous espace vectoriel }
-\newcommand{\sevs}{sous espaces vectoriels }
+\newcommand{\sev}{sous-espace vectoriel }
+\newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\ev}{espace vectoriel }
 \newcommand{\et}{espace topologique }
 \newcommand{\evn}{espace vectoriel normé }
@@ -53,7 +53,7 @@
 
 À un \ev normé, on va cherche à ajouter une structure topologique pour savoir si 2 points sont proches.
 
-\subsubsection{Définition 1}
+\defi
 Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 
 \begin{enumerate}
@@ -61,21 +61,22 @@ Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 \item $N(\lambda u)=|\lambda| N(u)\hspace{1em}, \lambda\in \R, u\in E \hspace{5em}$ (homogène)
 \item $N(u+v)\leq N(u)+N(v)$ \hspace{5em} (inéquation triangulaire)
 \end{enumerate}
-C'est un \evn.
+On dit alors que $(E, N)$ est un \evn.
 
-\subsubsection{Définition}
-Soit $(X,d)$ avec $d:X^2\rightarrow \R+$ appelé distance.
+\defi
+\label{def-evm}
+Soient X un ensemble et $d:X^2\rightarrow \R+$ appelé distance.
 
 \begin{enumerate}
 \item $d(x,y) = 0 \Leftrightarrow x=y$
 \item $d(x,y)=d(y,x)$\hspace{1em}$x,y\in X$
 \item $d(x,z)\leq d(x,y)+d(y,z)$\hspace{1em}$x,y,z\in \R$
 \end{enumerate}
-C'est une \ev métrique.
+On dit alors que $(X,d)$ est un espace métrique.
 
 
 \subsubsection{Définition}
-$n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2) et 3) de la définition 1.
+$n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2 et 3 de la définition \ref{def-evm}.
 
 \subsubsection{Abstract nonsense}
 \begin{enumerate}
@@ -105,11 +106,11 @@ $$d(x,y)=\left\{\begin{array}{ll}
 \end{array}\right.$$
 
 \subsubsection{Définition}
-Soit U une partie de E, N ou de X, d est dite ouverte ssi :
+Soit U une partie de $(E,N)$ ou de $(X, d)$ est dite ouverte ssi :
 $$\forall x_0\in U, \exists r>0~tq~B(x_0,r)\subset U$$
 
 \subsubsection{Définition}
-Soit V une partie de E, N ou X, d est un voisinage de $x_0\in E~(ou~X)$ ssi il existe U ouvert contenant $x_0$ et contenu dans V.
+Une partie $V$ de $(E,N)$ ou $(X, d)$ est un voisinage de $x_0\in E~(ou~X)$ ssi il existe U ouvert contenant $x_0$ et contenu dans V.
 
 \subsubsection{Remarque}
 L'ensemble des ouverts de E (ou X) comprend :
@@ -120,17 +121,22 @@ L'ensemble des ouverts de E (ou X) comprend :
 \end{itemize}
 
 \subsubsection{Définition}
-On appelle espace topologique $(X, P)$ un ensemble muni d'une famille de parties $T$ ($\subset P(x)$) dites ouvertes qui vérifie :
+On appelle espace topologique $(X, \mathcal{T})$ un ensemble muni d'une famille de parties $T$ ($\subset P(x)$) dites ouvertes qui vérifie :
 \begin{enumerate}
-\item $\emptyset$, $X\in T$
-\item $\cup_{\alpha \in J}U_\alpha \subset T$, si $\forall \alpha\in J$ $U_\alpha \in T$
-\item $\cap_{i\in I}U_i\subset T$, si $\forall i\in I$ (I de cardinal fini) $U_\alpha\in T$
+\item $\emptyset$, $X\in mathcal{T}$
+\item $ \forall \alpha\in J, U_\alpha \in mathcal{T} \Rightarrow \bigcup_{\alpha \in J}U_\alpha \subset \mathcal{T}$ \\
+  (ie. Toute union -- pas nécessairement dénombrable -- d'ouverts de $X$ est un ouvert de $X$)
+\item $\forall i\in I$ (I de cardinal fini) $U_\alpha\in T \Rightarrow \bigcap_{i\in I}U_i\subset T$ \\
+  (ie. Toute union \textbf{finie} d'ouverts de $X$ est un ouvert de $X$)
 \end{enumerate}
 
 \subsubsection{Propriété}
-Par cette définition, tout \evn E, N (tout espace métrique (X,d)) est muni d'une topologie (la topologie associé à la norme ou à la distance).\\
+Par cette définition, tout \evn $(E, N)$ (tout espace métrique $(X,d)$) est muni d'une topologie (la topologie associé à la norme ou à la distance).\\
 Une topologie ne provient pas nécessairement d'une métrique (à fortiori une norme).\\
 Il y a des conditions nécessaires et suffisantes pour qu'une topologie provienne d'une métrique (on dit métrisable).
+
+$$ espace~vectoriel~normé \Rightarrow espace~métrique \Rightarrow espace~topologie $$
+Les réciproques sont fausses.
 
 \subsubsection{Remarque}
 Une boule ouverte est ouverte.
@@ -165,7 +171,7 @@ A est dite bornée (dans (E,N)) ssi :
 $$\exists M>0~\exists x_0 \in E~tq~A\subset B(x_0,M)$$
 
 \subsubsection{Définition}
-On dit que $N_1$ et $N_2$ deux normes sur un même \ev E sont équivalentes ssi :
+On dit que $N_1$ et $N_2$ deux normes sur un même \evn E sont équivalentes ssi :
 $$\exists m>0~ \exists M>0~tq~\forall u\in E~mN_1(u)\leq N_2(u)\leq MN_1(u)~et~\fracun{M}N_2(u)\leq N_1(u)\leq \fracun{m}N_2(u)$$
 
 \subsubsection{Remarque}
@@ -308,7 +314,7 @@ $z+t\in B(x+y,r)$ et $N(z+t-x-y)< N(z-x)+N(t-y)<r$
 
 \subsubsection{Remarque}
 \begin{enumerate}
-\item La propriété 1 est fausse si $(X,d)$ est métrique (pas vrai dans tous les cas)
+\item La propriété 1 est fausse en générale pour les espaces métriques
 \item On se restreindra souvent aux \sev fermés.
 \end{enumerate}
 
@@ -327,6 +333,12 @@ $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow N(l-x_n)<\epsilon~
 
 \subsubsection{Propriété}
 Si $u_n\rightarrow l$ alors $u_n$ est bornée
+
+\subsubsection{Démonstration}
+Soit $(u_n)$ une suite convergeant vers $l$.
+Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en l de rayon 1.
+Puisqu'il y a un nombre fini de termes avant $n_0$, on sait que l'ensemble $\{x_n, n < n_0\}$ est borné.
+Puisque l'ensemble des $x_n$ précédant et suivant $n_0$, l'ensemble des $x_n$ est borné.
 
 \subsubsection{Définition}
 La suite $(u_n)$ est de Cauchy ssi :
@@ -380,7 +392,7 @@ avec $P=a_0+...+a_nX^n$.\\
 On a $P_n=1+\sum_{i=1}^n\frac{x^i}{i}$.\\
 $$||P_{n+p}-P_n|| = \sqrt{\sum_{i=n+1}^{n+p}\frac{1}{i^2}}$$
 $$||P_{n+p}-P_n|| \leq \sqrt{\sum_{i=n+1}^{+\infty}\frac{1}{i^2}}$$
-Le membre de droite est le reste de la série de Riemann convergente, il converge donc vers 0.\\
+Le membre de droite est le reste d'une série de Riemann convergente, il converge donc vers 0.\\
 C'est une suite de Cauchy.\\
 Quelle pourrait être la limite ?\\
 Ça ne peut pas être 0 car $||P_n-0||_2=||P_n||_2=\sqrt{1+\sum_{i=1}^{n}\frac{1}{i^2}}$ qui ne tend pas vers 0.\\
