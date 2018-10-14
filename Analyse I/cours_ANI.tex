@@ -228,16 +228,19 @@ Soit $A \subset (E,N)$ (avec $E=X~ou~E$ et $N$ une norme ou une distance). On a 
 \subsubsection{Démonstration}
 
 \begin{enumerate}
-\item $\supseteq$ : Si $a\in A$ et $\exists r>0~B(a,r)\subset A$, alors $B(a,r)$ est ouverte, et donc $a\in \cerc{A}$\\
-$\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset A$, avec $a\in U$. Donc $\exists~r>0$ $B(a,r)\subset U$ ($U$ est ouvert selon une topologie associée à la norme / distance)
+\item $\supseteq$ : Si $a\in A$ et $\exists r>0~B(a,r)\subset A$. Or $B(a,r)$ est un ouvert donc par définition de l'ouverture $a\in \cerc{A}$\\
+$\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset \cerc{A}$, avec $a\in U$. D'après la caractérisation des ouverts d'un espace métrique $\exists~r>0$ $B(a,r)\subset U$
 
 \item Si $a\in A$, la propriété est claire.\\
-On a :
-$$E\backslash \bar{A} = \left\{x\in E;~\exists r>0~ B(x,r) \cap A = \emptyset \right\} \subset E\backslash A$$
-
-Si $x$ vérifie $B(x,r)\subset X\backslash A$, alors $\exists F=X\backslash B(x,r)$ (boule fermée) tq $x\notin F$ (avec $F\supset A$), donc $x\in \bar{A}$.\\
-Si $x\in X\backslash \bar{A}$, $\exists U \subset X\backslash \bar{A}$ tq $x\in U$.\\
-
+  Si $a\notin A$ (ie. $x \in X\backslash A$):
+  dire que 
+  $$X\backslash \bar{A} = \left\{x\in X;~\exists r>0~ B(x,r) \cap A = \emptyset \right\}$$
+  est équivalent à dire
+  $$X\backslash \bar{A} = \left\{x\in X;~\exists r>0~ B(x,r) \subset X\backslash A \right\}$$
+  
+  S'il existe un $r$ tel que $B(x,r)\subset X\backslash A$, alors $F=X\backslash B(x,r)$ est un fermé tel que $A\subset F$. Or l'adhérence de $A$ est le plus petit fermé contenant $A$, donc $\bar{A}\subset F$. Puisque $x\in B(x, r)$, $x\notin F$, c'est à dire $x\in X\backslash \bar{A}$\\
+  Si $x\in X\backslash \bar{A}=X\ \bigcap_{F\supset A}F$ par définition de l'adhérence dans un espace topologique. $x$ est dans le complémentaire de l'intersection de fermé donc un fermé; on en déduit que $x$ est dans un ouvert n'intersectant pas $\bar{A}$. D'après la caractérisation des ouverts dans les espaces métriques, il existe un $r>0$ tel que  $B(x, r) \subset X\backslash \bar{A}$.\\
+  
 \item Si $x\in Fr(A)=\bar{A} \backslash \cerc{A}$, alors 
 \begin{itemize}
 \item  $\forall r>0~B(x,r)\cap A \neq \emptyset$ ($\in \bar{A}$)
