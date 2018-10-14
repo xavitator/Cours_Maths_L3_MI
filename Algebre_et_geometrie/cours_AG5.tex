@@ -9,9 +9,10 @@
 \usepackage{mathenv}
 \usepackage{mdwtab}
 \usepackage{array}
-\usepackage{tikz} % \begin{tikzpicture}
+\usepackage{pgf,tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usetikzlibrary{arrows}
 
 \newcommand{\x}{\times}
 \newcommand{\R}{\mathbb{R}}
@@ -731,7 +732,7 @@ Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
 
 \subsubsection{Démonstration}
 \begin{enumerate}
-\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$, or $\bar{f}$ et $\pi$ sont surjectives.\\
+\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$ est surjective, or $\bar{f}$ et $\pi$ sont surjectives.\\
 Supposons $f$ surjective, soit $y\in Y$, $\exists x \in X | f(x)=\bar{f}(\pi(x))=y$, $\bar{f}$ est surjective.
 \item à faire en exercice
 \end{enumerate}
@@ -794,7 +795,7 @@ est une action de groupe de $GL_n(\R)$ sur $M_n(\R)$.
 \propr
 Soient $G$ un groupe et $X$ un ensemble.
 \begin{enumerate}
-\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X,~g\mapsto \varphi_g$ est un morphisme de groupes.
+\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X~g\mapsto \varphi_g$ est un morphisme de groupes.
 \item Soit $f:G\rightarrow \sigma_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
 $$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
 Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\sigma_X$
@@ -818,7 +819,7 @@ pour tous $g,h\in G$ et tout $x\in X$
 
 \defi
 Soient $G$ un groupe et $X$ un ensemble. Une action à droite de $G$ sur $X$ est une application :
-$$X\x G\rightarrow X,~(x,g)\mapsto xg$$
+$$X\x G\rightarrow X,~(x,g)\mapsto x.g$$
 telle que :
 \begin{enumerate}
 \item $x.e=x,~\forall x\in X$
@@ -844,7 +845,7 @@ On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les
 
 \section{Orbites et stabilisateurs}
 Soient $G$ un groupe et $X$ un $G$-ensemble.\\
-\textcolor{red}{Récupérer une photo du graphe.}
+
 \defi 
 Pour $x\in X$, l'orbite de $x$ est :
 $$G.x=\{gx | g\in G \}$$
@@ -856,6 +857,17 @@ $$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
 \item Soit $x\in X$. L'orbite $G.x$ contient $x=e.x$. Le stabilisateur $G_x$ est un sous-groupe car $e.x=x$, et $g(hx)=gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
 \item On définit de façon analogue les orbites et stabilisateurs d'une action à droite.
 \end{enumerate}
+
+\begin{figure} [h]
+	\begin{center}
+		\begin{tikzpicture}
+		\draw (0,0) arc (160:75:6) node[midway, circle, fill, inner sep = 0pt, minimum size = 0.7em, label=above left:$x$] (X) {}  node[near end, above] {$g \cdot x$};
+		\draw[->, >=latex] (X) to [out=240,in=340,looseness=15] 
+		node[below right] {$h$ : stabilisateur de $x$} (X); 
+		\end{tikzpicture}
+		\caption{Orbite de $x$ sous $G$}
+	\end{center}	
+\end{figure}
 
 \exem 
 Soit $H\subseteq G$ un sous-groupe.
@@ -928,7 +940,7 @@ Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
 
 \item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec * des vecteurs quelconques.
 
-\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ contré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
+\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
 L'action :
 $$G\x C \rightarrow C, (g,x)\mapsto gx$$
 est transitive (combiner des rotations et des symétries).\\
@@ -971,7 +983,7 @@ Cette application est bijective.
 Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
 Soient $g\in G$ et $h\in H$. On a :
 $$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
-Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie$\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
+Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
 Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
 Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
 Cela montre que $\varphi$ est injective.
@@ -985,7 +997,7 @@ En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de 
 \cor
 On suppose $G$ et $X$ finis.
 \begin{enumerate}
-\item Pour tout $x\in G$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
+\item Pour tout $x\in X$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
 \item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
 $$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
 \end{enumerate}
@@ -1074,11 +1086,12 @@ $$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
 \end{enumerate}
 
 \dem
+On peut et on va supposer $n\geq 3$.
 \begin{enumerate}
-\item On peut et on va supposer $n\geq 3$. Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
+\item Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
 Si l'une parmi $\sigma_1$ et $\sigma_2$ est l'identité, elles commutent bien.\\
 Supposons $supp(\sigma_1)$ et $supp(\sigma_2)$ non vides ($\sigma_i \neq Id$ $\forall i$).\\
-Soit $i\in supp(\sigma_1)$, alors $i\in supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
+Soit $i\in supp(\sigma_1)$, alors $i\notin supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
 $$\sigma_1 \circ \sigma_2(i)=\sigma_1(i)$$
 $$\sigma_2 \circ \sigma_1(i)=\sigma_1(i)$$
 De même, pour $i\in supp(\sigma_2)$, on a :
@@ -1090,7 +1103,7 @@ On conclut que $\sigma_1 \circ \sigma_2(i)= \sigma_2 \circ \sigma_1(i)$
 \item Soit $\sigma \in \sigma_n \backslash \{Id\}$.\\
 Soient $i\in \{1,...,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,...,n\}\backslash \{i, \sigma(i) \}$.\\
 Soit $\tau$ la permutation tq :
-$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{i,\sigma(i) \}$$
+$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{k,\sigma(i) \}$$
 Montrons que $\tau \circ \sigma \neq \sigma \circ \tau$. En effet :
 $$\tau \circ \sigma (i) = k$$
 $$\sigma \circ \tau (i) = \sigma(i) \neq k$$
@@ -1126,7 +1139,7 @@ $$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
 
 \item 
 $$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
-Le $l$-cycle est produit de $l--1$ transpositions.
+Le $l$-cycle est produit de $l-1$ transpositions.
 
 \item 
 $$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
