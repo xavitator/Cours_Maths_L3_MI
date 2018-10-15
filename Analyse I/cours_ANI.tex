@@ -23,8 +23,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\displayastyle}{\displaystyle}
-\newcommand{\sev}{sous espace vectoriel }
-\newcommand{\sevs}{sous espaces vectoriels }
+\newcommand{\sev}{sous-espace vectoriel }
+\newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\ev}{espace vectoriel }
 \newcommand{\et}{espace topologique }
 \newcommand{\evn}{espace vectoriel normé }
@@ -288,23 +288,29 @@ Donc si on prend $\lambda$ tq $(1-\lambda) < \frac{\rho}{r}$ ($\lambda \neq 1$ m
 
 \subsubsection{Propriété 2}
 
-Si $(E,N)$ est un \ev normé, alors $\bar{F}$ (où F est un \sev) est un \sev.
+Si $(E,N)$ est un \ev normé et $F$ un sous-espace vectoriel, alors $\bar{F}$ est un \sev.
 
 \subsubsection{Démonstration}
 
-Soit $(E,N)$ et $F$ un \sev de E, on a $\bar{F}$ est fermée.\\
-$\bar{F}$ est non-vide car $\bar{F}\supset F$, il reste donc à montrer que $\bar{F}$ est stable par combinaison linéaire :\\
-Soit $x\in \bar{F},\lambda \in \R$, on a :
-$$\begin{array}{lll}
-B(\lambda x, r)&=& \{y,N(y-\lambda x)<r \}\\
-&=& \{z=\frac{y}{\lambda};~|\lambda |N(z-x)<r \}\\
-&=& \{z=\frac{y}{\lambda};~N(z-x)<\frac{r}{|\lambda |} \}
-\end{array}$$
-Donc $\exists z\in F$ tq $z\in B(x,\frac{r}{|\lambda |})$\\
+Soit $(E,N)$ et $F$ un \sev de E. 
 
-Soit $r>0$, et $x,y\in \bar{F}$ :\\
-$\exists z\in B(x,\frac{r}{2})~\exists t\in B(y,\frac{r}{2})$ par l'inégalité triangulaire.\\
-$z+t\in B(x+y,r)$ et $N(z+t-x-y)< N(z-x)+N(t-y)<r$
+Il est clair que $\bar{F}$ est une partie fermée. Il suffit donc de montrer que $\bar{F}$ est stable par combinaison linéaire. Nous allons utiliser la caractérisation de l'adhérence donnée précédemment. \\
+
+Montrons, dans un premier temps, que $\bar{F}$ est stable par multiplication par un scalaire. 
+
+Soit $\lambda \in \R$ et $x \in \bar{F}$. Si $\lambda = 0$, le point $\lambda x$ appartient à $F$ donc à $\bar{F}$. Supposons donc $\lambda \neq 0$.
+
+Soit $B(\lambda x, r)$ une boule centrée en $\lambda x$ de rayon $r > 0$. Puisque $x$ est adhérent à F, il existe $z$ dans la boule $B(x,\frac{r}{|\lambda|})$. On a alors :
+$$N(\lambda z - \lambda x) = |\lambda|N(z-x) < |\lambda|\frac{r}{|\lambda|} = r$$
+Donc le point $\lambda z$ appartient à $B(\lambda x, r)$ et, $r$ étant quelconque, le point $\lambda x$ est bien adhérent à F. \\
+
+Montrons maintenant la stabilité pour l'addition.
+
+Soit $r>0$, $x,y\in \bar{F}$ et $B(x+y,r)$ une boule centrée en $x + y$. Comme $x$ est adhérent à $F$ , on sait que
+la boule $B(x, \frac{r}{2})$ contient un point $z$ de $F$. Il en est de même pour $B(y, \frac{r}{2})$ qui contient un point $t$ de $F$. On a donc, par inégalité triangulaire : $$N(z+t-x-y)< N(z-x)+N(t-y)<\frac{r}{2} + \frac{r}{2} = r$$
+Le point $z + t$ est donc dans la boule $B(x + y, r)$ et le point $x + y$ est bien adhérent à $F$.\\
+
+Finalement, $\bar{F}$ est bien un \sev.
 
 \subsubsection{Remarque}
 \begin{enumerate}
