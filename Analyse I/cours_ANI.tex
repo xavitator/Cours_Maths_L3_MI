@@ -341,7 +341,7 @@ Si $u_n\rightarrow l$ alors $u_n$ est bornée
 Soit $(u_n)$ une suite convergeant vers $l$.
 Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en l de rayon 1.
 Puisqu'il y a un nombre fini de termes avant $n_0$, on sait que l'ensemble $\{x_n, n < n_0\}$ est borné.
-Puisque l'ensemble des $x_n$ précédant et suivant $n_0$, l'ensemble des $x_n$ est borné.
+Puisque l'ensemble $\{x_n,  n < n_0\}$ est borné (car il y a un nombre fini de terme) et que l'ensemble des $\{x_n,  n > n_0\}$ est aussi borné, l'ensemble de tous les $x_n$ est borné.
 
 \subsubsection{Définition}
 La suite $(u_n)$ est de Cauchy ssi :
@@ -535,11 +535,12 @@ Soient $(X,d)$ un espace métrique, $(E,N)$ un espace normé, et $(X,C)$ un espa
 Un \et est séparé ssi $\forall (x,y)\in X,~(x\neq y),$ $\exists U,V$ ouverts disjoints $x\in U, y\in V$ tq $(U\cap V = \emptyset)$.\\
 Donc $(E,N)$ et $(X,d)$ sont séparés.
 
+
+\paragraph{Recouvrement de K} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
+
 \subsubsection{Définition (Borel-Lebesgue)}
 Soit $K\subseteq (X,C)$ séparé est dite compacte ssi pour tout recouvrement ouvert de $K$, on peut extraire un recouvrement fini de $K$ :
 $$K\subseteq \cup_{\alpha \in A}U_\alpha \Rightarrow K\subseteq \cup_{i\in J}U_{\alpha_i}~(I~finie)$$
-
-\paragraph{Recouvrement de K} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
 
 \subsubsection{Exemple}
 \begin{enumerate}
@@ -555,16 +556,16 @@ Donc $[0,\tau]\subseteq [0,t]\cup ]\tau - \eta, \tau] \subseteq (\cup U_{\alpha_
 Soit $K = \cup_\alpha (U_\alpha \cap K) \subseteq \cup_\alpha U_\alpha$ (un recouvrement), son complémentaire est $\emptyset = \cap_\alpha F_\alpha$ (fermés), alors une intersection finie (au moins) est déjà vide.
 
 \subsubsection{Variante}
-si une famille finie de fermés emboîtés qui est vide, un est vide.
+si une famille finie de fermés emboîtés est vide, alors au moins un de ses membres est vide.
 
-\subsubsection{Contraposée}
+\subsubsection{Contraposée de la variante}
 Si $\forall n$ $F_n\neq \emptyset$ alors $\cap_n F_n \neq \emptyset$
 
 \subsubsection{Proposition 1}
-Si $K$ est compacte par $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
+Si $K$ est compacte dans $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
 
 \subsubsection{Note}
-Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire $\exists U\supseteq K$ $\exists V$ avec $y\in V$ tq $U,V$ sont ouverts et $U\cap V = \emptyset$).
+Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire qu'il existe deux ouverts disjoints, l'un contenant $\{y\}$ et l'autre contenant $K$).
 
 \subsubsection{Proposition 2}
 Si $K$ est compacte $(X,d)$ $(E,N)$, alors $K$ est bornée.
