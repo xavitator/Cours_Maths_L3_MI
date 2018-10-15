@@ -571,6 +571,7 @@ Soit $(X,\leq )$ un treillis. Son diagramme de Hasse est le graphe orienté où 
 	\draw[->,>=latex] (1) to (12);
 	\draw[->,>=latex] (2) to (12);
 	\end{tikzpicture}
+
 \end{center}
 
 \item $(X=\{\text{ensemble des diviseurs de 20}\}, |)$, on a $X=\{1,2,4,5,10,20\}$ :\\
@@ -732,7 +733,9 @@ Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
 
 \subsubsection{Démonstration}
 \begin{enumerate}
-\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$ est surjective, or $\bar{f}$ et $\pi$ sont surjectives.\\
+
+\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$ est surjective, car $\bar{f}$ et $\pi$ sont surjectives.\\
+
 Supposons $f$ surjective, soit $y\in Y$, $\exists x \in X | f(x)=\bar{f}(\pi(x))=y$, $\bar{f}$ est surjective.
 \item à faire en exercice
 \end{enumerate}
@@ -846,6 +849,30 @@ On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les
 \section{Orbites et stabilisateurs}
 Soient $G$ un groupe et $X$ un $G$-ensemble.\\
 
+\begin{center}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3.55,-0.92) rectangle (3.91,3.8);
+\draw [shift={(3.02,-2.43)}] plot[domain=-0.13:3.01,variable=\t]({1*5.45*cos(\t r)+0*5.45*sin(\t r)},{0*5.45*cos(\t r)+1*5.45*sin(\t r)});
+\draw (-0.70,2.30) node[anchor=north west] {$x$};
+\draw (2.33,3.40) node[anchor=north west] {$g.x$};
+\draw [shift={(-0.24,1.58)}] plot[domain=-3.43:1.53,variable=\t]({1*0.17*cos(\t r)+0*0.17*sin(\t r)},{0*0.17*cos(\t r)+1*0.17*sin(\t r)});
+\draw [->] (-0.2,1.74) -- (-0.4,1.81);
+\draw (-0.12,1.48) node[anchor=north west] {$h$};
+\draw (0.62,1.48) node[anchor=north west] {stabilisateur de x};
+\draw (-1.59,-0.29) node[anchor=north west] {orbite de x sous G};
+\draw [->] (0.34,1.20) -- (0.63,1.20);
+\draw [->] (-1.89,-0.56) -- (-1.55,-0.56);
+\begin{scriptsize}
+\fill [color=qqqqff] (-2.38,-1.72) circle (1.5pt);
+\draw[color=qqqqff] (-3.5,3.89) node {$A$};
+\fill [color=qqqqff] (8.42,-3.14) circle (1.5pt);
+\draw[color=qqqqff] (-3.5,3.89) node {$B$};
+\fill [color=black] (-0.4,1.81) circle (3.0pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
 \defi 
 Pour $x\in X$, l'orbite de $x$ est :
 $$G.x=\{gx | g\in G \}$$
@@ -881,7 +908,7 @@ l'orbite de $g\in G$ est la classe à droite $gH$. En outre, $Stab_H(g)=\{e\}$
 
 \subsubsection{Propriété - Définition}
 Soit $\sim$ la relation sur $X$ tq :
-$$x\sim y \Leftrightarrow y\in G_x$$
+$$x\sim y \Leftrightarrow y\in G.x$$
 Alors $\sim$ est une relation d'équivalence sur $X$ appelée la relation d'équivalence associée à l'action de $G$ sur $X$.
 
 \dem
