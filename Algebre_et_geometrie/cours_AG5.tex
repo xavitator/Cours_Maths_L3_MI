@@ -12,7 +12,7 @@
 \usepackage{pgf,tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\usetikzlibrary{arrows}
+\usetikzlibrary{arrows,calc}
 
 \newcommand{\x}{\times}
 \newcommand{\R}{\mathbb{R}}
@@ -63,11 +63,35 @@
 \item l'identité
 \end{itemize}
 
-$D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ est un groupe diédal.\\
+$D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ est un groupe diédral.\\
 On peut composer les éléments de l'ensemble $D_3$ et on restera dans $D_3$.\\
 La composition est associative.\\
 Elle admet un élément neutre, l'identité.\\
 Chaque élément admet un inverse.
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+		\coordinate (A) at (-2,0);
+		\coordinate (B) at (2,0);
+		\coordinate (X) at (120:4);
+		\coordinate (C) at ($(B) + (X)$);
+		\draw (A) -- (B) -- (C) -- cycle;
+		\coordinate (AB) at (barycentric cs:A=1,B=1);
+		\coordinate (AC) at (barycentric cs:A=1,C=1);
+		\coordinate (BC) at (barycentric cs:B=1,C=1);
+		\draw[dashed] (A) -- ($(BC)$) node[near start, below right] {$\sigma_A$};
+		\draw[dashed] (B) -- ($(AC)$) node[near start, below left] {$\sigma_B$};
+		\draw[dashed] (C) -- ($(AB)$) node[near start, below right] {$\sigma_C$};
+		\node (Abis) at (A) {};
+		\node (Bbis) at (B) {};
+		\node (Cbis) at (C) {};
+		\draw[->,>=latex] (Cbis) to[bend left] node[midway, above right]{$\rho$} (Bbis);
+		\draw[->,>=latex] (Cbis) to[bend right] node[midway, above left]{$\rho^2$} (Abis);
+		\end{tikzpicture}
+		\caption{Le groupe diédral $D_3$}
+	\end{center}
+\end{figure}
 
 \section{Définition et premiers exemples}
 
