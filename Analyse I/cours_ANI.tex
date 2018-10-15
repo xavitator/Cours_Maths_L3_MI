@@ -53,7 +53,7 @@
 
 À un \ev normé, on va cherche à ajouter une structure topologique pour savoir si 2 points sont proches.
 
-\subsubsection{Définition 1}
+\defi
 Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 
 \begin{enumerate}
@@ -61,21 +61,22 @@ Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 \item $N(\lambda u)=|\lambda| N(u)\hspace{1em}, \lambda\in \R, u\in E \hspace{5em}$ (homogène)
 \item $N(u+v)\leq N(u)+N(v)$ \hspace{5em} (inéquation triangulaire)
 \end{enumerate}
-C'est un \evn.
+On dit alors que $(E, N)$ est un \evn.
 
-\subsubsection{Définition}
-Soit $(X,d)$ avec $d:X^2\rightarrow \R+$ appelé distance.
+\defi
+\label{def-evm}
+Soient X un ensemble et $d:X^2\rightarrow \R+$ appelé distance.
 
 \begin{enumerate}
 \item $d(x,y) = 0 \Leftrightarrow x=y$
 \item $d(x,y)=d(y,x)$\hspace{1em}$x,y\in X$
 \item $d(x,z)\leq d(x,y)+d(y,z)$\hspace{1em}$x,y,z\in \R$
 \end{enumerate}
-C'est une \ev métrique.
+On dit alors que $(X,d)$ est un espace métrique.
 
 
 \subsubsection{Définition}
-$n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2) et 3) de la définition 1.
+$n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2 et 3 de la définition \ref{def-evm}.
 
 \subsubsection{Abstract nonsense}
 \begin{enumerate}
@@ -105,11 +106,11 @@ $$d(x,y)=\left\{\begin{array}{ll}
 \end{array}\right.$$
 
 \subsubsection{Définition}
-Soit U une partie de E, N ou de X, d est dite ouverte ssi :
+Soit U une partie de $(E,N)$ ou de $(X, d)$ est dite ouverte ssi :
 $$\forall x_0\in U, \exists r>0~tq~B(x_0,r)\subset U$$
 
 \subsubsection{Définition}
-Soit V une partie de E, N ou X, d est un voisinage de $x_0\in E~(ou~X)$ ssi il existe U ouvert contenant $x_0$ et contenu dans V.
+Une partie $V$ de $(E,N)$ ou $(X, d)$ est un voisinage de $x_0\in E~(ou~X)$ ssi il existe U ouvert contenant $x_0$ et contenu dans V.
 
 \subsubsection{Remarque}
 L'ensemble des ouverts de E (ou X) comprend :
@@ -120,17 +121,22 @@ L'ensemble des ouverts de E (ou X) comprend :
 \end{itemize}
 
 \subsubsection{Définition}
-On appelle espace topologique $(X, P)$ un ensemble muni d'une famille de parties $T$ ($\subset P(x)$) dites ouvertes qui vérifie :
+On appelle espace topologique $(X, \mathcal{T})$ un ensemble muni d'une famille de parties $T$ ($\subset P(x)$) dites ouvertes qui vérifie :
 \begin{enumerate}
-\item $\emptyset$, $X\in T$
-\item $\cup_{\alpha \in J}U_\alpha \subset T$, si $\forall \alpha\in J$ $U_\alpha \in T$
-\item $\cap_{i\in I}U_i\subset T$, si $\forall i\in I$ (I de cardinal fini) $U_\alpha\in T$
+\item $\emptyset$, $X\in mathcal{T}$
+\item $ \forall \alpha\in J, U_\alpha \in mathcal{T} \Rightarrow \bigcup_{\alpha \in J}U_\alpha \subset \mathcal{T}$ \\
+  (ie. Toute union -- pas nécessairement dénombrable -- d'ouverts de $X$ est un ouvert de $X$)
+\item $\forall i\in I$ (I de cardinal fini) $U_\alpha\in T \Rightarrow \bigcap_{i\in I}U_i\subset T$ \\
+  (ie. Toute union \textbf{finie} d'ouverts de $X$ est un ouvert de $X$)
 \end{enumerate}
 
 \subsubsection{Propriété}
-Par cette définition, tout \evn E, N (tout espace métrique (X,d)) est muni d'une topologie (la topologie associé à la norme ou à la distance).\\
+Par cette définition, tout \evn $(E, N)$ (tout espace métrique $(X,d)$) est muni d'une topologie (la topologie associé à la norme ou à la distance).\\
 Une topologie ne provient pas nécessairement d'une métrique (à fortiori une norme).\\
 Il y a des conditions nécessaires et suffisantes pour qu'une topologie provienne d'une métrique (on dit métrisable).
+
+$$ espace~vectoriel~normé \Rightarrow espace~métrique \Rightarrow espace~topologie $$
+Les réciproques sont fausses.
 
 \subsubsection{Remarque}
 Une boule ouverte est ouverte.
@@ -165,7 +171,7 @@ A est dite bornée (dans (E,N)) ssi :
 $$\exists M>0~\exists x_0 \in E~tq~A\subset B(x_0,M)$$
 
 \subsubsection{Définition}
-On dit que $N_1$ et $N_2$ deux normes sur un même \ev E sont équivalentes ssi :
+On dit que $N_1$ et $N_2$ deux normes sur un même \evn E sont équivalentes ssi :
 $$\exists m>0~ \exists M>0~tq~\forall u\in E~mN_1(u)\leq N_2(u)\leq MN_1(u)~et~\fracun{M}N_2(u)\leq N_1(u)\leq \fracun{m}N_2(u)$$
 
 \subsubsection{Remarque}
@@ -222,16 +228,19 @@ Soit $A \subset (E,N)$ (avec $E=X~ou~E$ et $N$ une norme ou une distance). On a 
 \subsubsection{Démonstration}
 
 \begin{enumerate}
-\item $\supseteq$ : Si $a\in A$ et $\exists r>0~B(a,r)\subset A$, alors $B(a,r)$ est ouverte, et donc $a\in \cerc{A}$\\
-$\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset A$, avec $a\in U$. Donc $\exists~r>0$ $B(a,r)\subset U$ ($U$ est ouvert selon une topologie associée à la norme / distance)
+\item $\supseteq$ : Si $a\in A$ et $\exists r>0~B(a,r)\subset A$. Or $B(a,r)$ est un ouvert donc par définition de l'ouverture $a\in \cerc{A}$\\
+$\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset \cerc{A}$, avec $a\in U$. D'après la caractérisation des ouverts d'un espace métrique $\exists~r>0$ $B(a,r)\subset U$
 
 \item Si $a\in A$, la propriété est claire.\\
-On a :
-$$E\backslash \bar{A} = \left\{x\in E;~\exists r>0~ B(x,r) \cap A = \emptyset \right\} \subset E\backslash A$$
-
-Si $x$ vérifie $B(x,r)\subset X\backslash A$, alors $\exists F=X\backslash B(x,r)$ (boule fermée) tq $x\notin F$ (avec $F\supset A$), donc $x\in \bar{A}$.\\
-Si $x\in X\backslash \bar{A}$, $\exists U \subset X\backslash \bar{A}$ tq $x\in U$.\\
-
+  Si $a\notin A$ (ie. $x \in X\backslash A$):
+  dire que 
+  $$X\backslash \bar{A} = \left\{x\in X;~\exists r>0~ B(x,r) \cap A = \emptyset \right\}$$
+  est équivalent à dire
+  $$X\backslash \bar{A} = \left\{x\in X;~\exists r>0~ B(x,r) \subset X\backslash A \right\}$$
+  
+  S'il existe un $r$ tel que $B(x,r)\subset X\backslash A$, alors $F=X\backslash B(x,r)$ est un fermé tel que $A\subset F$. Or l'adhérence de $A$ est le plus petit fermé contenant $A$, donc $\bar{A}\subset F$. Puisque $x\in B(x, r)$, $x\notin F$, c'est à dire $x\in X\backslash \bar{A}$\\
+  Si $x\in X\backslash \bar{A}=X\ \bigcap_{F\supset A}F$ par définition de l'adhérence dans un espace topologique. $x$ est dans le complémentaire de l'intersection de fermé donc un fermé; on en déduit que $x$ est dans un ouvert n'intersectant pas $\bar{A}$. D'après la caractérisation des ouverts dans les espaces métriques, il existe un $r>0$ tel que  $B(x, r) \subset X\backslash \bar{A}$.\\
+  
 \item Si $x\in Fr(A)=\bar{A} \backslash \cerc{A}$, alors 
 \begin{itemize}
 \item  $\forall r>0~B(x,r)\cap A \neq \emptyset$ ($\in \bar{A}$)
@@ -314,7 +323,7 @@ Finalement, $\bar{F}$ est bien un \sev.
 
 \subsubsection{Remarque}
 \begin{enumerate}
-\item La propriété 1 est fausse si $(X,d)$ est métrique (pas vrai dans tous les cas)
+\item La propriété 1 est fausse en générale pour les espaces métriques
 \item On se restreindra souvent aux \sev fermés.
 \end{enumerate}
 
@@ -333,6 +342,12 @@ $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow N(l-x_n)<\epsilon~
 
 \subsubsection{Propriété}
 Si $u_n\rightarrow l$ alors $u_n$ est bornée
+
+\subsubsection{Démonstration}
+Soit $(u_n)$ une suite convergeant vers $l$.
+Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en l de rayon 1.
+Puisqu'il y a un nombre fini de termes avant $n_0$, on sait que l'ensemble $\{x_n, n < n_0\}$ est borné.
+Puisque l'ensemble $\{x_n,  n < n_0\}$ est borné (car il y a un nombre fini de terme) et que l'ensemble des $\{x_n,  n > n_0\}$ est aussi borné, l'ensemble de tous les $x_n$ est borné.
 
 \subsubsection{Définition}
 La suite $(u_n)$ est de Cauchy ssi :
@@ -386,7 +401,7 @@ avec $P=a_0+...+a_nX^n$.\\
 On a $P_n=1+\sum_{i=1}^n\frac{x^i}{i}$.\\
 $$||P_{n+p}-P_n|| = \sqrt{\sum_{i=n+1}^{n+p}\frac{1}{i^2}}$$
 $$||P_{n+p}-P_n|| \leq \sqrt{\sum_{i=n+1}^{+\infty}\frac{1}{i^2}}$$
-Le membre de droite est le reste de la série de Riemann convergente, il converge donc vers 0.\\
+Le membre de droite est le reste d'une série de Riemann convergente, il converge donc vers 0.\\
 C'est une suite de Cauchy.\\
 Quelle pourrait être la limite ?\\
 Ça ne peut pas être 0 car $||P_n-0||_2=||P_n||_2=\sqrt{1+\sum_{i=1}^{n}\frac{1}{i^2}}$ qui ne tend pas vers 0.\\
@@ -526,11 +541,12 @@ Soient $(X,d)$ un espace métrique, $(E,N)$ un espace normé, et $(X,C)$ un espa
 Un \et est séparé ssi $\forall (x,y)\in X,~(x\neq y),$ $\exists U,V$ ouverts disjoints $x\in U, y\in V$ tq $(U\cap V = \emptyset)$.\\
 Donc $(E,N)$ et $(X,d)$ sont séparés.
 
+
+\paragraph{Recouvrement de K} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
+
 \subsubsection{Définition (Borel-Lebesgue)}
 Soit $K\subseteq (X,C)$ séparé est dite compacte ssi pour tout recouvrement ouvert de $K$, on peut extraire un recouvrement fini de $K$ :
 $$K\subseteq \cup_{\alpha \in A}U_\alpha \Rightarrow K\subseteq \cup_{i\in J}U_{\alpha_i}~(I~finie)$$
-
-\paragraph{Recouvrement de K} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
 
 \subsubsection{Exemple}
 \begin{enumerate}
@@ -546,16 +562,16 @@ Donc $[0,\tau]\subseteq [0,t]\cup ]\tau - \eta, \tau] \subseteq (\cup U_{\alpha_
 Soit $K = \cup_\alpha (U_\alpha \cap K) \subseteq \cup_\alpha U_\alpha$ (un recouvrement), son complémentaire est $\emptyset = \cap_\alpha F_\alpha$ (fermés), alors une intersection finie (au moins) est déjà vide.
 
 \subsubsection{Variante}
-si une famille finie de fermés emboîtés qui est vide, un est vide.
+si une famille finie de fermés emboîtés est vide, alors au moins un de ses membres est vide.
 
-\subsubsection{Contraposée}
+\subsubsection{Contraposée de la variante}
 Si $\forall n$ $F_n\neq \emptyset$ alors $\cap_n F_n \neq \emptyset$
 
 \subsubsection{Proposition 1}
-Si $K$ est compacte par $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
+Si $K$ est compacte dans $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
 
 \subsubsection{Note}
-Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire $\exists U\supseteq K$ $\exists V$ avec $y\in V$ tq $U,V$ sont ouverts et $U\cap V = \emptyset$).
+Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire qu'il existe deux ouverts disjoints, l'un contenant $\{y\}$ et l'autre contenant $K$).
 
 \subsubsection{Proposition 2}
 Si $K$ est compacte $(X,d)$ $(E,N)$, alors $K$ est bornée.
