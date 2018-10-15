@@ -934,16 +934,16 @@ $$gx=x,~\forall x\in X \Rightarrow g=e$$
 Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H.e=H$)
 \item Soit $n\geq 1$. Considérons l'action :
 $$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
-L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
+L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
 L'orbite de $v=0$ est $\{0\}$.\\
 Il y a donc exactement 2 orbites : $\R^n\backslash \{0\}$ et $\{0\}$.\\
 Donc l'action n'est pas transitive.\\
 Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
 Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
 
-\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec * des vecteurs quelconques.
+\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
 
-\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_1= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
+\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_i= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
 L'action :
 $$G\x C \rightarrow C, (g,x)\mapsto gx$$
 est transitive (combiner des rotations et des symétries).\\
