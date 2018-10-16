@@ -1400,11 +1400,48 @@ $Im(f)\subseteq K$ n'est pas distingué en général. Par exemple, si $f:G\right
 \item $SO_n(\R)\vartriangleleft O_n(\R)$, $SU_n(\C)\vartriangleleft U_n(\C)$ par la même raison.
 \item Quels sont les \sgs distingués de $D_4=\{e, \tau_1, \tau_2, \tau_3,\tau_4, \rho, \rho^2, \rho^3\}$
 
-\textcolor{red}{graphe à faire par le responsable graphe, le grand et magnifique Tristan François (diagramme de hasse et représentation de $D_4$)}
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\draw (-2,-2) -- (2,-2) -- (2,2) -- (-2,2) -- cycle;
+	\draw[dashed] (-3,-3) -- (3,3) node[below right] {$\tau_2$};
+	\draw[dashed] (3,-3) -- (-3,3) node[below left] {$\tau_4$};
+	\draw[dashed] (-3,0) -- (3,0) node[below right] {$\tau_1$};
+	\draw[dashed] (0,-3) -- (0,3) node[below right] {$\tau_3$};
+	\draw[->,>=latex] (1,0) arc (0:90:1) node[near end, above right] {$\rho$};	
+	
+	\node (E) at (8,-3) {$\{e\}$};
+	\node (1) at (4.5,-1) {$<\tau_1>$};
+	\node (3) at (6.25,-1) {$<\tau_3>$};
+	\node (R2) at (8,-1) {$<\rho^2>$};
+	\node (2) at (9.75,-1) {$<\tau_1>$};
+	\node (4) at (11.5,-1) {$<\tau_4>$};
+	\node (R) at (8,1) {$<\rho>$};
+	\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
+	\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+	\node (D4) at (8,3) {$D_4$};
+	
+	\draw (E) -- (1);
+	\draw (E) -- (3);
+	\draw (E) -- (R2);
+	\draw (E) -- (2);
+	\draw (E) -- (4);
+	\draw (1) -- (13);
+	\draw (3) -- (13);
+	\draw (R2) -- (13);
+	\draw (R2) -- (R);
+	\draw (R2) -- (24);
+	\draw (2) -- (24);
+	\draw (4) -- (24);
+	\draw (13) -- (D4);
+	\draw (R) -- (D4);
+	\draw (24) -- (D4);
+	\end{tikzpicture}
+	
+\end{center}
 
 \end{enumerate}
 
-Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. ALors :
+Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. Alors :
 $$f\circ \sigma_D \circ f^{-1}=\sigma_{f(D)}$$
 
 
