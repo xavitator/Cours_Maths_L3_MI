@@ -12,6 +12,48 @@
 \usepackage{tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage[amsthm]{ntheorem}
+
+% -- nouveau style ---
+%\newtheoremstyle{theorem_style}
+%	{\topsep}   % ABOVESPACE
+%  {\topsep}   % BELOWSPACE
+%  {\itshape}  % BODYFONT
+%  {}       % INDENT (empty value is the same as 0pt)
+%  {\bfseries} % HEADFONT
+%  {.}         % HEADPUNCT
+%  {} % HEADSPACE
+%  {}          % CUSTOM-HEAD-SPEC
+
+%\newtheoremstyle{else_style}
+%	{\topsep}   % ABOVESPACE
+%  {\topsep}   % BELOWSPACE
+%  {}  % BODYFONT
+%  {}       % INDENT (empty value is the same as 0pt)
+%  {\bfseries} % HEADFONT
+%  {.}         % HEADPUNCT
+%  {} % HEADSPACE
+%  {}          % CUSTOM-HEAD-SPEC
+
+\theorempreskip {2.5em}
+\theorempostskip{2em}
+\theoremstyle{break}
+\theoremseparator{\vspace{0.5em}}
+%\theorembodyfont{\itshape}
+%\theoremstyle{theorem_style}
+\newtheorem{thm}{Théoreme}[section] % reset theorem numbering for each chapter
+\newtheorem{defi}[thm]{Définition}
+\newtheorem{propr}[thm]{Propriété}
+\newtheorem{propo}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollaire}
+\newtheorem{lemme}[thm]{Lemme}
+
+\theorembodyfont{\normalfont}
+%\theoremstyle{else_style}
+\newtheorem{exem}[thm]{Exemple} % example numbers are dependent on theorem numbers
+\newtheorem*{demo}{Démonstration}
+\newtheorem{remar}[thm]{Remarque}
+\newtheorem{exo}[thm]{Exercice}
 
 \newcommand{\x}{\times}
 \newcommand{\R}{\mathbb{R}}
@@ -22,20 +64,21 @@
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\T}{\mathcal{T}}
 \newcommand{\displayastyle}{\displaystyle}
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\ev}{espace vectoriel }
 \newcommand{\et}{espace topologique }
 \newcommand{\evn}{espace vectoriel normé }
-\newcommand{\defi}{\subsubsection{Définition}}
-\newcommand{\dem}{\subsubsection{Démonstration}}
-\newcommand{\propr}{\subsubsection{Propriété}}
-\newcommand{\propo}{\subparagraph{Proposition}}
-\newcommand{\remar}{\subsubsection{Remarque}}
-\newcommand{\exem}{\subsubsection{Exemple}}
-\newcommand{\cor}{\subsubsection{Corollaire}}
-\newcommand{\theo}{\subsubsection{Théorème}}
+%\newcommand{\defi}{\subsubsection{Définition}}
+%\newcommand{\dem}{\subsubsection{Démonstration}}
+%\newcommand{\propr}{\subsubsection{Propriété}}
+%\newcommand{\propo}{\subparagraph{Proposition}}
+%\newcommand{\remar}{\subsubsection{Remarque}}
+%\newcommand{\exem}{\subsubsection{Exemple}}
+%\newcommand{\cor}{\subsubsection{Corollaire}}
+%\newcommand{\theo}{\subsubsection{Théorème}}
 \newcommand{\fracun}[1]{\frac{1}{#1}}
 \newcommand{\cerc}[1]{\overset{\circ}{#1}}
 
@@ -51,9 +94,9 @@
 
 \section{Espace vectoriel normé et autres}
 
-À un \ev normé, on va cherche à ajouter une structure topologique pour savoir si 2 points sont proches.
+À un \ev normé, on va chercher à ajouter une structure topologique pour savoir si 2 points sont proches.
 
-\defi
+\begin{defi}
 Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 
 \begin{enumerate}
@@ -62,8 +105,9 @@ Soit E un \ev sur $\R$. Soit N:E$\rightarrow \R+$ est une norme sur E ssi :
 \item $N(u+v)\leq N(u)+N(v)$ \hspace{5em} (inéquation triangulaire)
 \end{enumerate}
 On dit alors que $(E, N)$ est un \evn.
+\end{defi}
 
-\defi
+\begin{defi}
 \label{def-evm}
 Soient X un ensemble et $d:X^2\rightarrow \R+$ appelé distance.
 
@@ -73,10 +117,12 @@ Soient X un ensemble et $d:X^2\rightarrow \R+$ appelé distance.
 \item $d(x,z)\leq d(x,y)+d(y,z)$\hspace{1em}$x,y,z\in \R$
 \end{enumerate}
 On dit alors que $(X,d)$ est un espace métrique.
+\end{defi}
 
+\begin{defi}
+$n$ est dite semi-normé sur E (\ev de $\R$) ssi $n$ vérifie 2 et 3 de la définition \ref{def-evm}.
+\end{defi}
 
-\subsubsection{Définition}
-$n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2 et 3 de la définition \ref{def-evm}.
 
 \subsubsection{Abstract nonsense}
 \begin{enumerate}
@@ -86,147 +132,185 @@ $n$ est dite semi-normé sur E (\ev de $\R$) ssi n vérifie 2 et 3 de la défini
 \item $|N(u)-N(v)|\leq N(u-v)$
 \end{enumerate}
 
-\subsubsection{Définition}
-
+\begin{defi}
 Soit $(E,N)$ ou $(X,d)$, alors pour $x_0\in E \text{ (ou }X)$ :
 $$\left\{\begin{array}{lll}
 (boule~ouverte)~B(x_0,r)&=& x\in E(ou~X), N(x-x_0)<r,~ou~d(x_0,x)<r\\
 (boule~fermée)~\bar{B}(x_0,r)&=&x\in E(ou~X), N(x-x_0)\leq r,~ou~d(x_0,x)\leq r\\
 \end{array}\right.$$
+\end{defi}
 
-\subsubsection{Remarque}
+\begin{remar}
 Tout \evn est un espace métrique pour :
 $$d_N(x,y)=N(y-x)\hspace{1em}x,y\in E$$
+\end{remar}
 
-\subsubsection{Exercice}
+\begin{exo}
 Il y a des distances sur un \ev qui ne proviennent pas de normes (distance discrète) :
 $$d(x,y)=\left\{\begin{array}{ll}
 0 & x=y\\
 1 & x\neq y
 \end{array}\right.$$
+\end{exo}
 
-\subsubsection{Définition}
+\begin{defi}
 Soit U une partie de $(E,N)$ ou de $(X, d)$ est dite ouverte ssi :
 $$\forall x_0\in U, \exists r>0~tq~B(x_0,r)\subset U$$
+\end{defi}
 
-\subsubsection{Définition}
+\begin{defi}        
 Une partie $V$ de $(E,N)$ ou $(X, d)$ est un voisinage de $x_0\in E~(ou~X)$ ssi il existe U ouvert contenant $x_0$ et contenu dans V.
+\end{defi}
 
-\subsubsection{Remarque}
+\begin{remar}
 L'ensemble des ouverts de E (ou X) comprend :
 \begin{itemize}
 \item $\emptyset$ de E( ou de X)
 \item toute réunion d'ouverts est encore ouverte
 \item toute intersection finie d'ouverts est encore ouverte
 \end{itemize}
+\end{remar}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
 On appelle espace topologique $(X, \mathcal{T})$ un ensemble muni d'une famille de parties $T$ ($\subset P(x)$) dites ouvertes qui vérifie :
 \begin{enumerate}
-\item $\emptyset$, $X\in mathcal{T}$
-\item $ \forall \alpha\in J, U_\alpha \in mathcal{T} \Rightarrow \bigcup_{\alpha \in J}U_\alpha \subset \mathcal{T}$ \\
+\item $\emptyset$, $X\in \mathcal{T}$
+\item $ \forall \alpha\in J, U_\alpha \in \mathcal{T} \Rightarrow \bigcup_{\alpha \in J}U_\alpha \subset \mathcal{T}$ \\
   (ie. Toute union -- pas nécessairement dénombrable -- d'ouverts de $X$ est un ouvert de $X$)
 \item $\forall i\in I$ (I de cardinal fini) $U_\alpha\in T \Rightarrow \bigcap_{i\in I}U_i\subset T$ \\
   (ie. Toute union \textbf{finie} d'ouverts de $X$ est un ouvert de $X$)
 \end{enumerate}
+\end{defi}
 
-\subsubsection{Propriété}
+
+\begin{propr}
 Par cette définition, tout \evn $(E, N)$ (tout espace métrique $(X,d)$) est muni d'une topologie (la topologie associé à la norme ou à la distance).\\
 Une topologie ne provient pas nécessairement d'une métrique (à fortiori une norme).\\
 Il y a des conditions nécessaires et suffisantes pour qu'une topologie provienne d'une métrique (on dit métrisable).
 
 $$ espace~vectoriel~normé \Rightarrow espace~métrique \Rightarrow espace~topologie $$
 Les réciproques sont fausses.
+\end{propr}
 
-\subsubsection{Remarque}
+
+\begin{remar}
 Une boule ouverte est ouverte.
+\end{remar}
 
-\subsubsection{Remarque}
+
+\begin{remar}
 Il existe des distances ultra-métriques où la distance est :
 $$d(x,z)\leq max(d(x,y),d(y,z))$$
+\end{remar}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
 On appelle fermé dans un espace topologique le complémentaire d'une partie ouverte :
 $$F~\text{fermé} \Leftrightarrow X\backslash F~est~ouvert$$
+\end{defi}
 
-\subsubsection{Remarque}
+\begin{remar}
 $\bar{B}(x_0,r)$ est fermé.
+\end{remar}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
 A$\subset$ ($(X,T), (X,d), (E,N)$)\\
 $\cerc{A}$ (intérieur de A), le plus grand ouvert dans A\\
 $\bar{A}$ (adhérence de A), le plus petit fermé contenant A\\
 $Fr(A)= \bar{A} \backslash \cerc{A}$ (frontière de A) et $\cerc{A}\subset A \subset \bar{A}$\\
+\end{defi}
 
-\subsubsection{Exemple}
+\begin{exem}
 Soit $]0,1[ \subset [0,1[ \subset [0,1]$, on a $Fr([0,1[)=\{0,1\}$
+\end{exem}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
+
 Soit $f$ de $(E,N_E)$ dans $(F,N_F)$ est continue en $x_0$ ssi :
 $$\forall\epsilon >0~\exists \eta>0~N_E(x-x_0)< \eta \Rightarrow N_F(f(x)-f(x_0))<\epsilon$$
 f est continue de E dans F ssi f est continue en tout point de E.
+\end{defi}
 
-\subsubsection{Définition}
+\begin{defi}                    
 A est dite bornée (dans (E,N)) ssi :
 $$\exists M>0~\exists x_0 \in E~tq~A\subset B(x_0,M)$$
+\end{defi}
 
-\subsubsection{Définition}
+\begin{defi}                    
 On dit que $N_1$ et $N_2$ deux normes sur un même \evn E sont équivalentes ssi :
 $$\exists m>0~ \exists M>0~tq~\forall u\in E~mN_1(u)\leq N_2(u)\leq MN_1(u)~et~\fracun{M}N_2(u)\leq N_1(u)\leq \fracun{m}N_2(u)$$
+\end{defi}
 
-\subsubsection{Remarque}
+\begin{remar}
 Si $x=0$, on a :
 $$m0\leq 0 \leq M0$$
 et si $x\neq 0$, on a :
 $$m \leq \frac{N_2(x)}{N_1(x)} \leq M$$
 et $M$ est donc le plus petit possible et $m$ le plus grand possible.
+\end{remar}
 
 
-\subsubsection{Remarque}
+
+\begin{remar}
 (E,$N_1$) et (E,$N_2$) ont la même topologie.
+\end{remar}
 
-\subsubsection{Proposition}
 
+\begin{propo}
 Soient $(E_1,N_1)$ et $(E_2,N_2)$ deux espaces normés, $E_1 \x E_2$ peut être muni de la norme :
 \begin{itemize}
 \item $(x,y) \mapsto \sup (N_1(x), N_2(y))=N(x,y)$
 \item ou $(x,y) \mapsto N_1(x)+N_2(x)=N'(x,y)$
 \end{itemize}
 Ces deux normes sont équivalentes et définissent la même topologie sur $E_1\x E_2$.
+\end{propo}
 
-\subsubsection{Démonstration}
 
+
+\begin{demo}
 On montre que la norme est nulle si les deux sont nuls, la norme du produit par un scalaire et le produit du scalaire avec la norme, et enfin on a l'inégalité triangulaire.\\
 Les deux normes sont équivalentes car :
 $$N(x,y) \leq N'(x,y) \leq 2N(x,y)$$
+\end{demo}
 
-\subsubsection{Exemple}
+
+
+\begin{exem}
 $(\lambda , x)\mapsto \lambda x$ est continue de $\R \x E$ dans $E$.\\
 $(x , y)\mapsto x+y$ est continue de $E \x E$ dans $E$.\\
+\end{exem}
 
-\subsubsection{Remarque}
+
+\begin{remar}
 Soit $E$ un \ev et $T$ une topologie sur $E$, alors $(E,T)$ est un \ev topologique ssi :
 \begin{itemize}
 \item $(x,y) \mapsto x+y$
 \item $(\lambda , x) \mapsto \lambda x$
 \end{itemize}
+\end{remar}
+
 
 \section{Topologie et norme / distance}
 
-\subsubsection{Propriété}
-
+\begin{propr}
 $f$ est continue pour la topologie associée à une norme ou à une distance est équivalent à $f$ est continue pour la norme ou la distance.
+\end{propr}
 
-\subsubsection{Propriété}
+
+\begin{propr}
 Soit $A \subset (E,N)$ (avec $E=X~ou~E$ et $N$ une norme ou une distance). On a :
 \begin{enumerate}
 \item $\cerc{A} = \left\{a \in A;~\exists r >0~B(a,r)\subset A \right\}$
 \item $\bar{A} = \left\{x\in E;~\forall r>0~ B(x,r) \cap A \neq \emptyset \right\}$
 \item $x\in Fr(A)~\Leftrightarrow~\left\{x\in E;~ \exists r>0~ B(x,r)\cap A\neq \emptyset~et~ B(x,r)\cap (X\backslash A)\neq \emptyset \right\}$
 \end{enumerate}
+\end{propr}
 
-\subsubsection{Démonstration}
 
+\begin{demo}
 \begin{enumerate}
 \item $\supseteq$ : Si $a\in A$ et $\exists r>0~B(a,r)\subset A$. Or $B(a,r)$ est un ouvert donc par définition de l'ouverture $a\in \cerc{A}$\\
 $\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset \cerc{A}$, avec $a\in U$. D'après la caractérisation des ouverts d'un espace métrique $\exists~r>0$ $B(a,r)\subset U$
@@ -248,28 +332,37 @@ $\subseteq$ : Si $a\in \cerc{A}$, $\exists U$ ouvert, $U\subset \cerc{A}$, avec 
 \end{itemize}
 
 \end{enumerate}
+\end{demo}
 
-\subsubsection{Définition}
+
+
+\begin{defi}                    
 On dit que $x$ est un point d'accumulation pour la partie $A$ ssi $\forall r>0~(B(x,r)\backslash \{x\}) \cap A \neq \emptyset$ (boule centrée en x épointée).\\
 Si $x\in A$ ne vérifie pas cette propriété, on dit que $x$ est un point isolé de $A$.
-
-\subsubsection{Remarque}
+\end{defi}
+\begin{remar}
 Si $x$ est un point d'accumulation :
 \begin{itemize}
 \item $x$ peut appartenir à $A$
 \item sinon $x\notin A$ et $x\in \bar{A}$
 \end{itemize}
+\end{remar}
 
-\subsubsection{Exemple}
 
+\begin{exem}
 $\left\{x\in \R;~x=\fracun{n},~ n \geq 1 \right\}$, $\{0\}$ est un point d'accumulation de $A$ et tous les points de $A$ sont isolés.
+\end{exem}
 
-\subsubsection{Propriété 1}
 
+
+\begin{propr}
+\label{prop_1}
 Si $(E,N)$ est un espace normé alors $\forall r>0$ $\overline{B(x,r)}=\bar{B}(x,y)$ (l'adhérence de la boule ouverte est la boule fermée)
+\end{propr}
 
-\subsubsection{Démonstration}
 
+
+\begin{demo}
 Soit $x\in E$, on a $B(x,r) = \{y, N(y-x) <r \} \subset E$.\\
 On sait que $B(x,r)\subset \overline{B(x,r)}\subset \bar{B}(x,y)$.\\
 Soit $y$ tq $N(y-x)=r$.
@@ -294,13 +387,18 @@ N(z-y)&=& N(\lambda y + (1-\lambda)x -y)\\
 
 Si $\lambda \in [0,1[$ alors $z\in B(x,r)$ et $z\in B(y,\rho)$, donc $(1-\lambda)r <\rho$.\\
 Donc si on prend $\lambda$ tq $(1-\lambda) < \frac{\rho}{r}$ ($\lambda \neq 1$ mais assez proche de 1), la propriété est vérifié.
+\end{demo}
 
-\subsubsection{Propriété 2}
 
+
+\begin{propr}
+\label{prop_2}
 Si $(E,N)$ est un \ev normé et $F$ un sous-espace vectoriel, alors $\bar{F}$ est un \sev.
+\end{propr}
 
-\subsubsection{Démonstration}
 
+
+\begin{demo}
 Soit $(E,N)$ et $F$ un \sev de E. 
 
 Il est clair que $\bar{F}$ est une partie fermée. Il suffit donc de montrer que $\bar{F}$ est stable par combinaison linéaire. Nous allons utiliser la caractérisation de l'adhérence donnée précédemment. \\
@@ -320,17 +418,24 @@ la boule $B(x, \frac{r}{2})$ contient un point $z$ de $F$. Il en est de même po
 Le point $z + t$ est donc dans la boule $B(x + y, r)$ et le point $x + y$ est bien adhérent à $F$.\\
 
 Finalement, $\bar{F}$ est bien un \sev.
+\end{demo}
 
-\subsubsection{Remarque}
+
+
+\begin{remar}
+On a :
 \begin{enumerate}
-\item La propriété 1 est fausse en générale pour les espaces métriques
+\item La propriété \ref{prop_1} est fausse en générale pour les espaces métriques
 \item On se restreindra souvent aux \sev fermés.
 \end{enumerate}
+\end{remar}
 
-\subsubsection{Définition}
 
+\begin{defi}                    
 La suite $x_n$ (dans un \ev normé ou un espace métrique) est convergente vers l ssi :
 $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow N(l-x_n)<\epsilon~(ou~d(l,x_n)<\epsilon)$$
+\end{defi}
+
 
 \subsubsection{Abstract nonsense}
 
@@ -340,35 +445,47 @@ $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow N(l-x_n)<\epsilon~
 \item Si $u_n \rightarrow l$ et $\lambda \in \R$, $\lambda u_n \rightarrow \lambda l$
 \end{enumerate}
 
-\subsubsection{Propriété}
+\begin{propr}
 Si $u_n\rightarrow l$ alors $u_n$ est bornée
+\end{propr}
 
-\subsubsection{Démonstration}
+
+\begin{demo}
 Soit $(u_n)$ une suite convergeant vers $l$.
 Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en l de rayon 1.
 Puisqu'il y a un nombre fini de termes avant $n_0$, on sait que l'ensemble $\{x_n, n < n_0\}$ est borné.
 Puisque l'ensemble $\{x_n,  n < n_0\}$ est borné (car il y a un nombre fini de terme) et que l'ensemble des $\{x_n,  n \geq n_0\}$ est aussi borné, l'ensemble de tous les $x_n$ est borné.
+\end{demo}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
+
 La suite $(u_n)$ est de Cauchy ssi :
 $$\forall \epsilon >0~ \exists n_0>0~tq~n,m\geq n_0 \Rightarrow N(u_n-u_m)<\epsilon~(ou~d(u_n,u_m)<\epsilon)$$
 ou 
 $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow \forall p~N(u_{n+p}-u_n)<\epsilon~(ou~d(u_{n+p},u_n)<\epsilon)$$
 Si $u_n$ est convergente, elle est de Cauchy.
+\end{defi}
 
-\subsubsection{Propriété}
+\begin{propr}
 
 Si $u_n \rightarrow l$ ou si $u_n$ est de Cauchy, alors $\{u_n,~n\geq 0 \}$ est borné.
+\end{propr}
 
-\subsubsection{Démonstration}
+
+\begin{demo}
 On sait qu'à partir d'un certain rang $n_0$, $N(u_n) \leq l+1$ $n\geq n_0$, et $\{u_i, i\leq n_0 \}$ est un ensemble fini, donc $\{u_n,~n\geq 0 \}$ est borné par le sup entre $\{N(u_i), i\leq n_0 \}$ et $N(l)+1$.
+\end{demo}
 
-\subsubsection{Définition}
+
+\begin{defi}                    
 
 $(X,d)$ est complet ou $(E,N)$ est de Banach (espace vectoriel normé complet), ssi toute suite de Cauchy est convergente.
+\end{defi}
 
-\subsubsection{Exemple / contre-exemple}
+\begin{exem}
 
+On a :
 \begin{enumerate}
 \item $(\Q, |.|)$ n'est pas complet (n'admet pas la propriété de la borne supérieur).
 \item $(\R, |.|)$ est un corps ordonné contenant $\Q$ admettant la propriété de la borne supérieure.\\
@@ -434,21 +551,30 @@ Donc $|\varphi(x)-\varphi(x_0)|\leq \epsilon$.
 \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Propriété}
+\end{exem}
 
+
+\begin{propr}
 Soit $(E,N)$ de Banach, alors une partie est complète ssi elle est fermée.\\
+\end{propr}
 
-\subsubsection{Corollaire}
+
+
+\begin{cor}
 Si F est un \sev de $(E,N)$ de Banach, alors $\bar{F}$ est de Banach (on sait que $\bar{F}$ est un \sev normé).
+\end{cor}
 
-\subsubsection{Démonstration}
+
+\begin{demo}
 $F$ est fermée dans $E$. Soit $x_n$ une suite de Cauchy dans $F$, donc $x_n$ est de Cauchy dans $E$.\\
 $x_n$ tend vers $x \in E$ et $x\in \bar{F}$. Donc $B(x,r)$ est fermée : $\exists n>>0$ tq $x_n\in B(x,r)$.\\
 Si $F$ est complet, $x\in \bar{F}$ alors $B(x,\fracun{n}) \cap F \neq 0$, d'où $x_n \in F\cap B(x,\fracun{n})$.\\
 D'où $x_n\in F$, $x_n\rightarrow x$. $x_n$ est de Cauchy et donc $x\in F$.
+\end{demo}
 
 
-\subsubsection{Remarque}
+
+\begin{remar}
 \begin{enumerate}
 \item $\bar{F}$ se caractérise aussi comme les points limite d'une suite $x_n\in F$.\\
 
@@ -463,26 +589,32 @@ $$\exists \epsilon >0~\forall n~\exists x~ N_E(x-x_0)<n~et~N_F(f(x)-y_0)\geq \ep
 On prend $n=\fracun{n}$ et $x=x_n$, on a : $N_E(x_n-x_0)<\fracun{n}$ et $N_F(f(x_n)-y0)>\epsilon$. Donc il existe une suite $x_n$ tq $f(x_n)$ ne tend pas vers $y_0$.
 
 \end{enumerate}
+\end{remar}
+
 
 \section{Application des \ev de Banach}
 
 \subsection{Théorème du point fixe}
 
-\subsubsection{Définition}
-
+\begin{defi}                    
 $f$ est une fonction de $(E,N_E)$ dans $(F,N_F)$ est k-contractante ssi $\exists k\in [0,1[$ tq :
 $$x,y\in E~N_F(f(x)-f(y))\leq kN_E(x-y)$$
 Si $f$ est contractante, alors elle est continue.
-\subsubsection{Théorème}
+\end{defi}
 
+\begin{thm}
 Soit $f:(E,N) \rightarrow (E,N)$ k-contractante ($0< k<1$) et $(E,N)$ de Banach, alors $f$ admet un unique point fixe (tq $f(x)=x$).
+\end{thm}
 
-\subsubsection{Remarque}
 
+
+\begin{remar}
 Si $N(f(x)-f(y))=0$ c'est que $f$ est une fonction constance.
+\end{remar}
 
-\subsubsection{Démonstration}
 
+
+\begin{demo}
 Soit $x_0\in E$ et $x_{n+1}=f(x_n)$ ou $x_n=f^n(x_0)$.\\
 $$N(x_{n+1}-x_n)=N(f(x_n)-f(x_{n-1}))< kN(x_n-x_{n-1})$$
 Par récurrence, on obtient :
@@ -500,22 +632,28 @@ Soit $l_1,l_2$ deux points fixes de $f$, on a :
 $$N(f(l_1)-f(l_2)) \leq kN(l_1-l_2)$$
 $$N(l_1-l_2) < N(l_1-l_2)$$
 Ce qui est impossible. Donc le point fixe est unique.
+\end{demo}
+
+
 
 \subsection{Séries dans la Banach}
 
 Soit $(E,N)$, un \evn.\\
 
-\subsubsection{Définition}
+\begin{defi}                    
 L'étude d'une série $(u_i)$ est l'étude de $U_i=\sum_{j=0}^{i}u_j$, suite des sommes partielles.\\
 La série est convergente ssi la suite $U_i$ est convergente.\\
 La série est de Cauchy ssi la suite $U_i$ est de Cauchy.\\
 Une série est normalement convergente ssi les séries des $N(u_i)$ est convergente.
+\end{defi}
 
-\subsubsection{Propriété}
+\begin{propr}
 Une série normalement convergente est convergente (si $E$ est de Banach).\\
 Si $\sum_{0}^\infty N(u_i)$ est définie alors $\sum_{0}^\infty u_i$ est définie dans $E$.
+\end{propr}
 
-\subsubsection{Démonstration}
+
+\begin{demo}
 On a :
 $$\begin{array}{lll}
 N(U_{n+p}-U_n)&=&N(\sum_{i=1}^p u_{n+i})\\
@@ -526,29 +664,39 @@ N(U_{n+p}-U_n)&=&N(\sum_{i=1}^p u_{n+i})\\
 
 Donc $U_i$ est de Cauchy et donc est convergente ($E$ est de Banach).
 
-\subsubsection{Remarque}
-$N(\sum_{0}^\infty u_i) \leq \sum_{0}^\infty N(u_i)$
+\end{demo}
 
-\subsubsection{Exercice}
+\begin{remar}
+$N(\sum_{0}^\infty u_i) \leq \sum_{0}^\infty N(u_i)$
+\end{remar}
+
+
+\begin{exo}
 $C([0,1], \R)$ est de Banach par $||.||_\infty$.\\
 Si $||\varphi_i||_\infty$ est une série convergente, alors $x\mapsto \sum_{0}^\infty \varphi_i(x)$ a un sens : fonction continue en $x\in [0,1]$.
+\end{exo}
+
 
 \section{Compacité}
 
 Soient $(X,d)$ un espace métrique, $(E,N)$ un espace normé, et $(X,C)$ un espace topologique séparé.\\
 
-\subsubsection{Définition}
+\begin{defi}                    
 Un \et est séparé ssi $\forall (x,y)\in X,~(x\neq y),$ $\exists U,V$ ouverts disjoints $x\in U, y\in V$ tq $(U\cap V = \emptyset)$.\\
 Donc $(E,N)$ et $(X,d)$ sont séparés.
+\end{defi}
 
+\begin{defi}
+Un \textbf{recouvrement de $K$} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
+\end{defi}
 
-\paragraph{Recouvrement de K} est $U_\alpha$ une famille de parties tq $\cup_\alpha U_\alpha \supseteq K$
 
 \subsubsection{Définition (Borel-Lebesgue)}
 Soit $K\subseteq (X,C)$ séparé est dite compacte ssi pour tout recouvrement ouvert de $K$, on peut extraire un recouvrement fini de $K$ :
 $$K\subseteq \cup_{\alpha \in A}U_\alpha \Rightarrow K\subseteq \cup_{i\in J}U_{\alpha_i}~(I~finie)$$
 
-\subsubsection{Exemple}
+\begin{exem}
+On a :
 \begin{enumerate}
 \item $\R = \cup_n ]-n,n[$ est non compact (on peut le rendre compacte $\rightarrow$ $\bar{\R}=\R\sqcup \{\infty\}$ avec $x\in\R\mapsto e^{2i\pi x}\in \Pi=\R/\Z$ compactifié d'Alexandrov ou on peut le compacter avec $\R \sqcup \{+\infty\} \cup \{-\infty\}$, c'est la droite achevé).\\
 \item $[0,1]$ (ou plus généralement $[a,b]$ fermé borné) est compacte.\\
@@ -557,29 +705,42 @@ Soit $\{t \in [0,1]; [0,t]\subseteq \sup_{j\in J}U_{\alpha_j} \}$ ($J$ est fini)
 Prenons $\tau=Sup\{t\in [0,1]; [0,t]\subseteq  \sup_{j\in J}U_{\alpha_j} \}$ ($J$ fini). On a $\tau \leq 1$ car $\tau \in U_{\alpha_\tau}$ ou $\tau$ est la borne supérieure d'où un point $t$ de l'ensemble des $]\tau - \eta_\tau, \tau[$.\\
 Donc $[0,\tau]\subseteq [0,t]\cup ]\tau - \eta, \tau] \subseteq (\cup U_{\alpha_j}) \cup (U_{\alpha_\tau})$ et est un recouvrement de $[0,1]$.
 \end{enumerate}
+\end{exem}
 
-\subsubsection{Remarque}
+
+\begin{remar}
 Soit $K = \cup_\alpha (U_\alpha \cap K) \subseteq \cup_\alpha U_\alpha$ (un recouvrement), son complémentaire est $\emptyset = \cap_\alpha F_\alpha$ (fermés), alors une intersection finie (au moins) est déjà vide.
+\end{remar}
 
-\subsubsection{Variante}
+\begin{remar}[Variante]
 si une famille finie de fermés emboîtés est vide, alors au moins un de ses membres est vide.
+\end{remar}
 
-\subsubsection{Contraposée de la variante}
+\begin{remar}[Contraposée de la variante]
 Si $\forall n$ $F_n\neq \emptyset$ alors $\cap_n F_n \neq \emptyset$
+\end{remar}
 
-\subsubsection{Proposition 1}
+
+\begin{propr}
+\label{prop_1_b}
 Si $K$ est compacte dans $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
+\end{propr}
+
 
 \subsubsection{Note}
 Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire qu'il existe deux ouverts disjoints, l'un contenant $\{y\}$ et l'autre contenant $K$).
 
-\subsubsection{Proposition 2}
+
+\begin{propr}
+\label{prop_2_b}
 Si $K$ est compacte $(X,d)$ $(E,N)$, alors $K$ est bornée.
+\end{propr}
 
-\subsubsection{Remarque}
+\begin{remar}
 Dans $(X,d)$ ou $(E,N)$ un ensemble compacte est fermé borné.\\
+\end{remar}
 
-\subsubsection{Démonstration de la proposition 1}
+\begin{demo}[Propriété \ref{prop_1_b}]
 Soit $k\in K$, et $y\in X\backslash K$.\\
 $X$ est séparé car $B(k,r_k)\cap B(y,\eta_k)=\emptyset$.\\
 $$K\subseteq \cup_k B(k,r_k)$$
@@ -588,27 +749,38 @@ $$\cap_{i\in I} B(y,\eta_i)=B(y,inf(\eta_i)\neq 0)$$
 Et $B(y,inf(\eta_i))\cap (\cap_{i\in I} B(k_i,r_{k_i})) = \emptyset$ sinon $z\in B(k_i,r_{k_i})$ et $z\in B(y,\eta_i)$ $\forall i$, absurde.\\
 On a donc $B(y,inf(\eta_i))$ $\subseteq X\backslash K$.\\
 La démonstration est faite dans les espaces métriques, mais on a la même démonstration avec des ouverts.
+\end{demo}
 
-\subsubsection{Démonstration de la proposition 2}
+\begin{demo}[Proposition \ref{prop_2_b}]
 Soit $K\subseteq \cup_{i\in I} B(k_i,r_i)$, $k\in K$, donc :
 $$N(k) \leq N(k-k_i)+N(k_i) \leq r_i+N(k_i)~(pour~un~i)$$
 $$N(k) \leq Sup N(k_i) + Sup~r_i = M+R=M'$$
+\end{demo}
 
-\subsubsection{Proposition}
+
+\begin{propo}
 Si $F \subseteq K$ est fermée dans $K$ alors $F$ est compacte (démonstration en exercice).
+\end{propo}
 
-\subsubsection{Propriété (Bolzano-Weierstrass)}
+\begin{propr}[Bolzano-Weierstrass]
+\label{BW}
 Si $K$ est compacte (dans $(X,C)$), alors toute partie infinie $A$ de $K$ admet un point d'accumulation.
+\end{propr}
 
-\subsubsection{Corollaire}
+
+\begin{cor}
+\label{cor_1}
 Si $K$ est compacte alors de toute suite de points de $K$, on peut extraire une suite convergente.
+\end{cor}
 
-\subsubsection{Démonstration du corollaire}
+\begin{demo}[Corollaire \ref{cor_1}]
 Si $k_i$ est une suite de points de $K$. Soit $A=\{k\in K;\exists i~k=k_i \}$.\\
 Soit $A$ est finie, et une des valeurs est atteinte une infinité de fois, d'où une suite stationnaire.\\
 Soit $A$ est infinie, d'où (d'après le théorème) un point d'accumulation $\xi \in K$ tq $k_{\varphi(n)}\in B(\xi, \fracun{n})\backslash \{\xi\}$ et $k_{\varphi(n)} \rightarrow \xi$.\\
+\end{demo}
 
-\subsubsection{Démonstration de la propriété}
+
+\begin{demo}[Propriété \ref{BW}]
 Soit $A\subseteq K$ , $A$ infinie.\\
 On montre que si $A$ n'a pas de point d'accumulation, alors $A$ est finie.\\
 Si $A$ n'a pas de point d'accumulation :\\
@@ -617,26 +789,38 @@ Donc $A$ est compacte.
 $$A\subseteq \cup B(a,r)~avec~B(a,r)\backslash \{0\} \cap A = \emptyset$$
 $$A\subseteq \cup_{i\in I} B(a_i,r_i)$$
 Donc $A=\cup_{i\in I}\{a_i\}$ est finie.
+\end{demo}
 
-\subsubsection{Propriété}
+
+\begin{propr}
+
 Si $K$ est compact dans $(X,d)$, $(E,N)$ alors $K$ est complet.
+\end{propr}
 
-\subsubsection{Démonstration}
+\begin{demo}
 Soit $(k_n)$ une suite de Cauchy.\\
 $\exists k\in K$ tq $k_{\varphi(n)} \rightarrow k$ (point d'accumulation de l'ensemble des valeurs de la suite).\\
 Alors (exercice) une suite de Cauchy dont une sous-suite est convergente est elle-même convergente.\\
 $K$ étant fermé, $k\in K$.
+\end{demo}
 
-\subsubsection{Théorème}
+
+\begin{thm}
+\label{thm_1}
 Toute partie $K$ de $(X,d)$ ou $(E,N)$ est compacte (Borel-Lebesgue) ssi elle vérifie que toute partie infinie admet un point d'accumulation (Bolzano-Weierstrass).
+\end{thm}
 
-\subsubsection{Lemme}
+\begin{lemme}
+\label{lemme_1}
 Si $K$ admet Bolzano-Weierstrass, alors pour tout recouvrement de $K$ par une famille d'ouverts $U_\alpha$, il existe $\xi > 0$ tq $k\in U_\alpha \Rightarrow B(k,\xi) \subseteq U_\alpha$.
+\end{lemme}
 
-\subsubsection{Remarque}
+
+\begin{remar}
 Un tel $\xi$ s'appelle membre de Lebesgue du recouvrement.
+\end{remar}
 
-\subsubsection{Démonstration du Lemme}
+\begin{demo}[Lemme \ref{lemme_1}]
 Par l'absurde, on suppose que $K$ n'admet pas Bolzano-Weierstrass.\\
 Pour $\xi = \fracun{2^n}$ $\exists k_n$ tq $\exists \alpha$ $k_n \in U_\alpha $ $B(k_n, \fracun{2^n}) \nsubseteq U_\alpha$.\\
 $\{k_n\}$ est dans $K$ par hypothèse.\\
@@ -646,9 +830,10 @@ Donc $n\geq n_0$, $k_{\varphi(n)} \in B(k,\eta)$ voire $B(k,\fracun{2^{n+1}})$ $
 Alors $k\in B(k_{\varphi(n+1)}, \fracun{2^{\varphi (n+1)}})$. Soit $x$ dans cette boule :
 $$d(x,k) \leq d(x,k_{\varphi (n+1)}) + d(k_{\varphi (n+1)}, k) \leq \fracun{2^{n+1}} + \fracun{2^{n+1}}$$
 Donc $x$ est dans $B(k,\fracun{2^n})$, donc il existe un point d'accumulation, on a enfin une contradiction.
+\end{demo}
 
-\subsubsection{Démonstration du théorème}
 
+\begin{demo}[Théorème \ref{thm_1}]
 Montrons que si on a BW, alors on a BL, c'est à dire $K$ vérifiant BW, alors $K\subseteq \cup_{\alpha \in A} U_\alpha$.\\
 Par l'absurde, on suppose $K \nsubseteq \cup_{i\in I} U_{\alpha_i}$ pour toute partie finie $I$ de $A$.\\
 Soit $\epsilon >0$, un nombre de Lebesgue associé à ($U_\alpha$).\\
@@ -657,11 +842,15 @@ De plus, $k_2\in K$ et $k_2\notin U_{\alpha_1}$ $B(k_2,\epsilon) \subseteq U_{\a
 Par récurrence, on a $k_i\in B(k_i,\epsilon)\subseteq U_{\alpha_i}$ et $k_i\notin U_{j<i}U_{\alpha_j}$.\\
 D'où, $k_{n+1}\in K$ mais $k_{n+1}\notin \cup_{i\leq n}U_{\alpha_i}$ et $d(k_{n+1}, k_i)\geq \epsilon$, $i\leq n$.\\
 D'où $A=\cup \{k_n\}$ partie infinie sans point d'accumulation (tous ses points sont deux à deux à distance $\geq \epsilon$).
+\end{demo}
 
-\propr
+
+
+\begin{propr}
 Tout fermé borné dans $\R$ (selon une topologie usuelle) ou $\R^n$ (idem) est compacte.
+\end{propr}
 
-\dem
+\begin{demo}
 Pour $n=1$ (on le montre dans $\R$). Par BW, on a $A$ infinie $\subseteq F$ (fermé borné dans $\R$), $A\in [n,M]$.\\
 On a $A_i\subseteq A_{i-1}\cdots \subseteq A$, et $A_n \subseteq $intervalle de Lebesgue $\frac{M-n}{2^n}$.\\
 D'où une suite de points de $\R$ qui est de Cauchy.\\
@@ -669,40 +858,52 @@ Soit $a_n\in A_n\subseteq A \subseteq F$ tend vers $\alpha \in \R$. Mais $F$ est
  
 Pour $n\geq 2$. Soit $x_m = (x_1^m,...,x_n^m)$ $m\in \N$, une suite de points de $F$ fermé borné dans $\R^n$, d'où les $x_i^m$ sont dans un intervalle borné de $\R$.\\
 On peut extraire des suites convergentes d'où : $\epsilon_i$ tq $x_i^{\varphi(m)}\underset{m \rightarrow +\infty}{\rightarrow }\epsilon_i$.\\
-D'où une suite extraite $x^{\varphi(m)}\rightarrow \epsilon \in \R^n$ mais $F$ est fermée, donc $\epsilon \in F$.
+D'où une suite extraite $x^{\varphi(m)}\rightarrow \epsilon \in \R^n$ mais $F$ est fermée, donc $\epsilon \in F$.\end{demo}
 
-\cor
+
+\begin{cor}
 $\bar{B}(x,r)$ est un compacte dans $\R^n$
+\end{cor}
 
-\defi
+
+\begin{defi}
 $(X,C)$ séparé est dit localement compact ssi tout point $x\in X$ a un voisinage compact.\\
 Ici $\R$ et $\R^n$ sont des espaces topologiques localement compacts.
+\end{defi}
+
 
 \section{Applications continues}
 
 \subsection{Propriétés locales}
 
-\defi
+\begin{defi}
 $f:(E,N_E)\rightarrow (F,N_F)$ est continue en $x_0$ ssi :
 $$\forall \epsilon >0~\exists n>0~N_E(x-x_0)<n\Rightarrow N_F(f(x)-f(x_0)) < \epsilon$$
 ou ssi pour toute suite $x_n\rightarrow x_0$ $f(x_n)\rightarrow f(x_0)=y_0$
+\end{defi}
 
-\propr
+\begin{propr}
 Si $f$ et $g$ sont continues en $x_0$, alors $\lambda f$ et $f+g$ sont continues en $x_0$ ($f,g$ de $(X,C)$ dans $(E,N)$).
+\end{propr}
 
-\propr 
+
+\begin{propr}
 $f$ de ($E,N_E$) dans $(F,N_F)$ continues en $x_0$, et $g$ de $(F,N_F)$ dans $(G,N_G)$ continues en $f(x_0)$, alors $g\circ f$ est continue en $x_0$.
+\end{propr} 
+
 
 \subsection{Propriétés globales}
 
-\defi
+\begin{defi}
 $f:(E,N_E)\rightarrow (F,N_F)$ est continue ssi $f$ est continue en tout point de $E$.
-
-\propo
+\end{defi}
+\begin{propo}
 $f$ est continue de $(E,N_E)$ dans $(F,N_F)$ ssi $\forall V$ ouvert dans $F$ $f^{-1}(V)=U$ est un ouvert de $E$.\\
 Ici, $f^{-1}$ est l'image réciproque de $f$.
+\end{propo}
 
-\dem
+
+\begin{demo}
 On a $f^{-1}(V)=\{x\in E; f(x)\in V \}$.\\
 
 Si $f$ est continue en tout point $x_0$ de $E$. Soit $V$ un ouvert de $F$. Si $y_0 \in V$, alors $\exists \epsilon >0$ $B(y_0,\epsilon)\subseteq V$.\\
@@ -712,33 +913,47 @@ Soit $x_0$ tq $f(x_0)=y_0$, alors $x_0\in f^{-1}(V)$ et $f$ continue en $x_0$ d'
 
 Soit $x_0\in E$, $y_0=f(x_0)$ $\forall \epsilon >0~B(y_0,\epsilon)$ ouvert de $F$ donc $f^{-1}(B(y_0,\epsilon))$ est un ouvert de $E$ centré en $x_0$.\\
 D'où $B(x_0,\eta)$ tq $x_0 \in B(x_0,\eta)\subseteq f^{-1}(B(y_0,\epsilon))$
+\end{demo}
 
-\exem
+
+\begin{exem}
+
 Par contre en général, l'image d'un ouvert n'est pas nécessairement un ouvert :
 $x\mapsto x^2$ envoie $]-1,1[\subseteq\R$ sur $[0,1[\subseteq \R$
+\end{exem}
 
-\remar
+\begin{remar}
 $f$ continue de $E$ dans $F$ ssi pour tout fermé $A$ de $F$ $f^{-1}(A)$ est fermé dans $E$.
+\end{remar}
 
-\exem
+
+\begin{exem}
 Par contre l'image d'un fermé n'est pas nécessairement un fermé : $x\mapsto e^x$ envoie $]-\infty,0]$ (fermé de $\R$) sur $]0,1]$.
 
-\propr
-Si $f$ est continue de $(E, N_E)$ dans $(F, N_F)$ et si $K$ compact dans $E$ alors $f(K)$ est une partie compacte de $F$.
+\end{exem}
 
-\dem
+\begin{propr}
+Si $f$ est continue de $(E, N_E)$ dans $(F, N_F)$ et si $K$ compact dans $E$ alors $f(K)$ est une partie compacte de $F$.
+\end{propr}
+
+\begin{demo}
 On a $f(K)\subseteq \cup_\alpha V_\alpha$.
 $$K\subseteq f^{-1}(f(K)) \subseteq f^{-1}(U_\alpha V_\alpha)\subseteq U_\alpha f^{-1}(V_\alpha)$$
 d'où $K\subseteq \cup_{i\in I} f^{-1}(V_{\alpha_i})$\\
 d'où $f(K)\subseteq \cup_{i\in I} V_{\alpha_i}$
+\end{demo}
 
-\exem
+
+\begin{exem}
 Par contre, $f^{-1}$ d'un compact n'est pas en général compact : $x\mapsto sin(x)$ $sin^{-1}([-1,1])=\R$
 
-\propr
-Tout fermé borné dans un espace de dimension finie (normé) est compact.
+\end{exem}
 
-\subsubsection{Démonstration}
+\begin{propr}
+Tout fermé borné dans un espace de dimension finie (normé) est compact.
+\end{propr}
+
+\begin{demo}
 (pour $\R^n$ et $||.||_ \infty$ on sait)\\
 Soient $E=<e1,...,e_n>=\R e_i \oplus ... \oplus \R e_n$, et $u\in E$.\\
 $u = \sum_{i=1}^nx_ie_i \overset{b}{\leftarrow} x=(x_1,...,x_n)$ ($b$ une fonction bijective).
@@ -780,17 +995,24 @@ Mais (d'après le lemme), $N_E(A)$ bornée $\Rightarrow ||x||_\infty$  est born�
 Donc $b^{-1}(A)$ est compact dans $\R^n$, donc $b(b^{-1}(A))=A$ est compact ($b$ bijective).
 \end{enumerate}
 
+\end{demo}
 
-\cor
+
+\begin{cor}
 Tout \evn de dimension finie est donc localement compact : $\bar{B}(u,r) = \{u\in i, N_E(u) \leq r \}$ sont fermées bornées donc compactes.
 
-\defi
+\end{cor}
+
+\begin{defi}
 On dit que $f$ bijective de $(E,N_E)$ dans $(F,N_F)$ est bi-continue (ou un homéomorphisme) ssi $f$ et $f^{-1}$ (application réciproque de $f$) sont continues.
+\end{defi}
 
-\subsubsection{Théorème (Riesz)}
+\begin{thm}[Riesz]
+
 Un \evn $(E,N_E)$ est localement compact ssi $E$ est de dimension finie.
+\end{thm}
 
-\dem
+\begin{demo}
 On a déjà démontré que la dimension finie implique localement compact.\\
 Montrons l'implication inverse :\\
 Soit $(E,N_E)$ est localement compact.\\
@@ -804,6 +1026,8 @@ $$\begin{array}{lll}
 Soit $F = <x_i> \subseteq E$ (dimension finie car engendré par un nombre fini de vecteur).\\
 Tout point $x\in E$ est adhérant à $F$.\\
 $\frac{x}{N_E(x)} \in \bar{B}(0,1)$ d'où $\frac{x}{N_E(x)} \in B(x_i, \fracun{2})$ d'où $N_E(x-N_E(x)x_i)\leq \fracun{2}N_E(x)$
+
+\end{demo}
 
 
 
