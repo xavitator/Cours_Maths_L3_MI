@@ -12,35 +12,12 @@
 \usepackage{tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\usepackage[amsthm]{ntheorem}
+\usepackage[amsthm]{ntheorem} % package pour les environnements de theorem
 
-% -- nouveau style ---
-%\newtheoremstyle{theorem_style}
-%	{\topsep}   % ABOVESPACE
-%  {\topsep}   % BELOWSPACE
-%  {\itshape}  % BODYFONT
-%  {}       % INDENT (empty value is the same as 0pt)
-%  {\bfseries} % HEADFONT
-%  {.}         % HEADPUNCT
-%  {} % HEADSPACE
-%  {}          % CUSTOM-HEAD-SPEC
-
-%\newtheoremstyle{else_style}
-%	{\topsep}   % ABOVESPACE
-%  {\topsep}   % BELOWSPACE
-%  {}  % BODYFONT
-%  {}       % INDENT (empty value is the same as 0pt)
-%  {\bfseries} % HEADFONT
-%  {.}         % HEADPUNCT
-%  {} % HEADSPACE
-%  {}          % CUSTOM-HEAD-SPEC
-
-\theorempreskip {2.5em}
+\theorempreskip {2em}
 \theorempostskip{2em}
 \theoremstyle{break}
 \theoremseparator{\vspace{0.5em}}
-%\theorembodyfont{\itshape}
-%\theoremstyle{theorem_style}
 \newtheorem{thm}{Théoreme}[section] % reset theorem numbering for each chapter
 \newtheorem{defi}[thm]{Définition}
 \newtheorem{propr}[thm]{Propriété}
@@ -49,8 +26,7 @@
 \newtheorem{lemme}[thm]{Lemme}
 
 \theorembodyfont{\normalfont}
-%\theoremstyle{else_style}
-\newtheorem{exem}[thm]{Exemple} % example numbers are dependent on theorem numbers
+\newtheorem{exem}[thm]{Exemple}
 \newtheorem*{demo}{Démonstration}
 \newtheorem{remar}[thm]{Remarque}
 \newtheorem{exo}[thm]{Exercice}
@@ -65,20 +41,16 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\T}{\mathcal{T}}
+\renewcommand{\L}{\mathcal{L}}
 \newcommand{\displayastyle}{\displaystyle}
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\ev}{espace vectoriel }
-\newcommand{\et}{espace topologique }
+\newcommand{\etop}{espace topologique }
 \newcommand{\evn}{espace vectoriel normé }
-%\newcommand{\defi}{\subsubsection{Définition}}
-%\newcommand{\dem}{\subsubsection{Démonstration}}
-%\newcommand{\propr}{\subsubsection{Propriété}}
-%\newcommand{\propo}{\subparagraph{Proposition}}
-%\newcommand{\remar}{\subsubsection{Remarque}}
-%\newcommand{\exem}{\subsubsection{Exemple}}
-%\newcommand{\cor}{\subsubsection{Corollaire}}
-%\newcommand{\theo}{\subsubsection{Théorème}}
+\newcommand{\unifcont}{uniformément continue }
+\newcommand{\aplin}{application linéaire }
+\newcommand{\aplins}{applications linéaires }
 \newcommand{\fracun}[1]{\frac{1}{#1}}
 \newcommand{\cerc}[1]{\overset{\circ}{#1}}
 
@@ -682,7 +654,7 @@ Si $||\varphi_i||_\infty$ est une série convergente, alors $x\mapsto \sum_{0}^\
 Soient $(X,d)$ un espace métrique, $(E,N)$ un espace normé, et $(X,C)$ un espace topologique séparé.\\
 
 \begin{defi}                    
-Un \et est séparé ssi $\forall (x,y)\in X,~(x\neq y),$ $\exists U,V$ ouverts disjoints $x\in U, y\in V$ tq $(U\cap V = \emptyset)$.\\
+Un \etop est séparé ssi $\forall (x,y)\in X,~(x\neq y),$ $\exists U,V$ ouverts disjoints $x\in U, y\in V$ tq $(U\cap V = \emptyset)$.\\
 Donc $(E,N)$ et $(X,d)$ sont séparés.
 \end{defi}
 
@@ -999,7 +971,7 @@ Donc $b^{-1}(A)$ est compact dans $\R^n$, donc $b(b^{-1}(A))=A$ est compact ($b$
 
 
 \begin{cor}
-Tout \evn de dimension finie est donc localement compact : $\bar{B}(u,r) = \{u\in i, N_E(u) \leq r \}$ sont fermées bornées donc compactes.
+Tout \evn de dimension finie est donc localement compact : $\bar{B}(u_0,r) = \{u\in E, N_E(u-u_0) \leq r \}$ (ou $\bar{B}(0,r) = \{u\in E, N_E(u) \leq r \}$ ) sont fermées bornées donc compactes.
 
 \end{cor}
 
@@ -1017,30 +989,174 @@ On a déjà démontré que la dimension finie implique localement compact.\\
 Montrons l'implication inverse :\\
 Soit $(E,N_E)$ est localement compact.\\
 Donc $0$ a un voisinage compact dans $E$, $0\in V$ compact.\\
-D'où $\exists 0\in B(0,r)\subseteq \overline{B(0,r)} = \bar{B}(0,r) \subseteq V$ ($V$ fermé).\\
-$\bar{B}(0,1)$ est compacte, 
+D'où $0\in B(0,r)\subseteq \overline{B(0,r)} = \bar{B}(0,r) \subseteq V$ ($V$ fermé).\\
+$\bar{B}(0,1)$ est compacte (par homothétie), 
 $$\begin{array}{lll}
 \overline{B(0,1)} &\subseteq & \cup_{x\in \overline{B(0,1)}} B(x,\fracun{2})\\
 &\subseteq & \cup_{i\in I}B(x_i, \fracun{2})
 \end{array}$$
 Soit $F = <x_i> \subseteq E$ (dimension finie car engendré par un nombre fini de vecteur).\\
 Tout point $x\in E$ est adhérant à $F$.\\
-$\frac{x}{N_E(x)} \in \bar{B}(0,1)$ d'où $\frac{x}{N_E(x)} \in B(x_i, \fracun{2})$ d'où $N_E(x-N_E(x)x_i)\leq \fracun{2}N_E(x)$
-
+$\frac{x}{N_E(x)} \in \bar{B}(0,1)$ d'où $\exists i~\frac{x}{N_E(x)} \in B(x_i, \fracun{2})$ d'où $N_E(x-N_E(x)x_i)\leq \fracun{2}N_E(x)$
+Donc $f_i = N_E(x)x_i \in F$.\\
+Par récurrence, on montre que $N_E(x-f_n)<\frac{N_E(x)}{2^n}$. On a $\frac{x-f_n}{N_E(x-f_n)} \in \bar{B}(0,1)$ et :
+$$N_E(\frac{x-f_n}{N_E(x-f_n)} - x_n) < \fracun{2}$$
+et ensuite :
+$$N_E(x-f_n-N_E(x-f_n)x_n)<\frac{N_E(x-f_n)}{2}<\frac{N_E(x)}{2^n}$$
+D'où $f_n \in F$ et $f_n \rightarrow x$, d'où $x\in \bar{F}$.\\
+Mais $F$ est de dimension finie, donc complet $((F,N_{E|F})\sim (\R^n,||.||_\infty))$.\\
+Donc $E=\bar{F}=F$.
 \end{demo}
-
-
-
-
 
 \subsection{Continuité uniforme}
 
+\begin{defi}
+$f$ est uniformément continue de $E$ dans $F$ :
+$$\forall \epsilon >0~\exists \eta >0 \forall u,u'\in E~tq~N_E(u'-u)<\eta \Rightarrow N_F(f(u')-f(u))<\epsilon$$
+\end{defi}
 
+\begin{exem}
+\begin{enumerate}
+\item Si $f$ est $k$-contractante de $E$ dans $E$, alors $N_E(f(v)-f(u))\leq k N_E(v-u)$.\\
+$f$ est évidemment uniforme (cas des fonctions dérivables à dérivée bornée par le théorème de accroissements finis).
 
+\item $x\mapsto x^2$ est uniforme sur tout compact de $\R$ (exercice) mais n'est pas uniformément continue sur $\R$.\\
+Soit $\epsilon = 1$, $\forall \eta>0$ $x',x$ avec $|x'-x|<\eta$ et $x'^2-x^2>1$, on prend $x' = x+\eta $. On a :
+$$x'^2-x^2=(x'-x)(x'+x)=\eta (2x+\eta)$$
+Il suffit de prendre $x$ tq $2x\eta >1$ donc $x>\fracun{2\eta}$
+\end{enumerate}
+\end{exem}
 
+\begin{propo}
+Si $f$ est uniformément continue, elle est continue !
+\end{propo}
 
+\begin{propo}
+Si $f$ est uniformément continue et si $u_n$ est de Cauchy, alors $f(u_n)$ est de Cauchy.
+\end{propo}
 
+En effet, on a $N_F(f(u_{n+p})-f(u_n))<\epsilon$ si $N_E(u_{n+p}-u_n)<\eta(\epsilon)$ ($\eta(\epsilon)$ vient de l'uniforme continuité).
 
+\begin{propr}
+Si $f$ est continue de $(E,N_E)$ dans $(F,N_F)$, alors $f$ est uniformément continue sur toute partie compacte de $K$ de $E$.
+\end{propr}
+
+\begin{demo}[Idée]
+$K\subseteq \bigcup_{k \in K}B(k,\eta(k))$ donc :
+$$N(u-k)<\eta(k) \Rightarrow N_F(f(u)-f(v))<\epsilon$$
+Puis on joue un peu...
+\end{demo}
+
+\begin{propr}
+Si $f$ est \unifcont de $X$ dans $(F,N)$ où $X$ est dense dans $(E,N)$ ($\bar{X}=E$) et $F$ est de Banach, alors il existe un unique prolongement de $f$ à $E$.
+\end{propr}
+
+\begin{demo}[Esquisse de Hint]
+On pose $\bar{X}=E$, d'où $u\in E$ $u=\lim x_n$.
+On a donc $\{x_n\}$ de Cauchy, donc $\{f(x_n)\}$ de Cauchy.\\
+Donc $\exists \xi_n=\bar{f}(u)=\lim f(x_n)$
+\end{demo}
+
+\section{Applications linéaires continues}
+
+\begin{thm}
+Soit $l$ une application linéaire de $(E,N_E)$ dans $(F,N_F)$.
+On dit que $f$ est continue ssi elle vérifie l'une des 4 propriétés équivalentes suivantes :
+\begin{enumerate}
+\item $l$ est \unifcont de $E$ dans $F$
+\item $l$ continue de $E$ dans $F$
+\item $l$ continue en $0$
+\item $\exists M >0$ tq $N_F(l(x))\leq MN_E(x)$
+\end{enumerate}
+
+\end{thm}
+
+\begin{demo}
+\begin{itemize}
+\item $1) \Rightarrow 2)$ c'est évident.
+\item $2) \Rightarrow 3)$ c'est évident.
+\item $3) \Rightarrow 4)$ c'est évident.
+\item $4) \Rightarrow 1)$ c'est évident car $f$ est $M$-contractante.
+\item $3) \Rightarrow 4)$.\\
+Soit $f$ linéaire continue en $0$. Donc $\exists \rho > 0$ tq $u\in B_E(0,\rho)\Rightarrow f(u)\in B_F(0,1)$.\\
+On peut prendre $\rho$ tq $N_E(u)\leq \rho \Rightarrow N_F(f(u))<1$.\\
+Soit $v\in E$, $\lambda\in \R^+$, $N_E(\lambda v)=\lambda N_E(v)$ et on remarque :\\
+$N_E(\lambda v)<\rho$ ($\lambda v \in B_E(0,\rho)$), et cela équivaut à $\lambda < \frac{\rho}{N_E(v)} \Leftrightarrow \frac{N_E(v)}{\rho}<\fracun{\lambda}$.\\
+Si $\lambda$ vérifie $\frac{N_E(v)}{\rho}<\fracun{\lambda}$, alors $\lambda v\in B_E(0,\rho)$ d'où $f(\lambda v)\in B_F(0,1)$, on a donc :
+$$\begin{array}{lll}
+N_F(l(\lambda v))&<& 1\\
+N_F(l(v))&<&\fracun{\lambda}\Rightarrow N_F(l(v))\leq \frac{N_E(v)}{\rho}\\
+N_F(l(v)) &\leq& Inf\{\fracun{\lambda},\text{ avec }\lambda \text{ vérifiant } \fracun{\lambda}>\frac{N_E(v)}{\rho} \}
+\end{array}$$
+\end{itemize}
+\end{demo}
+
+\begin{exem}
+
+\begin{enumerate}
+\item Si $l\in \mathcal{L}(E,F)$, $E,F$ normés et $E$ de dimension finie, alors $l$ est continue.\\
+Soit $u\in E\mapsto  u=\sum_{i=1}^{n=dim(E)}x_ie_i$ où $\{e_i\}^n_1$ base de $E$. On a :
+$$\begin{array}{lll}
+N_F(l(u))&=&N_F(\sum_{i=1}^{n}x_il(e_i))\\
+&\leq & \sum_{i=1}^n |x_i| N_F(l(e_i))\\
+&\leq & ||x||_\infty Sup_{i=1}^n N_F(l(e_i))\\
+& \leq & M N_E(u)
+\end{array}$$
+
+\item Soit $\R[X]=\cup_{n\geq 0}\R_n[X]$, on pose $||P||_\infty = Sup_0^{deg~P}|a_i|$, et $P\mapsto \sum_{i=1}^{deg~P}a_i$ une forme linéaire.\\
+On a $||P_0||=1$ et par récurrence $||P_n||=n+1$, on revient à chercher un $M$ tq $\forall n$ $n+1\leq M.1$, et c'est impossible.
+\end{enumerate}
+\end{exem}
+
+\begin{propo}
+On note $\L_c(E,F)$ l'ensemble des \aplins continues de $E$ (normé) dans $F$ (normé). C'est un \evn avec :
+$$\begin{array}{lll}
+||l||&=& Inf\{M, \forall u \in E, N_F(l(u))\leq M N_E(u) \}\\
+&=& Sup\{\frac{N_F(l(u))}{N_E(u)}, u\neq 0 \}\\
+&=& Sup\{N_F(l(u)), u \in S_E(0,1) \}
+\end{array}$$
+\end{propo}
+
+Pourquoi les 3 définitions sont identiques ?\\
+On sait que $\{M, u \in E, N_F(l(u))\leq M N_E(u) \}$ est non vide (l est continue), alors :
+$$\forall u \neq 0,~~\frac{N_F(l(u))}{N_E(l(u))}\leq M$$
+donc 
+$$Sup~\frac{N_F(l(u))}{N_E(l(u))}\leq M$$
+Donc 
+$$Sup~\frac{N_F(l(u))}{N_E(l(u))}\leq Inf(\{M\})$$
+et $M-\epsilon$ ne vérifie pas $\forall u \in E$, $N_F(l(u))\leq (M-\epsilon) N_E(u)$, donc on a l'égalité.
+
+\begin{demo}
+\begin{enumerate}
+\item Il est claire que $\L_c(E,F)$ est un \sev de $\L(E,F)$
+\item Il reste à montrer que $l\mapsto ||l||$ est une norme :
+\begin{itemize}
+\item $$
+\begin{array}{lll}
+||l||=0 &\Leftrightarrow & \forall u\in E~N_F(l(u))\leq 0 N_E(u)=0\\
+&\Leftrightarrow& \forall u\in F~l(u)=0~(N_F~est~une~norme)\\
+&\Leftrightarrow& l=0
+\end{array}$$
+
+\item $||\lambda l||=|\lambda|~||l|| (évident)$
+
+\item $||l+l'||=Sup \frac{N_F((l+l')(u))}{N_E(u)} \leq \frac{N_F(l(u))}{N_E(u)} + \frac{N_F(l'(u))}{N_E(u)} \leq ||l||+||l'||$
+\end{itemize}
+\end{enumerate}
+\end{demo}
+
+\begin{thm}
+Si $F$ est de Banach, alors $\L_c(E,F)$ est de Banach.
+\end{thm}
+
+\begin{demo}
+Soit $l_n$ est suite de Cauchy d'\aplins continues et soit $u\in E$.
+$$N_F(l_n(u)-l_m(u)=N_F((l_n-l_m)(u))\leq ||l_n-l_m||N_E(u)$$
+Donc $l_n(u)$ tend vers un vecteur de $F$ (noté $\lambda_u$) car $||l_n-l_m||$ tend vers  pour $n,m$ suffisamment grands.\\
+$\lambda$ dépend linéairement de $u$, d'où $\lambda\in \L(E,F)$.\\
+$\lambda$ est continue et $||\lambda - l_n||\rightarrow 0$ :
+$$||\lambda(u)||\leq N_F(\lambda(u)-l_n(u))+N_F(l_n(u))\leq ||l_n||~||u||\hspace{5em}\text{ pour un }n\text{ suffisamment grand}$$
+\end{demo}
 
 
 
