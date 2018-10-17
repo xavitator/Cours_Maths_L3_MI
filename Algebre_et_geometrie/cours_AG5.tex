@@ -24,7 +24,9 @@
 \newtheorem{propr}[thm]{Propriété}
 \newtheorem{propo}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollaire}
+\newtheorem{cons}[thm]{Conséquence}
 \newtheorem{lemme}[thm]{Lemme}
+\newtheorem{nota}[thm]{Notation}
 
 \theorembodyfont{\normalfont}
 \newtheorem{exem}[thm]{Exemple}
@@ -55,13 +57,13 @@
 \newcommand{\pcsd}{produit de cycles à support disjoints }
 \newcommand{\sg}{sous-groupe }
 \newcommand{\sgs}{sous-groupes }
-\newcommand{\defi}{\subsubsection{Définition}}
+%\newcommand{\defi}{\subsubsection{Définition}}
 \newcommand{\dem}{\subsubsection{Démonstration}}
-\newcommand{\propr}{\subsubsection{Propriété}}
-\newcommand{\propo}{\subparagraph{Proposition}}
-\newcommand{\remar}{\subsubsection{Remarque}}
-\newcommand{\exem}{\subsubsection{Exemple}}
-\newcommand{\cor}{\subsubsection{Corollaire}}
+%\newcommand{\propr}{\subsubsection{Propriété}}
+%\newcommand{\propo}{\subparagraph{Proposition}}
+%\newcommand{\remar}{\subsubsection{Remarque}}
+%\newcommand{\exem}{\subsubsection{Exemple}}
+%\newcommand{\cor}{\subsubsection{Corollaire}}
 \newcommand{\theo}{\subsubsection{Théorème}}
 \newcommand{\fong}{\overset{\sim}{\rightarrow}}
 \newcommand{\fracun}[1]{\frac{1}{#1}}
@@ -118,575 +120,716 @@ Chaque élément admet un inverse.
 
 \section{Définition et premiers exemples}
 
-\subsubsection{Définition}
-Un groupe est un couple $(G,*)$, où $G$ est un ensemble et :
-$$*:G\x G \rightarrow G, (g,h)\mapsto g*h$$
-est son appellation telle que :
-\begin{enumerate}
-\item $*$ est associative, c'est à dire :
-$$(x*y)*z=x*(y*z)$$
-\item $*$ admet un élément neutre e, c'est à dire :
-$$e*x = x = x*e$$
-\item tout élément $x\in G$ admet un inverse x', c'est à dire :
-$$x*x'=e=x'*x$$
-\end{enumerate}
+\begin{defi}
+	Un groupe est un couple $(G,*)$, où $G$ est un ensemble et :
+	$$*:G\x G \rightarrow G, (g,h)\mapsto g*h$$
+	est son appellation telle que :
+	\begin{enumerate}
+		\item $*$ est associative, c'est à dire :
+		$$(x*y)*z=x*(y*z)$$
+		\item $*$ admet un élément neutre e, c'est à dire :
+		$$e*x = x = x*e$$
+		\item tout élément $x\in G$ admet un inverse x', c'est à dire :
+		$$x*x'=e=x'*x$$
+	\end{enumerate}	
+\end{defi}
 
-\subsubsection{Remarques}
-\begin{enumerate}
-\item Souvent, on écrit $xy$ au lieu de $x*y$\\
-\item L'élément neutre e est unique : en effet, si e' est un deuxième élément neutre, on a :
-$$ e = e'e = e'$$
-\item L'inverse est unique : en effet, soit x'' un deuxième inverse. On a :
-$$x''=ex''=(x'x)x''=x'(xx'')=x'e=x'$$
-On note désormais $x^{-1}$ l'inverse de $x$.\\
-\item Pour tous $x,y\in G$, on a $(xy)^{-1}=y^{-1}x^{-1}$.\\
-En effet, on a :
-$$(xy)(y^{-1}x^{-1})=(x(yy^{-1}))x^{-1} = (xe)x^{-1}=e$$
-$$(y^{-1}x^{-1})(xy)=y^{-1}(x^{-1}(xy))=y^{-1}(ey)$$
-\end{enumerate}
+\begin{remar}
+	\begin{enumerate}
+		\item Souvent, on écrit $xy$ au lieu de $x*y$\\
+		\item L'élément neutre e est unique : en effet, si e' est un deuxième élément neutre, on a :
+		$$ e = e'e = e'$$
+		\item L'inverse est unique : en effet, soit x'' un deuxième inverse. On a :
+		$$x''=ex''=(x'x)x''=x'(xx'')=x'e=x'$$
+		On note désormais $x^{-1}$ l'inverse de $x$.\\
+		\item Pour tous $x,y\in G$, on a $(xy)^{-1}=y^{-1}x^{-1}$.\\
+		En effet, on a :
+		$$(xy)(y^{-1}x^{-1})=(x(yy^{-1}))x^{-1} = (xe)x^{-1}=e$$
+		$$(y^{-1}x^{-1})(xy)=y^{-1}(x^{-1}(xy))=y^{-1}(ey)$$
+	\end{enumerate}	
+\end{remar}
 
-\subsubsection{Définition}
-Un groupe G est abélien ou commutatif si xy=yx, pour tous $x,y\in G$.
+\begin{defi}
+	Un groupe G est abélien ou commutatif si xy=yx, pour tous $x,y\in G$.	
+\end{defi}
 
-\subsubsection{Remarque}
-Souvent, on notre $+$ la loi de groupe d'un groupe abélien. On note alors 0, l'élément neutre et -x l'élément inverse de $x\in G$.
+\begin{remar}
+	Souvent, on notre $+$ la loi de groupe d'un groupe abélien. On note alors 0, l'élément neutre et -x l'élément inverse de $x\in G$.	
+\end{remar}
 
-\subsubsection{Exemples}
-\begin{enumerate}
-\item $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ n'est pas commutatif car $\sigma_C \circ \sigma_A = \rho$ et $\sigma_A \circ \sigma_C = \rho^{-1} = \rho ^2 \neq \rho$.
-\item $(\Z, +)$ est un groupe abélien.
-\item $(\Q,+), (\R,+), (\C,+)$ sont des groupes abéliens.
-\item $\Q^*=\Q \backslash \{0\}$ est un groupe abélien pour la multiplication. De même pour $\R^*$ et $\C^*$.
-\item Si E est un \ev sur $\R$ ou $\C$, alors $(E,+)$ est un groupe abélien.
-\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi n=1.\\
-De même pour $GL_n(\Q)$ et $GL_n(\C)$.\\
-\item Soit X un ensemble (fini ou infini). Le groupe symétrique $\sigma_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
-$$\sigma_n = \sigma_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
-Notons que $|\sigma_n|=n!$.
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ n'est pas commutatif car $\sigma_C \circ \sigma_A = \rho$ et $\sigma_A \circ \sigma_C = \rho^{-1} = \rho ^2 \neq \rho$.
+		\item $(\Z, +)$ est un groupe abélien.
+		\item $(\Q,+), (\R,+), (\C,+)$ sont des groupes abéliens.
+		\item $\Q^*=\Q \backslash \{0\}$ est un groupe abélien pour la multiplication. De même pour $\R^*$ et $\C^*$.
+		\item Si E est un \ev sur $\R$ ou $\C$, alors $(E,+)$ est un groupe abélien.
+		\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi n=1.\\
+		De même pour $GL_n(\Q)$ et $GL_n(\C)$.\\
+		\item Soit X un ensemble (fini ou infini). Le groupe symétrique $\sigma_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
+		$$\sigma_n = \sigma_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
+		Notons que $|\sigma_n|=n!$.
+	\end{enumerate}	
+\end{exem}
 
-\subsubsection{Notation}
-Soit G un groupe. Soient $g\in G$ et $n\in \N$.\\
-On note $g^n$, l'élément de G défini par récurrence :
-$$\begin{array}{lll}
-g^0&=&e\\
-g^{n+1}&=&g^ng~,~\forall n \geq 0
-\end{array}$$
-Si $n>0$, on pose $g^{-n}=(g^n)^{-1}$.
+\begin{nota}
+	Soit G un groupe. Soient $g\in G$ et $n\in \N$.\\
+	On note $g^n$, l'élément de G défini par récurrence :
+	$$\begin{array}{lll}
+	g^0&=&e\\
+	g^{n+1}&=&g^ng~,~\forall n \geq 0
+	\end{array}$$
+	Si $n>0$, on pose $g^{-n}=(g^n)^{-1}$.	
+\end{nota}
 
-\subsubsection{Lemme}
-Soient G un groupe et $m,n\in\Z$. On a $g^{m+n}=g^mg^n$ et $(g^n)^{-1}=g^{-n}$.
+\begin{lemme}
+	Soient G un groupe et $m,n\in\Z$. On a $g^{m+n}=g^mg^n$ et $(g^n)^{-1}=g^{-n}$.
+\end{lemme}
+	
 
-\subsubsection{Démonstration}
-Il faut distinguer des cas. Les détails sont laissés en exercice.
+\begin{demo}
+	Il faut distinguer des cas. Les détails sont laissés en exercice.	
+\end{demo}
 
-\subsubsection{Lemme}
-Soient G et H deux groupes.\\
-Posons :
-$$K=G\x H=\{(g,h)|g\in G, h\in H \}$$
-Alors K est un groupe pour la loi :
-$$K\x K \rightarrow K,~((g,h),(g',h'))\mapsto (gg',hh')$$
+\begin{lemme}
+	Soient G et H deux groupes.\\
+	Posons :
+	$$K=G\x H=\{(g,h)|g\in G, h\in H \}$$
+	Alors K est un groupe pour la loi :
+	$$K\x K \rightarrow K,~((g,h),(g',h'))\mapsto (gg',hh')$$
+\end{lemme}
 
-\subsubsection{Démonstration}
-Clairement la loi est associative. Elle admet $e_K=(e_G,e_H)$ pour élément neutre et l'inverse de $(g,h)$ est $(g^{-1}, h^{-1})$, $\forall g\in G, h\in H$.\\
+\begin{demo}
+	Clairement la loi est associative. Elle admet $e_K=(e_G,e_H)$ pour élément neutre et l'inverse de $(g,h)$ est $(g^{-1}, h^{-1})$, $\forall g\in G, h\in H$.
+\end{demo}
 
-\subsubsection{Définition}
-$G\x H$ muni de cette loi est le groupe produit de G par H.\\
+\begin{defi}
+	$G\x H$ muni de cette loi est le groupe produit de G par H.
+\end{defi}
 
-\subsubsection{Exercice}
-$G\x H$ est abélien ssi G et H sont abéliens.
+\begin{exo}
+	$G\x H$ est abélien ssi G et H sont abéliens.
+\end{exo}
 
 \section{Sous-groupe}
-\subsubsection{Définition}
-Soit G un groupe. Un sous-groupe de G est une partie de $H\subseteq G$ telle que :
-\begin{enumerate}
-\item $e_G \in H$
-\item $\forall h,h' \in H$, on a $hh' \in H$
-\item $\forall h\in H$, on a $h^{-1}\in H$
-\end{enumerate}
 
-\subsubsection{Notation}
-On note $H\leq G$ lorsque H est un sous-groupe de G.\\
+\begin{defi}	
+	Soit G un groupe. Un sous-groupe de G est une partie de $H\subseteq G$ telle que :
+	\begin{enumerate}
+	\item $e_G \in H$
+	\item $\forall h,h' \in H$, on a $hh' \in H$
+	\item $\forall h\in H$, on a $h^{-1}\in H$
+	\end{enumerate}
+\end{defi}
 
-\subsubsection{Lemme}
-Une partie $H\subseteq G$ est un sous-groupe ssi $H\neq \emptyset$ et pour tous $h_1,h_2\in H$, on a $h_1h_2^{-1}\in H$.
+\begin{nota}
+	On note $H\leq G$ lorsque H est un sous-groupe de G.	
+\end{nota}
 
-\subsubsection{Démonstration}
-"$\Rightarrow$" $H\neq \emptyset$ car $e_G \in H$. Si $h_1,h_2\in H$ alors $h_2^{-1}\in H$ (c) et donc $h_1h_2^{-1}\in H$ (b).\\
-"$\Leftarrow$" Comme H est non vide, on peut choisir un $h\in H$. Alors $hh^{-1}=e_G \in H$. Soient $h_1,h_2 \in H$. On a $h_2^{-1}=eh_2^{-1}\in H$. Donc $h_1h_2=h_1(h_2^{-1})^{-1}\in H$
+\begin{lemme}
+	Une partie $H\subseteq G$ est un sous-groupe ssi $H\neq \emptyset$ et pour tous $h_1,h_2\in H$, on a $h_1h_2^{-1}\in H$.	
+\end{lemme}
 
-\subsubsection{Remarque}
+\begin{demo}
+	"$\Rightarrow$" $H\neq \emptyset$ car $e_G \in H$. Si $h_1,h_2\in H$ alors $h_2^{-1}\in H$ (c) et donc $h_1h_2^{-1}\in H$ (b).\\
+	"$\Leftarrow$" Comme H est non vide, on peut choisir un $h\in H$. Alors $hh^{-1}=e_G \in H$. Soient $h_1,h_2 \in H$. On a $h_2^{-1}=eh_2^{-1}\in H$. Donc $h_1h_2=h_1(h_2^{-1})^{-1}\in H$	
+\end{demo}
 
-\begin{enumerate}
-\item Soit H un sous-groupe de G. Alors la loi de G induit une application $H\x H \mapsto H$, $(h_1,h_2)\mapsto h_1h_2$ (bien définie par b)). Muni de cette loi, H devient un groupe d'élément neutre $e_H=e_G$. Désormais tout sous-groupe d'un groupe est considéré comme un groupe de cette façon.
-\item Si $H\leq G$ et $K\leq H$, alors $K\leq G$
+\begin{remar}
+	\begin{enumerate}
+		\item Soit H un sous-groupe de G. Alors la loi de G induit une application $H\x H \mapsto H$, $(h_1,h_2)\mapsto h_1h_2$ (bien définie par b)). Muni de cette loi, H devient un groupe d'élément neutre $e_H=e_G$. Désormais tout sous-groupe d'un groupe est considéré comme un groupe de cette façon.
+		\item Si $H\leq G$ et $K\leq H$, alors $K\leq G$
+	\end{enumerate}
+\end{remar}
 
-\end{enumerate}
+\begin{exem}
+	Soit G un groupe.
+	
+	\begin{enumerate}
+		\item $\{e\} \leq G$
+		\item $G\leq G$
+		\item Posons $Z(G)=\{g\in G | hg=gh, \forall h\in G \}$
+		Clairement, on a $e\in Z(G)$. On montre ensuite que la multiplication de deux éléments de $Z(G)$ est toujours dans $Z(G)$.\\
+		Enfin, on montre que soient $g\in Z(G)$ et $h\in G$, on a $hg^{-1}=g^{-1}h$, donc $g^{-1}\in Z(G)$.\\
+		Par conséquent, $Z(G)$ est un sous-groupe de G.
+	\end{enumerate}
+\end{exem}
 
+\begin{defi}
+	On appelle $Z(G)$ le centre de $G$.
+\end{defi}
 
-\subsubsection{Exemple}
-Soit G un groupe.
+\begin{exem}
+	$Z(GL_n(\R)) = \R^* \cdot I_n$
+\end{exem}
 
-\begin{enumerate}
-\item {e}$\leq G$
-\item $G\leq G$
-\item Posons $Z(G)=\{g\in G | hg=gh, \forall h\in G \}$
-Clairement, on a $e\in Z(G)$. On montre ensuite que la multiplication de deux éléments de $Z(G)$ est toujours dans $Z(G)$.\\
-Enfin, on montre que soient $g\in Z(G)$ et $h\in G$, on a $hg^{-1}=g^{-1}h$, donc $g^{-1}\in Z(G)$.\\
-Par conséquent, $Z(G)$ est un sous-groupe de G.
-\end{enumerate}
+\begin{exem}[de sous-groupes (suite)]
+	Soit $n\geq 1$. Les parties suivantes sont des sous-groupes de $GL_n(\R)$ :
+	\begin{itemize}
+		\item $SL_n(\R)=\{A\in GL_n(\R) | det A=1 \}$
+		\item $O_n(\R) = \{A\in GL_n(\R) | A^tA=I_n \}$
+		\item $SO_n(\R) = SL_n(\R) \cap O_n(\R)$
+	\end{itemize}
+\end{exem}
 
-\subsubsection{Définition}
-Z(G) est appelé le centre de G.
+\begin{nota}
+	$\U = \{z\in \C | |z|=1 \}$\\
+	$\U_n = \{z\in \C | z^n =1 \}$ où $n\geq 1$\\
+	$\U_n$ = {racines n-ièmes de 1}\\
+	Ce sont des sous-groupes de $\C^*$\\
+\end{nota}
 
-\subsubsection{Exemple}
-$Z(GL_n(\R)) = \R^* . I_n$
+\begin{remar}
+	On a $\U_n \leq \U \leq \C^*$ et $\U_n \leq \U_{mn}$ $\forall n,m\geq 1$.\\
+\end{remar}
 
-\subsubsection{Exemples de sous-groupes (suite)}
-Soit $n\geq 1$. Les parties suivantes sont des sous-groupes de $GL_n(\R)$ :
-\begin{itemize}
-\item $SL_n(\R)=\{A\in GL_n(\R) | det A=1 \}$
-\item $O_n(\R) = \{A\in GL_n(\R) | A^tA=I_n \}$
-\item $SO_n(\R) = SL_n(\R) \cap O_n(\R)$
-\end{itemize}
+\begin{nota}
+	Pour $n\in \Z$, on pose :
+	$$n\Z = \{nk| k\in \Z \}$$
+\end{nota}
 
-\subsubsection{Notation}
-$\U = \{z\in \C | |z|=1 \}$\\
-$\U_n = \{z\in \C | z^n =1 \}$ où $n\geq 1$\\
-$\U_n$ = {racines n-ièmes de 1}\\
-Ce sont des sous-groupes de $\C^*$\\
+\begin{thm}
+	\begin{enumerate}
+		\item $n\Z \leq \Z$
+		\item Soit H un sous-groupe de $\Z$. Il existe un et un seul $n\in \N$ tq $H=n\Z$.\\
+		Si $H\neq \{0\}$, alors n est le plus petit entier strictement positif contenu dans H.
+	\end{enumerate}
+\end{thm}
 
-\subsubsection{Remarque}
-On a $\U_n \leq \U \leq \C^*$ et $\U_n \leq \U_{mn}$ $\forall n,m\geq 1$.\\
-
-\subsubsection{Notation}
-Pour $n\in \Z$, on pose :
-$$n\Z = \{nk| k\in \Z \}$$
-
-\subsubsection{Théorème}
-\begin{enumerate}
-\item $n\Z \leq \Z$
-\item Soit H un sous-groupe de $\Z$. Il existe un et un seul $n\in \N$ tq $H=n\Z$.\\
-Si $H\neq \{0\}$, alors n est le plus petit entier strictement positif contenu dans H.
-\end{enumerate}
-
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item est clair
-\item Soit $H \leq \Z$. Si $H=\{0\}$, alors $H=0.\Z$. Supposons donc que $H\neq \{0\}$.\\
-Soit $0\neq x\in H$. Alors $-x\in H$. Donc H contient au moins un entier strictement positif. Soit $E=\{x\in H | x>0 \}$. Alors E est une partie non vide de $\N$.\\
-Donc il existe dans E un plus petit élément n. Comme $n\in H$, on a $n\Z \subseteq H$.\\
-Montrons que $n\Z \supseteq H$. Soit $x\in H$. Supposons $x>0$, alors $x\in E$ et $x\geq n$.\\
-La division euclidienne de x par n s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r\leq n$.\\
-Comme x et nq sont dans H, r est dans H.\\
-Or on a $0\leq r<n$ et n était le plus petit entier positif contenu dans H. Donc r=0 et $x=nq \in n\Z$.\\
-Donc $H=n\Z$. Finalement, si m,n sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
-\end{enumerate}
+\begin{demo}
+	\begin{enumerate}
+		\item est clair
+		\item Soit $H \leq \Z$. Si $H=\{0\}$, alors $H=0.\Z$. Supposons donc que $H\neq \{0\}$.\\
+		Soit $0\neq x\in H$. Alors $-x\in H$. Donc H contient au moins un entier strictement positif. Soit $E=\{x\in H | x>0 \}$. Alors E est une partie non vide de $\N$.\\
+		Donc il existe dans E un plus petit élément n. Comme $n\in H$, on a $n\Z \subseteq H$.\\
+		Montrons que $n\Z \supseteq H$. Soit $x\in H$. Supposons $x>0$, alors $x\in E$ et $x\geq n$.\\
+		La division euclidienne de x par n s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r\leq n$.\\
+		Comme x et nq sont dans H, r est dans H.\\
+		Or on a $0\leq r<n$ et n était le plus petit entier positif contenu dans H. Donc r=0 et $x=nq \in n\Z$.\\
+		Donc $H=n\Z$. Finalement, si m,n sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
+	\end{enumerate}
+\end{demo}
 
 \section{Sous-groupe engendré par une partie}
-Soit G un groupe.
+Soit $G$ un groupe.
 
-\subsubsection{Lemme}
-Si $(G_i)_{i\in I}$ est une famille de sous-groupes, alors $\cap_{i\in I}G_i$ est encore un sous-groupe.
+\begin{lemme}
+	Si $(G_i)_{i\in I}$ est une famille de sous-groupes, alors $\cap_{i\in I}G_i$ est encore un sous-groupe.
+\end{lemme}
 
-\subsubsection{Démonstration}
-Exercice facile.\\
+\begin{demo}
+	Exercice facile.
+\end{demo}
 
-\subsubsection{Définition}
-Soit S une partie de G. Si $S=\emptyset$, on pose $<S>=\{e\}$.\\
-Si $S\neq \emptyset$, on pose :
-$$<S> = \cap_{H~sous-groupe~tq~H\supseteq S}H$$
-On appelle $<S>$ le sous-groupe engendré par S.\\
+\begin{defi}
+	Soit $S$ une partie de $G$. Si $S=\emptyset$, on pose $<S>=\{e\}$.\\
+	Si $S\neq \emptyset$, on pose :
+	$$<S> = \cap_{H~sous-groupe~tq~H\supseteq S}H$$
+	On appelle $<S>$ le sous-groupe engendré par $S$.
+\end{defi}
 
-\subsubsection{Remarque}
-$<S>$ est le plus petit des sous-groupe contenant S.\\
+\begin{remar}
+	$<S>$ est le plus petit des sous-groupe contenant $S$.
+\end{remar}
 
-\subsubsection{Définition}
-$S\subseteq G$ est une partie génératrice si $<S>=G$.\\
-G est monogène s'il admet un singleton comme partie génératrice.\\
-G est cyclique s'il est monogène et fini.
+\begin{defi}
+	$S\subseteq G$ est une partie génératrice si $<S>=G$.\\
+	$G$ est monogène s'il admet un singleton comme partie génératrice.\\
+	$G$ est cyclique s'il est monogène et fini.
+\end{defi}
 
-\subsubsection{Exemples}
-$(\Z,+)$ est monogène (engendré par S={1}) et infini.\\
-$\U_n$, $n\geq 1$, est monogène et fini, donc cyclique.
+\begin{exem}
+	$(\Z,+)$ est monogène (engendré par $S=\{1\}$) et infini.\\
+	$\U_n$, $n\geq 1$, est monogène et fini, donc cyclique.
+\end{exem}
 
-\subsubsection{Lemme}
-Soit S une partie non vide de G. On a :
-$$<S> = \{g_1g_2...g_n | n\in \N, g_i\in S~ou~g_i^{-1}\in S~pour~tout~i  \}$$
+\begin{lemme}
+	Soit S une partie non vide de G. On a :
+	$$<S> = \{g_1g_2...g_n | n\in \N, g_i\in S~ou~g_i^{-1}\in S~pour~tout~i  \}$$
+	
+\end{lemme}
 
-\subsubsection{Démonstration}
-Notons H le membre de droite. Clairement, H est un sous-groupe et contient S. Donc $H \supseteq <S>$.\\
-Soit K un autre sous-groupe contenant S. Alors pour tout $s\in S$, on a $s\in K$ et $s^{-1}\in K$.\\
-Comme K est stable par produit, K contient H donc H est le plus petit sous-groupe de G contenant S, cad $H=<S>$.
-
+\begin{demo}
+	Notons H le membre de droite. Clairement, H est un sous-groupe et contient S. Donc $H \supseteq <S>$.\\
+	Soit K un autre sous-groupe contenant S. Alors pour tout $s\in S$, on a $s\in K$ et $s^{-1}\in K$.\\
+	Comme K est stable par produit, K contient H donc H est le plus petit sous-groupe de G contenant S, cad $H=<S>$.
+\end{demo}
 
 \section{Morphismes de groupes}
 
-\subsubsection{Définition}
-Soient $G$ et $H$ deux groupes. Un morphisme de groupes (appelé aussi homomorphisme) est une application $f:G\rightarrow H$ tq $f(xy)=f(x)f(y)$ $\forall x,y\in G$
+\begin{defi}
+	Soient $G$ et $H$ deux groupes. Un morphisme de groupes (appelé aussi homomorphisme) est une application $f:G\rightarrow H$ tq $f(xy)=f(x)f(y)$ $\forall x,y\in G$	
+\end{defi}
 
-\subsubsection{Remarque}
-Dans ce cas, on a automatiquement $f(e_H)=e_H$ et $f(x^{-1})= f(x)^{-1},~\forall x\in G$\\
-En effet, on a :\\
-$f(e)=f(ee)=f(e)f(e)$. En multipliant à gauche par $f(e)^{-1}$, on trouve $e=f(e)$\\
-$f(x^{-1})f(x)=f(x^{-1}x)=f(e)=e$. En multipliant à droite par $f(x)^{-1}$, on trouve $f(x^{-1})=f(x)^{-1}$\\
+\begin{remar}
+	Dans ce cas, on a automatiquement $f(e_H)=e_H$ et $f(x^{-1})= f(x)^{-1},~\forall x\in G$\\
+	En effet, on a :\\
+	$f(e)=f(ee)=f(e)f(e)$. En multipliant à gauche par $f(e)^{-1}$, on trouve $e=f(e)$\\
+	$f(x^{-1})f(x)=f(x^{-1}x)=f(e)=e$. En multipliant à droite par $f(x)^{-1}$, on trouve $f(x^{-1})=f(x)^{-1}$
+\end{remar}
 
-\subsubsection{Exemples}
-\begin{enumerate}
-\item $x\mapsto exp(x)$ est un morphisme de groupe de $(\R,+)$ vers $(\R^*, \cdot)$
-\item $x\mapsto ln(x)$ est un morphisme de groupe de $(\R^*, \cdot)$ vers $(\R,+)$
-\item $det~:~GL_n(\R)\rightarrow \R^*$ est un morphisme de groupes. De même pour $GL_n(\C)$ et $GL_n(\Q)$
-\item Soient $E$ et $F$ deux espaces vectoriels sur $\R$, soit $f:E\rightarrow F$ une application linéaire.\\
-Alors en particulier, $f$ est un morphisme de groupes de $(E,+)$ vers $(F,+)$.
-\item Soient $G$ un groupe et $H\leq G$ un sous-groupe. Alors l'inclusion $H\mapsto G$ est un morphisme de groupe
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $x\mapsto exp(x)$ est un morphisme de groupe de $(\R,+)$ vers $(\R^*, \cdot)$
+		\item $x\mapsto ln(x)$ est un morphisme de groupe de $(\R^*, \cdot)$ vers $(\R,+)$
+		\item $det~:~GL_n(\R)\rightarrow \R^*$ est un morphisme de groupes. De même pour $GL_n(\C)$ et $GL_n(\Q)$
+		\item Soient $E$ et $F$ deux espaces vectoriels sur $\R$, soit $f:E\rightarrow F$ une application linéaire.\\
+		Alors en particulier, $f$ est un morphisme de groupes de $(E,+)$ vers $(F,+)$.
+		\item Soient $G$ un groupe et $H\leq G$ un sous-groupe. Alors l'inclusion $H\mapsto G$ est un morphisme de groupe
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Théorème}
-Soit $G$ un groupe. Pour tout $g\in G$, il existe un unique \mdg $f:(\Z,+)\rightarrow G$ tel que $f(1)=g$.
+\begin{thm}
+	Soit $G$ un groupe. Pour tout $g\in G$, il existe un unique \mdg $f:(\Z,+)\rightarrow G$ tel que $f(1)=g$.
+\end{thm}
 
-\subsubsection{Démonstration}
-Pour l'existence, posons $f(n)=g^n, n\in \Z$, alors $f(1)=g^1=g$ et $f(m+n)=g^{n+m}=g^ng^m=f(n)f(m)$ pour tous $n,m\in \Z$\\
-Pour l'unicité, notons que si $n>1$, on a $f(n)= f(1+...+1)=f(1)...f(1)=g...g=g^n$\\
-On doit aussi avoir $f(0)=e$ et $f(-n)=f(n)^{-1}=g^{-n}$ pur tout $n>0$.
+\begin{demo}
+	Pour l'existence, posons $f(n)=g^n, n\in \Z$, alors $f(1)=g^1=g$ et $f(m+n)=g^{n+m}=g^ng^m=f(n)f(m)$ pour tous $n,m\in \Z$\\
+	Pour l'unicité, notons que si $n>1$, on a $f(n)= f(1+...+1)=f(1)...f(1)=g...g=g^n$\\
+	On doit aussi avoir $f(0)=e$ et $f(-n)=f(n)^{-1}=g^{-n}$ pur tout $n>0$.	
+\end{demo}
 
-\subsubsection{Théorème}
-Soient $G$ un groupe et $n\geq 1$. Pour tout $g\in G$ tq $g^n=e$, il existe un unique \mdg $f:\U_n \rightarrow G$ tq $f(c)=g$, où $c=e^{\frac{2\pi i}{n}}$
+\begin{thm}
+	Soient $G$ un groupe et $n\geq 1$. Pour tout $g\in G$ tq $g^n=e$, il existe un unique \mdg $f:\U_n \rightarrow G$ tq $f(c)=g$, où $c=e^{\frac{2\pi i}{n}}$
+\end{thm}
 
-\subsubsection{Démonstration}
-On a $\U_n = \{1,c,...,c^{n-1}\}$.\\
-Montrons l'unicité. On doit avoir :
-$$f(c^k)=f(c)^k=g^k\hspace{5em}\forall 0\leq k \leq n-1$$
-Pour montrer l'existence, définissons $f$ par cette formule. Vérifions que $f$ est un morphisme.\\
-Soient $0\leq k\leq n-1$. Soit $k+l=qn+r$, la division euclidienne de $k+l$ par $n$. On a :
-$$f(c^kc^l)= f(c^{k+l})=f(c^r)=g^r$$
-$$f(c^k)f(c^l)=g^kg^l=g^{k+l}=g^r$$
+\begin{demo}
+	On a $\U_n = \{1,c,...,c^{n-1}\}$.\\
+	Montrons l'unicité. On doit avoir :
+	$$f(c^k)=f(c)^k=g^k\hspace{5em}\forall 0\leq k \leq n-1$$
+	Pour montrer l'existence, définissons $f$ par cette formule. Vérifions que $f$ est un morphisme.\\
+	Soient $0\leq k\leq n-1$. Soit $k+l=qn+r$, la division euclidienne de $k+l$ par $n$. On a :
+	$$f(c^kc^l)= f(c^{k+l})=f(c^r)=g^r$$
+	$$f(c^k)f(c^l)=g^kg^l=g^{k+l}=g^r$$
+\end{demo}
 
-\subsubsection{Lemme}
-\begin{enumerate}
-\item La composée de deux \mdgs est un \mdg.
-\item Si $f:G\rightarrow H$ est un \mdg et $f$ est bijectif, alors l'application réciproque $f^{-1}:H\rightarrow G$ est encore un \mdg.
-\end{enumerate}
+\begin{lemme}
+	\begin{enumerate}
+		\item La composée de deux \mdgs est un \mdg.
+		\item Si $f:G\rightarrow H$ est un \mdg et $f$ est bijectif, alors l'application réciproque $f^{-1}:H\rightarrow G$ est encore un \mdg.
+	\end{enumerate}
+\end{lemme}
 
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item Soient $G\overset{\psi}{\rightarrow} H \overset{\varphi}{\rightarrow} K$ des \mdgs. Pour $x,y\in G$, on a :
-$$\varphi\psi (x,y)=\varphi (\psi (xy))=\varphi (\psi(x)\psi(y)) = \varphi(\psi (x))\varphi(\psi(y))=\varphi\circ \psi(x)\cdot \varphi \circ \psi(y)$$
-\item Soient $x,y\in H$. Il s'agit de monter que :
-$$f^{-1}(xy)=f^{-1}(x)f^{-1}(y)$$
-Comme $f$ est injective, il suffit de monter que les images par $f$ des deux cotés sont égales.\\
-En effet, on a :
-$$f(f^{-1}(xy))=xy~et~f(f^{-1}(x)f^{-1}(y))=xy$$
-\end{enumerate}
+\begin{demo}
+	\begin{enumerate}
+		\item Soient $G\overset{\psi}{\rightarrow} H \overset{\varphi}{\rightarrow} K$ des \mdgs. Pour $x,y\in G$, on a :
+		$$\varphi\psi (x,y)=\varphi (\psi (xy))=\varphi (\psi(x)\psi(y)) = \varphi(\psi (x))\varphi(\psi(y))=\varphi\circ \psi(x)\cdot \varphi \circ \psi(y)$$
+		\item Soient $x,y\in H$. Il s'agit de monter que :
+		$$f^{-1}(xy)=f^{-1}(x)f^{-1}(y)$$
+		Comme $f$ est injective, il suffit de monter que les images par $f$ des deux cotés sont égales.\\
+		En effet, on a :
+		$$f(f^{-1}(xy))=xy~et~f(f^{-1}(x)f^{-1}(y))=xy$$
+	\end{enumerate}
+\end{demo}
 
-\subsubsection{Définition}
-Un isomorphisme est un \mdg bijectif. Deux groupes $G$ et $H$ sont isomorphes s'il existe un isomorphisme $f:G\rightarrow H$.\\
-On écrit alors $G\cong H$, et on écrit une flèche $\fong$ pour désigner un isomorphisme.\\
+\begin{defi}
+	Un isomorphisme est un \mdg bijectif. Deux groupes $G$ et $H$ sont isomorphes s'il existe un isomorphisme $f:G\rightarrow H$.\\
+	On écrit alors $G\cong H$, et on écrit une flèche $\fong$ pour désigner un isomorphisme.
+\end{defi}
 
-\subsubsection{Exemples}
-\begin{enumerate}
-\item On a des isomorphismes inverses l'un de l'autre ($exp$ et $ln$)
-\item Soit $\sigma \in O_2$ tq $\sigma(1)=2$ et $\sigma(2)=1$. On a un isomorphisme :
-$$\begin{array}{lll}
-(\{\pm 1\}, \cdot)&\fong & O_2\\
-1&\mapsto &Id\\
--1&\mapsto&\sigma
-\end{array}$$
+\begin{exem}
+	\begin{enumerate}
+		\item On a des isomorphismes inverses l'un de l'autre ($exp$ et $ln$)
+		\item Soit $\sigma \in O_2$ tq $\sigma(1)=2$ et $\sigma(2)=1$. On a un isomorphisme :
+		$$\begin{array}{lll}
+		(\{\pm 1\}, \cdot)&\fong & O_2\\
+		1&\mapsto &Id\\
+		-1&\mapsto&\sigma
+		\end{array}$$
+		
+		\item Soit $D_3$ le groupe des symétries d'un triangle équilatéral ($D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$), on a : 
+		$$f:D_3 \fong O_3$$
+		en envoyant chaque élément de symétrie $g$ sur la permutation des sommets $f(g)$ qu'il induit.
+	\end{enumerate}
+\end{exem}
 
-\item Soit $D_3$ le groupe des symétries d'un triangle équilatéral ($D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$), on a : 
-$$f:D_3 \fong O_3$$
-en envoyant chaque élément de symétrie $g$ sur la permutation des sommets $f(g)$ qu'il induit.
-\end{enumerate}
+\begin{defi}
+	Soit $G$ un groupe. Un automorphisme de $G$ est un isomorphisme $f:G\rightarrow G$.\\
+	On note $Aut(G)$ l'ensemble des automorphismes de $G$. C'est un sous-groupe du groupe symétrique $O_G$ de l'ensemble $G$.
+\end{defi}
 
+\begin{exem}
+	Pour tout $g\in G$, on a l'application de conjugaison par $g$ :
+	$$cg : G \rightarrow G,~x\mapsto gxg^{-1}$$
+	C'est un \mdg  car $cg(xy)=cg(x)cg(y)$\\
+	C'est bijectif : sa réciproque est $cg^{-1}$ car $cg^{-1}(cg(x))=x$ $\forall x\in G$ et $cg(cg^{-1}(x)) = x$ $ \forall x\in G$\\
+	Donc $cg$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
+\end{exem}
 
-\subsubsection{Définition}
-Soit $G$ un groupe. Un automorphisme de $G$ est un isomorphisme $f:G\rightarrow G$.\\
-On note $Aut(G)$ l'ensemble des automorphismes de $G$. C'est un sous-groupe du groupe symétrique $O_G$ de l'ensemble $G$.
+\begin{propr}
+	\begin{enumerate}
+		\item L'application $G\rightarrow Aut(G)$, $g\mapsto cg$ est un \mdg
+		\item L'ensemble des \auts intérieurs est un sous-groupe de $Aut(G)$
+	\end{enumerate}
+\end{propr}
 
-\subsubsection{Exemple}
-Pour tout $g\in G$, on a l'application de conjugaison par $g$ :
-$$cg : G \rightarrow G,~x\mapsto gxg^{-1}$$
-C'est un \mdg  car $cg(xy)=cg(x)cg(y)$\\
-C'est bijectif : sa réciproque est $cg^{-1}$ car $cg^{-1}(cg(x))=x$ $\forall x\in G$ et $cg(cg^{-1}(x)) = x$ $ \forall x\in G$\\
-Donc $cg$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
-
-\subsubsection{Propriété}
-\begin{enumerate}
-\item L'application $G\rightarrow Aut(G)$, $g\mapsto cg$ est un \mdg
-\item L'ensemble des \auts intérieurs est un sous-groupe de $Aut(G)$
-\end{enumerate}
-
-
-\subsubsection{Démonstration}
-En exercice\\
+\begin{demo}
+	En exercice.
+\end{demo}
 
 Soient $G$ et $H$ deux groupes et $f:G\rightarrow H$ un morphisme.
 
-\subsubsection{Définition}
-Le noyau de $f$ est :
-$$Ker(f)=\{g\in G | f(g) =e \} \subseteq G$$
-L'image de $f$ est :
-$$Im(f)=\{f(g)| g\in G\} \subseteq H$$
+\begin{defi}
+	Le noyau de $f$ est :
+	$$Ker(f)=\{g\in G | f(g) =e \} \subseteq G$$
+	L'image de $f$ est :
+	$$Im(f)=\{f(g)| g\in G\} \subseteq H$$
+\end{defi}
 
-\subsubsection{Théorème}
-\begin{enumerate}
-\item $Ker(f)\leq G$\\
-\item $Ker(f)=\{e\}$ ssi $f$ est injective
-\item $Im(f)\leq H$
-\item $Im(f)=H$ ssi $f$ est surjective
-\end{enumerate}
+\begin{thm}
+	\begin{enumerate}
+		\item $Ker(f)\leq G$
+		\item $Ker(f)=\{e\}$ ssi $f$ est injective
+		\item $Im(f)\leq H$
+		\item $Im(f)=H$ ssi $f$ est surjective
+	\end{enumerate}
+\end{thm}
 
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item On a $e\in Ker(f)$ car $f(e)=e$. Soient $x,y\in Ker(f)$, alors :
-$$f(xy^{-1})=f(x)f(y)^{-1}=e.e^{-1}$$
-Donc $xy^{-1}\in Ker(f)$
+\begin{demo}
+	\begin{enumerate}
+		\item On a $e\in Ker(f)$ car $f(e)=e$. Soient $x,y\in Ker(f)$, alors :
+		$$f(xy^{-1})=f(x)f(y)^{-1}=e.e^{-1}$$
+		Donc $xy^{-1}\in Ker(f)$
+		
+		\item Supposons $f$ injective. Alors $f(g)=e=f(e)$ implique $g=e$. Donc $Ker(f)=\{e\}$.\\
+		Réciproquement, supposons que $Ker(f)=\{e\}$. Soient $x,y\in G$ tq $f(x)=f(y)$.\\
+		Alors $f(xy^{-1})=f(x)f(y)^{-1}=e$. Donc $xy^{-1}\in Ker(f)=\{ e \}$.\\
+		Donc $xy^{-1}=e$ et $x=y$.
+		
+		\item On a $e=f(e)\in Im(f)$. Soient $f(x),f(y)\in Im(f)$. Alors :
+		$$f(x)f(y)^{-1}=f(x)f(y^{-1})=f(xy^{-1})\in Im(f)$$
+		
+		\item est clair.
+	\end{enumerate}	
+\end{demo}
 
-\item Supposons $f$ injective. Alors $f(g)=e=f(e)$ implique $g=e$. Donc $Ker(f)=\{e\}$.\\
-Réciproquement, supposons que $Ker(f)=\{e\}$. Soient $x,y\in G$ tq $f(x)=f(y)$.\\
-Alors $f(xy^{-1})=f(x)f(y)^{-1}=e$. Donc $xy^{-1}\in Ker(f)=\{ e \}$.\\
-Donc $xy^{-1}=e$ et $x=y$.
+\begin{thm}
+	\begin{enumerate}
+		\item Soit $G'$ un sous-groupe de $G$. Alors $f(G')$ est un sous-groupe de $Im(f)$
+		\item Soit $H'$ un sous-groupe de $H$. Alors $f^{-1}(H')$ est un sous-groupe de $G$ contenant $Ker(f)$
+		\item Les applications $G'\mapsto f(G')$ et $H'\mapsto f^{-1}(H')$ sont des bijections inverses l'une de l'autre entre l'ensemble des sous-groupes de $G$ contenant $Ker(f)$ et l'ensemble des sous-groupes de $Im(f)$
+	\end{enumerate}
+\end{thm} 
 
-\item On a $e=f(e)\in Im(f)$. Soient $f(x),f(y)\in Im(f)$. Alors :
-$$f(x)f(y)^{-1}=f(x)f(y^{-1})=f(xy^{-1})\in Im(f)$$
-
-\item est clair.
-\end{enumerate}
-
-\subsubsection{Théorème}
-\begin{enumerate}
-\item Soit $G'$ un sous-groupe de $G$. Alors $f(G')$ est un sous-groupe de $Im(f)$
-\item Soit $H'$ un sous-groupe de $H$. Alors $f^{-1}(H')$ est un sous-groupe de $G$ contenant $Ker(f)$
-\item Les applications $G'\mapsto f(G')$ et $H'\mapsto f^{-1}(H')$ sont des bijections inverses l'une de l'autre entre l'ensemble des sous-groupes de $G$ contenant $Ker(f)$ et l'ensemble des sous-groupes de $Im(f)$
-\end{enumerate}
-
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item On a $e=f(e)\in f(G')$. Si $x,y\in G'$ et donc $f(x),f(y)\in f(G')$, alors :
-$$f(x)f(y)^{-1}=f(xy^{-1})\in f(G')$$
-
-\item On a $f(e)=e \in H'$ donc $e\in f^{-1}(H')$.\\
-Soient $x,y\in f^{-1}(H')$, alors :
-$$f(xy^{-1})=f(x)f(y)^{-1} \in H'$$
-Donc $xy^{-1}\in H'$.
-
-\item Soit $G'\leq G$ un sous-groupe contenant $Ker(f)$, alors clairement $G'\subseteq f^{-1}(f(G'))$\\
-Réciproquement, soit $x\in f^{-1}(f(G'))$. Alors $f(x)\in f(G')$. Soit $y\in G'$ tq $f(x)=f(y)$.\\
-Alors $y^{-1}x\in Ker(f)\subseteq G'$. Donc :
-$$x = y.y^{-1}x \in G'$$
-Soit $H'$ un sous-groupe de $Im(f)$. Alors clairement $H'\supseteq f(f^{-1}(H'))$.\\
-Réciproquement, soit $f(g)\in H'$. Alors $g\in f^{-1}(H')$ et $f(g)\in f(f^{-1}(H'))$.
-\end{enumerate}
-
+\begin{demo}
+	\begin{enumerate}
+		\item On a $e=f(e)\in f(G')$. Si $x,y\in G'$ et donc $f(x),f(y)\in f(G')$, alors :
+		$$f(x)f(y)^{-1}=f(xy^{-1})\in f(G')$$
+		
+		\item On a $f(e)=e \in H'$ donc $e\in f^{-1}(H')$.\\
+		Soient $x,y\in f^{-1}(H')$, alors :
+		$$f(xy^{-1})=f(x)f(y)^{-1} \in H'$$
+		Donc $xy^{-1}\in H'$.
+		
+		\item Soit $G'\leq G$ un sous-groupe contenant $Ker(f)$, alors clairement $G'\subseteq f^{-1}(f(G'))$\\
+		Réciproquement, soit $x\in f^{-1}(f(G'))$. Alors $f(x)\in f(G')$. Soit $y\in G'$ tq $f(x)=f(y)$.\\
+		Alors $y^{-1}x\in Ker(f)\subseteq G'$. Donc :
+		$$x = y.y^{-1}x \in G'$$
+		Soit $H'$ un sous-groupe de $Im(f)$. Alors clairement $H'\supseteq f(f^{-1}(H'))$.\\
+		Réciproquement, soit $f(g)\in H'$. Alors $g\in f^{-1}(H')$ et $f(g)\in f(f^{-1}(H'))$.
+	\end{enumerate}
+\end{demo}
 
 \section{Ordre d'un élément}
 Soit $G$ un groupe.\\
 
-\subsubsection{Définition}
-L'ordre de $G$ est le cardinal $|G|$ de l'ensemble $G$.
+\begin{defi}
+	L'ordre de $G$ est le cardinal $|G|$ de l'ensemble $G$.
+\end{defi}
 
-\subsubsection{Exemples}
-\begin{enumerate}
-\item L'ordre de $(\Z,+)$ est infini
-\item L'ordre de $\U_n$ est $n$
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item L'ordre de $(\Z,+)$ est infini
+		\item L'ordre de $\U_n$ est $n$
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Notation}
-Pour $g\in G$, on pose $<g> := <\{ g \}>$.
+\begin{nota}
+	Pour $g\in G$, on pose $<g> := <\{ g \}>$.
+\end{nota}
 
-\subsubsection{Propriété}
-Soit $g\in G$. On suppose qu'il existe $n\geq 1$ tq $g^n=e$.
-\begin{enumerate}
-\item On a $<g> = \{g^i | 0\leq i \leq n-1 \}$. En particulier, l'ordre de $<g>$ est $\leq n$
-\item Si on note $d$ l'ordre de $<g>$, alors :
-$$d=min\{t\geq 1 | g^t=e \}$$
-\end{enumerate}
+\begin{propr}
+	Soit $g\in G$. On suppose qu'il existe $n\geq 1$ tq $g^n=e$.
+	\begin{enumerate}
+		\item On a $<g> = \{g^i | 0\leq i \leq n-1 \}$. En particulier, l'ordre de $<g>$ est $\leq n$
+		\item Si on note $d$ l'ordre de $<g>$, alors :
+		$$d=min\{t\geq 1 | g^t=e \}$$
+	\end{enumerate}
+\end{propr}
 
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item $"\supseteq"$ est clair. Réciproquement, on sait que tout élément de $<g>$ est de la forme $g^i$ pour un $i \in \Z$.\\
-Soit $i=qn+r$ la division euclidienne de $i$ par $n$. Alors on a :
-$$g^i=g^{qn+r}=g^r \in \{g^k | 0\leq k \leq n-1 \}$$
+\begin{demo}
+	\begin{enumerate}
+		\item $"\supseteq"$ est clair. Réciproquement, on sait que tout élément de $<g>$ est de la forme $g^i$ pour un $i \in \Z$.\\
+		Soit $i=qn+r$ la division euclidienne de $i$ par $n$. Alors on a :
+		$$g^i=g^{qn+r}=g^r \in \{g^k | 0\leq k \leq n-1 \}$$
+		
+		\item Posons $s=min\{t \geq 1 | g^t=e \}$. Alors par 1), on a :
+		$$<g> = \{g^i | 0\leq i \leq s-1 \}$$
+		Pour $0\leq i < j \leq s-1$, les puissances $g^i$ et $g^j$ sont distinctes. Sinon, on aurait $g^{j-i}=e$ mais $j-i<s$. Donc $s=|<g>| = d$.
+	\end{enumerate}	
+\end{demo}
 
-\item Posons $s=min\{t \geq 1 | g^t=e \}$. Alors par 1), on a :
-$$<g> = \{g^i | 0\leq i \leq s-1 \}$$
-Pour $0\leq i < j \leq s-1$, les puissances $g^i$ et $g^j$ sont distinctes. Sinon, on aurait $g^{j-i}=e$ mais $j-i<s$. Donc $s=|<g>| = d$.
-\end{enumerate}
+\begin{defi}
+	Soit $g\in G$. Si $<g>$ est infini, l'ordre de $g$ est infini.\\
+	Si $<g>$ est fini, l'ordre de $g$ est le plus petit entier $d\geq 1$ tq $g^d=e$	
+\end{defi}
 
-\subsubsection{Définition}
-Soit $g\in G$. Si $<g>$ est infini, l'ordre de $g$ est infini.\\
-Si $<g>$ est fini, l'ordre de $g$ est le plus petit entier $d\geq 1$ tq $g^d=e$
+\begin{remar}
+	\begin{enumerate}
+		\item Donc on a que l'ordre de $g$ est égale à l'ordre de $<g>$
+		\item Si $d<\infty$ est l'ordre de $G$, alors :
+		$$d\Z=\{n\in \Z | g^n =e \}$$
+		\item Etant donné $t\geq 1$, l'élément $g$ est d'ordre $t$ ssi $g^t=e$ et $g^{t'}\neq e$ pour tout diviseur strict $t'$ de $t$.
+	\end{enumerate}	
+\end{remar}
 
-\subsubsection{Remarque}
-\begin{enumerate}
-\item Donc on a que l'ordre de $g$ est égale à l'ordre de $<g>$
-\item Si $d<\infty$ est l'ordre de $G$, alors :
-$$d\Z=\{n\in \Z | g^n =e \}$$
-\item Etant donné $t\geq 1$, l'élément $g$ est d'ordre $t$ ssi $g^t=e$ et $g^{t'}\neq e$ pour tout diviseur strict $t'$ de $t$.
-\end{enumerate}
+\begin{exem}
+	Soient $n\geq 1$ et $k\in \Z$. Soit $c=e^{\frac{2\pi i}{n}}\in \U$.\\
+	Alors $c^k\in \U_n$ est d'ordre $\displayastyle\frac{ppcm(n,k)}{k}$	
+\end{exem}
 
-\subsubsection{Exemple}
-Soient $n\geq 1$ et $k\in \Z$. Soit $c=e^{\frac{2\pi i}{n}}\in \U$.\\
-Alors $c^k\in \U_n$ est d'ordre $\displayastyle\frac{ppcm(n,k)}{k}$
+\begin{thm}[Théorème de Lagrange]
+	Soit $G$ un groupe fini. Alors, l'ordre de tout sous-groupe $G'\leq G$ divise l'ordre de $G$.
+\end{thm}
 
-\subsubsection{Théorème de Lagrange}
-Soit $G$ un groupe fini. Alors, l'ordre de tout sous-groupe $G'\leq G$ divise l'ordre de $G$.
+\begin{cor}
+	Soit $G$ un groupe fini, alors tout élément $g\in G$ est d'ordre fini et son ordre divise l'ordre de $G$.
+\end{cor}
 
-\subsubsection{Corollaire}
-Soit $G$ un groupe fini, alors tout élément $g\in G$ est d'ordre fini et son ordre divise l'ordre de $G$.
+\begin{cons}
+	Soit $G$ un groupe fini dont l'ordre est un nombre premier.\\
+	Alors tout sous-groupe de $G$ est égal à $G$ ou à $\{e\}$.\\
+	En particulier, si $e\neq g\in G$, alors $G=<g>$. Donc $G$ est cyclique.
+\end{cons}
 
-\subsubsection{Conséquence}
-Soit $G$ un groupe fini dont l'ordre est un nombre premier.\\
-Alors tout sous-groupe de $G$ est égal à $G$ ou à $\{e\}$.\\
-En particulier, si $e\neq g\in G$, alors $G=<g>$. Donc $G$ est cyclique.
-
-\subsubsection{Démonstration}
-Soit $H$ un sous-groupe de $G$.\\
-Pour $g\in G$, on pose :
-$$gH=\{gh | h\in H \}$$
-alors $|gH|=|H|$, $\forall g\in G$, car on a les bijections réciproques l'une de l'autre.\\
-Montrons que pour tous $g,g'\in G$, on a :
-$$gH\cap g'H \neq 0 \Rightarrow gH=g'H$$
-En effet, si on a $gh=g'h'$, pour $h,h'\in H$, alors pour $h''\in H$, on a :
-$$gh''=g'g'^{-1}gh''=g'h'h^{-1}h'' \in g'H$$
-Donc $gH\subseteq g'H$ et de même $g'H \subseteq gH$. Donc $gH=g'H$.\\
-Notons que la réunion des $gH$, $g\in G$, est $G$ car $g=g.e \in gH$, pour $g\in G$. Il s'ensuit que $\{gH| g\in G \}$ est une partition de $G$.\\
-Chaque $gH$ a le même nombre d'éléments : $|H|$\\
-Donc 
-$$|G| = |H|.|\{gH | g\in G \}|$$
+\begin{demo}
+	Soit $H$ un sous-groupe de $G$.
+	
+	Pour $g\in G$, on pose :
+	$$gH=\{gh | h\in H \}$$
+	alors $|gH|=|H|$, $\forall g\in G$, car on a les bijections réciproques l'une de l'autre.
+	
+	Montrons que pour tous $g,g'\in G$, on a :
+	$$gH\cap g'H \neq 0 \Rightarrow gH=g'H$$
+	En effet, si on a $gh=g'h'$, pour $h,h'\in H$, alors pour $h''\in H$, on a :
+	$$gh''=g'g'^{-1}gh''=g'h'h^{-1}h'' \in g'H$$
+	Donc $gH\subseteq g'H$ et de même $g'H \subseteq gH$. Donc $gH=g'H$.
+	
+	Notons que la réunion des $gH$, $g\in G$, est $G$ car $g=g \cdot e \in gH$, pour $g\in G$. Il s'ensuit que $\{gH| g\in G \}$ est une partition de $G$.
+	
+	Chaque $gH$ a le même nombre d'éléments : $|H|$
+	
+	Donc $|G| = |H| \cdot |\{gH | g\in G \}|$.
+\end{demo}
 
 \section{Les treillis des sous-groupes}
 
-\subsubsection{Définition}
-Soit $X$ un ensemble. Une relation $R$ sur $X$ est un sous-ensemble $R\subseteq X\x X$.\\
-On note $xRy$ ("$x$ est en relation avec $y$") lorsque $(x,y)\in R$.\\
+\begin{defi}
+	Soit $X$ un ensemble. Une relation $R$ sur $X$ est un sous-ensemble $R\subseteq X\x X$.
+	
+	On note $xRy$ ("$x$ est en relation avec $y$") lorsque $(x,y)\in R$.	
+\end{defi}
 
-\subsubsection{Définition}
-Une relation $R$ est une relation d'ordre ssi :
-\begin{itemize}
-\item (réflexivité) $\forall x \in X$, $xRx$
-\item (antisymétrique) $\forall x,y\in X$ $(xRy~et~yRx)\Rightarrow x=y$
-\item (transitive) $\forall x,y,z\in X$ $(xRy~et~yRz) \Rightarrow xRz$
-\end{itemize}
+\begin{defi} 
+	Une relation $R$ est une relation d'ordre ssi :
+	\begin{itemize}
+	\item (réflexivité) $\forall x \in X$, $xRx$
+	\item (antisymétrique) $\forall x,y\in X$ $(xRy~et~yRx)\Rightarrow x=y$
+	\item (transitive) $\forall x,y,z\in X$ $(xRy~et~yRz) \Rightarrow xRz$
+	\end{itemize}
+\end{defi}
 
-\subsubsection{Définition}
-Un ensemble $(X,R)$ muni d'une relation d'ordre s'appelle un ensemble ordonné.
+\begin{defi}
+	Un ensemble $(X,R)$ muni d'une relation d'ordre s'appelle un ensemble ordonné.
+\end{defi}
 
-\subsubsection{Exemple}
-\begin{enumerate}
-\item $(\R,\leq )$ est un ensemble ordonné.
-\item Soit $n\geq 1$, $X$ l'ensemble des diviseurs positifs de $n$, avec $R$ la relation $xRy \Leftrightarrow x~divise~y$, est un ensemble ordonné.\\
-\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$ avec $ARB\Rightarrow A\subseteq B$
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $(\R,\leq )$ est un ensemble ordonné.
+		\item Soit $n\geq 1$, $X$ l'ensemble des diviseurs positifs de $n$, avec $R$ la relation $xRy \Leftrightarrow x~divise~y$, est un ensemble ordonné.\\
+		\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$ avec $ARB\Rightarrow A\subseteq B$
+	\end{enumerate}	
+\end{exem}
 
-\subsubsection{Définition}
-Soit $(X,R)$ un ensemble ordonné et soit $A\subseteq X$ un ensemble. Un minorant (resp majorant) de A est un $x\in X$ tq $xRa$ $\forall a \in A$ (resp $aRx,~\forall a\in A$), le plus petit (resp le plus grand) élément de A est un minorant (resp un majorant) qui est dans A.\\
+\begin{defi}
+	Soit $(X,R)$ un ensemble ordonné et soit $A\subseteq X$ un ensemble. Un minorant (resp majorant) de A est un $x\in X$ tq $xRa$ $\forall a \in A$ (resp $aRx,~\forall a\in A$), le plus petit (resp le plus grand) élément de A est un minorant (resp un majorant) qui est dans A.
+\end{defi}
 
-Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.\\
+Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 
-\subsubsection{Définition}
-Un treillis est un ensemble ordonné $(X, \leq )$ tq $\forall (x,y)\in X\x X$ il existe dans $X$ un plus petit majorant $Sup(x,y)$ de $\{x,y\}$ et un plus grand minorant $Inf(x,y)$ de $\{x,y\}$.
+\begin{defi}
+	Un treillis est un ensemble ordonné $(X, \leq )$ tq $\forall (x,y)\in X\x X$ il existe dans $X$ un plus petit majorant $Sup(x,y)$ de $\{x,y\}$ et un plus grand minorant $Inf(x,y)$ de $\{x,y\}$.
+\end{defi}
 
-\subsubsection{Exemples}
-\begin{enumerate}
-\item $(\R , \leq)$ est un treillis (évident)
-\item Soit $n\geq 1$ un entier, $X=\{d\in \N | d~divise~n \}$ muni de $x\leq y \Leftrightarrow x|y$ est un treillis pour $sup(k,l)=ppcm(k,l)$ (qui est encore un diviseur de $n$) et $inf(k,l)=pgcd(k,l)$
-\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$. $(P(x),\subseteq)$ est un treillis avec $A,B\in P(x)$ $sup(A,B)=A\cup B$ et $inf(A,B)=A\cap B$
-\item $V$ un $K$-\ev, $K$ un corps ($\R,\C,...$), $Gr(V)$ l'ensemble des sous $K$-\ev de $V$ est un treillis pour $\subseteq$ car :\\
-$\forall U,W\in Gr(V)$ $sup(U,W)=\{u+w\in V |u\in U,w\in W \}$ est le plus petit \sev de $V$ qui contient $U$ et $W$, et $inf(U,W)=U\cap W$ est le plus grand \sev de $V$ inclus dans $U$ et dans $V$.\\
-\item $G$ un groupe, $L(G)$ l'ensemble des sous-groupes de $G$ est un treillis pour $\subseteq$ car :\\
-$H,H'\in L(G)$ $sup(H,H')=<H,H'>$ (groupe engendré par $H$ et $H'$), et $inf(H,H')=H\cap H'$
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $(\R , \leq)$ est un treillis (évident)
+		\item Soit $n\geq 1$ un entier, $X=\{d\in \N | d~divise~n \}$ muni de $x\leq y \Leftrightarrow x|y$ est un treillis pour $sup(k,l)=ppcm(k,l)$ (qui est encore un diviseur de $n$) et $inf(k,l)=pgcd(k,l)$
+		\item $X$ un ensemble, $P(x)$ l'ensemble des parties de $X$. $(P(x),\subseteq)$ est un treillis avec $A,B\in P(x)$ $sup(A,B)=A\cup B$ et $inf(A,B)=A\cap B$
+		\item $V$ un $K$-\ev, $K$ un corps ($\R,\C,...$), $Gr(V)$ l'ensemble des sous $K$-\ev de $V$ est un treillis pour $\subseteq$ car :\\
+		$\forall U,W\in Gr(V)$ $sup(U,W)=\{u+w\in V |u\in U,w\in W \}$ est le plus petit \sev de $V$ qui contient $U$ et $W$, et $inf(U,W)=U\cap W$ est le plus grand \sev de $V$ inclus dans $U$ et dans $V$.\\
+		\item $G$ un groupe, $L(G)$ l'ensemble des sous-groupes de $G$ est un treillis pour $\subseteq$ car :\\
+		$H,H'\in L(G)$ $sup(H,H')=<H,H'>$ (groupe engendré par $H$ et $H'$), et $inf(H,H')=H\cap H'$
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Définition}
-Soit $(X,\leq )$ un treillis. Son diagramme de Hasse est le graphe orienté où :
-\begin{itemize}
-\item les sommets sont les éléments $x\in X$
-\item on met une flèche $x\rightarrow y$ si $y$ est minimal parmi les éléments $\geq x$ distincts.
-\end{itemize}
+\begin{defi}
+	Soit $(X,\leq )$ un treillis. Son diagramme de Hasse est le graphe orienté où :
+	\begin{itemize}
+		\item les sommets sont les éléments $x\in X$
+		\item on met une flèche $x\rightarrow y$ si $y$ est minimal parmi les éléments $\geq x$ distincts.
+	\end{itemize}
+\end{defi}
 
-\subsubsection{Exemple}
-\begin{enumerate}
-\item $(P(\{1,2\},\subseteq))$ :\\
-\begin{center}
-	\begin{tikzpicture}
-	\node (12) at (0,2) {$\{1,2\}$};
-	\node (1) at (-1,1) {$\{1\}$};
-	\node (2) at (1,1) {$\{2\}$};
-	\node (0) at (0,0) {$\emptyset$};
-	\draw[->,>=latex] (0) to (1);
-	\draw[->,>=latex] (0) to (2);	
-	\draw[->,>=latex] (1) to (12);
-	\draw[->,>=latex] (2) to (12);
-	\end{tikzpicture}
+\begin{exem}
+	\begin{enumerate}
+		\item $(P(\{1,2\},\subseteq))$ :\\
+		\begin{center}
+			\begin{tikzpicture}
+			\node (12) at (0,2) {$\{1,2\}$};
+			\node (1) at (-1,1) {$\{1\}$};
+			\node (2) at (1,1) {$\{2\}$};
+			\node (0) at (0,0) {$\emptyset$};
+			\draw[->,>=latex] (0) to (1);
+			\draw[->,>=latex] (0) to (2);	
+			\draw[->,>=latex] (1) to (12);
+			\draw[->,>=latex] (2) to (12);
+			\end{tikzpicture}
+		\end{center}
+		
+		\item $(X=\{\text{ensemble des diviseurs de 20}\}, |)$, on a $X=\{1,2,4,5,10,20\}$ :\\
+		\begin{center}
+			\begin{tikzpicture}
+			\node (1) at (0,0) {$1$};
+			\node (2) at (1,1) {$2$};
+			\node (4) at (2,2) {$4$};
+			\node (5) at (-1,1) {$5$};
+			\node (10) at (0,2) {$10$};
+			\node (20) at (1,3) {$20$};
+			\draw[->,>=latex] (1) to (2);
+			\draw[->,>=latex] (1) to (5);	
+			\draw[->,>=latex] (2) to (4);
+			\draw[->,>=latex] (2) to (10);
+			\draw[->,>=latex] (5) to (10);
+			\draw[->,>=latex] (4) to (20);
+			\draw[->,>=latex] (10) to (20);
+			\end{tikzpicture}
+		\end{center}
+	\end{enumerate}
+\end{exem}
 
-\end{center}
+\begin{lemme}
+	Soit $n\geq 1$ un entier, $\zeta = e^{\frac{2i\pi}{n}}\in \U_n$.\\
+	Les sous-groupes de $\U_n$ sont exactement les $\zeta^{d\Z}$ avec $d|n$. De plus $\zeta^{d\Z} \subseteq \zeta^{d'\Z} \Leftrightarrow d'|d$
+\end{lemme}
 
-\item $(X=\{\text{ensemble des diviseurs de 20}\}, |)$, on a $X=\{1,2,4,5,10,20\}$ :\\
-\begin{center}
-	\begin{tikzpicture}
-	\node (1) at (0,0) {$1$};
-	\node (2) at (1,1) {$2$};
-	\node (4) at (2,2) {$4$};
-	\node (5) at (-1,1) {$5$};
-	\node (10) at (0,2) {$10$};
-	\node (20) at (1,3) {$20$};
-	\draw[->,>=latex] (1) to (2);
-	\draw[->,>=latex] (1) to (5);	
-	\draw[->,>=latex] (2) to (4);
-	\draw[->,>=latex] (2) to (10);
-	\draw[->,>=latex] (5) to (10);
-	\draw[->,>=latex] (4) to (20);
-	\draw[->,>=latex] (10) to (20);
-	\end{tikzpicture}
-\end{center}
-\end{enumerate}
+\begin{demo}
+	Soit $e : \begin{array}{lll}
+	\Z &\rightarrow &\U_n\\
+	k&\mapsto& \zeta^k
+	\end{array}$.\\
+	C'est un morphisme de groupes. Donc $\forall H$ sous-groupe de $\U_n$, $e^{-1}(H)=\{k\in \Z |e(k)\in H \}$ est un sous-groupe de $\Z$.\\
+	De plus $e^{-1}(H)\supseteq e^{-1}(1)$ (car $1\in H$).\\
+	On connaît les sous-groupes de $\Z$ : les $d\Z$.\\
+	$\exists d\in \N~tq~ e^{-1}(H)=d\Z$ donc $e^{-1}(1)=\{k\in \Z | \zeta^k= e^{\frac{2i\pi k}{n}} =1 \}=n\Z$\\
+	Donc $n\in n\Z \subseteq d\Z \Rightarrow d|n$. Donc $H=\zeta^{d\Z}$ avec $d|n$.
+	$$\zeta^{d\Z}\subseteq \zeta^{d'\Z}\Leftrightarrow d\Z \subseteq d'\Z \Leftrightarrow d'|d$$
+\end{demo}
 
-\subsubsection{Lemme}
-Soit $n\geq 1$ un entier, $\zeta = e^{\frac{2i\pi}{n}}\in \U_n$.\\
-Les sous-groupes de $\U_n$ sont exactement les $\zeta^{d\Z}$ avec $d|n$. De plus $\zeta^{d\Z} \subseteq \zeta^{d'\Z} \Leftrightarrow d'|d$
-
-\subsubsection{Démonstration}
-Soit $e : \begin{array}{lll}
-\Z &\rightarrow &\U_n\\
-k&\mapsto& \zeta^k
-\end{array}$.\\
-C'est un morphisme de groupes. Donc $\forall H$ sous-groupe de $\U_n$, $e^{-1}(H)=\{k\in \Z |e(k)\in H \}$ est un sous-groupe de $\Z$.\\
-De plus $e^{-1}(H)\supseteq e^{-1}(1)$ (car $1\in H$).\\
-On connaît les sous-groupes de $\Z$ : les $d\Z$.\\
-$\exists d\in \N~tq~ e^{-1}(H)=d\Z$ donc $e^{-1}(1)=\{k\in \Z | \zeta^k= e^{\frac{2i\pi k}{n}} =1 \}=n\Z$\\
-Donc $n\in n\Z \subseteq d\Z \Rightarrow d|n$. Donc $H=\zeta^{d\Z}$ avec $d|n$.
-$$\zeta^{d\Z}\subseteq \zeta^{d'\Z}\Leftrightarrow d\Z \subseteq d'\Z \Leftrightarrow d'|d$$
-
-\subsubsection{Exemple}
-\begin{enumerate}
-\item Treillis de $\U_{20}$ :\\
-D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $<\zeta^{20}>,<\zeta^{10}>,<\zeta^{5}>,<\zeta^{4}>,<\zeta^{2}>,<\zeta^{1}>$ :\\
-prendre une photo du diagramme de Hasse
-
-\item Treillis des sous-groupes de $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$.\\
-Soit $H$ un sous-groupe de $D_3$, $|H|\in \{1,2,3,6 \}$, donc on a :
-\begin{itemize}
-\item $|H| = 1\Rightarrow H=\{Id\}$
-\item $|H|=2\Rightarrow H=<\sigma_A>, <\sigma_B>, <\sigma_C>$
-\item $|H|=3 \Rightarrow H= <\rho>, <\rho^2>$
-\end{itemize}
-image du diagramme de Hasse
-
-\item Treillis des sous-groupes de $D_4$, on pose :
-\begin{itemize}
-\item $\tau_i$ la réflexion par rapport à $\Delta_i$
-\item $\rho$ la rotation d'angle $\frac{2\pi}{4}$
-\end{itemize}
-On a $D_4=\{Id, \rho,\rho^2,\rho^3,\tau_1,\tau_2, \tau_3, \tau_4 \}$.\\
-Soit $H$ un sous-groupe de $D_4$, $|H|\in \{1,2,4,8 \}$, donc on a :
-\begin{itemize}
-\item $|H| = 1\Rightarrow H=\{Id\}$
-\item $|H|=2\Rightarrow H=<\rho^2>,<\tau_1>,<\tau_2>,<\tau_3>,<\tau_4>$
-\item $|H|=4 \Rightarrow H= <\rho>, <\tau_1,\tau_3>,<\tau_2,\tau_4>$
-\end{itemize}
-image du diagramme de Hasse
-
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item Treillis de $\U_{20}$ :\\
+		D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $<\zeta^{20}>$, $<\zeta^{10}>$, $<\zeta^{5}>$, $<\zeta^{4}>$, $<\zeta^{2}>$ et $<\zeta^{1}>$ :
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\node (20) at (0,0) {$<\zeta^{20}>$};
+			\node (10) at (1,1) {$<\zeta^{10}>$};
+			\node (5) at (2,2) {$<\zeta^{5}>$};
+			\node (4) at (-1,1) {$<\zeta^{4}>$};
+			\node (2) at (0,2) {$<\zeta^{2}>$};
+			\node (1) at (1,3) {$<\zeta^{1}>$};
+			\draw[->,>=latex] (20) to (4);
+			\draw[->,>=latex] (20) to (10);	
+			\draw[->,>=latex] (4) to (2);
+			\draw[->,>=latex] (10) to (2);
+			\draw[->,>=latex] (10) to (5);
+			\draw[->,>=latex] (2) to (1);
+			\draw[->,>=latex] (5) to (1);
+			\end{tikzpicture}
+		\end{center}
+		
+		\item Treillis des sous-groupes de $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$.\\
+		Soit $H$ un sous-groupe de $D_3$, $|H|\in \{1,2,3,6 \}$, donc on a :
+		\begin{itemize}
+			\item $|H| = 1\Rightarrow H=\{Id\}$
+			\item $|H|=2\Rightarrow H=<\sigma_A>, <\sigma_B>, <\sigma_C>$
+			\item $|H|=3 \Rightarrow H= <\rho>, <\rho^2>$
+		\end{itemize}
+		\begin{center}
+			\begin{tikzpicture}
+				\node (ID) at (0,0) {$\{Id\}$};
+				\node (1) at (-2.25,1) {$<\tau_1>$};
+				\node (2) at (-0.75,1) {$<\tau_2>$};
+				\node (3) at (0.75,1) {$<\tau_3>$};
+				\node (R) at (2.25,2) {$<\rho>$};
+				\node (D3) at (0,3) {$<D_3>$};
+				
+				\draw[->,>=latex] (ID) to (1);
+				\draw[->,>=latex] (ID) to (2);
+				\draw[->,>=latex] (ID) to (3);
+				\draw[->,>=latex] (ID) to[bend right] (R);
+				\draw[->,>=latex] (1) to (D3);
+				\draw[->,>=latex] (2) to (D3);
+				\draw[->,>=latex] (3) to (D3);
+				\draw[->,>=latex] (R) to (D3);
+			\end{tikzpicture}
+		\end{center}
+		
+		\item Treillis des sous-groupes de $D_4$, on pose :
+		\begin{itemize}
+			\item $\tau_i$ la réflexion par rapport à $\Delta_i$
+			\item $\rho$ la rotation d'angle $\frac{2\pi}{4}$
+		\end{itemize}
+		On a $D_4=\{Id, \rho,\rho^2,\rho^3,\tau_1,\tau_2, \tau_3, \tau_4 \}$.\\
+		Soit $H$ un sous-groupe de $D_4$, $|H|\in \{1,2,4,8 \}$, donc on a :
+		\begin{itemize}
+			\item $|H| = 1 \Rightarrow H = \{Id\}$
+			\item $|H| = 2 \Rightarrow H = <\rho^2>,<\tau_1>,<\tau_2>,<\tau_3>,<\tau_4>$
+			\item $|H| = 4 \Rightarrow H = <\rho>, <\tau_1,\tau_3>,<\tau_2,\tau_4>$
+		\end{itemize}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7]
+			\node (E) at (8,-3) {$\{e\}$};
+			\node (1) at (4.5,-1) {$<\tau_1>$};
+			\node (3) at (6.25,-1) {$<\tau_3>$};
+			\node (R2) at (8,-1) {$<\rho^2>$};
+			\node (2) at (9.75,-1) {$<\tau_1>$};
+			\node (4) at (11.5,-1) {$<\tau_4>$};
+			\node (R) at (8,1) {$<\rho>$};
+			\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
+			\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+			\node (D4) at (8,3) {$D_4$};
+			
+			\draw[->,>=latex] (E) to (1);
+			\draw[->,>=latex] (E) to (3);
+			\draw[->,>=latex] (E) to (R2);
+			\draw[->,>=latex] (E) to (2);
+			\draw[->,>=latex] (E) to (4);
+			\draw[->,>=latex] (1) to (13);
+			\draw[->,>=latex] (3) to (13);
+			\draw[->,>=latex] (R2) to (13);
+			\draw[->,>=latex] (R2) to (R);
+			\draw[->,>=latex] (R2) to (24);
+			\draw[->,>=latex] (2) to (24);
+			\draw[->,>=latex] (4) to (24);
+			\draw[->,>=latex] (13) to (D4);
+			\draw[->,>=latex] (R) to (D4);
+			\draw[->,>=latex] (24) to (D4);
+			\end{tikzpicture}
+		\end{center}
+	\end{enumerate}	
+\end{exem}
 
 \chapter{Actions de groupes}
 
