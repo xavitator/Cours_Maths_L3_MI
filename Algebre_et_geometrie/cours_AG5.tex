@@ -22,6 +22,7 @@
 \newtheorem{thm}{Théoreme}[section] % reset theorem numbering for each chapter
 \newtheorem{defi}[thm]{Définition}
 \newtheorem{propr}[thm]{Propriété}
+\newtheorem{propr-defi}[thm]{Propriété-Définition}
 \newtheorem{propo}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollaire}
 \newtheorem{cons}[thm]{Conséquence}
@@ -997,91 +998,100 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 	Un $G$-ensemble est un ensemble muni d'une action du groupe $G$.	
 \end{defi}
 
-\exem
-\begin{enumerate}
-\item Le groupe diédral $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ agit sur l'ensemble $\{1,2,3\}$ des sommets du triangle équilatéral.
-\item Le groupe symétrique $\sigma_n$ agit sur l'ensemble $X=\{1,\cdots,n\}$ par $\sigma.x := \sigma(x), ~\forall \sigma \in \sigma_n,~\forall x\in X$.\\
 
-Soit $G$ un groupe.
-\item Soit $H\subseteq G$ un sous-groupe. Alors $H$ agit sur $G$ par :
-$$H\x G \rightarrow G,~ (h,g)\mapsto hg$$
-On appelle cette action, l'action de $H$ sur $G$, par transition à gauche.
-\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e.x = e.x.e^{-1} =x$, $\forall x\in G$ et $(gh).x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
-On l'appelle l'action de conjugaison de $G$ sur lui-même.
-\item Soit $X$ l'ensemble des sous-groupes de $G$. L'application :
-$$G\x X \rightarrow X,~(g,K)\mapsto gKg^{-1}$$
-est une action de groupe. On l'appelle l'action de conjugaison de $G$ sur l'ensemble de ses sous-groupes.
-\item Soit $n\geq 1$. L'application :
-$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto g(v)$$
-est une action de groupe.
-\item Soit $n\geq 1$. L'application :
-$$\begin{array}{lll}
-GL_n(\R)\x M_n(\R)&\rightarrow & M_n(\R)\\
-(P,M)&\mapsto & PMP^{-1}
-\end{array}$$
+\begin{exem}
+	\begin{enumerate}
+		\item Le groupe diédral $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ agit sur l'ensemble $\{1,2,3\}$ des sommets du triangle équilatéral.
+		\item Le groupe symétrique $\sigma_n$ agit sur l'ensemble $X=\{1,\cdots,n\}$ par $\sigma.x := \sigma(x), ~\forall \sigma \in \sigma_n,~\forall x\in X$.\\
+		
+		Soit $G$ un groupe.
+		\item Soit $H\subseteq G$ un sous-groupe. Alors $H$ agit sur $G$ par :
+		$$H\x G \rightarrow G,~ (h,g)\mapsto hg$$
+		On appelle cette action, l'action de $H$ sur $G$, par transition à gauche.
+		\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e.x = e.x.e^{-1} =x$, $\forall x\in G$ et $(gh).x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
+		On l'appelle l'action de conjugaison de $G$ sur lui-même.
+		\item Soit $X$ l'ensemble des sous-groupes de $G$. L'application :
+		$$G\x X \rightarrow X,~(g,K)\mapsto gKg^{-1}$$
+		est une action de groupe. On l'appelle l'action de conjugaison de $G$ sur l'ensemble de ses sous-groupes.
+		\item Soit $n\geq 1$. L'application :
+		$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto g(v)$$
+		est une action de groupe.
+		\item Soit $n\geq 1$. L'application :
+		$$\begin{array}{lll}
+		GL_n(\R)\x M_n(\R)&\rightarrow & M_n(\R)\\
+		(P,M)&\mapsto & PMP^{-1}
+		\end{array}$$
+		
+		est une action de groupe de $GL_n(\R)$ sur $M_n(\R)$.
+	\end{enumerate}
+\end{exem}
 
-est une action de groupe de $GL_n(\R)$ sur $M_n(\R)$.
-\end{enumerate}
+\begin{propr}
+	Soient $G$ un groupe et $X$ un ensemble.
+	\begin{enumerate}
+		\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X~g\mapsto \varphi_g$ est un morphisme de groupes.
+		\item Soit $f:G\rightarrow \sigma_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
+		$$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
+		Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\sigma_X$
+	\end{enumerate}
+\end{propr}
 
-\propr
-Soient $G$ un groupe et $X$ un ensemble.
-\begin{enumerate}
-\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X~g\mapsto \varphi_g$ est un morphisme de groupes.
-\item Soit $f:G\rightarrow \sigma_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
-$$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
-Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\sigma_X$
-\end{enumerate}
+\begin{demo}
+	\begin{enumerate}
+		\item Pour tout $g\in G$, l'application $\varphi_g$ est bijective de réciproque $\varphi_{g^{-1}}$ car :
+		$$\varphi_g\varphi_{g^{-1}}(x)=\varphi_g(g^{-1}x)=g(g^{-1}x)=(gg^{-1})x=ex=x$$
+		et de la même façon :
+		$$\varphi_{g^{-1}}\varphi_g(x)=ex=x$$
+		On a pour $g,h\in G$ :
+		$$\varphi_{gh}(x)=(gh)(x)=g(hx)=\varphi_g\circ \varphi_h(x),~~\forall x\in X$$
+		Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \sigma_X$
+		\item On définit l'application $G\x X \rightarrow X$ par $g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
+		$$ex=(f(e))x=Id_X(x)=x,~~\forall x\in X$$
+		et 
+		$$g(hx)=f(g(hx))=f(g)(f(h)(x))=(f(g)\circ f(h) )(x)=f(gh)(x)=gh.x$$
+		pour tous $g,h\in G$ et tout $x\in X$
+	\end{enumerate}
+\end{demo}
 
-\dem
-\begin{enumerate}
-\item Pour tout $g\in G$, l'application $\varphi_g$ est bijective de réciproque $\varphi_{g^{-1}}$ car :
-$$\varphi_g\varphi_{g^{-1}}(x)=\varphi_g(g^{-1}x)=g(g^{-1}x)=(gg^{-1})x=ex=x$$
-et de la même façon :
-$$\varphi_{g^{-1}}\varphi_g(x)=ex=x$$
-On a pour $g,h\in G$ :
-$$\varphi_{gh}(x)=(gh)(x)=g(hx)=\varphi_g\circ \varphi_h(x),~~\forall x\in X$$
-Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \sigma_X$
-\item On définit l'application $G\x X \rightarrow X$ par $g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
-$$ex=(f(e))x=Id_X(x)=x,~~\forall x\in X$$
-et 
-$$g(hx)=f(g(hx))=f(g)(f(h)(x))=(f(g)\circ f(h) )(x)=f(gh)(x)=gh.x$$
-pour tous $g,h\in G$ et tout $x\in X$
-\end{enumerate}
 
-\defi
-Soient $G$ un groupe et $X$ un ensemble. Une action à droite de $G$ sur $X$ est une application :
-$$X\x G\rightarrow X,~(x,g)\mapsto x.g$$
-telle que :
-\begin{enumerate}
-\item $x.e=x,~\forall x\in X$
-\item $x.(gh)=(xg).h,~\forall g,h\in G,~\forall x\in X$
-\end{enumerate}
+\begin{defi}
+	Soient $G$ un groupe et $X$ un ensemble. Une action à droite de $G$ sur $X$ est une application :
+	$$X\x G\rightarrow X,~(x,g)\mapsto x.g$$
+	telle que :
+	\begin{enumerate}
+		\item $x.e=x,~\forall x\in X$
+		\item $x.(gh)=(xg).h,~\forall g,h\in G,~\forall x\in X$
+	\end{enumerate}
+\end{defi}
 
-\exem
-Soit $n\geq 1$, alors l'application :
-$$\begin{array}{lll}
-M_n(\R)\x GL_n(\R)&\rightarrow & M_n(\R)\\
-(P,M)&\mapsto & MP
-\end{array}$$
-est une action à droite de $GL_n(\R)$ sur $M_n(\R)$.
+\begin{exem}
+	Soit $n\geq 1$, alors l'application :
+	$$\begin{array}{lll}
+	M_n(\R)\x GL_n(\R)&\rightarrow & M_n(\R)\\
+	(P,M)&\mapsto & MP
+	\end{array}$$
+	est une action à droite de $GL_n(\R)$ sur $M_n(\R)$.
+\end{exem}
 
-\remar
-Soit $X$ un ensemble muni d'une action à droite d'un groupe $G$. On définit $g.x := x.g^{-1}$ $\forall g\in G$.\\
-C'est une action à gauche de $G$ sur $X$ car :
-$$ex=xe^{-1}=xe=x$$
-et 
-$$(gh)x=x.(gh)^{-1}=x(h^{-1}g^{-1})=(xh^{-1})g^{-1}=(hx)g^{-1}=g(hx)$$
-$\forall x\in X, ~\forall g,h\in G$.\\
-On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les actions à gauche de $G$ sur $X$.
+\begin{remar}
+	Soit $X$ un ensemble muni d'une action à droite d'un groupe $G$. On définit $g.x := x.g^{-1}$ $\forall g\in G$.\\
+	C'est une action à gauche de $G$ sur $X$ car :
+	$$ex=xe^{-1}=xe=x$$
+	et 
+	$$(gh)x=x.(gh)^{-1}=x(h^{-1}g^{-1})=(xh^{-1})g^{-1}=(hx)g^{-1}=g(hx)$$
+	$\forall x\in X, ~\forall g,h\in G$.\\
+	On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les actions à gauche de $G$ sur $X$.
+\end{remar}
 
 \section{Orbites et stabilisateurs}
 Soient $G$ un groupe et $X$ un $G$-ensemble.
 
-\defi 
-Pour $x\in X$, l'orbite de $x$ est :
-$$G.x=\{gx | g\in G \}$$
-Le stabilisateur de $x$ est :
-$$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
+\begin{defi}
+	Pour $x\in X$, l'orbite de $x$ est :
+	$$G.x=\{gx | g\in G \}$$
+	Le stabilisateur de $x$ est :
+	$$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
+\end{defi}
 
 \begin{figure} [h]
 	\begin{center}
@@ -1094,186 +1104,217 @@ $$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
 	\end{center}	
 \end{figure}
 
-\remar
-\begin{enumerate}
-\item Soit $x\in X$. L'orbite $G.x$ contient $x=e.x$. Le stabilisateur $G_x$ est un sous-groupe car $e.x=x$, et $g(hx)=gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
-\item On définit de façon analogue les orbites et stabilisateurs d'une action à droite.
-\end{enumerate}
+\begin{remar}
+	\begin{enumerate}
+		\item Soit $x\in X$. L'orbite $G.x$ contient $x=e.x$. Le stabilisateur $G_x$ est un sous-groupe car $e.x=x$, et $g(hx)=gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
+		\item On définit de façon analogue les orbites et stabilisateurs d'une action à droite.
+	\end{enumerate}
+\end{remar}
 
-\exem 
-Soit $H\subseteq G$ un sous-groupe.
-\begin{enumerate}
-\item Pour l'action $H\x G \rightarrow G,~(h,g)\mapsto hg$, l'orbite d'un $g\in G$ est $Hg$, la classe à gauche modulo $H$ de $g$.\\
-Le stabilisateur de $g\in G$ est formé des $h\in H$ tq $hg=g \Leftrightarrow h=e$. Donc $Stab_H(g)=\{e\}$.\\
-\item Pour l'action à droite :
-$$G\x H \rightarrow G,~(g,h)\mapsto gh$$
-l'orbite de $g\in G$ est la classe à droite $gH$. En outre, $Stab_H(g)=\{e\}$
-\end{enumerate}
+\begin{exem}
+	Soit $H\subseteq G$ un sous-groupe.
+	\begin{enumerate}
+		\item Pour l'action $H\x G \rightarrow G,~(h,g)\mapsto hg$, l'orbite d'un $g\in G$ est $Hg$, la classe à gauche modulo $H$ de $g$.\\
+		Le stabilisateur de $g\in G$ est formé des $h\in H$ tq $hg=g \Leftrightarrow h=e$. Donc $Stab_H(g)=\{e\}$.\\
+		\item Pour l'action à droite :
+		$$G\x H \rightarrow G,~(g,h)\mapsto gh$$
+		l'orbite de $g\in G$ est la classe à droite $gH$. En outre, $Stab_H(g)=\{e\}$
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Propriété - Définition}
-Soit $\sim$ la relation sur $X$ tq :
-$$x\sim y \Leftrightarrow y\in G.x$$
-Alors $\sim$ est une relation d'équivalence sur $X$ appelée la relation d'équivalence associée à l'action de $G$ sur $X$.
+\begin{propr-defi}
+	Soit $\sim$ la relation sur $X$ tq :
+	$$x\sim y \Leftrightarrow y\in G \cdot x$$
+	Alors $\sim$ est une relation d'équivalence sur $X$ appelée la relation d'équivalence associée à l'action de $G$ sur $X$.
+\end{propr-defi}
 
-\dem
-On vérifie que $\sim$ est :
-\begin{itemize}
-\item réflexive : $x\sim x$ car $x=ex$
-\item symétrique : $x\sim y$ $\sim$ $y\sim x$ car $y=gx\Leftrightarrow g^{-1}y=x$
-\item transitive : Si $x\sim y$ et $y\sim z$, alors $x\sim z$ car si $y=gx$ et $z=hy$, alors $z=hy=h(gx)=(hg)x$
-\end{itemize}
+\begin{demo}
+	On vérifie que $\sim$ est :
+	\begin{itemize}
+		\item réflexive : $x\sim x$ car $x=ex$
+		\item symétrique : $x\sim y$ $\sim$ $y\sim x$ car $y=gx\Leftrightarrow g^{-1}y=x$
+		\item transitive : Si $x\sim y$ et $y\sim z$, alors $x\sim z$ car si $y=gx$ et $z=hy$, alors $z=hy=h(gx)=(hg)x$
+	\end{itemize}
+\end{demo}
 
-\remar
-Pour tout $x\in X$, la classe d'équivalence de $x$ est égale à l'orbite $G.x$.
+\begin{remar}
+	Pour tout $x\in X$, la classe d'équivalence de $x$ est égale à l'orbite $G \cdot x$.	
+\end{remar}
 
-\defi 
-Le quotient de $X$ par $G$ est l'ensemble $G\backslash X := X/\sim$ formé des orbites de $G$ dans $X$.
+\begin{defi}
+	Le quotient de $X$ par $G$ est l'ensemble $G\backslash X := X/\sim$ formé des orbites de $G$ dans $X$.
+\end{defi}
 
-\remar
-On définit de façon analogue la relation d'équivalence et l'ensemble quotient d'une action à droite de $G$ sur $X$.\\
-L'ensemble quotient est alors noté $X/G$.
+\begin{remar}
+	On définit de façon analogue la relation d'équivalence et l'ensemble quotient d'une action à droite de $G$ sur $X$.\\
+	L'ensemble quotient est alors noté $X/G$.
+\end{remar}
 
-\propr
-L'ensemble des orbites est une partition de $X$.
+\begin{propr}
+	L'ensemble des orbites est une partition de $X$.
+\end{propr}
 
-\dem
-En effet, ce sont des classes d'équivalence pour une relation d'équivalence.
+\begin{demo}
+	En effet, ce sont des classes d'équivalence pour une relation d'équivalence.
+\end{demo}
 
-\defi 
-Soit $X$ un $G$-ensemble non-vide.\\
-L'action de $G$ sur $X$ est :
-\begin{itemize}
-\item transitive s'il n'y a qu'une seule orbite
-\item fidèle si $\forall g\in G$, on a :
-$$gx=x,~\forall x\in X \Rightarrow g=e$$
-\item libre si tous les stabilisateurs sont triviaux ($Stab_G(x)=\{e\},~\forall x\in X$).
-\end{itemize}
+\begin{defi}
+	Soit $X$ un $G$-ensemble non-vide.
+	
+	L'action de $G$ sur $X$ est :
+	\begin{itemize}
+		\item transitive s'il n'y a qu'une seule orbite
+		\item fidèle si $\forall g\in G$, on a :
+		$$gx=x,~\forall x\in X \Rightarrow g=e$$
+		\item libre si tous les stabilisateurs sont triviaux ($Stab_G(x)=\{e\},~\forall x\in X$).
+	\end{itemize}
+\end{defi}
 
-\remar
-\begin{enumerate}
-\item On définit de façon analogue les notions correspondantes pour les actions à droite.
-\item L'action de $G$ sur $X$ est transitive ssi $G\backslash X$ est un singleton.
-\item L'action de $G$ sur $X$ est fidèle ssi le morphisme associé $G\rightarrow \sigma_X$ a pour noyau $\{e\}$, c'est à dire ssi $G\rightarrow \sigma_X$ est injectif.
-\end{enumerate}
+\begin{remar}
+	\begin{enumerate}
+		\item On définit de façon analogue les notions correspondantes pour les actions à droite.
+		\item L'action de $G$ sur $X$ est transitive ssi $G\backslash X$ est un singleton.
+		\item L'action de $G$ sur $X$ est fidèle ssi le morphisme associé $G\rightarrow \sigma_X$ a pour noyau $\{e\}$, c'est à dire ssi $G\rightarrow \sigma_X$ est injectif.
+	\end{enumerate}	
+\end{remar}
 
-\exem
-\begin{enumerate}
-\item Pour tout sous-groupe $H$ de $G$, l'action de $H$ sur $G$ par translations à gauche (ou à droite) est libre (car $Stab_H(g)=\{h\in H |hg=g \}=\{e\}$), donc fidèle.\\
-Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H.e=H$)
-\item Soit $n\geq 1$. Considérons l'action :
-$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
-L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
-L'orbite de $v=0$ est $\{0\}$.\\
-Il y a donc exactement 2 orbites : $\R^n\backslash \{0\}$ et $\{0\}$.\\
-Donc l'action n'est pas transitive.\\
-Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
-Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
-
-\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
-
-\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_i= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
-L'action :
-$$G\x C \rightarrow C, (g,x)\mapsto gx$$
-est transitive (combiner des rotations et des symétries).\\
-Elle est fidèle (les vecteurs $\left[\begin{array}{l}
-1\\
-1\\
-1
-\end{array}\right]$, $\left[\begin{array}{l}
-1\\
-1\\
--1
-\end{array}\right]$, $\left[\begin{array}{l}
-1\\
--1\\
-1
-\end{array}\right]$ forment une base de $\R^3$).\\
-Elle n'est pas libre (la rotation d'angle $\frac{2\pi}{3}$ et d'axe $\R \left[\begin{array}{l}
-1\\
-1\\
-1
-\end{array}\right]$ est dans G et dans le stabilisateur de $\left[\begin{array}{l}
-1\\
-1\\
-1
-\end{array}\right]$).
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item Pour tout sous-groupe $H$ de $G$, l'action de $H$ sur $G$ par translations à gauche (ou à droite) est libre (car $Stab_H(g)=\{h\in H |hg=g \}=\{e\}$), donc fidèle.\\
+		Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H.e=H$)
+		\item Soit $n\geq 1$. Considérons l'action :
+		$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
+		L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
+		L'orbite de $v=0$ est $\{0\}$.\\
+		Il y a donc exactement 2 orbites : $\R^n\backslash \{0\}$ et $\{0\}$.\\
+		Donc l'action n'est pas transitive.\\
+		Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
+		Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
+		
+		\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
+		
+		\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_i= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
+		L'action :
+		$$G\x C \rightarrow C, (g,x)\mapsto gx$$
+		est transitive (combiner des rotations et des symétries).\\
+		Elle est fidèle (les vecteurs $\left[\begin{array}{l}
+		1\\
+		1\\
+		1
+		\end{array}\right]$, $\left[\begin{array}{l}
+		1\\
+		1\\
+		-1
+		\end{array}\right]$, $\left[\begin{array}{l}
+		1\\
+		-1\\
+		1
+		\end{array}\right]$ forment une base de $\R^3$).\\
+		Elle n'est pas libre (la rotation d'angle $\frac{2\pi}{3}$ et d'axe $\R \left[\begin{array}{l}
+		1\\
+		1\\
+		1
+		\end{array}\right]$ est dans G et dans le stabilisateur de $\left[\begin{array}{l}
+		1\\
+		1\\
+		1
+		\end{array}\right]$).
+	\end{enumerate}
+\end{exem}
 
 \section{Aspects numériques}
 
 Soit $G$ un groupe et soit $X$ un $G$-ensemble (ensemble muni d'une action de $G$).
 
-\theo
-Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.\\
-Il existe une et une seule application :
-$$\varphi : G/Stab_G(x) \rightarrow G.x$$
-telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.\\
-Cette application est bijective.
+\begin{thm}
+	Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.
+	
+	Il existe une et une seule application :
+	$$\varphi : G/Stab_G(x) \rightarrow G.x$$
+	telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.
+	
+	Cette application est bijective.
+\end{thm}
 
-\dem
-Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
-Soient $g\in G$ et $h\in H$. On a :
-$$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
-Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
-Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
-Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
-Cela montre que $\varphi$ est injective.
+\begin{demo}
+	Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.
+	
+	Soient $g\in G$ et $h\in H$. On a :
+	$$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
+	Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.
+	
+	Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.
+	
+	Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.
+	
+	Cela montre que $\varphi$ est injective.
+\end{demo}
 
-\remar
-L'ensemble $G/Stab_G(x)$ est un $G$-ensemble pour l'action naturelle :
-$$ g.\pi(g') := \pi(gg'),\hspace{5em}\forall g,g'\in G$$
-où $\pi : G\rightarrow G/Stab_G(x)$ est la projection canonique. La bijection canonique $G/Stab_G(x)\fong G.x$ est en fait un isomorphisme de $G$-ensembles.\\
-En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de la forme $G/H$ pour un sous-groupe $H$ de $G$.
+\begin{remar}
+	L'ensemble $G/Stab_G(x)$ est un $G$-ensemble pour l'action naturelle :
+	$$ g.\pi(g') := \pi(gg'),\hspace{5em}\forall g,g'\in G$$
+	où $\pi : G\rightarrow G/Stab_G(x)$ est la projection canonique. La bijection canonique $G/Stab_G(x)\fong G.x$ est en fait un isomorphisme de $G$-ensembles.\\
+	En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de la forme $G/H$ pour un sous-groupe $H$ de $G$.
+\end{remar}
 
-\cor
-On suppose $G$ et $X$ finis.
-\begin{enumerate}
-\item Pour tout $x\in X$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
-\item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
-$$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
-\end{enumerate}
+\begin{cor}
+	On suppose $G$ et $X$ finis.
+	\begin{enumerate}
+		\item Pour tout $x\in X$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
+		\item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
+		$$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
+	\end{enumerate}
+\end{cor}
 
-\remar
-Ces égalités sont appelées \textbf{équations aux classes}.
+\begin{remar}
+	Ces égalités sont appelées \textbf{équations aux classes}.
+\end{remar}
 
 \subsection{Applications}
 
 \subsubsection{Application 1}
 
-Soit $p$ un nombre premier. Supposons que $G$ est un $p$-groupe, c'est à dire son ordre est une puissance de $p$.\\
-\subsubsection{Définition}
-Un élément $x$ d'un $G$-ensemble $X$ est un point fixe si $gx=x$ $\forall g\in G$.\\
+Soit $p$ un nombre premier. Supposons que $G$ est un $p$-groupe, c'est à dire son ordre est une puissance de $p$.
 
-Soient $G$ un $p$-groupe, et $X$ un $G$-ensemble fini.\\
-Si $x\in X$ n'est pas un point fixe, le cardinal de l'orbite $|G.x|$ est un diviseur $>1$ de $|G|$.\\
+\begin{defi}
+	Un élément $x$ d'un $G$-ensemble $X$ est un point fixe si $gx=x$ $\forall g\in G$.
+\end{defi}
+
+Soient $G$ un $p$-groupe, et $X$ un $G$-ensemble fini.
+
+Si $x\in X$ n'est pas un point fixe, le cardinal de l'orbite $|G.x|$ est un diviseur $>1$ de $|G|$.
+
 Donc $p$ divise $|G.x|$. D'où :
 
-\cor
-Si $G$ est un $p$-groupe et $X$ un $G$-ensemble fini, alors :
-$$|X| \equiv |X^G|~mod~p$$
-où $X^G$ est l'ensemble des points fixes de $G$ dans $X$.
+\begin{cor}
+	Si $G$ est un $p$-groupe et $X$ un $G$-ensemble fini, alors :
+	$$|X| \equiv |X^G|~mod~p$$
+	où $X^G$ est l'ensemble des points fixes de $G$ dans $X$.
+\end{cor}
 
 \subsubsection{Application 2}
 
-\subsubsection{Théorème de Cauchy}
-Soient $G$ un groupe fini et $p$ un nombre premier qui divise $|G|$, alors $G$ contient un élément d'ordre $p$.
+\begin{thm}[de Cauchy]
+	Soient $G$ un groupe fini et $p$ un nombre premier qui divise $|G|$, alors $G$ contient un élément d'ordre $p$.
+\end{thm}
 
-\subsubsection{Démonstration (d'après John McKay)}
-Soit :
-$$X=\{(g_1,...,g_p)\in G^p | g_1g_2....g_p =e \}$$
-Notons que :
-$$g_1g_2...g_p = e$$
-$$\Rightarrow g_2...g_p=g_1^{-1}$$
-$$\Rightarrow g_2...g_pg_1=e$$
-Donc $X$ est stable par permutation cyclique des composantes. Donc le groupe cyclique $H=\U_p$ agit sur $X$ par :
-$$\zeta(g_1,g_2...g_p) := (g_2...g_pg_1)$$
-où $\zeta = e^{\frac{2\pi i}{p}}$.\\
-Les points fixes sont les $(g,...,g)\in G^p$ tq $g^p=e$. Cela veut dire que ou bien $g=e$ ou bien $g$ est un élément d'ordre $p$.\\
-Par le corollaire précédent, on a :
-$$|X^H|=|X|~mod~p$$
-Or $X$ est de cardinal $|G|^{p-1}$ (l'application $X \rightarrow G^{p-1},~(g_1,...,g_p)\mapsto (g_2,...,g_p)$ est bijective). Donc :
-$$|X^H|=0~mod~p$$
-Il existe donc au moins un point fixe autre que $(e,...,e)$.
+\begin{demo}[d'après John McKay]
+	Soit :
+	$$X=\{(g_1,...,g_p)\in G^p | g_1g_2....g_p =e \}$$
+	Notons que :
+	$$g_1g_2...g_p = e$$
+	$$\Rightarrow g_2...g_p=g_1^{-1}$$
+	$$\Rightarrow g_2...g_pg_1=e$$
+	Donc $X$ est stable par permutation cyclique des composantes. Donc le groupe cyclique $H=\U_p$ agit sur $X$ par :
+	$$\zeta(g_1,g_2...g_p) := (g_2...g_pg_1)$$
+	où $\zeta = e^{\frac{2\pi i}{p}}$.\\
+	Les points fixes sont les $(g,...,g)\in G^p$ tq $g^p=e$. Cela veut dire que ou bien $g=e$ ou bien $g$ est un élément d'ordre $p$.\\
+	Par le corollaire précédent, on a :
+	$$|X^H|=|X|~mod~p$$
+	Or $X$ est de cardinal $|G|^{p-1}$ (l'application $X \rightarrow G^{p-1},~(g_1,...,g_p)\mapsto (g_2,...,g_p)$ est bijective). Donc :
+	$$|X^H|=0~mod~p$$
+	Il existe donc au moins un point fixe autre que $(e,...,e)$.	
+\end{demo}
 
 \chapter{Groupes symétriques}
 
@@ -1284,147 +1325,159 @@ Si $E$ est un ensemble, le groupe symétrique $\sigma_E$ est le groupe des bijec
 $$\sigma_n := \sigma_{\{1,2,...,n \}} \hspace{5em} n\geq 1$$
 et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 
-\remar
-Si $E$ et $F$ sont deux ensembles et $\varphi:E\rightarrow F$, une bijection, on a un isomorphisme de groupes :
-$$\sigma_E \rightarrow \sigma_F,~f\mapsto \varphi\circ f \circ \varphi^{-1}$$
-En particulier, l'étude de $\sigma_E$ pour un ensemble fini de cardinal $n$ se ramène à celle de $\sigma_n$.
+\begin{remar}
+	Si $E$ et $F$ sont deux ensembles et $\varphi:E\rightarrow F$, une bijection, on a un isomorphisme de groupes :
+	$$\sigma_E \rightarrow \sigma_F,~f\mapsto \varphi\circ f \circ \varphi^{-1}$$
+	En particulier, l'étude de $\sigma_E$ pour un ensemble fini de cardinal $n$ se ramène à celle de $\sigma_n$.
+\end{remar}
 
-\subsubsection{Notation}
-Si $\sigma\in \sigma_n$, on le décrit à l'aide du tableau :
-$$\begin{array}{llll}
-1&2&...&n\\
-\sigma(1)&\sigma(2)&...&\sigma(n)
-\end{array}$$
+\begin{nota}
+	Si $\sigma\in \sigma_n$, on le décrit à l'aide du tableau :
+	$$\begin{array}{llll}
+	1&2&...&n\\
+	\sigma(1)&\sigma(2)&...&\sigma(n)
+	\end{array}$$
+\end{nota}
 
-\remar
-\begin{enumerate}
-\item Le groupe $\sigma_n$ agit sur $\{1,...,n\}$ par :
-$$\sigma.i=\sigma(i), \hspace{2em} \forall i\in \{1,...,n\}, \forall \sigma \in \sigma_n$$
+\begin{remar}
+	\begin{enumerate}
+		\item Le groupe $\sigma_n$ agit sur $\{1,...,n\}$ par :
+		$$\sigma.i=\sigma(i), \hspace{2em} \forall i\in \{1,...,n\}, \forall \sigma \in \sigma_n$$
+		
+		\item Cette action est fidèle et transitive
+		
+		\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\sigma_n$ est isomorphe à $\sigma_{\{1,2,...,n \}\backslash \{i\}}$
+	\end{enumerate}
+\end{remar}
 
-\item Cette action est fidèle et transitive
+\begin{defi}
+	Soit $\sigma \in \sigma_n$. Le support de $\sigma$ est l'ensemble :
+	$$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
+\end{defi}
 
-\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\sigma_n$ est isomorphe à $\sigma_{\{1,2,...,n \}\backslash \{i\}}$
-\end{enumerate}
+\begin{propr}
+	\begin{enumerate}
+		\item Deux permutations à supports disjoints commutent
+		\item Les groupes symétriques $\sigma_1$ et $\sigma_2$ sont abéliens. Pour $n\geq 3$, la centre de $\sigma_n$ est trivial.
+	\end{enumerate}	
+\end{propr}
 
-\defi
-Soit $\sigma \in \sigma_n$. Le support de $\sigma$ est l'ensemble :
-$$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
-
-\propr
-\begin{enumerate}
-\item Deux permutations à supports disjoints commutent
-\item Les groupes symétriques $\sigma_1$ et $\sigma_2$ sont abéliens. Pour $n\geq 3$, la centre de $\sigma_n$ est trivial.
-\end{enumerate}
-
-\dem
-On peut et on va supposer $n\geq 3$.
-\begin{enumerate}
-\item Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
-Si l'une parmi $\sigma_1$ et $\sigma_2$ est l'identité, elles commutent bien.\\
-Supposons $supp(\sigma_1)$ et $supp(\sigma_2)$ non vides ($\sigma_i \neq Id$ $\forall i$).\\
-Soit $i\in supp(\sigma_1)$, alors $i\notin supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
-$$\sigma_1 \circ \sigma_2(i)=\sigma_1(i)$$
-$$\sigma_2 \circ \sigma_1(i)=\sigma_1(i)$$
-De même, pour $i\in supp(\sigma_2)$, on a :
-$$\sigma_1 \circ \sigma_2(i)=\sigma_2(i)$$
-$$\sigma_2 \circ \sigma_1(i)=\sigma_2(i)$$
-D'autre part, si $i\notin supp(\sigma_1)\cup supp(\sigma_2)$, alors $\sigma_1 \circ \sigma_2(i) = i = \sigma_2 \circ \sigma_1(i)$.\\
-On conclut que $\sigma_1 \circ \sigma_2(i)= \sigma_2 \circ \sigma_1(i)$
-
-\item Soit $\sigma \in \sigma_n \backslash \{Id\}$.\\
-Soient $i\in \{1,...,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,...,n\}\backslash \{i, \sigma(i) \}$.\\
-Soit $\tau$ la permutation tq :
-$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{k,\sigma(i) \}$$
-Montrons que $\tau \circ \sigma \neq \sigma \circ \tau$. En effet :
-$$\tau \circ \sigma (i) = k$$
-$$\sigma \circ \tau (i) = \sigma(i) \neq k$$
-\end{enumerate}
+\begin{demo}
+	On peut et on va supposer $n\geq 3$.
+	\begin{enumerate}
+		\item Soient $\sigma_1,\sigma_2 \in \sigma_n$ tq $supp(\sigma_1)\cap supp(\sigma_2) = \emptyset$.\\
+		Si l'une parmi $\sigma_1$ et $\sigma_2$ est l'identité, elles commutent bien.\\
+		Supposons $supp(\sigma_1)$ et $supp(\sigma_2)$ non vides ($\sigma_i \neq Id$ $\forall i$).\\
+		Soit $i\in supp(\sigma_1)$, alors $i\notin supp(\sigma_2)$ et $\sigma_1(i)\notin supp(\sigma_2)$. Donc :
+		$$\sigma_1 \circ \sigma_2(i)=\sigma_1(i)$$
+		$$\sigma_2 \circ \sigma_1(i)=\sigma_1(i)$$
+		De même, pour $i\in supp(\sigma_2)$, on a :
+		$$\sigma_1 \circ \sigma_2(i)=\sigma_2(i)$$
+		$$\sigma_2 \circ \sigma_1(i)=\sigma_2(i)$$
+		D'autre part, si $i\notin supp(\sigma_1)\cup supp(\sigma_2)$, alors $\sigma_1 \circ \sigma_2(i) = i = \sigma_2 \circ \sigma_1(i)$.\\
+		On conclut que $\sigma_1 \circ \sigma_2(i)= \sigma_2 \circ \sigma_1(i)$
+		
+		\item Soit $\sigma \in \sigma_n \backslash \{Id\}$.\\
+		Soient $i\in \{1,...,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,...,n\}\backslash \{i, \sigma(i) \}$.\\
+		Soit $\tau$ la permutation tq :
+		$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{k,\sigma(i) \}$$
+		Montrons que $\tau \circ \sigma \neq \sigma \circ \tau$. En effet :
+		$$\tau \circ \sigma (i) = k$$
+		$$\sigma \circ \tau (i) = \sigma(i) \neq k$$
+	\end{enumerate}
+\end{demo}
 
 \subsection{Transpositions et cycles}
 
-\defi
-Soit $n\geq 2$ et soit $2 \leq l \leq n$. Soit $(a_1,...,a_l)$ une suite d'éléments 2 à 2 distincts de $\{1,...,n\}$. \\
-On note encore $(a_1,...,a_l)$ la permutation définition par :
-$$\begin{array}{ll}
-x\mapsto x & \forall x \in \{1,...,n \}\backslash \{a_1,...,a_l\}\\
-a_i\mapsto a_{i+1}& \forall 1\leq i \leq l-1\\
-a_l\mapsto a_1&
-\end{array}
-$$
+\begin{defi}
+	Soit $n\geq 2$ et soit $2 \leq l \leq n$. Soit $(a_1,...,a_l)$ une suite d'éléments 2 à 2 distincts de $\{1,...,n\}$. \\
+	On note encore $(a_1,...,a_l)$ la permutation définition par :
+	$$\begin{array}{ll}
+	x\mapsto x & \forall x \in \{1,...,n \}\backslash \{a_1,...,a_l\}\\
+	a_i\mapsto a_{i+1}& \forall 1\leq i \leq l-1\\
+	a_l\mapsto a_1&
+	\end{array}
+	$$
+\end{defi}
 
 Une telle permutation est appelée $l$-cycle (ou cycle). Sa longueur est $l$.\\
 Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 
-\remar
-Soit $\sigma=(a_1,...,a_l)$ un $l$-cycle.
-\begin{enumerate}
-\item Soit $i\in \{1,...,l-1\}$, alors $\sigma^i(a_1)=a_{1+i}$. Plus généralement, on a :
-$$\sigma^i(a_j)= \left\{\begin{array}{ll}
-a_{j+i}& 1\leq j \leq l-i\\
-a_{j+i-l}& l-i+1\leq j \leq l
-\end{array}\right.$$
-Le cycle est d'ordre $l$ dans $\sigma_n$.
+\begin{remar}
+	Soit $\sigma=(a_1,...,a_l)$ un $l$-cycle.
+	\begin{enumerate}
+		\item Soit $i\in \{1,...,l-1\}$, alors $\sigma^i(a_1)=a_{1+i}$. Plus généralement, on a :
+		$$\sigma^i(a_j)= \left\{\begin{array}{ll}
+		a_{j+i}& 1\leq j \leq l-i\\
+		a_{j+i-l}& l-i+1\leq j \leq l
+		\end{array}\right.$$
+		Le cycle est d'ordre $l$ dans $\sigma_n$.
+		
+		\item Pour tout $\tau \in \sigma_n$, on a :
+		$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+		
+		\item 
+		$$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
+		Le $l$-cycle est produit de $l-1$ transpositions.
+		
+		\item 
+		$$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
+		
+		\item Soit $\tau_1$ et $\tau_2$ deux transpositions à support disjoint, alors $\tau_1\tau_2 = \tau_2\tau_1$ (qui est d'ordre 2) est appelé une \textbf{double transposition}.
+		
+	\end{enumerate}
+\end{remar}
 
-\item Pour tout $\tau \in \sigma_n$, on a :
-$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+\begin{exem}
+	\begin{enumerate}
+		\item $$\sigma_2=\{e, (12)\}$$
+		\item $$\sigma_3=\{e, (12), (13), (23), (123), (132)\}$$
+		\item
+		\begin{center}
+			$\sigma_4$=\{e, (12), (13), (23), (14), (24), (34),\\
+			(12)(34), (13)(24), (14)(23),\\
+			(123), (132), (124),(142),(134),(143),(234),(243),\\
+			(1234),(1243),(1324),(1342),(1423),(1432)\}
+		\end{center} 
+	\end{enumerate}
+\end{exem}
 
-\item 
-$$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
-Le $l$-cycle est produit de $l-1$ transpositions.
-
-\item 
-$$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
-
-\item Soit $\tau_1$ et $\tau_2$ deux transpositions à support disjoint, alors $\tau_1\tau_2 = \tau_2\tau_1$ (qui est d'ordre 2) est appelé une \textbf{double transposition}.
- 
-\end{enumerate}
-
-\exem
-\begin{enumerate}
-\item $$\sigma_2=\{e, (12)\}$$
-\item $$\sigma_3=\{e, (12), (13), (23), (123), (132)\}$$
-\item
-\begin{center}
-$\sigma_4$=\{e, (12), (13), (23), (14), (24), (34),\\
-(12)(34), (13)(24), (14)(23),\\
-(123), (132), (124),(142),(134),(143),(234),(243),\\
-(1234),(1243),(1324),(1342),(1423),(1432)\}
-\end{center} 
-\end{enumerate}
-
-\theo
-Soit $\sigma\in \sigma_n$.
-\begin{enumerate}
-\item Il existe un entier naturel $k$ et des cycles $c_1,...,c_k$ de $\sigma_n$ à supports disjoints 2 à 2 tq :
-$$\sigma = c_1...c_k$$
-
-\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
-$$\sigma = c_1'...c_s'$$
-alors $k=s$ et il existe une permutation $\tau \in \sigma_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
-\end{enumerate}
+\begin{thm}
+	Soit $\sigma\in \sigma_n$.
+	\begin{enumerate}
+		\item Il existe un entier naturel $k$ et des cycles $c_1,...,c_k$ de $\sigma_n$ à supports disjoints 2 à 2 tq :
+		$$\sigma = c_1...c_k$$
+		
+		\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
+		$$\sigma = c_1'...c_s'$$
+		alors $k=s$ et il existe une permutation $\tau \in \sigma_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
+	\end{enumerate}
+\end{thm}
 
 \paragraph{Idée de la démonstration :}
 On fait agir le groupe $<\sigma> \subseteq \sigma_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
 
-\exem
-$$\sigma = \left(\begin{array}{llllllllllllll}
-1&2&3&4&5&6&7&8&9&10&11&12&13&14\\
-6&7&9&4&5&10&2&3&12&13&8&11&1&14
-\end{array}\right)$$
-$\sigma = (1~6~10~13)(2~7)(3~9~12~11~8)$ est une décomposition en produit de cycles à supports disjoints 2 à 2 de $\sigma \in \sigma_{14}$.
+\begin{exem}
+	$$\sigma = \left(\begin{array}{llllllllllllll}
+	1&2&3&4&5&6&7&8&9&10&11&12&13&14\\
+	6&7&9&4&5&10&2&3&12&13&8&11&1&14
+	\end{array}\right)$$
+	$\sigma = (1~6~10~13)(2~7)(3~9~12~11~8)$ est une décomposition en produit de cycles à supports disjoints 2 à 2 de $\sigma \in \sigma_{14}$.
+\end{exem}
 
-\dem
-On fait agir le sous-groupe $<\sigma>$ engendré par $\sigma$ dans $\sigma_n$ sur l'ensemble $\{1,...,n\}$.\\
-Sur cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
-Soient $\Omega_1,...,\Omega_r$ les orbites non ponctuelles.\\
-Le sous-groupe $<\sigma>$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i1},...,a_{il_i}$ une énumération des éléments de $\Omega_i$ tq :
-$$\sigma(a_{i_j})\left\{\begin{array}{ll}
-a_{i_{j+1}}&1\leq j \leq l_i-1\\
-a_{i_1}&j=l_i
-\end{array}\right. $$
-Soit $c_i=(a_{i_1},...,a_{i_{l_i}})$, alors l'action de $c_i$ et de $\sigma$ sur l'orbite $\Omega_i$ est la même.\\
-Donc l'action de $\sigma$ et de $c_1c_2...c_r$ sur $\{1,...,n\}$ est la même.\\
-Donc $\sigma=c_1...c_r$.
+\begin{demo}
+	On fait agir le sous-groupe $<\sigma>$ engendré par $\sigma$ dans $\sigma_n$ sur l'ensemble $\{1,...,n\}$.\\
+	Sur cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
+	Soient $\Omega_1,...,\Omega_r$ les orbites non ponctuelles.\\
+	Le sous-groupe $<\sigma>$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i1},...,a_{il_i}$ une énumération des éléments de $\Omega_i$ tq :
+	$$\sigma(a_{i_j})\left\{\begin{array}{ll}
+	a_{i_{j+1}}&1\leq j \leq l_i-1\\
+	a_{i_1}&j=l_i
+	\end{array}\right. $$
+	Soit $c_i=(a_{i_1},...,a_{i_{l_i}})$, alors l'action de $c_i$ et de $\sigma$ sur l'orbite $\Omega_i$ est la même.\\
+	Donc l'action de $\sigma$ et de $c_1c_2...c_r$ sur $\{1,...,n\}$ est la même.\\
+	Donc $\sigma=c_1...c_r$.
+\end{demo}
 
 \subsubsection{Terminologie}
 \begin{enumerate}
@@ -1433,45 +1486,55 @@ Donc $\sigma=c_1...c_r$.
 \item Si $\sigma$ et $\sigma '$ sont deux permutations, on dit que $\sigma$ et $\sigma '$ sont du \textbf{même type} si pour tout entier $2\leq l \leq n$, le nombre de $l$-cycles dans la décomposition de $\sigma$ en produit de cycles à support disjoints est égal au nombre de $l$-cycles dans la décomposition de $\sigma '$ en \pcsd.
 \end{enumerate}
 
-\exem
-$(12)(34)(567)$ est du même type que $(123)(45)(67)$.
+\begin{exem}
+	$(12)(34)(567)$ est du même type que $(123)(45)(67)$.
+\end{exem}
 
-\cor
-Pour tout $n\geq 1$, $\sigma_n$ est engendré par l'ensemble de ses transpositions.
+\begin{cor}
+	Pour tout $n\geq 1$, $\sigma_n$ est engendré par l'ensemble de ses transpositions.
+\end{cor}
 
-\dem
-En effet, $\sigma_n$ est engendré par ses cycles et chaque cycle est produit de transpositions, comme on l'a vu.
+\begin{demo}
+	En effet, $\sigma_n$ est engendré par ses cycles et chaque cycle est produit de transpositions, comme on l'a vu.
+\end{demo}
 
-\subsubsection{Exercice}
-Monter que $\sigma_n$ est même engendré par les $n-1$ transpositions :
-$$(1~2)(2~3)...(n-1~n)$$
+\begin{exo}
+	Monter que $\sigma_n$ est même engendré par les $n-1$ transpositions :
+	$$(1~2)(2~3)...(n-1~n)$$
+\end{exo}
 
-\cor
-Soient $n\geq 1$ et $\sigma\in \sigma_n$, alors l'ordre de $\sigma$ est le PPCM des longueurs des cycles apparaissant dans la décomposition de $\sigma$ en \pcsd.
+\begin{cor}
+	Soient $n\geq 1$ et $\sigma\in \sigma_n$, alors l'ordre de $\sigma$ est le PPCM des longueurs des cycles apparaissant dans la décomposition de $\sigma$ en \pcsd.
+\end{cor}
 
-\exem
-$ord((1~2)(2~3)(4~5~6)) = PPCM(2,2,3)=6$
+\begin{exem}
+	$ord((1~2)(2~3)(4~5~6)) = PPCM(2,2,3)=6$
+\end{exem}
 
-\cor
-Soient $n\geq 1$ et $\sigma, \sigma ' \in \sigma_n$, alors on a une équivalence entre :
-\begin{enumerate}
-\item $\sigma$ et $\sigma '$ sont du même type.
-\item $\sigma$ et $\sigma '$ sont conjugués.
-\end{enumerate}
+\begin{cor}
+	Soient $n\geq 1$ et $\sigma, \sigma ' \in \sigma_n$, alors on a une équivalence entre :
+	\begin{enumerate}
+		\item $\sigma$ et $\sigma '$ sont du même type.
+		\item $\sigma$ et $\sigma '$ sont conjugués.
+	\end{enumerate}
+\end{cor}
 
-\dem
-Cela provient du fait que pour un cycle $(a_1,...,a_l)$ et une permutation $\tau\in \sigma_n$, on a :
-$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+\begin{demo}
+	Cela provient du fait que pour un cycle $(a_1,...,a_l)$ et une permutation $\tau\in \sigma_n$, on a :
+	$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+\end{demo}
 
-\exem
-$\sigma = (1~2)(3~4)(5~6~7)$ et $\sigma '=(1~2~3)(4~5)(6~7)$ sont conjugués par :
-$$\sigma = \left(\begin{array}{lllllll}
-1&2&3&4&5&6&7\\
-4&5&6&7&1&2&3
-\end{array}\right)$$
+\begin{exem}
+	$\sigma = (1~2)(3~4)(5~6~7)$ et $\sigma '=(1~2~3)(4~5)(6~7)$ sont conjugués par :
+	$$\sigma = \left(\begin{array}{lllllll}
+	1&2&3&4&5&6&7\\
+	4&5&6&7&1&2&3
+	\end{array}\right)$$
+\end{exem}
 
-\remar
-Deux permutations conjuguées ont même ordre (et même signature, voir au-dessus).
+\begin{remar}
+	Deux permutations conjuguées ont même ordre (et même signature, voir au-dessus).
+\end{remar}
 
 \section{La signature}
 Soit $n\geq 1$. Le groupe symétrique $\sigma_n$ agit sur l'ensemble $\Z[X_i,...,X_n]$ des polynômes en $\Xi_1,...,X_n$ à coefficients entiers par :
@@ -1485,66 +1548,73 @@ Toute permutation $\sigma$ envoie un $\Xi_i-X_j$ sur $X_{\sigma(i)}-X_{\sigma(j)
 Donc $\sigma$ envoie un facteur $X_i-X_j$ de $\Delta_n$ soit sur un autre facteur de $\Delta_n$ soit sur l'opposé d'un autre facteur de $\Delta_n$. Donc :
 $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \sigma_n$$
 
-\defi
-La \textbf{signature} $\epsilon(\sigma)$ de $\sigma\in \sigma_n$ est l'unique nombre $\epsilon(\sigma)\in \{1,-1\}$ tq :
-$$\epsilon(\sigma)\Delta_n=\sigma\Delta_n$$
+\begin{defi}
+	La \textbf{signature} $\epsilon(\sigma)$ de $\sigma\in \sigma_n$ est l'unique nombre $\epsilon(\sigma)\in \{1,-1\}$ tq :
+	$$\epsilon(\sigma)\Delta_n=\sigma\Delta_n$$
+\end{defi}
 
-\exem
-\begin{enumerate}
-\item $\sigma = (12)\in \sigma_2$ : $\sigma(X_1-X_2)=X_2-X_1=-(X_1-X_2)\Rightarrow \epsilon(\sigma)=-1$
-\item $\sigma=(123)\in \sigma_3$ : $\sigma((X_1-X_2)(X_1-X_3)(X_2-X_3))=(X_2-X_3)(X_2-X_1)(X_3-X_1)=(-1)(-1)\Delta_3=\Delta_3\Rightarrow \epsilon(\sigma)=1$
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $\sigma = (12)\in \sigma_2$ : $\sigma(X_1-X_2)=X_2-X_1=-(X_1-X_2)\Rightarrow \epsilon(\sigma)=-1$
+		\item $\sigma=(123)\in \sigma_3$ : $\sigma((X_1-X_2)(X_1-X_3)(X_2-X_3))=(X_2-X_3)(X_2-X_1)(X_3-X_1)=(-1)(-1)\Delta_3=\Delta_3\Rightarrow \epsilon(\sigma)=1$
+	\end{enumerate}
+\end{exem}
 
-\propr
-\begin{enumerate}
-\item La signature est un morphisme de groupes
-$$ \epsilon : \sigma_n\rightarrow (\{1,-1\},.)$$
+\begin{propr}
+	\begin{enumerate}
+		\item La signature est un morphisme de groupes
+		$$ \epsilon : \sigma_n\rightarrow (\{1,-1\},.)$$
+		
+		\item Toute transposition est de signature $-1$. Tout cycle de longueur $l$ est de signature $(-1)^{l-1}$
+	\end{enumerate}
+\end{propr}
 
-\item Toute transposition est de signature $-1$. Tout cycle de longueur $l$ est de signature $(-1)^{l-1}$
-\end{enumerate}
+\begin{demo}
+	\begin{enumerate}
+		\item résulte du fait que $\sigma_n$ agit sur $\Z[X_i,...,X_n]$. En effet, pour $\sigma,\tau\in \sigma_n$, on a :
+		$$\epsilon(\sigma\tau).\Delta_n=(\sigma\tau)\Delta_n=\epsilon(\tau)\epsilon(\sigma)\Delta_n$$
+		et donc $\epsilon(\sigma\tau)=\epsilon(\sigma)\epsilon(\tau),\forall \sigma,\tau \in \sigma_n$.
+		
+		\item Soit $\sigma\in \sigma_n$. Une \textbf{inversion} de $\sigma$ est un couple $(u,v)$ de nombres dans $\{1,...,n\}$ tq $u<v$ mais $\sigma(u)>\sigma(v)$. Clairement, on a $\epsilon(\sigma)=(-1)^t$, où $t$ est le nombre d'inversions de $\sigma$. Soit maintenant $\sigma=(ij)$, où $1\leq i < j \leq n$.\\
+		Les inversions de $\sigma$ sont :
+		\begin{itemize}
+			\item $(u,j)$ pour $i<u<j$
+			\item $(i,u)$ pour $i<u<j$
+			\item $(i,j)$
+		\end{itemize}
+		Le nombre des inversions de $\sigma$ est donc :
+		$$2(j-i+1)+1$$
+		Donc $\epsilon(\sigma)=-1$.\\
+		Donc toute transposition est de signature -1.\\
+		Comme un $l$-cycle $c$ est produit de $l-1$ transposition, par 1), on a $\epsilon(c)=(-1)^{l-1}$
+	\end{enumerate}
+\end{demo}
 
-\dem
-\begin{enumerate}
-\item résulte du fait que $\sigma_n$ agit sur $\Z[X_i,...,X_n]$. En effet, pour $\sigma,\tau\in \sigma_n$, on a :
-$$\epsilon(\sigma\tau).\Delta_n=(\sigma\tau)\Delta_n=\epsilon(\tau)\epsilon(\sigma)\Delta_n$$
-et donc $\epsilon(\sigma\tau)=\epsilon(\sigma)\epsilon(\tau),\forall \sigma,\tau \in \sigma_n$.
+\begin{remar}
+	Soient $n\geq 2$, et $\sigma\in \sigma_n$.
+	\begin{enumerate}
+		\item On dit que $\sigma$ est \textbf{paire} (respectivement \textbf{impaire}) si $\epsilon(\sigma)=1$ (respectivement $\epsilon(\sigma)=-1$)
+		\item $\sigma$ est pair (resp impair) ssi $\sigma$ est produit de nombre pair (resp impair) de transpositions.
+		\item Soient $l_1,...,l_r$ les cardinaux des orbites $\Omega_1,...,\Omega_r$ de $<\sigma>$ dans $\{1,...,n\}$ (y compris les orbites ponctuelles), alors on a :
+		$$\epsilon(\sigma)=\epsilon(c_1...c_r)=(-1)^{l_1-1}...(-1)^{l_n-1}=(-1)^{(\sum l_i)-r}=(-1)^{n-r}$$
+	\end{enumerate}
+\end{remar}
 
-\item Soit $\sigma\in \sigma_n$. Une \textbf{inversion} de $\sigma$ est un couple $(u,v)$ de nombres dans $\{1,...,n\}$ tq $u<v$ mais $\sigma(u)>\sigma(v)$. Clairement, on a $\epsilon(\sigma)=(-1)^t$, où $t$ est le nombre d'inversions de $\sigma$. Soit maintenant $\sigma=(ij)$, où $1\leq i < j \leq n$.\\
-Les inversions de $\sigma$ sont :
-\begin{itemize}
-\item $(u,j)$ pour $i<u<j$
-\item $(i,u)$ pour $i<u<j$
-\item $(i,j)$
-\end{itemize}
-Le nombre des inversions de $\sigma$ est donc :
-$$2(j-i+1)+1$$
-Donc $\epsilon(\sigma)=-1$.\\
-Donc toute transposition est de signature -1.\\
-Comme un $l$-cycle $c$ est produit de $l-1$ transposition, par 1), on a $\epsilon(c)=(-1)^{l-1}$
+\begin{defi}
+	Soit $n\geq 1$. On appelle n-ième \textbf{groupe alterné} le noyau $\mathcal{A}_n$ de la signature $\epsilon:\sigma_n\rightarrow \{\pm 1\}$.
+\end{defi}
 
-\end{enumerate}
+\begin{remar}
+	On verra que $|\mathcal{A}_n|=\frac{n!}{2}$
+\end{remar}
 
-\remar
-Soient $n\geq 2$, et $\sigma\in \sigma_n$.
-\begin{enumerate}
-\item On dit que $\sigma$ est \textbf{paire} (respectivement \textbf{impaire}) si $\epsilon(\sigma)=1$ (respectivement $\epsilon(\sigma)=-1$)
-\item $\sigma$ est pair (resp impair) ssi $\sigma$ est produit de nombre pair (resp impair) de transpositions.
-\item Soient $l_1,...,l_r$ les cardinaux des orbites $\Omega_1,...,\Omega_r$ de $<\sigma>$ dans $\{1,...,n\}$ (y compris les orbites ponctuelles), alors on a :
-$$\epsilon(\sigma)=\epsilon(c_1...c_r)=(-1)^{l_1-1}...(-1)^{l_n-1}=(-1)^{(\sum l_i)-r}=(-1)^{n-r}$$
-\end{enumerate}
-
-\defi
-Soit $n\geq 1$. On appelle n-ième \textbf{groupe alterné} le noyau $\mathcal{A}_n$ de la signature $\epsilon:\sigma_n\rightarrow \{\pm 1\}$.\\
-
-\remar
-On verra que $|\mathcal{A}_n|=\frac{n!}{2}$
-
-\exem
-\begin{enumerate}
-\item $\sigma_2=\{e,(12)\}$ $\mathcal{A}=\{e\}$
-\item $\sigma_3=\{e, (12), (13), (23), (123), (132)\}$ $\mathcal{A}_3=\{e,(123),(132)\}$
-\item $|\sigma_4|=24$, on a $\mathcal{A}_4=\{e,(123),(132),(234),(243),(134),(143),(124),(142),(12)(34), (13)(24), (14)(23)\}$
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $\sigma_2=\{e,(12)\}$ $\mathcal{A}=\{e\}$
+		\item $\sigma_3=\{e, (12), (13), (23), (123), (132)\}$ $\mathcal{A}_3=\{e,(123),(132)\}$
+		\item $|\sigma_4|=24$, on a $\mathcal{A}_4=\{e,(123),(132),(234),(243),(134),(143),(124),(142),(12)(34), (13)(24), (14)(23)\}$
+	\end{enumerate}
+\end{exem}
 
 \chapter{Sous-groupes distingués, groupes quotients}
 \section{Sous-groupes distingués}
