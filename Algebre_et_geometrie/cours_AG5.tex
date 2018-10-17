@@ -13,6 +13,25 @@
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usetikzlibrary{arrows,calc}
+\usepackage[amsthm]{ntheorem} % package pour les environnements de theorem
+
+\theorempreskip {2em}
+\theorempostskip{2em}
+\theoremstyle{break}
+\theoremseparator{\vspace{0.5em}}
+\newtheorem{thm}{Théoreme}[section] % reset theorem numbering for each chapter
+\newtheorem{defi}[thm]{Définition}
+\newtheorem{propr}[thm]{Propriété}
+\newtheorem{propo}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollaire}
+\newtheorem{lemme}[thm]{Lemme}
+
+\theorembodyfont{\normalfont}
+\newtheorem{exem}[thm]{Exemple}
+\newtheorem*{demo}{Démonstration}
+\newtheorem{remar}[thm]{Remarque}
+\newtheorem{exo}[thm]{Exercice}
+
 
 \newcommand{\x}{\times}
 \newcommand{\R}{\mathbb{R}}
