@@ -741,23 +741,26 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		\item Treillis de $\U_{20}$ :\\
 		D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $<\zeta^{20}>$, $<\zeta^{10}>$, $<\zeta^{5}>$, $<\zeta^{4}>$, $<\zeta^{2}>$ et $<\zeta^{1}>$ :
 		
-		\begin{center}
-			\begin{tikzpicture}
-			\node (20) at (0,0) {$<\zeta^{20}>$};
-			\node (10) at (1,1) {$<\zeta^{10}>$};
-			\node (5) at (2,2) {$<\zeta^{5}>$};
-			\node (4) at (-1,1) {$<\zeta^{4}>$};
-			\node (2) at (0,2) {$<\zeta^{2}>$};
-			\node (1) at (1,3) {$<\zeta^{1}>$};
-			\draw[->,>=latex] (20) to (4);
-			\draw[->,>=latex] (20) to (10);	
-			\draw[->,>=latex] (4) to (2);
-			\draw[->,>=latex] (10) to (2);
-			\draw[->,>=latex] (10) to (5);
-			\draw[->,>=latex] (2) to (1);
-			\draw[->,>=latex] (5) to (1);
-			\end{tikzpicture}
-		\end{center}
+		\begin{figure}[h]
+			\begin{center}
+				\begin{tikzpicture}
+				\node (20) at (0,0) {$<\zeta^{20}>$};
+				\node (10) at (1,1) {$<\zeta^{10}>$};
+				\node (5) at (2,2) {$<\zeta^{5}>$};
+				\node (4) at (-1,1) {$<\zeta^{4}>$};
+				\node (2) at (0,2) {$<\zeta^{2}>$};
+				\node (1) at (1,3) {$<\zeta^{1}>$};
+				\draw[->,>=latex] (20) to (4);
+				\draw[->,>=latex] (20) to (10);	
+				\draw[->,>=latex] (4) to (2);
+				\draw[->,>=latex] (10) to (2);
+				\draw[->,>=latex] (10) to (5);
+				\draw[->,>=latex] (2) to (1);
+				\draw[->,>=latex] (5) to (1);
+				\end{tikzpicture}
+				\caption{Diagramme de Hasse du groupe $\U_{20}$}
+			\end{center}
+		\end{figure}
 		
 		\item Treillis des sous-groupes de $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$.\\
 		Soit $H$ un sous-groupe de $D_3$, $|H|\in \{1,2,3,6 \}$, donc on a :
@@ -766,8 +769,9 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 			\item $|H|=2\Rightarrow H=<\sigma_A>, <\sigma_B>, <\sigma_C>$
 			\item $|H|=3 \Rightarrow H= <\rho>, <\rho^2>$
 		\end{itemize}
-		\begin{center}
-			\begin{tikzpicture}
+		\begin{figure}[h]
+			\begin{center}
+				\begin{tikzpicture}
 				\node (ID) at (0,0) {$\{Id\}$};
 				\node (1) at (-2.25,1) {$<\tau_1>$};
 				\node (2) at (-0.75,1) {$<\tau_2>$};
@@ -783,8 +787,11 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 				\draw[->,>=latex] (2) to (D3);
 				\draw[->,>=latex] (3) to (D3);
 				\draw[->,>=latex] (R) to (D3);
-			\end{tikzpicture}
-		\end{center}
+				\end{tikzpicture}
+				\caption{Diagramme de Hasse du groupe diédral 3}
+			\end{center}	
+		\end{figure}
+		
 		
 		\item Treillis des sous-groupes de $D_4$, on pose :
 		\begin{itemize}
@@ -798,36 +805,40 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 			\item $|H| = 2 \Rightarrow H = <\rho^2>,<\tau_1>,<\tau_2>,<\tau_3>,<\tau_4>$
 			\item $|H| = 4 \Rightarrow H = <\rho>, <\tau_1,\tau_3>,<\tau_2,\tau_4>$
 		\end{itemize}
-		\begin{center}
-			\begin{tikzpicture}[scale=0.7]
-			\node (E) at (8,-3) {$\{e\}$};
-			\node (1) at (4.5,-1) {$<\tau_1>$};
-			\node (3) at (6.25,-1) {$<\tau_3>$};
-			\node (R2) at (8,-1) {$<\rho^2>$};
-			\node (2) at (9.75,-1) {$<\tau_1>$};
-			\node (4) at (11.5,-1) {$<\tau_4>$};
-			\node (R) at (8,1) {$<\rho>$};
-			\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
-			\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
-			\node (D4) at (8,3) {$D_4$};
-			
-			\draw[->,>=latex] (E) to (1);
-			\draw[->,>=latex] (E) to (3);
-			\draw[->,>=latex] (E) to (R2);
-			\draw[->,>=latex] (E) to (2);
-			\draw[->,>=latex] (E) to (4);
-			\draw[->,>=latex] (1) to (13);
-			\draw[->,>=latex] (3) to (13);
-			\draw[->,>=latex] (R2) to (13);
-			\draw[->,>=latex] (R2) to (R);
-			\draw[->,>=latex] (R2) to (24);
-			\draw[->,>=latex] (2) to (24);
-			\draw[->,>=latex] (4) to (24);
-			\draw[->,>=latex] (13) to (D4);
-			\draw[->,>=latex] (R) to (D4);
-			\draw[->,>=latex] (24) to (D4);
-			\end{tikzpicture}
-		\end{center}
+		\begin{figure}[h]
+			\begin{center}
+				\begin{tikzpicture}[scale=0.7]
+				\node (E) at (8,-3) {$\{e\}$};
+				\node (1) at (4.5,-1) {$<\tau_1>$};
+				\node (3) at (6.25,-1) {$<\tau_3>$};
+				\node (R2) at (8,-1) {$<\rho^2>$};
+				\node (2) at (9.75,-1) {$<\tau_1>$};
+				\node (4) at (11.5,-1) {$<\tau_4>$};
+				\node (R) at (8,1) {$<\rho>$};
+				\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
+				\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+				\node (D4) at (8,3) {$D_4$};
+				
+				\draw[->,>=latex] (E) to (1);
+				\draw[->,>=latex] (E) to (3);
+				\draw[->,>=latex] (E) to (R2);
+				\draw[->,>=latex] (E) to (2);
+				\draw[->,>=latex] (E) to (4);
+				\draw[->,>=latex] (1) to (13);
+				\draw[->,>=latex] (3) to (13);
+				\draw[->,>=latex] (R2) to (13);
+				\draw[->,>=latex] (R2) to (R);
+				\draw[->,>=latex] (R2) to (24);
+				\draw[->,>=latex] (2) to (24);
+				\draw[->,>=latex] (4) to (24);
+				\draw[->,>=latex] (13) to (D4);
+				\draw[->,>=latex] (R) to (D4);
+				\draw[->,>=latex] (24) to (D4);
+				\end{tikzpicture}
+			\end{center}
+			\caption{Diagramme de Hasse du groupe diédral 4}	
+		\end{figure}
+		
 	\end{enumerate}	
 \end{exem}
 
@@ -835,129 +846,156 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 
 \section{Relations d'équivalence}
 
-\subsubsection{Définition}
-$X$ un ensemble. Une relation $R$ sur $X$ est une relation d'équivalence ssi :
-\begin{enumerate}
-\item (réflexivité) $\forall x\in X$ $xRx$
-\item (symétrie) $\forall x,y\in X$ $xRy\Leftrightarrow yRx$
-\item (transitivité) $\forall x,y,z\in X$ $(xRy~et~yRz)\Rightarrow xRz$
-\end{enumerate}
+\begin{defi}
+	$X$ un ensemble. Une relation $R$ sur $X$ est une relation d'équivalence ssi :
+	\begin{enumerate}
+		\item (réflexivité) $\forall x\in X$ $xRx$
+		\item (symétrie) $\forall x,y\in X$ $xRy\Leftrightarrow yRx$
+		\item (transitivité) $\forall x,y,z\in X$ $(xRy~et~yRz)\Rightarrow xRz$
+	\end{enumerate}
+\end{defi}
 
-\subsubsection{Exemples}
-Soit $G$ un groupe.
-\begin{enumerate}
-\item $H\subseteq G$ un sous-groupe. On définit $g,g'\in G$ $g\sim_Hg'$ si $\exists h\in H | g'=gh$. C'est une relation d'équivalence.
-\item $\forall g,g'\in G$, on définit $g\sim g'$ si $\exists x\in G | g'=xgx^{-1}$. C'est une relation d'équivalence.
-\item $X=L(G)$ l'ensemble des sous-groupes de G avec la relation $H\sim H'$ si $\exists g\in G | H'=gHg^{-1}$
-\end{enumerate}
+\begin{exem}
+	Soit $G$ un groupe.
+	\begin{enumerate}
+		\item $H\subseteq G$ un sous-groupe. On définit $g,g'\in G$ $g\sim_Hg'$ si $\exists h\in H | g'=gh$. C'est une relation d'équivalence.
+		\item $\forall g,g'\in G$, on définit $g\sim g'$ si $\exists x\in G | g'=xgx^{-1}$. C'est une relation d'équivalence.
+		\item $X=L(G)$ l'ensemble des sous-groupes de G avec la relation $H\sim H'$ si $\exists g\in G | H'=gHg^{-1}$
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Définition}
-Soit $(X,R)$ un ensemble muni d'une relation d'équivalence.\\
-La classe d'équivalence de $x\in X$ est $\bar{x}=\{y\in X | xRy \}$.\\
-Le quotient de $X$ par $R$ est $X/R=\{\bar{x} | x\in X \}$.\\
-L'application $\begin{array}{lll}
-X&\rightarrow& X/R\\
-x&\mapsto&\bar{x}\\
-\end{array}$ s'appelle la surjection canonique.
+\begin{defi}
+	Soit $(X,R)$ un ensemble muni d'une relation d'équivalence.
+	
+	La classe d'équivalence de $x\in X$ est $\bar{x}=\{y\in X | xRy \}$.
+	
+	Le quotient de $X$ par $R$ est $X/R=\{\bar{x} | x\in X \}$.
+	
+	L'application $\begin{array}{lll}
+	X&\rightarrow& X/R\\
+	x&\mapsto&\bar{x}\\
+	\end{array}$ s'appelle la surjection canonique.
+\end{defi}
 
-\subsubsection{Exemple}
-Dans le cas 1) de l'exemple précédent, $g\in G$, $\bar{g}=\{gh|h\in H \}=gH$ et on note $G/\sim_H=G/H$.\\
-$G/H$ n'est pas un groupe en général.
+\begin{exem}
+	Dans le cas 1) de l'exemple précédent, $g\in G$, $\bar{g}=\{gh|h\in H \}=gH$ et on note $G/\sim_H=G/H$.\\
+	$G/H$ n'est pas un groupe en général.
+\end{exem}
 
-\subsubsection{Propriété}
-\begin{enumerate}
-\item $X/R$ est une partition de $X$
-\item $\forall x,y\in X$ $xRy\Leftrightarrow \bar{x}=\bar{y}$
-\end{enumerate}
+\begin{propr}
+	\begin{enumerate}
+		\item $X/R$ est une partition de $X$
+		\item $\forall x,y\in X$ $xRy\Leftrightarrow \bar{x}=\bar{y}$
+	\end{enumerate}
+\end{propr}
 
-\subsubsection{Démonstration}
-\begin{enumerate}
-\item Soit $\bar{x},\bar{y}\in X/R$. Supposons $\bar{x}\cap \bar{y}\neq \emptyset$ et montrons que $\bar{x}=\bar{y}$.\\
-$\exists z\in \bar{x}~et~z\in \bar{y}$.\\
-Montrons que $\bar{x}\subseteq \bar{y}$ :\\
-Soit $z'\in \bar{x}$, $z'Rz$ et $zRz'$ $\Rightarrow$ $z'Ry$ $\Rightarrow$ $z'\in \bar{y}$.\\
-On montre que $\bar{y}\subseteq \bar{x}$ par un raisonnement identique.\\
-Cela montre que les classes d'équivalences sont disjointes ou confondues.\\
-Et $\forall x\in X$ $x\in \bar{x}$. Donc les classes d'équivalences forment une partition de $X$.\\
+\begin{demo}
+	\begin{enumerate}
+		\item Soit $\bar{x},\bar{y}\in X/R$. Supposons $\bar{x}\cap \bar{y}\neq \emptyset$ et montrons que $\bar{x}=\bar{y}$.\\
+		$\exists z\in \bar{x}~et~z\in \bar{y}$.\\
+		Montrons que $\bar{x}\subseteq \bar{y}$ :\\
+		Soit $z'\in \bar{x}$, $z'Rz$ et $zRz'$ $\Rightarrow$ $z'Ry$ $\Rightarrow$ $z'\in \bar{y}$.\\
+		On montre que $\bar{y}\subseteq \bar{x}$ par un raisonnement identique.\\
+		Cela montre que les classes d'équivalences sont disjointes ou confondues.\\
+		Et $\forall x\in X$ $x\in \bar{x}$. Donc les classes d'équivalences forment une partition de $X$.\\
+		
+		\item "$\Rightarrow$" Supposons $xRy$, soit $z\in \bar{x}$, on a $ zRy$ $z\in \bar{y}$.\\
+		Donc de même, on a $\bar{y}\subseteq \bar{x}$. Donc $\bar{x}=\bar{y}$\\
+		"$\Leftarrow$" Supposons $\bar{x}=\bar{y}$, $y\in \bar{y}=\bar{x}$, $y\in \bar{x}$, donc $yRx$.
+	\end{enumerate}
+\end{demo}
 
-\item "$\Rightarrow$" Supposons $xRy$, soit $z\in \bar{x}$, on a $ zRy$ $z\in \bar{y}$.\\
-Donc de même, on a $\bar{y}\subseteq \bar{x}$. Donc $\bar{x}=\bar{y}$\\
-"$\Leftarrow$" Supposons $\bar{x}=\bar{y}$, $y\in \bar{y}=\bar{x}$, $y\in \bar{x}$, donc $yRx$.
-\end{enumerate}
+\begin{thm}
+	Soit $(X,R)$ un ensemble avec une relation d'équivalence.\\
+	Soit $\pi$ la surjection canonique.\\
+	Soit $f$ une application de $X$ dans $Y$. Les assertions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item ($\forall x,y \in R~xRy\Rightarrow f(x)=f(y)$)
+		\item ($\exists ! \bar{f}: X/R \rightarrow Y$ telle que $f=\bar{f}\circ \pi$)
+	\end{enumerate}
+\end{thm}
 
-\subsubsection{Théorème}
-Soit $(X,R)$ un ensemble avec une relation d'équivalence.\\
-Soit $\pi$ la surjection canonique.\\
-Soit $f$ une application de $X$ dans $Y$. Les assertions suivantes sont équivalentes :
-\begin{enumerate}
-\item ($\forall x,y \in R~xRy\Rightarrow f(x)=f(y)$)
-\item ($\exists ! \bar{f}: X/R \rightarrow Y$ telle que $f=\bar{f}\circ \pi$)
-\end{enumerate}
+\begin{demo}
+	Supposons 1).
+	
+	\begin{itemize}
+		\item unicité de $\bar{f}$ :\\
+		Si $\bar{f}_1$ et $\bar{f}_2$ vérifient $\bar{f}_1\circ \pi = f = \bar{f}_2 \circ \pi$.
+		
+		Soit $\bar{x}\in X/R$ $\bar{x}=\pi(x)$, et on a :
+		$$\bar{f}_1(\bar{x})=(\bar{f}_1\circ \pi)(x)=f=(\bar{f}_2\circ \pi)(x)=\bar{f}_2(\bar{x})$$
+		
+		\item Existence de $\bar{f}$ :
+		
+		Soit $\chi\in X/R,~\exists x\in X | \pi(x)=\bar{x}=\chi$.
+		
+		On pose $\bar{f}(\chi)=f(x)$. Cette définition est indépendante du choix de $x$, car :
+		
+		si $y\in X$ vérifie $\pi(y)=\chi\Rightarrow \pi(x)=\pi(y)$
+		
+		D'après le lemme , on a $xRy \Rightarrow f(x)=f(y)$. Donc cette définition définit une application $\bar{f}:X/R \rightarrow Y$ et elle vérifie $f=\bar{f}\circ \pi$ par construction.
+	\end{itemize}
+	
+	Supposons 2). Soit $x,y\in X, xRy \Rightarrow \pi(x)=\pi(y)\Rightarrow (\bar{f}\circ \pi)(x)=(\bar{f}\circ \pi)(y)\Rightarrow f(x)=f(y)$
+	
+\end{demo}
 
-\subsubsection{Démonstration}
-Supposons 1).\\
-\begin{itemize}
-\item unicité de $\bar{f}$ :\\
-Si $\bar{f}_1$ et $\bar{f}_2$ vérifient $\bar{f}_1\circ \pi = f = \bar{f}_2 \circ \pi$.\\
-Soit $\bar{x}\in X/R$ $\bar{x}=\pi(x)$, et on a :
-$$\bar{f}_1(\bar{x})=(\bar{f}_1\circ \pi)(x)=f=(\bar{f}_2\circ \pi)(x)=\bar{f}_2(\bar{x})$$
+\begin{remar}
+	Lorsque $f$ vérifie 1) du théorème, on dit que $f$ passe au quotient par $R$ et que $\bar{f}$ est induite par $f$.
+\end{remar}
 
-\item Existence de $\bar{f}$ :\\
-Soit $\chi\in X/R,~\exists x\in X | \pi(x)=\bar{x}=\chi$.\\
-On pose $\bar{f}(\chi)=f(x)$. Cette définition est indépendante du choix de $x$, car :\\
-si $y\in X$ vérifie $\pi(y)=\chi\Rightarrow \pi(x)=\pi(y)$\\
-D'après le lemme , on a $xRy \Rightarrow f(x)=f(y)$. Donc cette définition définit une application $\bar{f}:X/R \rightarrow Y$ et elle vérifie $f=\bar{f}\circ \pi$ par construction.\\
-\end{itemize}
+\begin{lemme}
+	Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
+	\begin{enumerate}
+		\item $\bar{f}$ est surjective $\Leftrightarrow$ $f$ l'est aussi
+		\item $\bar{f}$ est injective $\Leftrightarrow$ ($\forall x,y\in X,~f(x)=f(y)\Rightarrow xRy$)
+	\end{enumerate}
+\end{lemme}
 
-Supposons 2). Soit $x,y\in X, xRy \Rightarrow \pi(x)=\pi(y)\Rightarrow (\bar{f}\circ \pi)(x)=(\bar{f}\circ \pi)(y)\Rightarrow f(x)=f(y)$
+\begin{demo}
+	\begin{enumerate}
+		
+		\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$ est surjective, car $\bar{f}$ et $\pi$ sont surjectives.
+		
+		Supposons $f$ surjective, soit $y\in Y$, $\exists x \in X | f(x)=\bar{f}(\pi(x))=y$, $\bar{f}$ est surjective.
+		\item à faire en exercice
+	\end{enumerate}
+\end{demo}
 
-\subsubsection{Remarques}
-Lorsque $f$ vérifie 1) du théorème, on dit que $f$ passe au quotient par $R$ et que $\bar{f}$ est induite par $f$.\\
+\begin{propr}
+	Soit $n\geq 1$ entier, soit $e:\begin{array}{lll}
+	\Z &\rightarrow &\U_n\\
+	k&\mapsto&e^{\frac{2\pi i k}{n}}
+	\end{array}$.
+	
+	Soit $R$ la relation d'équivalence $xRy\Leftrightarrow n|x-y$.
+	
+	Notons $\Z/n\Z=\Z/R$, alors $e$ induit une bijection $\bar{e}:\Z/n\Z \rightarrow \U_n$ avec $e=\bar{e}\circ \pi$
+\end{propr}
 
-\subsubsection{Lemme}
-Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
-\begin{enumerate}
-\item $\bar{f}$ est surjective $\Leftrightarrow$ $f$ l'est aussi
-\item $\bar{f}$ est injective $\Leftrightarrow$ ($\forall x,y\in X,~f(x)=f(y)\Rightarrow xRy$)
-\end{enumerate}
-
-\subsubsection{Démonstration}
-\begin{enumerate}
-
-\item Supposons $\bar{f}$ surjective, $f=\bar{f}\circ \pi$ est surjective, car $\bar{f}$ et $\pi$ sont surjectives.\\
-
-Supposons $f$ surjective, soit $y\in Y$, $\exists x \in X | f(x)=\bar{f}(\pi(x))=y$, $\bar{f}$ est surjective.
-\item à faire en exercice
-\end{enumerate}
-
-\subsubsection{Propriété}
-Soit $n\geq 1$ entier, soit $e:\begin{array}{lll}
- \Z &\rightarrow &\U_n\\
-k&\mapsto&e^{\frac{2\pi i k}{n}}
-\end{array}$.\\
-Soit $R$ la relation d'équivalence $xRy\Leftrightarrow n|x-y$.\\
-Notons $\Z/n\Z=\Z/R$, alors $e$ induit une bijection $\bar{e}:\Z/n\Z \rightarrow \U_n$ avec $e=\bar{e}\circ \pi$
-
-\subsubsection{Démonstration}
-L'existence de $\bar{e}$ découle du théorème et de $xRy \Leftrightarrow n|x-y \Leftrightarrow \exists k\in \Z | x=y+nk$.\\
-Ceci implique que $e(x)=e(y)$.\\
-La surjection de $\bar{e}$ découle du lemme et de la surjectivité de $e$.\\
-L'injection de $\bar{e}$ découle de $\forall x,y\in \Z$ $e(x)=e(y)\Leftrightarrow xRy$, et du lemme.
+\begin{demo}
+	L'existence de $\bar{e}$ découle du théorème et de $xRy \Leftrightarrow n|x-y \Leftrightarrow \exists k\in \Z | x=y+nk$.\\
+	Ceci implique que $e(x)=e(y)$.\\
+	La surjection de $\bar{e}$ découle du lemme et de la surjectivité de $e$.\\
+	L'injection de $\bar{e}$ découle de $\forall x,y\in \Z$ $e(x)=e(y)\Leftrightarrow xRy$, et du lemme.
+\end{demo}
 
 \section{Définition d'une action de groupe}
 
-\subsubsection{Définition}
-Soient $X$ un ensemble, $G$ un groupe. Une action de $G$ sur $X$ est une application $\begin{array}{lll}
-G\x X &\rightarrow & X\\
-(g,x)&\rightarrow & g.x\\
-\end{array}$ telle que :
-\begin{enumerate}
-\item $\forall x\in X$ $e.x=x$\\
-\item $\forall g,h\in G$ $\forall x\in X$ $(gh).x=g.(h.x)$
-\end{enumerate}
+\begin{defi} 
+	Soient $X$ un ensemble, $G$ un groupe. Une action de $G$ sur $X$ est une application $\begin{array}{lll}
+	G\x X &\rightarrow & X\\
+	(g,x)&\rightarrow & g.x\\
+	\end{array}$ telle que :
+	\begin{enumerate}
+	\item $\forall x\in X$ $e.x=x$
+	\item $\forall g,h\in G$ $\forall x\in X$ $(gh).x=g.(h.x)$
+	\end{enumerate}
+\end{defi}
 
-\subsubsection{Définition}
-Un $G$-ensemble est un ensemble muni d'une action du groupe $G$.
+\begin{defi}
+	Un $G$-ensemble est un ensemble muni d'une action du groupe $G$.	
+\end{defi}
 
 \exem
 \begin{enumerate}
@@ -1511,100 +1549,112 @@ On verra que $|\mathcal{A}_n|=\frac{n!}{2}$
 \chapter{Sous-groupes distingués, groupes quotients}
 \section{Sous-groupes distingués}
 
-Soient $G$ un groupe et $H$ un \sg.\\
+Soient $G$ un groupe et $H$ un \sg de $G$.
 
-\subsubsection{Notation}
-Pour $g\in H$, on note $gHg^{-1}=\{ghg^{-1}| h\in G\}$. C'est un \sg en tant qu'image de $H$ par l'automorphisme de conjugaison (= automorphisme intérieur)
-$$c_g:G\rightarrow G,~x\mapsto gxg^{-1}$$
+\begin{nota}
+	Pour $g\in H$, on note $gHg^{-1}=\{ghg^{-1}| h\in G\}$. C'est un \sg en tant qu'image de $H$ par l'automorphisme de conjugaison (= automorphisme intérieur)
+	$$c_g:G\rightarrow G,~x\mapsto gxg^{-1}$$
+\end{nota}
 
-\propr
-Les conditions suivantes sont équivalentes :
-\begin{enumerate}
-\item $\forall g\in G$, on a $gH=Hg$
-\item $\forall g\in G$, on a $gHg^{-1}=H$
-\item $\forall g\in G$, on a $gHg^{-1}\subseteq H$
-\end{enumerate}
+\begin{propr}
+	Les conditions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item $\forall g\in G$, on a $gH=Hg$
+		\item $\forall g\in G$, on a $gHg^{-1}=H$
+		\item $\forall g\in G$, on a $gHg^{-1}\subseteq H$
+	\end{enumerate}
+\end{propr}
 
-\dem
-Clairement $1) \Leftrightarrow 2)$ et $2) \Rightarrow 3)$. Montrons que $3)\Rightarrow 2)$ :\\
-Soit $x\in G$, alors pour $g=x^{-1}$, on a :
-$$H\supseteq gHg^{-1}=x^{-1}H(x^{-1})^{-1}=x^{-1}Hx$$
-et donc $xHx^{-1}\supseteq H$.
+\begin{demo}
+	Clairement $1) \Leftrightarrow 2)$ et $2) \Rightarrow 3)$. Montrons que $3)\Rightarrow 2)$ :\\
+	Soit $x\in G$, alors pour $g=x^{-1}$, on a :
+	$$H\supseteq gHg^{-1}=x^{-1}H(x^{-1})^{-1}=x^{-1}Hx$$
+	et donc $xHx^{-1}\supseteq H$.	
+\end{demo}
 
-\defi
-$H$ est \textbf{distingué} (ou \textbf{normal}) dans $G$ si, pour tout $g\in G$, on a $gHg^{-1}=H$. On écrit alors $H\vartriangleleft G$.
+\begin{defi}
+	$H$ est \textbf{distingué} (ou \textbf{normal}) dans $G$ si, pour tout $g\in G$, on a $gHg^{-1}=H$. On écrit alors $H\vartriangleleft G$.
+\end{defi}
 
-\defi
-L'\textbf{indice} de $H$ dans $G$ est $[G:H]=|G/H| = |G|/|H|$ si $|G|$ et $|H|$ sont finis.
+\begin{defi}
+	L'\textbf{indice} de $H$ dans $G$ est $[G:H]=|G/H| = |G|/|H|$ si $|G|$ et $|H|$ sont finis.
+\end{defi}
 
-\exem
-\begin{enumerate}
-\item $\{e\}=H \Rightarrow gHg^{-1}=\{gg^{-1}\}=\{e\}$. Donc $\{e\}\vartriangleleft G$. On a $G\vartriangleleft G$ et $Z(G)\vartriangleleft G$
-\item Si $G$ est \textbf{abélien}, alors $c_g=Id_G,~\forall g\in G$, donc $H\vartriangleleft G$ pour tout \sg $H$ de $G$.
-\item Si $H$ est \textbf{d'indice 2} dans $G$ ($|G/H|=2$) alors $G=H\cup gH=H\cup Hg$ et $gH=Hg$, $H$ est distingué dans $G$.
-\end{enumerate}
+\begin{exem}
+	\begin{enumerate}
+		\item $\{e\}=H \Rightarrow gHg^{-1}=\{gg^{-1}\}=\{e\}$. Donc $\{e\}\vartriangleleft G$. On a $G\vartriangleleft G$ et $Z(G)\vartriangleleft G$
+		\item Si $G$ est \textbf{abélien}, alors $c_g=Id_G,~\forall g\in G$, donc $H\vartriangleleft G$ pour tout \sg $H$ de $G$.
+		\item Si $H$ est \textbf{d'indice 2} dans $G$ ($|G/H|=2$) alors $G=H\cup gH=H\cup Hg$ et $gH=Hg$, $H$ est distingué dans $G$.
+	\end{enumerate}
+\end{exem}
 
-\subsubsection{Lemme}
-Si $f:G\rightarrow K$ est un morphisme de groupes, alors $Ker(f)$ est distingué dans $G$.
+\begin{lemme}
+	Si $f:G\rightarrow K$ est un morphisme de groupes, alors $Ker(f)$ est distingué dans $G$.
+\end{lemme}
 
-\dem
-Soient $x\in Ker(f)$ et $g\in G$. On a:
-$$f(gxg^{-1})=f(g)f(x)f(g)^{-1}=f(g)ef(g)^{-1}=e$$
-Donc $g~Ker(f)~g^{-1}\subseteq Ker(f),\forall g\in G$ et $Ker(f)\vartriangleleft G$.
+\begin{demo}
+	Soient $x\in Ker(f)$ et $g\in G$. On a:
+	$$f(gxg^{-1})=f(g)f(x)f(g)^{-1}=f(g)ef(g)^{-1}=e$$
+	Donc $g~Ker(f)~g^{-1}\subseteq Ker(f),\forall g\in G$ et $Ker(f)\vartriangleleft G$.
+\end{demo}
 
-\remar
-$Im(f)\subseteq K$ n'est pas distingué en général. Par exemple, si $f:G\rightarrow K$ est l'inclusion d'un \sg non distingué, alors $Im(f)=G\subseteq K$ n'est pas distingué.
+\begin{remar}
+	$Im(f)\subseteq K$ n'est pas distingué en général. Par exemple, si $f:G\rightarrow K$ est l'inclusion d'un \sg non distingué, alors $Im(f)=G\subseteq K$ n'est pas distingué.
+\end{remar}
 
-\exem
-\begin{enumerate}
-\item $\A_n\vartriangleleft \sigma_n$ car $\A_n=Ker(\epsilon)$
-\item $SL_n(\R)\vartriangleleft GL_n(\R)$ car $SL_n(\R)=Ker(det)$
-\item $SO_n(\R)\vartriangleleft O_n(\R)$, $SU_n(\C)\vartriangleleft U_n(\C)$ par la même raison.
-\item Quels sont les \sgs distingués de $D_4=\{e, \tau_1, \tau_2, \tau_3,\tau_4, \rho, \rho^2, \rho^3\}$
-
-\begin{center}
-	\begin{tikzpicture}[scale=0.75]
-	\draw (-2,-2) -- (2,-2) -- (2,2) -- (-2,2) -- cycle;
-	\draw[dashed] (-3,-3) -- (3,3) node[below right] {$\tau_2$};
-	\draw[dashed] (3,-3) -- (-3,3) node[below left] {$\tau_4$};
-	\draw[dashed] (-3,0) -- (3,0) node[below right] {$\tau_1$};
-	\draw[dashed] (0,-3) -- (0,3) node[below right] {$\tau_3$};
-	\draw[->,>=latex] (1,0) arc (0:90:1) node[near end, above right] {$\rho$};	
+\begin{exem}
+	\begin{enumerate}
+		\item $\A_n\vartriangleleft \sigma_n$ car $\A_n=Ker(\epsilon)$
+		\item $SL_n(\R)\vartriangleleft GL_n(\R)$ car $SL_n(\R)=Ker(det)$
+		\item $SO_n(\R)\vartriangleleft O_n(\R)$, $SU_n(\C)\vartriangleleft U_n(\C)$ par la même raison.
+		\item Quels sont les \sgs distingués de $D_4=\{e, \tau_1, \tau_2, \tau_3,\tau_4, \rho, \rho^2, \rho^3\}$
+		
+		\begin{center}
+			\begin{tikzpicture}[scale=0.75]
+			\draw (-2,-2) -- (2,-2) -- (2,2) -- (-2,2) -- cycle;
+			\draw[dashed] (-3,-3) -- (3,3) node[below right] {$\tau_2$};
+			\draw[dashed] (3,-3) -- (-3,3) node[below left] {$\tau_4$};
+			\draw[dashed] (-3,0) -- (3,0) node[below right] {$\tau_1$};
+			\draw[dashed] (0,-3) -- (0,3) node[below right] {$\tau_3$};
+			\draw[->,>=latex] (1,0) arc (0:90:1) node[near end, above right] {$\rho$};	
+			
+			\node (E) at (8,-3) {$\{e\}$};
+			\node (1) at (4.5,-1) {$<\tau_1>$};
+			\node (3) at (6.25,-1) {$<\tau_3>$};
+			\node (R2) at (8,-1) {$<\rho^2>$};
+			\node (2) at (9.75,-1) {$<\tau_1>$};
+			\node (4) at (11.5,-1) {$<\tau_4>$};
+			\node (R) at (8,1) {$<\rho>$};
+			\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
+			\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+			\node (D4) at (8,3) {$D_4$};
+			
+			\draw[->,>=latex] (E) -- (1);
+			\draw[->,>=latex] (E) -- (3);
+			\draw[->,>=latex] (E) -- (R2);
+			\draw[->,>=latex] (E) -- (2);
+			\draw[->,>=latex] (E) -- (4);
+			\draw[->,>=latex] (1) -- (13);
+			\draw[->,>=latex] (3) -- (13);
+			\draw[->,>=latex] (R2) -- (13);
+			\draw[->,>=latex] (R2) -- (R);
+			\draw[->,>=latex] (R2) -- (24);
+			\draw[->,>=latex] (2) -- (24);
+			\draw[->,>=latex] (4) -- (24);
+			\draw[->,>=latex] (13) -- (D4);
+			\draw[->,>=latex] (R) -- (D4);
+			\draw[->,>=latex] (24) -- (D4);
+			\end{tikzpicture}
+		\end{center}	
+	\end{enumerate}
 	
-	\node (E) at (8,-3) {$\{e\}$};
-	\node (1) at (4.5,-1) {$<\tau_1>$};
-	\node (3) at (6.25,-1) {$<\tau_3>$};
-	\node (R2) at (8,-1) {$<\rho^2>$};
-	\node (2) at (9.75,-1) {$<\tau_1>$};
-	\node (4) at (11.5,-1) {$<\tau_4>$};
-	\node (R) at (8,1) {$<\rho>$};
-	\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
-	\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
-	\node (D4) at (8,3) {$D_4$};
-	
-	\draw (E) -- (1);
-	\draw (E) -- (3);
-	\draw (E) -- (R2);
-	\draw (E) -- (2);
-	\draw (E) -- (4);
-	\draw (1) -- (13);
-	\draw (3) -- (13);
-	\draw (R2) -- (13);
-	\draw (R2) -- (R);
-	\draw (R2) -- (24);
-	\draw (2) -- (24);
-	\draw (4) -- (24);
-	\draw (13) -- (D4);
-	\draw (R) -- (D4);
-	\draw (24) -- (D4);
-	\end{tikzpicture}
-	
-\end{center}
+	Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. Alors :
+	$$f\circ \sigma_D \circ f^{-1}=\sigma_{f(D)}$$
+\end{exem}
 
-\end{enumerate}
 
-Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. Alors :
-$$f\circ \sigma_D \circ f^{-1}=\sigma_{f(D)}$$
+
+
 
 
 \end{document}
