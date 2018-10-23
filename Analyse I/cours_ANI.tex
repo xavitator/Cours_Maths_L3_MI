@@ -30,6 +30,8 @@
 \newtheorem*{demo}{Démonstration}
 \newtheorem{remar}[thm]{Remarque}
 \newtheorem{exo}[thm]{Exercice}
+\newtheorem{note}[thm]{Note}
+\newtheorem*{absnon}{Abstract nonsense}
 
 \newcommand{\x}{\times}
 \newcommand{\R}{\mathbb{R}}
@@ -41,6 +43,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\displayastyle}{\displaystyle}
 \newcommand{\sev}{sous-espace vectoriel }
@@ -96,13 +99,15 @@ $n$ est dite semi-normé sur E (\ev de $\R$) ssi $n$ vérifie 2 et 3 de la défi
 \end{defi}
 
 
-\subsubsection{Abstract nonsense}
+\begin{absnon}
 \begin{enumerate}
 \item $N(-u)=N(u)$
 \item $N(\lambda u)=0 \Leftrightarrow \lambda u =0 \Leftrightarrow \lambda =0~ou~u=0$
 \item $N(\sum_{i=1}^{n}u_i) \leq \sum_{i=1}^{n}N(u_i)$
 \item $|N(u)-N(v)|\leq N(u-v)$
 \end{enumerate}
+\end{absnon}
+
 
 \begin{defi}
 Soit $(E,N)$ ou $(X,d)$, alors pour $x_0\in E \text{ (ou }X)$ :
@@ -161,7 +166,7 @@ Par cette définition, tout \evn $(E, N)$ (tout espace métrique $(X,d)$) est mu
 Une topologie ne provient pas nécessairement d'une métrique (à fortiori une norme).\\
 Il y a des conditions nécessaires et suffisantes pour qu'une topologie provienne d'une métrique (on dit métrisable).
 
-$$ espace~vectoriel~normé \Rightarrow espace~métrique \Rightarrow espace~topologie $$
+$$ espace~vectoriel~normé \Rightarrow espace~metrique \Rightarrow espace~topologie $$
 Les réciproques sont fausses.
 \end{propr}
 
@@ -409,13 +414,14 @@ $$\forall \epsilon >0~ \exists n_0>0~tq~n\geq n_0 \Rightarrow N(l-x_n)<\epsilon~
 \end{defi}
 
 
-\subsubsection{Abstract nonsense}
-
+\begin{absnon}
 \begin{enumerate}
-\item Si l existe, elle est unique
+\item Si $l$ existe, elle est unique
 \item Si $u_n \rightarrow l$ et $v_n\rightarrow l'$, $u_n+v_n \rightarrow l+l'$
 \item Si $u_n \rightarrow l$ et $\lambda \in \R$, $\lambda u_n \rightarrow \lambda l$
 \end{enumerate}
+\end{absnon}
+
 
 \begin{propr}
 Si $u_n\rightarrow l$ alors $u_n$ est bornée
@@ -424,7 +430,7 @@ Si $u_n\rightarrow l$ alors $u_n$ est bornée
 
 \begin{demo}
 Soit $(u_n)$ une suite convergeant vers $l$.
-Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en l de rayon 1.
+Alors à partir d'un certain rang $n_0$ tout les termes de la suite sont dans la boule centrée en $l$ de rayon 1.
 Puisqu'il y a un nombre fini de termes avant $n_0$, on sait que l'ensemble $\{x_n, n < n_0\}$ est borné.
 Puisque l'ensemble $\{x_n,  n < n_0\}$ est borné (car il y a un nombre fini de terme) et que l'ensemble des $\{x_n,  n \geq n_0\}$ est aussi borné, l'ensemble de tous les $x_n$ est borné.
 \end{demo}
@@ -663,9 +669,11 @@ Un \textbf{recouvrement de $K$} est $U_\alpha$ une famille de parties tq $\cup_\
 \end{defi}
 
 
-\subsubsection{Définition (Borel-Lebesgue)}
+\begin{defi}[Borel-Lebesgue]
 Soit $K\subseteq (X,C)$ séparé est dite compacte ssi pour tout recouvrement ouvert de $K$, on peut extraire un recouvrement fini de $K$ :
 $$K\subseteq \cup_{\alpha \in A}U_\alpha \Rightarrow K\subseteq \cup_{i\in J}U_{\alpha_i}~(I~finie)$$
+\end{defi}
+
 
 \begin{exem}
 On a :
@@ -685,7 +693,7 @@ Soit $K = \cup_\alpha (U_\alpha \cap K) \subseteq \cup_\alpha U_\alpha$ (un reco
 \end{remar}
 
 \begin{remar}[Variante]
-si une famille finie de fermés emboîtés est vide, alors au moins un de ses membres est vide.
+Si une famille finie de fermés emboîtés est vide, alors au moins un de ses membres est vide.
 \end{remar}
 
 \begin{remar}[Contraposée de la variante]
@@ -699,8 +707,9 @@ Si $K$ est compacte dans $(X,d)$ $(E,N)$ $(X,C)$, alors $K$ est fermée.
 \end{propr}
 
 
-\subsubsection{Note}
+\begin{note}
 Tout point $y \notin K$ peut être séparé de $K$ (c'est à dire qu'il existe deux ouverts disjoints, l'un contenant $\{y\}$ et l'autre contenant $K$).
+\end{note}
 
 
 \begin{propr}
@@ -1151,20 +1160,198 @@ Si $F$ est de Banach, alors $\L_c(E,F)$ est de Banach.
 
 \begin{demo}
 Soit $l_n$ est suite de Cauchy d'\aplins continues et soit $u\in E$.
-$$N_F(l_n(u)-l_m(u)=N_F((l_n-l_m)(u))\leq ||l_n-l_m||N_E(u)$$
-Donc $l_n(u)$ tend vers un vecteur de $F$ (noté $\lambda_u$) car $||l_n-l_m||$ tend vers  pour $n,m$ suffisamment grands.\\
-$\lambda$ dépend linéairement de $u$, d'où $\lambda\in \L(E,F)$.\\
-$\lambda$ est continue et $||\lambda - l_n||\rightarrow 0$ :
-$$||\lambda(u)||\leq N_F(\lambda(u)-l_n(u))+N_F(l_n(u))\leq ||l_n||~||u||\hspace{5em}\text{ pour un }n\text{ suffisamment grand}$$
+$$N_F(l_n(u)-l_m(u))=N_F((l_n-l_m)(u))\leq ||l_n-l_m||N_E(u)$$
+Donc $l_n(u)$ tend vers un vecteur de $F$ (noté $\lambda_u$) car $||l_n-l_m||$ tend vers 0 pour $n,m$ suffisamment grands.\\
+$\lambda_u$ dépend linéairement de $u$, d'où $\lambda_u\in \L(E,F)$.\\
+$\lambda_u$ est continue :
+$$||\lambda_u||\leq N_F(\lambda_u-l_n(u))+N_F(l_n(u))\leq ||l_n||~||u||\hspace{5em}\text{ pour un }n\text{ suffisamment grand}$$
+On a que $\lambda_u$ est continue en 0.\\
+De plus, on a  $||\lambda_u - l_n||\rightarrow 0$ :
+Soit $u\in S(0,1)$, $N_E(u)=1$, on a :
+$$N_F((\lambda_u-l_n)(u))\leq N_F((\lambda_u-l_m)(u))+N_F((l_m-l_n)(u))$$
+Or $N_F((l_m-l_n)(u)) \leq ||l_m-l_n|| \leq 1$, donc :
+$$\forall \epsilon>0 \exists n_0,~n,m\geq n_0 \Rightarrow ||l_n-l_m||<\frac{\epsilon}{2}$$
+et pour un $n$ et $m$ bien choisis, on a $N_F((\lambda_u-l_m)(u)) \rightarrow 0$ pour $m\rightarrow +\infty$
 \end{demo}
 
+\begin{cor}
+$(E,N)$ normé, alors $\L_c(E,\R)$($=E'$, le dual de $E$) est de Banach.
+\end{cor}
 
+Soit $u\in E$, $l\in E'$ $\mapsto l(u)=<u,l>$ (forme bilinéaire de dualité) et $|<u,l>|\leq ||l||N_E(u)$, donc $E$ s'injecte dans $E''$ (le bidual).\\
+$E''$ est de Banach et $\bar{E} \subseteq E''$, et $\bar{E}$ est fermé, complet, et contient $E$.
 
+\begin{propr}
+Soit $f\in \L_c(E,F), g\in \L_c(F,G)$ alors $g\circ f\in \L_c(E,G)$ et :
+$$||g\circ f|| \leq  ||g||~||f||$$
+(car on a :
+$$N_G(g\circ f(u)) = N_G(g(f(u))) \leq ||g||N_F(f(u)) \leq ||g||~||f||N_E(u)$$
+)
+En particulier, $\L_c(E)=End_c(E)$ est :
+\begin{itemize}
+\item muni de l'algèbre $(+,\cdot, \circ)$ à gauche (non commutative et $\dim E\geq 2$)
+\item normée si $E$ est normée
+\item $||l^n||\leq ||l||^n$
+\end{itemize} 
+\end{propr}
 
+\begin{propr}
+\item Si $E$ est de Banach, on peut définir :
+\begin{itemize}
+\item $\forall l\in End_c(E),$ $exp(l)$
+\item $\forall l\in End_c(E)$ et $l\in B(0,1)$ $(Id_E-l)^{-1}$
+\end{itemize}
+\end{propr}
 
+\begin{demo}
+$$exp(l)=\sum_{i=0}^{+\infty}\frac{l^i}{i!}$$
+En effet, $||\frac{l^i}{i!}|| \leq \frac{||l||^i}{i!}$, et c'est une série convergente (convergent vers $exp(||l||)$).
+D'où une série normalement convergente :
+$$||exp(l)||\leq exp(||l||)$$
+De plus, on a :
+$$(Id_E-l)(1+l+\cdots+l^n)=Id_E-l^n$$
+Si $||l||< 1$, alors :
+\begin{enumerate}
+\item $||l^{n+1}||\leq ||l||^{n+1}\rightarrow 0$
+\item $(1+l+\cdots+l^n)$ est une série normalement convergente (série des normes majorées par une série géométrique de rapport $< 1$)
+\end{enumerate}
+$$(Id_E-l)(\sum_{i=0}^{+\infty}l^i)=Id_E$$
+$\forall y\in B_{\L_c(E)}(Id_E,1)$, alors $y$ a un inverse.\\
+Donc $Id_E$ appartient à l'intérieur de $GL_c(E)$
+\end{demo}
 
+\begin{remar}
+Si $l_0$ est inversible, alors 
+$$l_0-h=l_0(Id_E-l_0^{-1}h)$$
+Si $l_0^{-1}$ est continue, alors si $||h||<\fracun{||l_0^{-1}||}$, $Id_E-l_0^{-1}h$ est inversible.
+\end{remar}
+
+\begin{propr}[Prolongement]
+Si $f\in \L_c(X,F)$ où $X$ est un \sev de $E$ et $X$ dense dans $E$ ($\bar{X}=E$), $F$ de Banach, alors :
+$$\exists ! \bar{f}\in \L_c(E,F)~tq~\bar{f}_{|X}=f~~~et~~~||\bar{f}||=||f||$$
+\end{propr}
+
+\begin{demo}
+$f$ est linéaire donc uniformément continue donc elle est prolongeable par $\bar{f}$.\\
+$f$ est linéaire donc $\bar{f}$ est linéaire.\\
+De plus $||\bar{f}||\geq ||f||$ (car $||\bar{f}||$ est un $\sup$ des $||f||$).\\
+$$\forall n, \exists u_n\in E, ||\bar{f}||-\fracun{n}<\frac{N(\bar{f}(u_n))}{N(u_n)}<||\bar{f}$$
+Mais $X$ est dense dans $E$ d'où $x_n$ est voisin de $u_n$ est suffisamment proche pour que :
+$$||\bar{f}||-\fracun{n}\leq \frac{N(\bar{f}(x_n))}{N(x_n)}\leq ||f||$$
+et on a $\bar{f}||\leq ||f||+\fracun{n}$ pour tout $n$.\\
+D'où $||\bar{f}||\leq ||f||$.
+\end{demo}
+
+\paragraph{\textcolor{red}{Fin officielle du chapitre, vous entrez maintenant dans une zone hors programme}}
+
+\begin{propr}
+\label{propr_continuite}
+Soit $l$ une forme linéaire sur $E$ normée. Alors $l$ est continue ssi $l_0^{-1}$ est fermé dans $E$.
+\end{propr}
+
+\begin{note}
+Si $H$ est un hyperplan de $E$ alors il est noyau d'une forme linéaire sur $E$ ($codim_E(H)=1$, c'est à dire $a\in E, \R a+H=E$).\\
+On a :
+\begin{itemize}
+\item soit $H=\bar{H}\subseteq E$
+\item Soit $H\subsetneq \bar{H} \subseteq E$, alors $\exists a \in \bar{H}\notin H$, $l(a)\neq 0$. Et donc $\bar{H}=H\oplus \R a=E$.
+
+\end{itemize}
+\end{note}
+
+\begin{demo}[Propriété \ref{propr_continuite}]
+\begin{itemize}
+\item $\Rightarrow$, $l$ est continue implique $H=l^{-1}(\{0\})$ est fermé car $\{0\}$ est fermé dans $\R$.
+\item $\Leftarrow$, $H$ est fermé, est ce que $l$ est continue en $0$ ?\\
+Si $xl=0$, c'est trivial.\\
+Sinon, $\exists a'$ $l(a)\neq 0$, prenons $a=\frac{a'}{l(a')}$ et $l(a)=1$.\\
+On prend $H_a = a+H$ avec la bijection $h\in (a+H) \mapsto a+ h, h\in H_a$, $H_a$ est aussi fermé.\\
+$\{0\}\in E\backslash H_a$ (ouvert).\\
+D'où $B(0,r)\subseteq E\backslash H_a$, alors montrons que $x\in B(0,r)\Rightarrow |l(x)|<1$.\\
+Et c'est absurde car si $x\in B(0,r)$ et $|l(x)|<1$, alors $\frac{x}{l(x)}\in H_a$ et $l(\frac{x}{l(x)})=1=l(a)$, d'où $\frac{x}{l(x)}-a\in H$.
+On a $\frac{x}{l(x)}\in H_a$, cad $\frac{x}{l(x)}=a+h$, $h\in H$ :
+$$N(\frac{x}{l(x)})=\fracun{|l(x)|}\x N(x)\leq N(x)\leq r$$
+D'où $\frac{x}{l(x)}\in H_a \cap B(0,r)$, ce qui est absurde.\\
+Donc $l$ est continue en $0$.
+\end{itemize}
+\end{demo}
 
 \chapter{Calcul différentiel}
+
+Soit $f:I\subseteq \R \rightarrow \R$ dérivable en $u\in I$ ssi :
+$$\lim\limits_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}=l=f'(a)$$
+
+Cherchons ce que veut dire différentielle pour $f$ d'un espace normé dans un autre.
+
+\section{Une différentielle}
+
+\begin{propr}
+$$\frac{f(x)-f(a)}{x-a}=l \Leftrightarrow \frac{f(x)-f(a)}{x-a}-l=\epsilon(x)\underset{x\rightarrow a}{\rightarrow} 0$$
+
+On a donc :
+$$f(x)-f(a)=l(x-a)+(x-a)\epsilon(x)$$
+L'accroissement de $f$ est proportionnel à l'accroissement de $x$ à une fonction négligeable devant $|x-a|$ près.
+\end{propr}
+
+\begin{defi}
+$f$ de $\U \subseteq \R^n$ dans $\R$ est différentielle en $a\in \U$ ssi il existe une forme linéaire $df_a$ de $\R^n$ dans $\R$ telle que :
+$$f(x)-f(a)-df_a(x-a)=||x-a||_\infty \epsilon(x)$$
+où $\epsilon(x)\rightarrow 0$ si $x\rightarrow a$ (dans $\R^n$).
+\end{defi}
+
+\begin{propr}
+Si $df_a$ existe elle est unique.
+\end{propr}
+
+\begin{demo}
+\begin{itemize}
+\item Unicité :\\
+Soit $f(x)-f(a)=l_1(x-a)+||x-a||_\infty \epsilon (x)=l_2(x-a)+||x-a||_\infty \eta (x)$.\\
+On a :
+$$(l_2-l_1)(x-a)=||x-a||_\infty (\epsilon(x)-\eta(x))$$
+On pose $x=a+\rho u_a$ avec $u_a=\frac{x-a}{||x-a||_\infty}$ et $\rho=||x-a||_\infty$.\\
+$\epsilon(x)$ et $\eta(x)$ dépendent donc de $\rho$ (ils tendent vers $0$ si $x$ tend vers $a$).
+$$(l_2-l_1)(\rho u_a)=\rho (\epsilon(\rho)-\eta(\rho))$$
+$$(l_2-l_1)(u_a)=(\epsilon(\rho)-\eta(\rho))$$
+Si $\rho \rightarrow 0$ $(l_2-l_1)(u_a)=0$ d'où $l_2-l_1$ (restreint à la sphère unité) $=0$, donc $l_2-l_1=0$
+\end{itemize}
+\end{demo}
+
+\begin{propr}
+Si $f$ est différentiable en $a$, alors elle est continue en $a$.
+\end{propr}
+
+\begin{propr}
+\begin{itemize}
+\item $f+g$ sont différentiables en $a$ si $f$ et $g$ le sont.
+\item $\lambda f$ est différentiable en $a$ si $f$ l'est ($\lambda \in \R$)
+\item $fg$ sont différentiable en $a$ si $f$ et $g$ le sont.
+\end{itemize}
+\end{propr}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \chapter{Séries de Fourier}
 
