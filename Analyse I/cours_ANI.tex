@@ -248,7 +248,7 @@ Ces deux normes sont équivalentes et définissent la même topologie sur $E_1\x
 
 
 \begin{demo}
-On montre que la norme est nulle si les deux sont nuls, la norme du produit par un scalaire et le produit du scalaire avec la norme, et enfin on a l'inégalité triangulaire.\\
+On montre que la norme est nulle si les deux sont nuls, la norme du produit par un scalaire est le produit du scalaire avec la norme, et enfin on a l'inégalité triangulaire.\\
 Les deux normes sont équivalentes car :
 $$N(x,y) \leq N'(x,y) \leq 2N(x,y)$$
 \end{demo}
@@ -264,8 +264,8 @@ $(x , y)\mapsto x+y$ est continue de $E \x E$ dans $E$.\\
 \begin{remar}
 Soit $E$ un \ev et $T$ une topologie sur $E$, alors $(E,T)$ est un \ev topologique ssi :
 \begin{itemize}
-\item $(x,y) \mapsto x+y$
-\item $(\lambda , x) \mapsto \lambda x$
+\item $(x,y) \mapsto x+y$ est continue de $E\x E$ dans $E$
+\item $(\lambda , x) \mapsto \lambda x$ est continue de $K\x E$ dans $E$
 \end{itemize}
 \end{remar}
 
@@ -282,7 +282,7 @@ Soit $A \subset (E,N)$ (avec $E=X~ou~E$ et $N$ une norme ou une distance). On a 
 \begin{enumerate}
 \item $\cerc{A} = \left\{a \in A;~\exists r >0~B(a,r)\subset A \right\}$
 \item $\bar{A} = \left\{x\in E;~\forall r>0~ B(x,r) \cap A \neq \emptyset \right\}$
-\item $x\in Fr(A)~\Leftrightarrow~\left\{x\in E;~ \exists r>0~ B(x,r)\cap A\neq \emptyset~et~ B(x,r)\cap (X\backslash A)\neq \emptyset \right\}$
+\item $x\in Fr(A)~\Leftrightarrow~\left\{x\in E;~ \forall r>0~ B(x,r)\cap A\neq \emptyset~et~ B(x,r)\cap (X\backslash A)\neq \emptyset \right\}$
 \end{enumerate}
 \end{propr}
 
@@ -820,7 +820,7 @@ Par l'absurde, on suppose $K \nsubseteq \cup_{i\in I} U_{\alpha_i}$ pour toute p
 Soit $\epsilon >0$, un nombre de Lebesgue associé à ($U_\alpha$).\\
 On a $k_1\in K$ $B(k_1,\epsilon) \subseteq U_{\alpha_1}$, et $K\nsubseteq U_{\alpha_1}$.\\
 De plus, $k_2\in K$ et $k_2\notin U_{\alpha_1}$ $B(k_2,\epsilon) \subseteq U_{\alpha_2}$, ce qui implique $d(k_1,k_2)\geq \epsilon$.\\
-Par récurrence, on a $k_i\in B(k_i,\epsilon)\subseteq U_{\alpha_i}$ et $k_i\notin U_{j<i}U_{\alpha_j}$.\\
+Par récurrence, on a $k_i\in B(k_i,\epsilon)\subseteq U_{\alpha_i}$ et $k_i\notin \bigcup_{j<i}U_{\alpha_j}$.\\
 D'où, $k_{n+1}\in K$ mais $k_{n+1}\notin \cup_{i\leq n}U_{\alpha_i}$ et $d(k_{n+1}, k_i)\geq \epsilon$, $i\leq n$.\\
 D'où $A=\cup \{k_n\}$ partie infinie sans point d'accumulation (tous ses points sont deux à deux à distance $\geq \epsilon$).
 \end{demo}
@@ -919,7 +919,7 @@ Si $f$ est continue de $(E, N_E)$ dans $(F, N_F)$ et si $K$ compact dans $E$ alo
 
 \begin{demo}
 On a $f(K)\subseteq \cup_\alpha V_\alpha$.
-$$K\subseteq f^{-1}(f(K)) \subseteq f^{-1}(U_\alpha V_\alpha)\subseteq U_\alpha f^{-1}(V_\alpha)$$
+$$K\subseteq f^{-1}(f(K)) \subseteq f^{-1}(\bigcup_\alpha V_\alpha)\subseteq \bigcup_\alpha f^{-1}(V_\alpha)$$
 d'où $K\subseteq \cup_{i\in I} f^{-1}(V_{\alpha_i})$\\
 d'où $f(K)\subseteq \cup_{i\in I} V_{\alpha_i}$
 \end{demo}
@@ -961,7 +961,7 @@ N_E(b(x))&=&N_E(||x||_\infty\x b(\frac{x}{||x||_\infty}))\\
 \end{array}$$
 
 \paragraph{On a montré :} 
-$N_E(u) \leq M ||x||_\infty$ pour $||x||_\infty = \fracun{m}N_E(b(x))$.\\
+$||x||_\infty m \leq N_E(u) \leq M ||x||_\infty$ pour $||x||_\infty = \fracun{m}N_E(b(x))$.\\
 Donc $x\overset{b}{\rightarrow} u= \sum x_ie_i$ et $x = b^{-1}(u)$ sont toutes deux continues.\\
 Donc aussi "$(E,N_E)$" et  "$(\R^n,||.||_\infty)$" sont équivalentes.\\
 
@@ -1004,7 +1004,7 @@ $$\begin{array}{lll}
 \overline{B(0,1)} &\subseteq & \cup_{x\in \overline{B(0,1)}} B(x,\fracun{2})\\
 &\subseteq & \cup_{i\in I}B(x_i, \fracun{2})
 \end{array}$$
-Soit $F = <x_i> \subseteq E$ (dimension finie car engendré par un nombre fini de vecteur).\\
+Soit $F = <\{x_i\}_i> \subseteq E$ (dimension finie car engendré par un nombre fini de vecteur).\\
 Tout point $x\in E$ est adhérant à $F$.\\
 $\frac{x}{N_E(x)} \in \bar{B}(0,1)$ d'où $\exists i~\frac{x}{N_E(x)} \in B(x_i, \fracun{2})$ d'où $N_E(x-N_E(x)x_i)\leq \fracun{2}N_E(x)$
 Donc $f_i = N_E(x)x_i \in F$.\\
@@ -1052,7 +1052,7 @@ Si $f$ est continue de $(E,N_E)$ dans $(F,N_F)$, alors $f$ est uniformément con
 
 \begin{demo}[Idée]
 $K\subseteq \bigcup_{k \in K}B(k,\eta(k))$ donc :
-$$N(u-k)<\eta(k) \Rightarrow N_F(f(u)-f(v))<\epsilon$$
+$$N(u-k)<\eta(k) \Rightarrow N_F(f(u)-f(k))<\epsilon$$
 Puis on joue un peu...
 \end{demo}
 
@@ -1084,7 +1084,7 @@ On dit que $f$ est continue ssi elle vérifie l'une des 4 propriétés équivale
 \begin{itemize}
 \item $1) \Rightarrow 2)$ c'est évident.
 \item $2) \Rightarrow 3)$ c'est évident.
-\item $3) \Rightarrow 4)$ c'est évident.
+\item $2) \Rightarrow 4)$ c'est évident.
 \item $4) \Rightarrow 1)$ c'est évident car $f$ est $M$-contractante.
 \item $3) \Rightarrow 4)$.\\
 Soit $f$ linéaire continue en $0$. Donc $\exists \rho > 0$ tq $u\in B_E(0,\rho)\Rightarrow f(u)\in B_F(0,1)$.\\
@@ -1128,11 +1128,11 @@ $$\begin{array}{lll}
 
 Pourquoi les 3 définitions sont identiques ?\\
 On sait que $\{M, u \in E, N_F(l(u))\leq M N_E(u) \}$ est non vide (l est continue), alors :
-$$\forall u \neq 0,~~\frac{N_F(l(u))}{N_E(l(u))}\leq M$$
+$$\forall u \neq 0,~~\frac{N_F(l(u))}{N_E(u)}\leq M$$
 donc 
-$$Sup~\frac{N_F(l(u))}{N_E(l(u))}\leq M$$
+$$Sup~\frac{N_F(l(u))}{N_E(u)}\leq M$$
 Donc 
-$$Sup~\frac{N_F(l(u))}{N_E(l(u))}\leq Inf(\{M\})$$
+$$Sup~\frac{N_F(l(u))}{N_E(u)}\leq Inf(\{M\})$$
 et $M-\epsilon$ ne vérifie pas $\forall u \in E$, $N_F(l(u))\leq (M-\epsilon) N_E(u)$, donc on a l'égalité.
 
 \begin{demo}
