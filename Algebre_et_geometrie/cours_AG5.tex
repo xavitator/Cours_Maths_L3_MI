@@ -32,6 +32,8 @@
 \theorembodyfont{\normalfont}
 \newtheorem{exem}[thm]{Exemple}
 \newtheorem*{demo}{Démonstration}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{term}{Terminologie}
 \newtheorem{remar}[thm]{Remarque}
 \newtheorem{exo}[thm]{Exercice}
 
@@ -55,6 +57,8 @@
 \newcommand{\mdgs}{morphismes de groupes }
 \newcommand{\aut}{automorphisme }
 \newcommand{\auts}{automorphismes }
+\newcommand{\isom}{isomorphisme }
+\newcommand{\isoms}{isomorphismes }
 \newcommand{\pcsd}{produit de cycles à support disjoints }
 \newcommand{\sg}{sous-groupe }
 \newcommand{\sgs}{sous-groupes }
@@ -1643,8 +1647,18 @@ Soient $G$ un groupe et $H$ un \sg de $G$.
 \end{demo}
 
 \begin{defi}
-	$H$ est \textbf{distingué} (ou \textbf{normal}) dans $G$ si, pour tout $g\in G$, on a $gHg^{-1}=H$. On écrit alors $H\vartriangleleft G$.
+	$H$ est \textbf{distingué} (ou \textbf{normal}) dans $G$ ssi, pour tout $g\in G$, on a $gHg^{-1}=H$. On écrit alors $H\vartriangleleft G$.
 \end{defi}
+
+\begin{defi}
+Soit un groupe $G$ et $H$ un sous-groupe. Le \textbf{normalisateur} de $H$ dans $G$ est :
+$$N_G(H)=\{g\in G | gHg^{-1}=H\}$$
+\end{defi}
+
+\begin{remar}
+$N_G(H)$ est un \sg de $G$ contenant $H$. $H$ est distingué dans $N_G(H)$ et $N_G(H)$ est le plus grand \sg de $G$ dans lequel $H$ est distingué.\\
+$H$ est distingué dans $G$ ssi $N_G(H)=G$
+\end{remar}
 
 \begin{defi}
 	L'\textbf{indice} de $H$ dans $G$ est $[G:H]=|G/H| = |G|/|H|$ si $|G|$ et $|H|$ sont finis.
@@ -1720,7 +1734,235 @@ Soient $G$ un groupe et $H$ un \sg de $G$.
 	
 	Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. Alors :
 	$$f\circ \sigma_D \circ f^{-1}=\sigma_{f(D)}$$
+	Donc $D_4$, $\{e\}$, $<\tau_1,\tau_3>$, $<\tau_2,\tau_4>$, $<\rho>$, $<\rho^2>$ sont distingués et $<\tau>$, $<\tau_3>$, $<\tau_2$ et $<\tau_4>$ ne sont pas distingués.\\
+	On a $N_{D_4}(<\tau_1>)=<\tau_1,\tau_3>$, $N_{D_4}(<\tau_2>)=<\tau_2,\tau_4>$.
 \end{exem}
+
+\begin{remar}
+\begin{enumerate}
+\item Dans les treillis des \sgs, on a l'action de conjugaison de $G$ sur l'ensemble des \sgs par conjugaison.\\
+Les orbites ponctuelles sont les \sgs distingués, cad les \sgs qui ne sont pas liés par une action de $\rho$ à d'autres \sgs.\\
+Les orbites non ponctuelles sont les paquets de \sgs reliés par une action de $\rho$.\\
+Le stabilisateur d'un \sg $H$ est l'ensemble des $g$ tq $gHg^{-1}=H$, donc c'est le normalisateur de $H$ dans $G$.\\
+L'isomorphisme $G/Stab_G(x)\fong G\cdot x$ dit que l'indice du normalisateur $N_G(H)$ est égal au cardinal de l'orbite de $H$ sous l'action de conjugaison.
+
+\item Un groupe $G$ est \textbf{simple} si $G\neq \{e\}$ et ses seuls \sgs distingués sont $\{e\}$ et $G$.\\
+On verra plus tard que $\A_n$ est simple pour $n\geq 5$. Cela est lié au fait que l'équation du n-ième degré n'est pas résoluble par des radicaux pour $n\geq 5$ (voir $M1$).
+\end{enumerate}
+\end{remar}
+
+\section{Groupes quotients}
+
+Soient $G$ un groupe et $H \leq G$ un \sg. On note $\pi : G \rightarrow G/H,~g\mapsto gH$ la bijection canonique.
+
+\begin{rappel}
+\begin{itemize}
+\item $\pi$ est surjective
+\item $\forall g\in G$, on a $\pi(g)=gH$
+\item Pour $g,g' \in G$, on a $\pi(g)=\pi(g')$ ssi $\exists h \in H$ tq $g'=gh$
+\end{itemize}
+\end{rappel}
+
+\begin{thm}
+\label{thm_comp_int}
+On suppose que $H\vartriangleleft G$.\\
+Il existe une unique loi de composition interne $*$ sur $G/H$ tq $(G/H,*)$ soit un groupe et 
+$$\pi : G \rightarrow G/H$$
+un morphisme de groupes.
+\end{thm}
+
+\begin{demo}
+Soient $\alpha, \beta \in G/H$. Soient $x,y\in G$ tq $\pi (x)=\alpha$ et $\pi(y)=\beta$.\\
+On définit 
+$$ \alpha * \beta = \pi(x) * \pi(y)=\pi(xy)$$
+et c'est la seule possibilité car $\pi$ doit être un morphisme de groupes.\\
+Il faut vérifier que $\alpha * \beta$ est bien défini.\\
+Soient $x',y'\in G$ tq $\pi(x')=\alpha$ et $\pi(y')=\beta$.\\
+Il existe $h,k\in H$ tq $x'=xh$ et $y'=yk$. On a :
+$$\pi(x'y')=\pi(xhyk)=\pi(xyy^{-1}hyk)=\pi(xy)$$
+Ce qui montre que $\pi(xy)$ ne dépend que du choix des représentants $x$ et $y$ de $\alpha$ et $\beta$.\\
+Montrons l'associativité : Soient $\pi (x),\pi(y),\pi(z)$ dans $G/H$. On a :
+$$\begin{array}{lll}
+(\pi(x)\pi(y))\pi(z)&=&\pi(xy)\pi(z)\\
+&=&\pi(xyz)\\
+&=&\pi(x)(\pi(y)\pi(z))
+\end{array}$$
+$\pi(e)$ est neutre car :
+$$\pi(x)\pi(e)=\pi(xe)=\pi(x)=\pi(ex)=\pi(e)\pi(x)$$
+et $\pi(x^{-1})$ est inverse de $\pi(x),~\forall x\in G$, car :
+$$\pi(x)\pi(x^{-1})=\pi(xx^{-1})=\pi(e)=\pi(x^{-1}x)=\pi(x^{-1}x)=\pi(x^{-1})\pi(x)$$
+\end{demo}
+
+\begin{remar}
+\begin{enumerate}
+\item On suppose que $H\vartriangleleft G$. Alors la loi de composition sur $G/H$ vérifie :
+\begin{itemize}
+\item $H=\ker (\pi : G \rightarrow G/H)$
+\item $eH=H$ est l'élément neutre
+\item $\forall x, y\in G$ : $xH * yH = xyH$
+\end{itemize}
+
+\item Supposons que $H\leq G$ et $G/H$ a une structure de groupe telle que $\pi:G \rightarrow G/H$ est un morphisme. Alors $H=\ker (\pi)$ est forcément distingué dans $G$.
+\end{enumerate}
+\end{remar}
+
+
+\begin{defi}
+Supposons que $H\vartriangleleft G$. Le groupe $G/H$ du théorème \ref{thm_comp_int} est le \textbf{groupe quotient} de $G$ par $H$.
+\end{defi}
+
+\begin{cor}
+Les \sgs distingués de $G$ sont exactement les noyaux des \mdgs $G\underset{\varphi}{\rightarrow} K$ de domaine $G$.
+\end{cor}
+
+\begin{exem}
+\begin{enumerate}
+\item Si $E$ est un \ev sur $\R$ et $F$ un \sev alors $(F,+)$ est un \sg distingué de $(E,+)$ (qui est commutatif).\\
+Alors $E/F$ devient un \ev pour la multiplication par les scalaires définie par $\lambda.(v+F)=\lambda v+F$\\
+Si $F'\subseteq E$ est un supplémentaire de $F$ ($E=F'\oplus F$), alors la composition :
+$$F'~inj~E \rightarrow E/F$$
+est un isomorphisme d'espaces vectoriels (exo !).\\
+En particulier, si $\dim E < \infty$, alors :
+$$\dim E/F = \dim E- \dim F$$
+
+\item Soit $V=\{e,(1~2)(3~4),(1~3)(2~4), (1~4)(2~3)\}$. C'est un \sg de $\A_4$.\\
+Alors $V$ est distingué dans $\A_4$ et le quotient $\A_4/V$ est d'ordre $12/4=3$.\\
+Donc $\A_4/V$ est isomorphe à $\U_3$.\\
+Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$.\\
+
+% ici graphe%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\textcolor{red}{un beau et magnifique graphe fait par le très généreux Tristan arrivera prochainement sur vos ecrans/pdf (diagramme de Hasse de $\A_4$)}
+%
+% fin zone%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+On a :
+$ N_{\A_4}(<(1~2)(3~4)>)=V$ est d'indice 3 dans $\A_4$\\
+$ N_{\A_4}(<(1~2~3)>)=<(1~2~3)$ est d'indice 4 dans $\A_4$
+\end{enumerate}
+\end{exem}
+
+\section{Passage au quotient des \mdgs}
+
+\begin{thm}[Propriété universelle du groupe quotient]
+\label{thm_prop_univ}
+Soit $f:G\rightarrow K$ un \mdg. Soit $H\vartriangleleft G$. On suppose que $H\subseteq \ker (f)$.\\
+Alors il existe un unique \mdg 
+$$\bar{f} : G/H \rightarrow K$$
+tq $f=\bar{f}\circ \pi$
+\end{thm}
+
+\begin{term}
+On dit que $\bar{f}$ est obtenu à partir de $f$ par passage au quotient par $H$, ou que $\bar{f}$ est induit par $f$.
+\end{term}
+
+\begin{remar}
+On a $Im(\bar{f})=Im(f)$ et $\ker(\bar{f})=\pi(\ker f)$
+\end{remar}
+
+\begin{demo}[Théorème \ref{thm_prop_univ}]
+Comme $\pi$ est surjectif, $\bar{f}$ est unique. On définit pour $x\in G$, 
+$$\bar{f}(\pi(x))=f(x)$$
+On doit vérifier que si $\pi(x)=\pi(x')$, alors $f(x)=f(x')$. En effet, il existe $h\in H$ tq $x'=xh$ et on a donc :
+$$f(x')=f(xh)=f(x)f(h)=f(x)$$
+car $f(h)\in \ker f$.\\
+Vérifions que $\bar{f}$ est bien un morphisme :\\
+On a pour $x,y\in G$ :
+$$\begin{array}{lll}
+\bar{f}(\pi(x)\pi(y))&=&\bar{f}(\pi(xy))\\
+&=& f(xy)\\
+&=& f(x)f(y)\\
+&=& \bar{f}(\pi(x))\bar{f}(\pi(y))
+\end{array}$$
+\end{demo}
+
+\begin{thm}[Premier théorème d'isomorphisme]
+Soit $f:G\rightarrow K$ un \mdg, alors $f$ induit un isomorphisme de groupes de $G/\ker(f)$ sur $Im(f)$.\\
+En particulier, si $f$ est surjectif, alors $f$ induit un isomorphisme
+$$G/\ker(f)\fong K$$
+\end{thm}
+
+\begin{demo}
+$\bar{f}$ est bien définie par la propriété universelle du groupe quotient (théorème \ref{thm_prop_univ}). Clairement, $\bar{f}$ est surjectif.\\
+Montrons que $\bar{f}$ est injectif : si on a $\bar{f}(\pi(x))=\bar{f}(\pi(x'))$, alors $f(x)=f(x')$, donc $x^{-1}x'\in \ker(f)$ et donc $\pi(x)=\pi(x')$ dans $G/\ker(f)$.
+\end{demo}
+
+\begin{remar}
+Ce théorème est important car il relie le groupe quotient, qui a priori est difficile à comprendre, avec un \sg, qui est plus facile à comprendre.
+\end{remar}
+
+\begin{exem}
+\begin{enumerate}
+\item Soit $f:\Z \rightarrow \U_n,~k\mapsto e^{\frac{2\pi ik}{n}}$, alors $f$ est surjectif de noyau $n\Z \subseteq \Z$.\\
+Donc $f$ induit un isomorphisme $\Z/n\Z \fong \U_n$.
+\item Soit $\epsilon : \sigma_n \rightarrow \{\pm 1\}$ la signature, alors $\epsilon$ est surjectif de noyau $\A_n$.\\
+Donc $\epsilon$ induit un \isom 
+$$\sigma_n/\A_n \fong \{\pm 1\}$$
+En particulier, on a $|\A_n| = \fracun{2}(n!)$.
+\end{enumerate}
+\end{exem}
+
+\begin{lemme}
+Soient $G$ un groupe fini et $p$ le plus petit diviseur premier de $|G|$.\\
+Soit $H\subseteq G$ un \sg d'indice $p$. Alors $H$ est distingué.
+\end{lemme}
+
+\begin{remar}
+Pour $p=2$, on retrouve le fait qu'un \sg d'indice 2 est toujours distingué.
+\end{remar}
+
+\begin{demo}
+Faisons agir $G$ sur $G/H$ par translation à gauche :
+$$g.xH := gxH,~\forall g\in G,\forall x\in G$$
+Comme $|G/H|=p$, cela définit un \mdg $f:G\rightarrow \sigma_p$. Ce morphisme est non trivial car l'action est transitive.\\
+Notons $K$ son image. Alors $|K|$ divise à la fois $|G|$ et $|\sigma_p|=p!$. Donc il divise $pgcd(|G|,p!)=p$. Donc $|K|=p$.\\
+Comme $G/\ker(f)\fong K$, l'indice de $\ker (f)$ dans $G$ est $p$. Or les éléments de $\ker(f)$ laissent fixe $eH$. Donc $\ker (f)\subseteq H$. Comme les deux sont d'indice $p$ dans $G$, ils sont égaux et $H=\ker (f)$ est distingué.
+\end{demo}
+
+\begin{thm}[Deuxième théorème d'\isom]
+Soient $G$ un groupe, $H$ un \sg distingué et $K\subseteq G$ un \sg. Alors $HK=\{hk| j\in H, k\in K\}$ est un \sg de $G$ et on a un \isom de groupes 
+$$K/H\cap K \fong HK/H$$
+\end{thm}
+
+\begin{exem}
+Si $F,G$ sont des \sevs d'un \ev $E$, on a 
+$$F/F\cap G \fong F+G/F$$
+\end{exem}
+
+\begin{demo}
+Montrons que $HK$ est un \sg :\\
+$e=e.e \in HK$. Si $x,x'\in H$ et $y,y' \in K$, on a :
+$$(xy)^{-1}=y^{-1}x^{-1}=y^{-1}x^{-1}yy^{-1}\in HK$$
+et 
+$$xyx'y'=xyx'y^{-1}yy'\in HK$$
+La composée 
+$$K~inj~HK~surj~HK/H$$
+est un \mdg surjectif dont le noyau est $K\cap H$. Par le premier théorème d'\isom, on obtient l'\isom $K/H\cap K \fong HK/H$.
+\end{demo}
+
+\begin{thm}[Troisième théorème d'\isom]
+Soient $H\subseteq K$ deux \sgs distingués d'un groupe $G$. Alors, on a 
+$$G/K \fong (G/H) / (G/K)$$
+\end{thm}
+
+\begin{demo}
+La composée des surjections canoniques 
+$$G\rightarrow G/H \rightarrow (G/H)/(G/K)$$
+est un \mdg surjectif de noyau $K$. Le premier théorème d'\isom nous donne l'\isom 
+$$G/K \rightarrow (G/H)/(K/H)$$
+\end{demo}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
