@@ -1,0 +1,401 @@
+\documentclass[10pt,a4paper]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[applemac]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lastpage}
+
+\setlength\textwidth{15.9cm}
+\setlength\oddsidemargin{0cm}
+\setlength\evensidemargin{0cm}
+\setlength\marginparwidth{0cm}
+\setlength\marginparsep{0.4cm}
+\setlength\marginparpush{0.4cm}
+\setlength\topmargin{0cm}
+\setlength\headheight{0.59cm}
+\setlength\headsep{1cm}
+\setlength\textheight{21.5cm}
+\setlength\footskip{2.2cm}
+
+\def\Nd{\mathbf{N}}
+\def\Zd{\mathbf{Z}}
+\def\Pd{\mathbf{P}}
+\def\Qd{\mathbf{Q}}
+\def\Rd{\mathbf{R}}
+
+\newtheorem{lemme}{Lemme}
+\newtheorem{theoreme}{Th\'eor\`eme}
+\newtheorem{algorithme}{Algorithme}
+\newtheorem{exercice}{Exercice}
+\newtheorem*{exemple*}{Exemple}
+\newtheorem{exemple}[subsection]{Exemple}
+\newtheorem*{rem*}{Remarque}
+\newtheorem{rem}[subsection]{Remarque}
+\newtheorem*{defn*}{D\'efinition}
+\newtheorem{defn}[subsection]{D\'efinition}
+\newtheorem*{lem*}{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem*{cor*}{Corollaire}
+
+\pagestyle{fancy}
+\lhead{{\bf Universit\'e Paris Diderot Paris 7}}
+\chead{}
+\rhead{Analyse I}
+\lfoot{Patrice Perrin}
+\cfoot{Espaces vectoriels normés -- Ann\'ee 2018-2019}
+\rfoot{Page \thepage/\pageref{LastPage}}
+
+%------ Commandes symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\bigskip
+
+\bigskip
+
+\centerline{\bf Analyse I}
+\centerline{\bf Espaces vectoriels normés}
+\centerline{Normes}
+
+\bigskip \begin{section}{\bf Normes. Définitions générales.} 
+\end{section}
+
+\begin{section}{\bf Exemples de normes.} 
+\end{section}
+
+\begin{section}{\bf Normes, distances et topologie.} 
+\end{section}
+
+\begin{section}{\bf Espaces de Banach.} 
+\end{section}
+
+\begin{section}{\bf Espaces normés et compacité.} 
+\end{section}
+
+\bigskip\begin{section}{\bf Applications continues}
+
+\bigskip{\it Propriétés locales}. 
+
+Tout comme les fonctions numériques continues, on va donner des résultats assez immédiats sur les opérations sur les fonctions continues en un point.
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application de $E$ dans $F$ . On suppose que $f$ est continue en un point $x_0$ . Alors l'application $\lambda f$ est encore continue en $x_0$ .\end{prop}
+\smallskip Démonstration. Laissée au lecteur.
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ et $f'$ deux applications de $E$ dans $F$ . On suppose que $f$ et $f'$ sont continues en un point $x_0$ . Alors l'application $f+f'$ est encore continue en $x_0$ .\end{prop}
+\smallskip Démonstration. Laissée au lecteur.
+
+\begin{prop} Soient $(E,N_E)$ , $(F,N_F)$ et $(G,N_G)$ trois espaces vectoriels normés. Soit $f$ une application de $E$ dans $F$ et $f'$ une application de $F$ dans $G$ . On suppose que $f$ est continue en un point $x_0$ et $f'$ est continue en $f(x_0)$ . Alors l'application $f'\circ f$ est encore continue en $x_0$ .\end{prop}
+\smallskip Démonstration. Laissée au lecteur.
+
+\bigskip{\it Propriétés globales}.
+Nous commencerons par remarquer que, par définition, les propriétés sur les opérations sur les applications continues en un point se transmettent aux fonctions continues sur l'espace tout entier. On peut ainsi ajouter ou composer entre elles deux applications continues ou multiplier par un scalaire une application continue.
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application continue de $E$ dans $F$ . Alors l'image réciproque d'un ouvert (resp. d'un fermé) de $F$ est un ouvert (resp. un fermé) de $E$ .\end{prop}
+\smallskip Démonstration. Si $F=U\cup A$ où $U$ est un ouvert de $F$ , alors $f^{-1}(U)$ et $f^{-1}(A)$ forment une partition de $E$ . Donc il suffit de vérifier la propriété pour les ouverts. Soit $U$ un ouvert de $F$ . Si $f^{-1}(U)$ il n'y a rien à démontrer. Sinon soit $x_0$ un point de $f^{-1}(U)$ . Donc $y_0=f(x_0)$ est un point de $U$ . Soit $B(y_0,r)$ une boule contenue dans $U$ . Par continuité de $f$ en $x_0$ , on sait qu'il existe une boule $B(x_0,\rho)$ telle que
+$$x\in B(x_0,\rho)\Rightarrow f(x)\in B(y_0,r)\subset U\ .$$
+Donc $f^{-1}(U)$ contient $B(x_0,\rho)$ . C'est donc bien une partie ouverte de $E$ .
+
+\begin{theoreme} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application de $E$ dans $F$ . Alors $f$ est continue de $E$ dans $F$ si et seulement si l'image réciproque par $f$ de tout ouvert de $F$ est un ouvert de $E$ .\end{theoreme}
+\smallskip Démonstration. Nous venons de vérifier qu'il s'agit d'une condition nécessaire.
+
+Supposons que, pour tout ouvert $V$ de $F$ , $U=f^{-1}(V)$ soit un ouvert. Soit $x_0$ un point de $E$ et $y_0=f(x_0)$ . Prenons $V=B(y_0,r)$ pour $r$ quelconque. Alors $U=f^{-1}(V)$ est un ouvert de $E$ qui contient $x_0$ . Il existe donc une boule centrée en $x_0$ contenue dans $U$ soit
+$$x\in B(x_0,\rho)\subset U=f^{-1}(V)\Rightarrow f(x)\in V=B(y_0,r)\ .$$
+Ce que nous voulions démontrer.
+
+\begin{exemple} L'image, par une fonction continue, d'un ouvert n'est pas nécessairement une partie ouverte. La fonction $x\mapsto \sin{(x)}$ est continue de $\R$ dans $\R$ .  Or l'image de $]-2\pi,2\pi[$ par $\sin{(x)}$ est l'intervalle fermé $[-1,1]$ . De même l'image par l'application $x\mapsto x^2$ de l'intervalle $]-1,+\infty[$ est l'intervalle fermé $[0,+\infty[$ .\end{exemple}
+
+\begin{rem} L'image réciproque par une application continue d'un fermé est encore un fermé. Par contre l'image d'un fermé n'est pas nécessairement une partie fermée. Ainsi l'image par l'application $x\mapsto/exp{(x)}$ de l'intervalle fermé $]_\infty,0]$ est l'intervalle $]0,1]$ qui n'est ni fermé ni ouvert.\end{rem}
+
+\begin{theoreme} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $f$ une application continue de $E$ dans $F$ . Soit $K$ une partie compacte de $E$ . Alors $f(K)$ est une partie compacte de $F$ .\end{theoreme}
+\smallskip Démonstration. Soit $(V_{\alpha})_{\alpha \in A}$ un recouvrement de $f(K)$ . Alors les $U_{\alpha}=f^{-1}\left(V_{\alpha}\right)$ sont des ouverts de $E$ . Ils recouvrent par construction $K$ . On peut donc en extraire un recouvrement fini tel que
+$$K\subset \bigcup_{i\in I}U_i\ {\rm soit}\ f(K)\subset \bigcup_{i\in I}V_i\ .$$
+
+\begin{rem} On remarquera que cette démonstration fonctionne pour toute application continue entre espaces topologiques séparés.\end{rem}
+
+\begin{exemple} Bien sûr l'image réciproque d'un compact n'est pas toujours compacte. Par exemple l'image réciproque de l'intervalle $[-1,1]$ (compact) par l'application $x\mapsto\sin{(x)}$ est $\R$ tout entier. \end{exemple}
+
+\begin{prop} Soit $(E,N)$ un espace normé de dimension finie. Soit $\{e_1,\hdots,e_n\}$ (où $n={\rm Dim}(E)$) une base de $E$ . Alors l'application $b\ x=(x_1,\hdots,x_n)\in\R^n\mapsto b(x)=u=\sum_{i=1}^nx_ie_i$ est continue ainsi que sa bijection réciproque. \end{prop}
+\smallskip Démonstration. En effet
+$$N(u)=N\left(\sum_{i=1}^{n}x_ie_i\right)\leq (\sum_{i=1}^{n}|x_i|N(e_i)\leq n{\rm Sup}_{1\leq i\leq n}\left(N(e_i)\right)\|x\|_{\infty}\ .$$
+Donc $b$ est continue.
+
+Soit $S$ la sphère unité dans $\R^n$ . L'application $x\in S\mapsto N(b(x))$ est donc continue sur une partie compacte de $\R^n$ . L'image est une partie compacte de $\R^+$ . Comme elle ne s'annule pas sur $S$ , c'est que
+$$\forall x\in S \exists m>0\ ,\ \exists M>0\ ;\ m\leq N(b(x)\leq M\ .$$
+Soit $x$ dans $b^{-1}(A)$ . Alors $\frac{x}{\|x\|_{\infty}}$ appartient à $S$ . Donc
+$$m\leq N\left(\frac{b(x)x}{\|x\|_{\infty}}\right) \leq M\ .$$
+En particulier
+$$\|x\|_{\infty}\leq \frac{1}{m}N(b(x))\ {\rm et}\ \|x-x_0\|_{\infty}\leq \frac{1}{m}N(b(x-x_0))\ .$$
+Mais $x-x_0=b^{-1}(u-u_0)$ . Donc l'application $b^{-1}$ est continue.
+
+\begin{cor} Soit $(E,N)$ un espace normé de dimension finie. Alors toute partie fermée et bornée est compacte. En particulier une boule unité fermée est compacte. \end{cor}
+\smallskip Démonstration. Nous avons étudié plus haut le cas de $\R^n$ pour la norme $\|.\|_{\infty}$ .
+
+Si $E$ est de dimension finie, alors $E$ admet une base $\{e_i\}_{1\leq i\leq {\rm Dim}(E)}$ . Tout vecteur $u$ de $E$ s'écrit donc 
+$$u=\sum_{i=1}^{{\rm Dim}(E)}x_ie_i=\sum_{i=1}^{n}x_ie_i$$
+en posant $n={\rm Dim}(E)$ . Et $x\mapsto b(x)=u=\sum_{i=1}^{n}x_ie_i$ est continue donc, pour toute partie $A$ fermée et bornée de $E$ , la partie $b^{-1}(A)$ est donc fermée dans $\R^n$ .
+
+Mais $N(b(x))$ est bornée puisque $b(x)$ appartient à $A$ . Donc la partie $b^{-1}(A)$ est fermée et bornée dans $\R^n$ pour $\|.\|_{\infty}$ grâce à l'inégalité
+$$\|x\|_{\infty}\leq \frac{1}{m}N(b(x))\ .$$
+Elle est donc compacte et son image par $b$ (application continue) est donc compacte.
+
+\begin{defn} On dira qu'un espace topologique (métrique, normé) est localement compact si et seulement tout point admet un voisinage compact. \end{defn}
+
+\begin{exemple} Dans les espaces normés, une base de voisinage est formé par les boules (qu'elles soient ouvertes ou fermées). En dimension finie, nous venons de montrer qu'un espace normé est localement compact.\end{exemple}
+
+\begin{theoreme} En dimension finie, toutes les normes sont équivalentes. \end{theoreme}
+\smallskip Démonstration. Soit $(E,N)$ un espace vectoriel normé de dimension finie. Nous savons que la sphère unité $S$ est une partie compacte de $E$ . Soit $N'$ une autre norme sur $E$ . Alors l'application $x\mapsto N'(x)$ est continue puisque
+$$N'(u)=N'\left(\sum_{i=1}^{{\rm Dim}(E)}x_ie_i\right)=N'\left(\sum_{i=1}^{n}x_ie_i\right)$$
+où $e_i$ est une base de $E$ . Soit 
+$$N'(x)\leq {\rm Sup}_{i=1}^n\left(N'(e_i)\right)\|x\|_{\infty}\leq M{\rm Sup}_{i=1}^n(N'(e_i))N(u)$$
+d'après la démonstration précédente. Donc l'image par $N'$ de la sphère unité est une partie compacte de $\R^+$ soit $[c,C]$ où $0<c<C$ . Ainsi
+$$\forall x\neq 0\ N'(x)=N(x)N'\left(\frac{x}{N(x)}\right)\in [cN(x),CN(x)]$$
+soit 
+$$\forall x\in E\ cN(x)\leq N'(x)\leq C N(x)\ .$$
+Ce que nous voulions démontrer.
+
+\begin{prop} Tout espace vectoriel normé de dimension finie est complet. \end{prop}
+\smallskip Démonstration. Posons $E=\oplus_{i=1}^n\R f_i$ où $n={\rm Dim}(E)$ . La norme induite par $N$ sur $E$ est équivalente à la norme ${\rm Sup}_{1\leq i\leq n}(|x_i|\{\})$ . Or $\R^n$ est complet pour cette norme. Toute suite de Cauchy de $E$ est donc convergente.
+
+\begin{prop} Tout sous-espace vectoriel de dimension finie dans un espace vectoriel normé $(E,N)$ est fermé. \end{prop}
+\smallskip Démonstration. Ce sous-espace vectoriel $F$ est un espace normé de dimension finie. Il est donc complet donc fermé. 
+
+\begin{theoreme} Un espace vectoriel normé est localement compact si et seulement s'il est de dimension finie. \end{theoreme}
+\smallskip Démonstration. Nous avons vu qu'un espace vectoriel normé de dimension finie est localement compact. Montrons la réciproque.
+
+Si $E$ est localement compact, alors $0$ admet un voisinage compact. Il existe donc une boule fermée de rayon non nul contenu dans ce voisinage. Elle est donc compacte. Par homothétie, la boule unité fermée est aussi compacte. Comme elle est recouverte par les boules (ouvertes) centrées en ses points et de rayon $\frac{1}{2}$ , on a
+$$\overline{B}(0,1)\subset \bigcup_{i\in I}\left(B\left(f_i,\frac{1}{2}\right)\right)\ .$$
+Notons alors $F$ le sous-espace vectoriel de $E$ engendré par les $f_i$ ($I$ est fini). Ce sous-espace est de dimension finie donc il est fermé dans $E$ . \'Etudions alors, pour tout $u$ (non nul) dans $E$ , la distance $\delta=d(u,F)$ . Il nous suffit de montrer que $\delta=0$ car alors $u$ sera adhérent à $F$ donc lui appartiendra. Soit $\lambda>0$ un réel positif. Alors $d(\lambda u, F)=d(\lambda u,\lambda F)=\lambda\delta$ . Pour
+$\lambda\delta<1$ , il existe donc $v$ dans $F$ tel que $\lambda (u-v)\in \overline{B}(0,1)$ et donc $f_i$ tel que
+$$\lambda (u-v)\in \overline{B}\left(f_i,\frac{1}{2}\right)\ .$$
+D'où
+$$N\left(\lambda\left(u-v-\frac{f_i}{\lambda}\right)\right)<\frac{1}{2}\ .$$
+Mais le point $v+\frac{f_i}{\lambda}$ appartient à $F$ donc cette inégalité montre que
+$$\lambda \delta<\frac{1}{2}\ .$$
+Bref 
+$$\forall \lambda >0\ \lambda \delta<1\Rightarrow \lambda \delta<\frac{1}{2}\ .$$
+Ce la n'est possible que si $\delta =0$ .
+
+\smallskip Démonstration (variante). Si $E$ est localement compact, alors $0$ admet un voisinage compact. Il existe donc une boule fermée de rayon non nul contenu dans ce voisinage. Elle est donc compacte. Par homothétie, la boule unité fermée est aussi compacte. Comme elle est recouverte par les boules (ouvertes) centrées en ses points et de rayon $\frac{1}{2}$ , on a
+$$\overline{B}(0,1)\subset \bigcup_{i\in I}\left(B\left(f_i,\frac{1}{2}\right)\right)\ .$$
+Notons alors $F$ le sous-espace vectoriel de $E$ engendré par les $f_i$ ($I$ est fini). Ce sous-espace est de dimension finie donc il est fermé dans $E$ . \'Etudions alors, pour tout $u$ (non nul) dans $E$ , la distance $\delta=d(u,F)$ . Le vecteur $u$ (non nul) peut être ramené dans la boule unité par homothétie soit
+$$\exists v_1\in F\ ;\ N(u_1-v_1)<\frac{1}{2}$$
+puisque $u_1=\frac{u}{N(u)}\in \overline{B}(0,1)$ . Donc $N(u-N(u)v_1)<\frac{N(u)}{2}$ . Bref $d(u,F)<\frac{N(u)}{2}$ . Mais, si $u-N(u)v_1\neq 0$ , alors
+$$\exists v_2\in F\ ;\ N(u_2-v_2)<\frac{1}{2}$$
+où $u_2=\frac{u-N(u)v_1}{N(u-N(u)v_1)}$ . Alors 
+$$N\left(u-N(u)v_1-N(u-N(u)v_1)v_2\right)<\frac{N(u-N(u)v_1)}{2}<\frac{N(u)}{4}\ .$$
+On voit que l'on construit ainsi, par récurrence, une suite de points de $F$ qui converge vers $u$ . Mais $F$ est fermé donc $u$ appartient à $F$ .
+
+\bigskip{\it Continuité uniforme}.
+\begin{defn} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. On dit qu'une application $f$ de $E$ dans $F$ est uniformément continue si set seulement si
+$$\forall \epsilon>0\ \exists \eta>0\ N_E(y-x)<\eta\Rightarrow N_F(f(y)-f(x))<\epsilon\ .$$\end{defn}
+
+\begin{rem} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Une application $f$ uniformément continue de $E$ dans $F$ est continue. \end{rem}
+
+\begin{exemple} La fonction $x\mapsto x^2$ est continue de $\R$ dans $\R$ mais n'est pas uniformément continue.
+\end{exemple}
+\smallskip Démonstration. Il suffit de montrer la négation de la définition de continuité uniforme:
+$$\exists \epsilon>0\ \forall \eta>0\ \exists (x,y)\in\R^2\ ;|y-x|<\eta\ {\rm et}\ |y^2-x^2|\geq\epsilon\ .$$
+Soit $\epsilon=1$ , soit $\eta>0$ quelconque; prenons $y=x+\frac{\eta}{2}$ ($x$ à choisir). Alors
+$$y^2-x^2=(y-x)(y+x)=\frac{\eta}{2}(2x+\frac{\eta}{2})\ .$$
+Si $x>\frac{1}{\eta}$ alors $y^2-x^2>1\ .$
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit une application $f$ uniformément continue de $E$ dans $F$ . Alors l'image par $f$ d'une suite de Cauchy dans $E$ est une suite de Cauchy dans $F$ .\end{prop}
+\smallskip Démonstration. Il s'agit de montrer que 
+$$\forall\epsilon>0\ \exists n_0\ n>n_0\Rightarrow \forall p\in\N N_F\left(f(u_{n+p})-f(u_n)\right)<\epsilon\ .$$
+Soit donc $\epsilon>$ quelconque. Comme $f$ est uniformément continue, il existe $\eta>0$ tel que
+$$ N_E(y-x)<\eta\Rightarrow N_F(f(y)-f(x))<\epsilon$$
+et, puisque la suite $u_i$ est de Cauchy, il existe $n_0$ tel que
+$$n>n_0\Rightarrow N_E(u_{n+p}-u_n)<\eta\ .$$
+D'où le résultat cherché.
+
+\begin{prop} [Théorème de Heine] Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $K$ une partie compacte de $E$ . Alors toute application continue de $K$ dans $F$ est uniformément continue.\end{prop}
+\smallskip Démonstration. L'application $f$ est continue sur $K$ d'où
+$$\forall\epsilon>0\ \forall k\in K\ \exists \eta_k\ N_E(k'-k)<\eta_k\Rightarrow N_F(f(k')-f(k))<\frac{\epsilon}{2}\ .$$
+Mais $K$ est recouvert par les $B(k,\frac{\eta}{2})$ . Soit $I$ finie telle que
+$$K\subset \bigcup_{i\in I}B\left(k_i,\frac{\eta_i}{2}\right)\ .$$
+Alors, si $\forall i\in I\ 0<\eta\leq \eta_i$ et si $N_E(k'-k)<\frac{\eta}{2}$ , 
+$$\exists i\in I\ ;\ N_E(k-k_i)<\frac{\eta_i}{2}\ {\rm soit}\ N_E(k'-k_i)\leq N_E(k-k_i)+N_E(k'-k)<\eta_i$$
+soit
+$$N_F(f(k'))-N_F(f(k))\leq N_F(f(k'))-N_F(f(k_i))+N_F(f(k_I))-N_F(f(k))<2\,\frac{\epsilon}{2}=\epsilon\ .$$
+
+\begin{theoreme}[Théorème de prolongement] Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. On suppose que $F$ est un espace de Banach. Soit $X$ une partie dense dans $E$ ($\overline{X}=E$). Soit $f$ une application uniformément continue de $X$ dans $F$ . Alors $f$ a un unique prolongement (continu) à $E$ . \end{theoreme}
+\smallskip Démonstration. Si $u$ est un point de $E$ , il est limite d'au moins une suite $x_n$ de points de $X$ . Donc la suite $f(x_n)$ est de Cauchy dans $F$ . Elle y admet une limite. Si on a deux suites tendant vers $u$ , alors la suite $f(y_n)-f(x_n)$ tend vers $0$ par (uniforme) continuité. Donc la limite de la suite $f(x_n)$ ne dépend que de $u$ . On la notera $\overline{f}(u)$ . Il reste à vérifier que cette application est continue. Soit $\epsilon>0$ quelconque. Comme $f$ est uniformément continue sur $X$ , il existe $\eta$ tel que
+$$(x,y)\in X^2\ N_E(y-x)<\eta\Rightarrow N_F(f(y)-f(x))<\frac{\epsilon}{3}\ .$$
+Soient $(u,v)\in E^2$ tels que $N_E(v-u)<\frac{\eta}{3}$ . Comme $u$ est limite de $x_n$ (resp. $v$ est limite de $y_n$) et que $\overline{f}(u)$ est limite de $f(x_n)$ (resp. $\overline{f}(v)$ est limite de $f(y_n)$), il existe $n_0$ assez grand tel que
+$$N_E(u-x_n)<\frac{\eta}{3}\ ,\ N_E(v-y_n)<\frac{\eta}{3}\ ,\ N_F(\overline{f}(u)-f(x_n))<\frac{\epsilon}{3}\ {\rm et}\ N_F(\overline{f}(v)-f(y_n))<\frac{\epsilon}{3}\ .$$
+Alors
+$$N_E(y_n-x_n)\leq N_E(y_n-v)+N_E(v-u)+N_E(u-x_n)<\eta\ {\rm soit}\ N_F(f(y_n)-f(x_n))<\frac{\epsilon}{3}\ .$$
+D'où
+$$N_F(\overline{f}(v))-N_F(\overline{f}(u))\leq N_F(\overline{f}(v))-N_F(f(y_n))+N_F(f(y_n))-N_F(f(x_n))+N_F(f(x_n))-N_F(\overline{f}(u))$$
+et
+$$N_F(\overline{f}(v))-N_F(\overline{f}(u))<\epsilon\ .$$
+
+\end{section}
+
+\bigskip\begin{section}{\bf Applications linéaires continues}
+
+Nous avons vu qu'une application linéaire d'un espace normé $(E,N_E)$ dans un autre $(F,N_F)$ était continue si et seulement si elle était continue en $0$ . 
+
+\begin{prop} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $l$ une application linéaire de $E$ dans $F$ . Alors $l$ est continue si et seulement si il existe une constante $M\geq 0$ telle que
+$$\forall x\in E\ N_F(l(x))\leq MN_E(x)\ .$$
+\end{prop}
+\smallskip Démonstration. Si une application $l$ vérifie la propriété, le cas $M=0$ est immédiat. Si $M\neq 0$ , on remarque que
+$$x\in B(0,\frac{r}{M})\Rightarrow l(x)\in B(0,r)\ .$$
+Donc notre application est bien continue en $0$ .
+
+Si $l$ est continue en $0$ , on a, en particulier,
+$$\exists r_1\ x\in B(0,r_1)\Rightarrow l(x)\in B(0,1)\ .$$
+Soit $\lambda$ un réel. Alors $N_E(\lambda x)<r_1\Leftrightarrow |\lambda|<\frac{r_1}{N_E(x)}\Leftrightarrow \frac{1}{|\lambda|}>\frac{N_E(x)}{r_1}$ . Pour un tel $\lambda$ , on a
+$$N_F(l(\lambda x))<1\ {\rm soit}\ N_F(l(x))<\frac{1}{|\lambda|}$$
+pour toute valeur valeur de $\lambda$ . 0r celui-ci peut être choisi aussi proche de $\frac{r_1}{N_E(x)}$ que l'on souhaite. Donc
+$$\forall x\in E\ N_F(l(x))\leq \frac{1}{r_1}N_E(x)\ .$$
+C'est ce que nous souhaitions démontrer.
+
+Résumons les propriétés des applications linéaires continues en un unique résultat.
+
+\begin{theoreme} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $l$ une application linéaire de $E$ dans $F$ . Alors $l$ est continue si eu seulement si l'iune des propriétés équivalentes est vérifiée:
+\begin{itemize}
+\item $l$ est continue de $E$ dans $F$ ;
+\item $l$ est continue en $0$ ;
+\item $\exists M>0\ N_F(l(x)\leq MN_E(x)\ ;$
+\item $l$ est uniformément continue.
+\end{itemize}
+\end{theoreme}
+\smallskip Démonstration. Elle a été faite mais reprenons les arguments.
+
+Si $l$ est continue, alors elle est continue en $0$ .
+
+Si $l$ est continue en $0$ , on a vu (proposition précédente) que cela entraîne l'existence de $M$ .
+
+Si $\exists M>0\ N_F(l(x)\leq MN_E(x)$ , alors $\forall (x,y)\in E^2\ N_F(l(y-x))\leq MN_E(y-x)$ donc $l$ est bien uniformément continue.
+
+Si $l$ est uniformément continue, elle est continue.
+
+\begin{exemple} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. On suppose que $E$ est de dimension finie. Alors toute application linéaire $l$ de $E$ dans $F$ est continue. \end{exemple}
+En effet, si l'on prend une base $\{e_i\}$ de $E$ , on a $u=\sum_{i=1}^nx_ie_i$ (où $n={\rm Dim}(E)$). Or
+$$N_F(l(u))=N_F(\sum_{i=1}^nx_ie_i)\leq \sum_{i=1}^n|x_i|N_F(l(e_i))\leq {\rm Sup}_{1\leq i\leq n}N_F(l(e_i)){\rm Sup}_{1\leq i\leq n}|x_i|\ .$$
+Mais toutes les normes sur $E$ sont équivalentes soit
+$$N_F(l(u))\leq M{\rm Sup}_{1\leq i\leq n}N_F(l(e_i))N_E(u)\ .$$
+
+\begin{defn} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $l$ une application linéaire de $E$ dans $F$ . On pose
+$$\|l\|={\rm Sup}_{u\neq 0;u\in E}{\frac{N_F(l(u))}{N_E(u)}}\ .$$
+\end{defn}
+
+\smallskip La famille des $\frac{N_F(l(u))}{N_E(u)}$ est bornée puisque $l$ est continue. Elle admet donc une borne supérieure.
+
+\begin{rem} On a également
+$$\|l\|={\rm Sup}_{\{u\ ;N_E(u)=1\}}{\frac{N_F(l(u))}{N_E(u)}}={\rm Inf}_{M>0}\{M\ ;\ \forall x\in E\ N_F(l(x)\leq MN_E(x)\}\ .$$
+\end{rem}
+
+\begin{rem} Si $u$ est non nul, on a
+$$N_F(l(u))=N_E(u)N_F\left(l\left(\frac{u}{N_E(u)}\right)\right)\leq \|l\|N_E(u)\ .$$
+\end{rem}
+
+\begin{prop}  Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Notons ${\mathcal L}_{c}(E,F)$ l'ensemble des applications linéaires continues de $E$ dans $F$ . C'est un espace vectoriel normé pour la fonction $\|l\|$ définie ci-dessus. \end{prop}
+
+\smallskip Démonstration. La somme de deux applications linéaires continues et le produit scalaire d'une application linéaire continue par un scalaire sont évidemment encore continues. Nous n'avons donc à vérifier que les propriétés de norme de $\|l\|$ .
+
+$$\|l\|=0\Leftrightarrow {\rm Sup}_{x\neq 0;x\in E}{\frac{N_F(l(x))}{N_E(x)}}=0\Leftrightarrow \forall x\neq 0\ N_F(l(x))=0\ .$$
+Comme $l(0)=0$ , cela signifie bien que $l=0$ .
+$${\rm Sup}_{x\neq 0;x\in E}{\frac{N_F(\lambda l(x))}{N_E(x)}}={\rm Sup}_{x\neq 0;x\in E}|\lambda|{\frac{N_F(l(x))}{N_E(x)}}$$
+soit
+$$\forall \Lambda\in\R\ \|\lambda l\|=|\lambda|\|l\|\ .$$
+Reste l'inégalité triangulaire. Soient $l$ et $l'$ deux applications linéaires alors
+$$\forall x\in E\ ,\ x\neq 0\ {\frac{N_F(l(x)+l'(x))}{N_E(x)}}\leq \frac{N_F(l(x))}{N_E(x)}+\frac{N_F(l'(x))}{N_E(x)}\leq \|l\|+\|l'\|\ .$$
+
+\begin{rem} En particulier, pour tout espace vectoriel normé $(E,N_E)$ , l'espace vectoriel ${\mathcal L}(E,\R)$ des formes linéaires continues sur $E$ est un espace vectoriel normé. Il est aussi parfois noté $E'$ .\end{rem}
+
+\begin{theoreme} Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Notons ${\mathcal L}_c(E,F)$ l'ensemble des applications linéaires continues de $E$ dans $F$ . On suppose que $F$ est un espace de Banach. Alors ${\mathcal L}_c(E,F)$ est aussi un espace de Banach. \end{theoreme}
+\smallskip Démonstration. On sait que c'est un espace normé. Soit $l_n$ une suite de Cauchy d'éléments de ${\mathcal L}(E,F)$ . Soit $u$ un point de $E$ . Considérons les vecteurs $l_n(u)$ dans $F$ . Alors
+$$N_F(l_n(u))\leq \|l_n\|N_E(u)\ ;$$
+donc, pour tout $u$ dans $E$ , la suite $l_n(u)$ est de Cauchy dans $F$ . Elle admet une limite dans $F$ que l'on notera $l(u)$ . On vérifie immédiatement que
+$$\forall\lambda\in\R\ l(\lambda u)=\lambda l(u)\ {\rm et}\ \forall (u,v)\in E^2\ l(u+v)=l(u)+l(v)\ .$$
+Donc $l$ est linéaire. Montrons la continuité de $l$ (en $0$ puisque cela suffit).
+$$N_F(l(u))\leq N_F(l(u)-l_n(u))+N_F(l_n(u))\leq N_F(l(u)-l_n(u))+\|l_n\|N_E(u)\ .$$
+Pour tout $u$ , il existe $n$ assez grand pour que $N_F(l(u)-l_n(u))$ soit majoré par $\frac{\epsilon}{2}$ . Mais, si $n$ est assez grand, on peut choisir $N_E(u)$ assez petit pour que $\|l_n\|N_E(u)<\frac{\epsilon}{2}$ . Reste enfin à montrer que la suite $l_n$ converge vers $l$ . \'Etudions $\|l-l_n\|$ donc $N_F((l-l_n)(u))$ pour $N_E(u)=1$ par exemple. Alors
+$$N_F((l-l_n)(u))=N_F(l(u)-l_m(u)+l_m(u)-l_n(u))\leq N_F(l(u)-l_m(u))+\|l_m-l_n\|N_E(u)=N_F(l(u)-l_m(u))+\|l_m-l_n\|\ .$$
+Mais on peut choisir $m$ et $n$ assez grands pour que $\|l_m-l_n\|\leq\frac{\epsilon}{2}$ puis $m$ assez grand pour que $N_F(l(u)-l_m(u))\leq\frac{\epsilon}{2}$ . Bref $N_F((l-l_n)(u))\leq\epsilon$ pour tout $u$ de norme $1$ si $n$ est assez grand.
+
+\begin{rem} En particulier l'espace des formes linéaires continues $E'={\mathcal L}(E,\R)$ est un espace de Banach. On l'appelle parfois l'espace dual de $E$ .\end{rem}
+
+\begin{defn} Soit $(E,N)$ un espace vectoriel normé. On appelle forme bilinéaire de dualité l'application bilinéaire
+$$(u,l)\in E\times E'\mapsto <u,l>=l(u)\ .$$ 
+On a
+$$|<u,l>|=|l(u)|\leq \|l\|N(u)\ .$$
+\end{defn}
+
+\begin{prop} Soient $(E,N_E)$ , $(F,N_F)$ et $(G,N_G)$ trois espaces vectoriels normés. Soient $l$ (resp. $l'$) une application linéaire continue de $E$ dans $F$ (resp. de $F$ dans $G$). Alors l'application $l'\circ l$ de $E$ dans $G$ est aussi continue et
+$$\|l'\circ l\|\leq \|l\|\times\|l'\|\ .$$
+\end{prop}
+\smallskip Démonstration. On a bien sûr
+$$\forall u\in E\ N_G(l'\circ l(u))=N_G(l'(l(u)))\leq\|l'\|N_F(l(u))\leq  \|l\|\times\|l'\|N_E(u)\ .$$
+
+\begin{prop} Soit $(E,N)$ un espace de Banach. Tout opérateur continu $l$ de $E$ dans $E$ (${\mathcal L}_c(E)$) admet une exponentielle. Tout opérateur de la boule ouverte $B({\rm Id},1)$ est inversible. \end{prop}
+\smallskip Démonstration. Il suffit d'appliquer la théorie des séries normalement convergentes pour conclure que la série $\frac{l^n}{n!}$ est normalement convergente de même que la série $h^n$ si $N_E(h)<1$ .
+
+\begin{cor} Soit $(E,N_E)$ un espace vectoriel normé. Alors une forme linéaire sur $E$ est continue si et seulement si l'image réciproque de $0$ est une partie fermée de $E$ (rappelons qu'il s'agit d'un sous-espace vectoriel de $E$ de co-dimension $1$ appelé hyperplan de $E$). \end{cor}
+\smallskip Démonstration. Si $l$ est continue, alors $l^{-1}(0)$ est un fermé.
+
+Réciproquement supposons que $H_0=l^{-1}(0)$ soit fermé. Si $l=0$ , elle est évidemment continue. On peut donc supposer que $l$ n'est pas nulle. Il y a donc un vecteur $a$ de $E$ tel que $l(a)=1$ . Les applications $x\mapsto a+x$ et $x\mapsto x-a$ sont des bijections réciproques l'une de l'autre et sont continues. Donc l'espace $H=a+H_0$ est fermé (image réciproque du fermé $H_0$). Comme $0$ n'appartient pas à $H$ (puisque $l(H)=1$), il existe une boule ouverte $B(0,r)$ ($r>0$) centrée en $0$ et contenue dans $E\smallsetminus H$ (cette partie étant ouverte). Montrons que 
+$$\forall x\in B(0,r)\ |l(x)|\leq 1\ .$$
+Sinon, il existerait $x$ tel que $N(x)<r$ et $|l(x)|>1$ . Le vecteur $y=\frac{x}{l(x)}$ vérifie
+$$N(y)=\frac{N(x)}{|l(x)|}\leq N(x)<r\ .$$
+Il appartient donc à $B(0,r)$ . Mais, par construction, $l(y)=1$ c'est à dire que $y-a\in H_0$ ou $y\in H$ . C'est absurde. 
+
+\begin{prop} Soit $(E,N)$ un espace vectoriel normé, $F$ un sous-espace vectoriel fermé de $E$ et $G$ un sous-espace vectoriel de dimension finie de $E$ . Alors $F+G$ est un sous-espace vectoriel fermé de $E$ .\end{prop}
+
+\smallskip Démonstration. Nous allons procéder par récurrence sur la dimension de $G$ . On remarque qu'il suffit de montrer la propriété pour les droites de $E$ . Cela montrera en effet la propriété pour $n=1$ ainsi que le fait que la propriété pour $n+1$ se déduit de la propriété pour $n$ . Considérons donc $G=\R a$ où $a$ est un vecteur de $E$ . On peut supposer que $a$ n'appartient pas à $F$ (sinon le résultat est immédiat puisque, dans ce cas, $F+\R a=F$). Alors l'application de $F+G=F+\R a$ qui associe à tout vecteur $u$ la coordonnée $x$ où $u=f+xa$ (avec $f$ dans $F$ est une forme linéaire $l$ dont le noyau est fermé. Elle est donc continue. De même l'application $u\mapsto f=u-l(u)a$ est continue.
+
+Soit $u$ un point adhérent à $F+\R a$ . Il est donc limite de points $u_n$ de $F+\R a$ . Or $u_n=f_n+x_n a$ . Comme la suite $u_n$ est convergente, elle est de Cauchy. Par continuité (uniforme puisqu'il s'agit d'application linéaire), chacune des suites $x_n$ et $f_n$ est de Cauchy. Donc la suite $x_n$ a une limite $\xi$ dans $\R$ . La suite $f_n=u_n-x_na$ tend donc vers $u-\xi a$ , vecteur qui est donc adhérent à $F$ donc élément de $F$ puisque $F$ est fermé. Donc $F+\R a$ est bien fermé.
+
+\begin{rem} En particulier on retrouve le fait qu'un sous-espace vectoriel de dimension finie d'un espace vectoriel normé est fermé.\end{rem}
+
+\begin{prop}  Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. Soit $l$ une application linéaire $l$ de $E$ dans $F$ . On suppose qu'elle est de rang fini dans $F$ (son image est un sous-espace vectoriel de dimension finie). Alors $l$ est continue si et seulement si son noyau $H$ de $l$ est fermé dans $E$ .  \end{prop}
+\smallskip Démonstration. Si $l$ est une application linéaire continue, alors l'image réciproque de tout fermé de $F$ est un fermé de $E$ . Donc le noyau $H$ de $l$ (soit $H=l^{-1}\{0\}$) est un fermé de $E$ . 
+
+Réciproquement, supposons que $H$ soit un fermé. Il nous suffit de montrer que $l$ est continue en $0\ .$ Puisque ${\rm Im}(l)$ est de dimension finie, on peut prendre des vecteurs $e_i$ tels que $<l(e_1),\hdots,l(e_r)>$ est une base de l'image de $l$ . Alors $E=G\oplus H$ où $G=<e_i,\ 1\leq i\leq r>$ est l'espace engendré par les $e_i\ .$ En effet $l(u)=\sum_{i+1}^rx_il(e_i)$ soit $u-\sum_{i=1}^rx_ie_i=h\in H$ . Bref $G$ est un espace supplémentaire de $H$ dans $E$ . Soit $w$ un vecteur de $G$ . On peut considérer les deux fonctions $d(w,H)$ et $N_F(l(w))$ . Il s'agit de fonctions positives ou nulles. Vérifions que ce sont des normes.
+
+Si $N_F(l(w))=0$ alors $l(w)=0$ ($N_F$ est une norme sur $F$ donc $w\in H$ mais $G\cap H=\{0\}$ d'où $w=0\ .$ Si $d(w,H)=0$ alors $w$ est adhérent à $H$ donc appartient à $H$ puisque $H$ est fermé. Donc $w=0$ . 
+
+Bien sûr $N_F(l(\lambda w))=N_F(\lambda l(w))=|\lambda|N_F(l(w))$ . De même $d(\lambda w,H)=d(\lambda w,\lambda H)=|\lambda|d(w,H)$ .
+
+Reste l'inégalité triangulaire. Tout d'abord
+$$N_F(l(w_1+w_2))=N_F(l(w_1)+l(w_2))\leq N_F(l(w_1))+N_F(l(w_2))\ .$$
+Soit $\epsilon>0$ . Soit alors $h_1$ (resp. $h_2$) dans $H$ tel que $d(w_1,h_1)<d(w_1,H)+\frac{\epsilon}{2}$ (resp. $d(w_2,h_2)<d(w_2,H)+\frac{\epsilon}{2}$). Alors
+$$\forall h\in H\ d(w_1+w_2,H)\leq d(w_1+w_2,h)\leq d(w_1,h)+d(w_2,h)\ ;$$
+d'où
+$$d(w_1+w_2,h)\leq d(w_1,h_1)+d(w_2,h_2)<d(w_1,H)+d(w_2,H)+\epsilon\ .$$
+Bref $d(w_1+w_2,h)\leq d(w_1,H)+d(w_2,H)$ puisque $\epsilon$ est arbitraire. Ces deux normes sur $G$ (de dimension finie) sont donc équivalentes. Soit $\exists m>0\ , \exists M>0\ ;\ m d(w,H)\leq N_F(l(w))\leq M d(w,H)$ .
+
+Si $u$ est quelconque dans $E$ , alors il existe un unique élément $w$ de $G$ tel que $u-w\in H$ . Alors $d(u,H)=d(w+h,H)=d(w,H)$ . Mais
+$$\forall h'\in H\ d(w,H)\leq N_E(w-h')\ .$$
+En particulier $d(w,H)\leq N_E(u)$ . D'où
+$$N_F(l(u))=N_F(l(w))\leq M d(w,H)\leq M N_E(u)\ .$$
+C'est ce que nous cherchions à démontrer. 
+
+\begin{theoreme}[Théorème de prolongement] Soient $(E,N_E)$ et $(F,N_F)$ deux espaces vectoriels normés. On suppose que $F$ est un espace de Banach. Soit $X$ une partie dense dans $E$ ($\overline{X}=E$). Soit $l$ une application linéaire continue de $X$ dans $F$ . Alors $f$ a un unique prolongement $\overline l$ (continu) à $E$ . De plus $\|\overline{l}\|=\|l\|$ . \end{theoreme}
+\smallskip Démonstration. Puisque $l$ est uniformément continue, elle admet un prolongement continu à $E$ . Il s'agit de vérifier que l'application prolongée $\overline l$ est linéaire et de norme identique à celle de $l$ . La linéarité est immédiate (si $x_n$ , éléments de $X$ , tend vers $u$ , élément de $E$ alors $\lambda x_n$ tend vers $\lambda u$). 
+
+Pour la norme, on sait que, par construction,  $\|\overline{l}\|\geq \|l\|$ . Mais $\overline{l}(u)$ est obtenu comme limite de $l(x_n)\ .$ Or
+$$N_F(l(x_n))\leq\|l\| N_E(x_n)\ ;$$
+par passage à la limite, on a donc
+$$N_F(\overline{l}(u))\leq \|l\| N_E(u)$$
+soit  $\|\overline{l}\|\leq \|l\|$ .
+
+\begin{exemple} En particulier toute forme linéaire continue sur un sous-espace vectoriel dense dans $E$ se prolonge en une forme linéaire continue sur $E$ . \end{exemple}
+\end{section}
+
+\end{document}
