@@ -1824,12 +1824,37 @@ Alors $V$ est distingué dans $\A_4$ et le quotient $\A_4/V$ est d'ordre $12/4=3
 Donc $\A_4/V$ est isomorphe à $\U_3$.\\
 Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$.\\
 
-% ici graphe%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\textcolor{red}{un beau et magnifique graphe fait par le très généreux Tristan arrivera prochainement sur vos ecrans/pdf (diagramme de Hasse de $\A_4$)}
-%
-% fin zone%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\begin{center}
+	\begin{tikzpicture}[scale=0.65]
+	\node (E) at (0,0) {$\{e\}$};
+	\node (1234) at (-9,1.75) {$<(12)(34)>$};
+	\node (1324) at (-6,1.75) {$<(13)(24)>$};
+	\node (1423) at (-3,1.75) {$<(14)(23)>$};
+	\node (123) at (0,3.5) {$<(123)>$};
+	\node (124) at (3,3.5) {$<(124)>$};
+	\node (134) at (6,3.5) {$<(134)>$};
+	\node (234) at (9,3.5) {$<(234)>$};
+	\node (V) at (-6,4.75) {$V$};
+	\node (A4) at (0,7) {$A_4$};
+	
+	
+	\draw[->,>=latex] (E) to (1234);
+	\draw[->,>=latex] (E) to (1324);
+	\draw[->,>=latex] (E) to (1423);
+	\draw[->,>=latex] (E) to (123);
+	\draw[->,>=latex] (E) to (124);
+	\draw[->,>=latex] (E) to (134);
+	\draw[->,>=latex] (E) to (234);
+	\draw[->,>=latex] (1234) to (V);
+	\draw[->,>=latex] (1324) to (V);
+	\draw[->,>=latex] (1423) to (V);
+	\draw[->,>=latex] (V) to (A4);
+	\draw[->,>=latex] (123) to (A4);
+	\draw[->,>=latex] (124) to (A4);
+	\draw[->,>=latex] (134) to (A4);
+	\draw[->,>=latex] (234) to (A4);
+	\end{tikzpicture}
+\end{center}
 
 On a :
 $ N_{\A_4}(<(1~2)(3~4)>)=V$ est d'indice 3 dans $\A_4$\\
@@ -1845,6 +1870,19 @@ Soit $f:G\rightarrow K$ un \mdg. Soit $H\vartriangleleft G$. On suppose que $H\s
 Alors il existe un unique \mdg 
 $$\bar{f} : G/H \rightarrow K$$
 tq $f=\bar{f}\circ \pi$
+
+\begin{center}
+	\begin{tikzpicture}
+		\node (G) at (0,0) {$G$};
+		\node (K) at (3,0) {$K$};
+		\node (GH) at (1.5,-1.5) {$G/H$};
+		
+		\draw[->,>=latex] (G) -- (K) node[midway, above] {$f$};
+		\draw[->,>=latex] (G) -- (GH) node[midway, below left] {$\pi$};
+		\draw[dashed,->,>=latex] (GH) -- (K) node[midway, below right] {$\exists \bar{f}$};
+	\end{tikzpicture}
+\end{center}
+
 \end{thm}
 
 \begin{term}
@@ -1875,6 +1913,20 @@ $$\begin{array}{lll}
 Soit $f:G\rightarrow K$ un \mdg, alors $f$ induit un isomorphisme de groupes de $G/\ker(f)$ sur $Im(f)$.\\
 En particulier, si $f$ est surjectif, alors $f$ induit un isomorphisme
 $$G/\ker(f)\fong K$$
+
+\begin{center}
+	\begin{tikzpicture}
+		\node (G) at (0,0) {$G$};
+		\node (K) at (5,0) {$K$};
+		\node (GH) at (1.5,-1.5) {$G/\ker(f)$};
+		\node (IM) at (3.5, -1.5) {$Im(f)$};
+		
+		\draw[->,>=latex] (G) -- (K) node[midway, above] {$f$};
+		\draw[->,>=latex] (G) -- (GH) node[midway, below left] {$\pi$};
+		\draw[->,>=latex] (GH) -- (IM) node[midway, above] {\textbf{$\sim$}};
+		\draw[right hook-latex] (IM) -- (K);
+	\end{tikzpicture}
+\end{center}
 \end{thm}
 
 \begin{demo}
