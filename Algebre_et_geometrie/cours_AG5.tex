@@ -15,7 +15,7 @@
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usetikzlibrary{arrows,calc}
-\usepackage[amsthm]{ntheorem} % package pour les environnements de theorem
+\usepackage[amsthm, thmmarks]{ntheorem} % package pour les environnements de theorem
 \usepackage{xcolor} % ajout de couleur
 \usepackage{mathtools} % pour de nombreuses choses mathématiques
 \usepackage{fourier} % sigle
@@ -51,18 +51,20 @@
 \newtheorem{exo}[thm]{Exercice}
 \newtheorem{remar}[thm]{Remarque}
 \newtheorem{appli}[thm]{Application}
-\newtheorem*{demo}{Démonstration}
 \newtheorem*{rappel}{Rappel}
 \newtheorem*{term}{Terminologie}
 \newtheorem*{motiv}{Motivation}
 %% ajout pour la fusion du cours
 \newtheorem{exemple}[thm]{Exemple}
-\newtheorem*{demonstration}{Démonstration}
 \newtheorem*{terminologie}{Terminologie}
 \newtheorem*{motivation}{Motivation}
 \newtheorem{remarque}[thm]{Remarque}
 \newtheorem{exercice}[thm]{Exercice}
 \newtheorem{application}[thm]{Application}
+
+\theoremsymbol{\ensuremath{_\square}}
+\newtheorem*{demonstration}{Démonstration}
+\newtheorem*{demo}{Démonstration}
 
 %%%%%%%%%%%%%%%%%%%%%%% Fin environnements %%%%%%%%%%%%%%%%%%
 
@@ -488,6 +490,7 @@ Soit $G$ un groupe.
 	Soient $0\leq k\leq n-1$. Soit $k+l=qn+r$, la division euclidienne de $k+l$ par $n$. On a :
 	$$f(c^kc^l)= f(c^{k+l})=f(c^r)=g^r$$
 	$$f(c^k)f(c^l)=g^kg^l=g^{k+l}=g^r$$
+~
 \end{demo}
 
 \begin{lemme}
@@ -507,6 +510,7 @@ Soit $G$ un groupe.
 		En effet, on a :
 		$$f(f^{-1}(xy))=xy~et~f(f^{-1}(x)f^{-1}(y))=xy$$
 	\end{enumerate}
+~
 \end{demo}
 
 \begin{defi}
@@ -811,16 +815,14 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \end{lemme}
 
 \begin{demo}
-	Soit $e : \begin{array}{lll}
-	\Z &\rightarrow &\U_n\\
-	k&\mapsto& \zeta^k
-	\end{array}$.\\
+	Soit $\displaystyle e : \Z \rightarrow \U_n,~	k \mapsto \zeta^k$.\\
 	C'est un morphisme de groupes. Donc $\forall H$ sous-groupe de $\U_n$, $e^{-1}(H)=\{k\in \Z |e(k)\in H \}$ est un sous-groupe de $\Z$.\\
 	De plus $e^{-1}(H)\supseteq e^{-1}(1)$ (car $1\in H$).\\
 	On connaît les sous-groupes de $\Z$ : les $d\Z$.\\
 	$\exists d\in \N~tq~ e^{-1}(H)=d\Z$ donc $e^{-1}(1)=\{k\in \Z | \zeta^k= e^{\frac{2i\pi k}{n}} =1 \}=n\Z$\\
 	Donc $n\in n\Z \subseteq d\Z \Rightarrow d|n$. Donc $H=\zeta^{d\Z}$ avec $d|n$.
 	$$\zeta^{d\Z}\subseteq \zeta^{d'\Z}\Leftrightarrow d\Z \subseteq d'\Z \Leftrightarrow d'|d$$
+~
 \end{demo}
 
 \begin{exem}
@@ -1022,9 +1024,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		
 		D'après le lemme , on a $xRy \Rightarrow f(x)=f(y)$. Donc cette définition définit une application $\bar{f}:X/R \rightarrow Y$ et elle vérifie $f=\bar{f}\circ \pi$ par construction.
 	\end{itemize}
-	
 	Supposons 2). Soit $x,y\in X, xRy \Rightarrow \pi(x)=\pi(y)\Rightarrow (\bar{f}\circ \pi)(x)=(\bar{f}\circ \pi)(y)\Rightarrow f(x)=f(y)$
-	
 \end{demo}
 
 \begin{remar}
@@ -1313,26 +1313,20 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 Soit $G$ un groupe et soit $X$ un $G$-ensemble (ensemble muni d'une action de $G$).
 
 \begin{thm}
-	Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.
-	
+	Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.\\
 	Il existe une et une seule application :
 	$$\varphi : G/Stab_G(x) \rightarrow G.x$$
-	telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.
-	
+	telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.\\
 	Cette application est bijective.
 \end{thm}
 
 \begin{demo}
-	Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.
-	
+	Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
 	Soient $g\in G$ et $h\in H$. On a :
 	$$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
-	Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.
-	
-	Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.
-	
-	Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.
-	
+	Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
+	Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
+	Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
 	Cela montre que $\varphi$ est injective.
 \end{demo}
 
@@ -1471,6 +1465,7 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 		$$\tau \circ \sigma (i) = k$$
 		$$\sigma \circ \tau (i) = \sigma(i) \neq k$$
 	\end{enumerate}
+~
 \end{demo}
 
 \subsection{Transpositions et cycles}
@@ -1608,6 +1603,7 @@ On fait agir le groupe $<\sigma> \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites 
 \begin{demo}
 	Cela provient du fait que pour un cycle $(a_1,...,a_l)$ et une permutation $\tau\in \S_n$, on a :
 	$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+~
 \end{demo}
 
 \begin{exem}
@@ -1873,6 +1869,7 @@ $\pi(e)$ est neutre car :
 $$\pi(x)\pi(e)=\pi(xe)=\pi(x)=\pi(ex)=\pi(e)\pi(x)$$
 et $\pi(x^{-1})$ est inverse de $\pi(x),~\forall x\in G$, car :
 $$\pi(x)\pi(x^{-1})=\pi(xx^{-1})=\pi(e)=\pi(x^{-1}x)=\pi(x^{-1}x)=\pi(x^{-1})\pi(x)$$
+~
 \end{demo}
 
 \begin{remar}
@@ -1996,6 +1993,7 @@ $$\begin{array}{lll}
 &=& f(x)f(y)\\
 &=& \bar{f}(\pi(x))\bar{f}(\pi(y))
 \end{array}$$
+~
 \end{demo}
 
 \begin{thm}[Premier théorème d'isomorphisme]
@@ -2086,6 +2084,7 @@ La composée des surjections canoniques
 $$G\rightarrow G/H \rightarrow (G/H)/(G/K)$$
 est un \mdg surjectif de noyau $K$. Le premier théorème d'\isom nous donne l'\isom 
 $$G/K \rightarrow (G/H)/(K/H)$$
+~
 \end{demo}
 
 \begin{exemple}
@@ -2502,14 +2501,12 @@ Montrons que $\pa{u_{K^{-1}}(n^{-1}), k^{-1}}$ est l'inverse de $(n,k) \in N \us
 \\
 &= \pa{n . u_K(n')n^{-1}, e} \in N \times \ens{e}
 \end{align*}
-
 Il est clair que $\para{N \times \ens{e}} \cap \para{\ens{e} \times K} = \ens{e} \times \ens{e} = e_{N \us{u}{\rtimes} K}$\\
 Montrons que $\para{N \times \ens{e}} . \para{\ens{e} \times K} = N \us{u}{\rtimes K}$
 \[
 (n, e).(e, k) = (n u_e(e), ek) = (n,k)
 \]
 pour $n \in N, \; k \in K$
-
 \end{enumerate}
 \end{demonstration}
 
@@ -2626,6 +2623,7 @@ Pour $\ol{b} \in \Z/n$, on a:
 \\
 &= \pa{f(\ol{a})}(\ol{b})
 \end{align*}
+~
 \end{demonstration}
 
 \section{Classification des groupes d'ordre pq, p < q premiers}
@@ -2808,6 +2806,7 @@ x &\mapsto \zeta
 v &\mapsto \tau
 \end{align*}
 \end{itemize}
+~
 \end{demonstration}
 
 \chapter{Un peu de géométrie affine}
