@@ -2,6 +2,7 @@
 
 %%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%
 \usepackage[top=3cm, bottom = 3cm, left = 3cm, right = 3cm]{geometry}
+\usepackage{lmodern}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
@@ -119,7 +120,6 @@
 \DeclarePairedDelimiter\pa{\big(}{\big)}%
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\pro{\langle}{\rangle}%
 \DeclareMathOperator{\ppcm}{ppcm}
 \DeclareMathOperator{\pgcd}{pgcd}
 \DeclareMathOperator{\Gr}{Gr}
@@ -134,6 +134,7 @@
 
 %reduction commande
 \renewcommand{\ens}[1]{\left\{ #1 \right\} }%
+\newcommand{\pro}[1]{\langle\hspace{0.1em}#1\hspace{0.1em}\rangle}
 \newcommand{\fracun}[1]{\frac{1}{#1}}
 \newcommand{\slign}{\textbf}
 \newcommand{\us}{\underset}
@@ -153,6 +154,7 @@
 \newcommand{\ensP}{\P}
 \newcommand{\ensG}{\G}
 \newcommand{\ensD}{\D}
+\newcommand{\gen}{\pro}
 
 %%%%%%%%%% Fin raccourci commande %%%%%%%%%%%%%%
 
@@ -243,7 +245,7 @@ Chaque élément admet un inverse.
 \end{defi}
 
 \begin{remar}
-	Souvent, on notre $+$ la loi de groupe d'un groupe abélien. On note alors 0, l'élément neutre et -x l'élément inverse de $x\in G$.	
+	Souvent, on note $+$ la loi de groupe d'un groupe abélien. On note alors 0, l'élément neutre et $-x$ l'élément inverse de $x\in G$.	
 \end{remar}
 
 \begin{exem}
@@ -252,18 +254,18 @@ Chaque élément admet un inverse.
 		\item $(\Z, +)$ est un groupe abélien.
 		\item $(\Q,+), (\R,+), (\C,+)$ sont des groupes abéliens.
 		\item $\Q^*=\Q \backslash \{0\}$ est un groupe abélien pour la multiplication. De même pour $\R^*$ et $\C^*$.
-		\item Si E est un \ev sur $\R$ ou $\C$, alors $(E,+)$ est un groupe abélien.
-		\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi n=1.\\
+		\item Si $E$ est un \ev sur $\R$ ou $\C$, alors $(E,+)$ est un groupe abélien.
+		\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi $n=1$.\\
 		De même pour $GL_n(\Q)$ et $GL_n(\C)$.\\
-		\item Soit X un ensemble (fini ou infini). Le groupe symétrique $\sigma_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
+		\item Soit $X$ un ensemble (fini ou infini). Le groupe symétrique $\S_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
 		$$\S_n = \sigma_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
 		Notons que $|\S_n|=n!$.
 	\end{enumerate}	
 \end{exem}
 
 \begin{nota}
-	Soit G un groupe. Soient $g\in G$ et $n\in \N$.\\
-	On note $g^n$, l'élément de G défini par récurrence :
+	Soit $G$ un groupe. Soient $g\in G$ et $n\in \N$.\\
+	On note $g^n$, l'élément de $G$ défini par récurrence :
 	$$\begin{array}{lll}
 	g^0&=&e\\
 	g^{n+1}&=&g^ng~,~\forall n \geq 0
@@ -293,11 +295,11 @@ Chaque élément admet un inverse.
 \end{demo}
 
 \begin{defi}
-	$G\x H$ muni de cette loi est le groupe produit de G par H.
+	$G\x H$ muni de cette loi est le groupe produit de $G$ par $H$.
 \end{defi}
 
 \begin{exo}
-	$G\x H$ est abélien ssi G et H sont abéliens.
+	$G\x H$ est abélien ssi $G$ et $H$ sont abéliens.
 \end{exo}
 
 \section{Sous-groupe}
@@ -320,19 +322,19 @@ Chaque élément admet un inverse.
 \end{lemme}
 
 \begin{demo}
-	"$\Rightarrow$" $H\neq \emptyset$ car $e_G \in H$. Si $h_1,h_2\in H$ alors $h_2^{-1}\in H$ (c) et donc $h_1h_2^{-1}\in H$ (b).\\
-	"$\Leftarrow$" Comme H est non vide, on peut choisir un $h\in H$. Alors $hh^{-1}=e_G \in H$. Soient $h_1,h_2 \in H$. On a $h_2^{-1}=eh_2^{-1}\in H$. Donc $h_1h_2=h_1(h_2^{-1})^{-1}\in H$	
+	"$\Rightarrow$" $H\neq \emptyset$ car $e_G \in H$. Si $h_1,h_2\in H$ alors $h_2^{-1}\in H$ $(3.)$ et donc $h_1h_2^{-1}\in H$ $(2.)$.\\
+	"$\Leftarrow$" Comme $H$ est non vide, on peut choisir un $h\in H$. Alors $hh^{-1}=e_G \in H$. Soient $h_1,h_2 \in H$. On a $h_2^{-1}=eh_2^{-1}\in H$. Donc $h_1h_2=h_1(h_2^{-1})^{-1}\in H$	
 \end{demo}
 
 \begin{remar}
 	\begin{enumerate}
-		\item Soit H un sous-groupe de G. Alors la loi de G induit une application $H\x H \mapsto H$, $(h_1,h_2)\mapsto h_1h_2$ (bien définie par b)). Muni de cette loi, H devient un groupe d'élément neutre $e_H=e_G$. Désormais tout sous-groupe d'un groupe est considéré comme un groupe de cette façon.
+		\item Soit $H$ un sous-groupe de $G$. Alors la loi de $G$ induit une application $H\x H \rightarrow H$, $(h_1,h_2)\mapsto h_1h_2$ (bien définie par $2.$). Muni de cette loi, $H$ devient un groupe d'élément neutre $e_H=e_G$. Désormais tout sous-groupe d'un groupe est considéré comme un groupe de cette façon.
 		\item Si $H\leq G$ et $K\leq H$, alors $K\leq G$
 	\end{enumerate}
 \end{remar}
 
 \begin{exem}
-	Soit G un groupe.
+	Soit $G$ un groupe.
 	
 	\begin{enumerate}
 		\item $\{e\} \leq G$
@@ -340,7 +342,7 @@ Chaque élément admet un inverse.
 		\item Posons $Z(G)=\{g\in G | hg=gh, \forall h\in G \}$
 		Clairement, on a $e\in Z(G)$. On montre ensuite que la multiplication de deux éléments de $Z(G)$ est toujours dans $Z(G)$.\\
 		Enfin, on montre que soient $g\in Z(G)$ et $h\in G$, on a $hg^{-1}=g^{-1}h$, donc $g^{-1}\in Z(G)$.\\
-		Par conséquent, $Z(G)$ est un sous-groupe de G.
+		Par conséquent, $Z(G)$ est un sous-groupe de $G$.
 	\end{enumerate}
 \end{exem}
 
@@ -355,7 +357,7 @@ Chaque élément admet un inverse.
 \begin{exem}[de sous-groupes (suite)]
 	Soit $n\geq 1$. Les parties suivantes sont des sous-groupes de $GL_n(\R)$ :
 	\begin{itemize}
-		\item $SL_n(\R)=\{A\in GL_n(\R) | det A=1 \}$
+		\item $SL_n(\R)=\{A\in GL_n(\R) | \det A=1 \}$
 		\item $O_n(\R) = \{A\in GL_n(\R) | A^tA=I_n \}$
 		\item $SO_n(\R) = SL_n(\R) \cap O_n(\R)$
 	\end{itemize}
@@ -388,14 +390,14 @@ Chaque élément admet un inverse.
 \begin{demo}
 	\begin{enumerate}
 		\item est clair
-		\item Soit $H \leq \Z$. Si $H=\{0\}$, alors $H=0.\Z$. Supposons donc que $H\neq \{0\}$.\\
+		\item Soit $H \leq \Z$. Si $H=\{0\}$, alors $H=0\cdot\Z$. Supposons donc que $H\neq \{0\}$.\\
 		Soit $0\neq x\in H$. Alors $-x\in H$. Donc H contient au moins un entier strictement positif. Soit $E=\{x\in H | x>0 \}$. Alors E est une partie non vide de $\N$.\\
 		Donc il existe dans E un plus petit élément n. Comme $n\in H$, on a $n\Z \subseteq H$.\\
 		Montrons que $n\Z \supseteq H$. Soit $x\in H$. Supposons $x>0$, alors $x\in E$ et $x\geq n$.\\
-		La division euclidienne de x par n s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r\leq n$.\\
-		Comme x et nq sont dans H, r est dans H.\\
-		Or on a $0\leq r<n$ et n était le plus petit entier positif contenu dans H. Donc r=0 et $x=nq \in n\Z$.\\
-		Donc $H=n\Z$. Finalement, si m,n sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
+		La division euclidienne de $x$ par $n$ s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r< n$.\\
+		Comme $x$ et $nq$ sont dans $H$, $r$ est dans $H$.\\
+		Or on a $0\leq r<n$ et $n$ était le plus petit entier positif contenu dans $H$. Donc $r=0$ et $x=nq \in n\Z$.\\
+		Donc $H=n\Z$. Finalement, si $m,n$ sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
 	\end{enumerate}
 \end{demo}
 
@@ -411,18 +413,18 @@ Soit $G$ un groupe.
 \end{demo}
 
 \begin{defi}
-	Soit $S$ une partie de $G$. Si $S=\emptyset$, on pose $<S>=\{e\}$.\\
+	Soit $S$ une partie de $G$. Si $S=\emptyset$, on pose $\langle S\rangle=\{e\}$.\\
 	Si $S\neq \emptyset$, on pose :
-	$$<S> = \cap_{H~sous-groupe~tq~H\supseteq S}H$$
-	On appelle $<S>$ le sous-groupe engendré par $S$.
+	$$\langle S\rangle = \cap_{H~sous-groupe~tq~H\supseteq S}H$$
+	On appelle $\langle S\rangle$ le sous-groupe engendré par $S$.
 \end{defi}
 
 \begin{remar}
-	$<S>$ est le plus petit des sous-groupe contenant $S$.
+	$\langle S\rangle$ est le plus petit des sous-groupe contenant $S$.
 \end{remar}
 
 \begin{defi}
-	$S\subseteq G$ est une partie génératrice si $<S>=G$.\\
+	$S\subseteq G$ est une partie génératrice si $\langle S\rangle=G$.\\
 	$G$ est monogène s'il admet un singleton comme partie génératrice.\\
 	$G$ est cyclique s'il est monogène et fini.
 \end{defi}
@@ -434,14 +436,14 @@ Soit $G$ un groupe.
 
 \begin{lemme}
 	Soit S une partie non vide de G. On a :
-	$$<S> = \{g_1g_2...g_n | n\in \N, g_i\in S~ou~g_i^{-1}\in S~pour~tout~i  \}$$
+	$$\langle S\rangle = \{g_1g_2...g_n | n\in \N, g_i\in S~ou~g_i^{-1}\in S~pour~tout~i  \}$$
 	
 \end{lemme}
 
 \begin{demo}
-	Notons H le membre de droite. Clairement, H est un sous-groupe et contient S. Donc $H \supseteq <S>$.\\
-	Soit K un autre sous-groupe contenant S. Alors pour tout $s\in S$, on a $s\in K$ et $s^{-1}\in K$.\\
-	Comme K est stable par produit, K contient H donc H est le plus petit sous-groupe de G contenant S, cad $H=<S>$.
+	Notons $H$ le membre de droite. Clairement, $H$ est un sous-groupe et contient $S$. Donc $H \supseteq \langle S\rangle$.\\
+	Soit $K$ un autre sous-groupe contenant $S$. Alors pour tout $s\in S$, on a $s\in K$ et $s^{-1}\in K$.\\
+	Comme $K$ est stable par produit, $K$ contient $H$ donc $H$ est le plus petit sous-groupe de $G$ contenant $S$, cad $H=\langle S\rangle$.
 \end{demo}
 
 \section{Morphismes de groupes}
@@ -461,7 +463,7 @@ Soit $G$ un groupe.
 	\begin{enumerate}
 		\item $x\mapsto exp(x)$ est un morphisme de groupe de $(\R,+)$ vers $(\R^*, \cdot)$
 		\item $x\mapsto ln(x)$ est un morphisme de groupe de $(\R^*, \cdot)$ vers $(\R,+)$
-		\item $det~:~GL_n(\R)\rightarrow \R^*$ est un morphisme de groupes. De même pour $GL_n(\C)$ et $GL_n(\Q)$
+		\item $\det~:~GL_n(\R)\rightarrow \R^*$ est un morphisme de groupes. De même pour $GL_n(\C)$ et $GL_n(\Q)$
 		\item Soient $E$ et $F$ deux espaces vectoriels sur $\R$, soit $f:E\rightarrow F$ une application linéaire.\\
 		Alors en particulier, $f$ est un morphisme de groupes de $(E,+)$ vers $(F,+)$.
 		\item Soient $G$ un groupe et $H\leq G$ un sous-groupe. Alors l'inclusion $H\mapsto G$ est un morphisme de groupe
@@ -503,7 +505,7 @@ Soit $G$ un groupe.
 \begin{demo}
 	\begin{enumerate}
 		\item Soient $G\overset{\psi}{\rightarrow} H \overset{\varphi}{\rightarrow} K$ des \mdgs. Pour $x,y\in G$, on a :
-		$$\varphi\psi (x,y)=\varphi (\psi (xy))=\varphi (\psi(x)\psi(y)) = \varphi(\psi (x))\varphi(\psi(y))=\varphi\circ \psi(x)\cdot \varphi \circ \psi(y)$$
+		$$\varphi\circ \psi (x,y)=\varphi (\psi (xy))=\varphi (\psi(x)\psi(y)) = \varphi(\psi (x))\varphi(\psi(y))=\varphi\circ \psi(x)\cdot \varphi \circ \psi(y)$$
 		\item Soient $x,y\in H$. Il s'agit de monter que :
 		$$f^{-1}(xy)=f^{-1}(x)f^{-1}(y)$$
 		Comme $f$ est injective, il suffit de monter que les images par $f$ des deux cotés sont égales.\\
@@ -520,23 +522,23 @@ Soit $G$ un groupe.
 
 \begin{exem}
 	\begin{enumerate}
-		\item On a des isomorphismes inverses l'un de l'autre ($exp$ et $ln$)
-		\item Soit $\sigma \in O_2$ tq $\sigma(1)=2$ et $\sigma(2)=1$. On a un isomorphisme :
+		\item On a des isomorphismes inverses l'un de l'autre ($\exp$ et $\ln$)
+		\item Soit $\sigma \in \S_2$ tq $\sigma(1)=2$ et $\sigma(2)=1$. On a un isomorphisme :
 		$$\begin{array}{lll}
-		(\{\pm 1\}, \cdot)&\fong & O_2\\
+		(\{\pm 1\}, \cdot)&\fong & \S_2\\
 		1&\mapsto &Id\\
 		-1&\mapsto&\sigma
 		\end{array}$$
 		
 		\item Soit $D_3$ le groupe des symétries d'un triangle équilatéral ($D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$), on a : 
-		$$f:D_3 \fong O_3$$
+		$$f:D_3 \fong \S_3$$
 		en envoyant chaque élément de symétrie $g$ sur la permutation des sommets $f(g)$ qu'il induit.
 	\end{enumerate}
 \end{exem}
 
 \begin{defi}
 	Soit $G$ un groupe. Un automorphisme de $G$ est un isomorphisme $f:G\rightarrow G$.\\
-	On note $Aut(G)$ l'ensemble des automorphismes de $G$. C'est un sous-groupe du groupe symétrique $O_G$ de l'ensemble $G$.
+	On note $\Aut(G)$ l'ensemble des automorphismes de $G$. C'est un sous-groupe du groupe symétrique $\S_G$ de l'ensemble $G$.
 \end{defi}
 
 \begin{exem}
@@ -625,7 +627,7 @@ Soient $G$ et $H$ deux groupes et $f:G\rightarrow H$ un morphisme.
 Soit $G$ un groupe.\\
 
 \begin{defi}
-	L'ordre de $G$ est le cardinal $|G|$ de l'ensemble $G$.
+	L'ordre de $G$ est le cardinal $\abs{G}$ de l'ensemble $G$.
 \end{defi}
 
 \begin{exem}
@@ -636,38 +638,38 @@ Soit $G$ un groupe.\\
 \end{exem}
 
 \begin{nota}
-	Pour $g\in G$, on pose $<g> := <\{ g \}>$.
+	Pour $g\in G$, on pose $\langle g\rangle := \langle\{ g \}\rangle$.
 \end{nota}
 
 \begin{propr}
 	Soit $g\in G$. On suppose qu'il existe $n\geq 1$ tq $g^n=e$.
 	\begin{enumerate}
-		\item On a $<g> = \{g^i | 0\leq i \leq n-1 \}$. En particulier, l'ordre de $<g>$ est $\leq n$
-		\item Si on note $d$ l'ordre de $<g>$, alors :
+		\item On a $\langle g\rangle = \{g^i | 0\leq i \leq n-1 \}$. En particulier, l'ordre de $\langle g\rangle$ est $\leq n$
+		\item Si on note $d$ l'ordre de $\langle g\rangle$, alors :
 		$$d=min\{t\geq 1 | g^t=e \}$$
 	\end{enumerate}
 \end{propr}
 
 \begin{demo}
 	\begin{enumerate}
-		\item $"\supseteq"$ est clair. Réciproquement, on sait que tout élément de $<g>$ est de la forme $g^i$ pour un $i \in \Z$.\\
+		\item $"\supseteq"$ est clair. Réciproquement, on sait que tout élément de $\langle g\rangle$ est de la forme $g^i$ pour un $i \in \Z$.\\
 		Soit $i=qn+r$ la division euclidienne de $i$ par $n$. Alors on a :
 		$$g^i=g^{qn+r}=g^r \in \{g^k | 0\leq k \leq n-1 \}$$
 		
 		\item Posons $s=min\{t \geq 1 | g^t=e \}$. Alors par 1), on a :
-		$$<g> = \{g^i | 0\leq i \leq s-1 \}$$
-		Pour $0\leq i < j \leq s-1$, les puissances $g^i$ et $g^j$ sont distinctes. Sinon, on aurait $g^{j-i}=e$ mais $j-i<s$. Donc $s=|<g>| = d$.
+		$$\langle g\rangle = \{g^i | 0\leq i \leq s-1 \}$$
+		Pour $0\leq i < j \leq s-1$, les puissances $g^i$ et $g^j$ sont distinctes. Sinon, on aurait $g^{j-i}=e$ mais $j-i<s$. Donc $s=|\langle g\rangle| = d$.
 	\end{enumerate}	
 \end{demo}
 
 \begin{defi}
-	Soit $g\in G$. Si $<g>$ est infini, l'ordre de $g$ est infini.\\
-	Si $<g>$ est fini, l'ordre de $g$ est le plus petit entier $d\geq 1$ tq $g^d=e$	
+	Soit $g\in G$. Si $\langle g\rangle$ est infini, l'ordre de $g$ est infini.\\
+	Si $\langle g\rangle$ est fini, l'ordre de $g$ est le plus petit entier $d\geq 1$ tq $g^d=e$	
 \end{defi}
 
 \begin{remar}
 	\begin{enumerate}
-		\item Donc on a que l'ordre de $g$ est égale à l'ordre de $<g>$
+		\item Donc on a que l'ordre de $g$ est égale à l'ordre de $\langle g\rangle$
 		\item Si $d<\infty$ est l'ordre de $G$, alors :
 		$$d\Z=\{n\in \Z | g^n =e \}$$
 		\item Etant donné $t\geq 1$, l'élément $g$ est d'ordre $t$ ssi $g^t=e$ et $g^{t'}\neq e$ pour tout diviseur strict $t'$ de $t$.
@@ -690,7 +692,7 @@ Soit $G$ un groupe.\\
 \begin{cons}
 	Soit $G$ un groupe fini dont l'ordre est un nombre premier.\\
 	Alors tout sous-groupe de $G$ est égal à $G$ ou à $\{e\}$.\\
-	En particulier, si $e\neq g\in G$, alors $G=<g>$. Donc $G$ est cyclique.
+	En particulier, si $e\neq g\in G$, alors $G=\langle g\rangle$. Donc $G$ est cyclique.
 \end{cons}
 
 \begin{demo}
@@ -760,7 +762,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		\item $V$ un $K$-\ev, $K$ un corps ($\R,\C,...$), $Gr(V)$ l'ensemble des sous $K$-\ev de $V$ est un treillis pour $\subseteq$ car :\\
 		$\forall U,W\in Gr(V)$ $sup(U,W)=\{u+w\in V |u\in U,w\in W \}$ est le plus petit \sev de $V$ qui contient $U$ et $W$, et $inf(U,W)=U\cap W$ est le plus grand \sev de $V$ inclus dans $U$ et dans $V$.\\
 		\item $G$ un groupe, $L(G)$ l'ensemble des sous-groupes de $G$ est un treillis pour $\subseteq$ car :\\
-		$H,H'\in L(G)$ $sup(H,H')=<H,H'>$ (groupe engendré par $H$ et $H'$), et $inf(H,H')=H\cap H'$
+		$H,H'\in L(G)$ $sup(H,H')=\pro{H,H'}$ (groupe engendré par $H$ et $H'$), et $inf(H,H')=H\cap H'$
 	\end{enumerate}
 \end{exem}
 
@@ -828,17 +830,17 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \begin{exem}
 	\begin{enumerate}
 		\item Treillis de $\U_{20}$ :\\
-		D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $<\zeta^{20}>$, $<\zeta^{10}>$, $<\zeta^{5}>$, $<\zeta^{4}>$, $<\zeta^{2}>$ et $<\zeta^{1}>$ :
+		D'après le lemme précédent, les sous-groupes de $\U_{20}$ sont $\pro{\zeta^{20}}$, $\pro{\zeta^{10}}$, $\pro{\zeta^{5}} $, $\gen{\zeta^{4}}$, $\gen{\zeta^{2}}$ et $\gen{\zeta^{1}}$ :
 		
 		\begin{figure}[h]
 			\begin{center}
 				\begin{tikzpicture}
-				\node (20) at (0,0) {$<\zeta^{20}>$};
-				\node (10) at (1,1) {$<\zeta^{10}>$};
-				\node (5) at (2,2) {$<\zeta^{5}>$};
-				\node (4) at (-1,1) {$<\zeta^{4}>$};
-				\node (2) at (0,2) {$<\zeta^{2}>$};
-				\node (1) at (1,3) {$<\zeta^{1}>$};
+				\node (20) at (0,0) {$\pro{\zeta^{20}}$};
+				\node (10) at (1,1) {$\gen{\zeta^{10}}$};
+				\node (5) at (2,2) {$\gen{\zeta^{5}}$};
+				\node (4) at (-1,1) {$\gen{\zeta^{4}}$};
+				\node (2) at (0,2) {$\gen{\zeta^{2}}$};
+				\node (1) at (1,3) {$\gen{\zeta^{1}}$};
 				\draw[->,>=latex] (20) to (4);
 				\draw[->,>=latex] (20) to (10);	
 				\draw[->,>=latex] (4) to (2);
@@ -855,18 +857,18 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		Soit $H$ un sous-groupe de $D_3$, $|H|\in \{1,2,3,6 \}$, donc on a :
 		\begin{itemize}
 			\item $|H| = 1\Rightarrow H=\{Id\}$
-			\item $|H|=2\Rightarrow H=<\sigma_A>, <\sigma_B>, <\sigma_C>$
-			\item $|H|=3 \Rightarrow H= <\rho>, <\rho^2>$
+			\item $|H|=2\Rightarrow H=\gen{\sigma_A}, \gen{\sigma_B}, \gen{\sigma_C}$
+			\item $|H|=3 \Rightarrow H= \gen{\rho}, \gen{\rho^2}$
 		\end{itemize}
 		\begin{figure}[h]
 			\begin{center}
 				\begin{tikzpicture}
 				\node (ID) at (0,0) {$\{Id\}$};
-				\node (1) at (-2.25,1) {$<\tau_1>$};
-				\node (2) at (-0.75,1) {$<\tau_2>$};
-				\node (3) at (0.75,1) {$<\tau_3>$};
-				\node (R) at (2.25,2) {$<\rho>$};
-				\node (D3) at (0,3) {$<D_3>$};
+				\node (1) at (-2.25,1) {$\gen{\tau_1}$};
+				\node (2) at (-0.75,1) {$\gen{\tau_2}$};
+				\node (3) at (0.75,1) {$\gen{\tau_3}$};
+				\node (R) at (2.25,2) {$\gen{\rho}$};
+				\node (D3) at (0,3) {$\gen{D_3}$};
 				
 				\draw[->,>=latex] (ID) to (1);
 				\draw[->,>=latex] (ID) to (2);
@@ -891,21 +893,21 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		Soit $H$ un sous-groupe de $D_4$, $|H|\in \{1,2,4,8 \}$, donc on a :
 		\begin{itemize}
 			\item $|H| = 1 \Rightarrow H = \{Id\}$
-			\item $|H| = 2 \Rightarrow H = <\rho^2>,<\tau_1>,<\tau_2>,<\tau_3>,<\tau_4>$
-			\item $|H| = 4 \Rightarrow H = <\rho>, <\tau_1,\tau_3>,<\tau_2,\tau_4>$
+			\item $|H| = 2 \Rightarrow H = \gen{\rho^2},\gen{\tau_1},\gen{\tau_2},\gen{\tau_3},\gen{\tau_4}$
+			\item $|H| = 4 \Rightarrow H = \gen{\rho}, \gen{\tau_1,\tau_3},\gen{\tau_2,\tau_4}$
 		\end{itemize}
 		\begin{figure}[h]
 			\begin{center}
 				\begin{tikzpicture}[scale=0.7]
 				\node (E) at (8,-3) {$\{e\}$};
-				\node (1) at (4.5,-1) {$<\tau_1>$};
-				\node (3) at (6.25,-1) {$<\tau_3>$};
-				\node (R2) at (8,-1) {$<\rho^2>$};
-				\node (2) at (9.75,-1) {$<\tau_1>$};
-				\node (4) at (11.5,-1) {$<\tau_4>$};
-				\node (R) at (8,1) {$<\rho>$};
-				\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
-				\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+				\node (1) at (4.5,-1) {$\gen{\tau_1}$};
+				\node (3) at (6.25,-1) {$\gen{\tau_3}$};
+				\node (R2) at (8,-1) {$\gen{\rho^2}$};
+				\node (2) at (9.75,-1) {$\gen{\tau_1}$};
+				\node (4) at (11.5,-1) {$\gen{\tau_4}$};
+				\node (R) at (8,1) {$\gen{\rho}$};
+				\node (13) at (6.25,1) {$\gen{\tau_1,\tau_3}$};
+				\node (24) at (9.75,1) {$\gen{\tau_2,\tau_4}$};
 				\node (D4) at (8,3) {$D_4$};
 				
 				\draw[->,>=latex] (E) to (1);
@@ -999,7 +1001,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 	Soit $\pi$ la surjection canonique.\\
 	Soit $f$ une application de $X$ dans $Y$. Les assertions suivantes sont équivalentes :
 	\begin{enumerate}
-		\item ($\forall x,y \in R~xRy\Rightarrow f(x)=f(y)$)
+		\item ($\forall x,y \in R~xRy\Rightarrow f(x)=f(y)$) \label{tst}
 		\item ($\exists ! \bar{f}: X/R \rightarrow Y$ telle que $f=\bar{f}\circ \pi$)
 	\end{enumerate}
 \end{thm}
@@ -1028,7 +1030,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \end{demo}
 
 \begin{remar}
-	Lorsque $f$ vérifie 1) du théorème, on dit que $f$ passe au quotient par $R$ et que $\bar{f}$ est induite par $f$.
+	Lorsque $f$ vérifie 1. du théorème, on dit que $f$ passe au quotient par $R$ et que $\bar{f}$ est induite par $f$.
 \end{remar}
 
 \begin{lemme}
@@ -1115,10 +1117,10 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \begin{propr}
 	Soient $G$ un groupe et $X$ un ensemble.
 	\begin{enumerate}
-		\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \sigma_X$ et l'application $G\rightarrow \sigma_X~g\mapsto \varphi_g$ est un morphisme de groupes.
-		\item Soit $f:G\rightarrow \sigma_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
+		\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \S_X$ et l'application $G\rightarrow \S_X~g\mapsto \varphi_g$ est un morphisme de groupes.
+		\item Soit $f:G\rightarrow \S_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
 		$$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
-		Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\sigma_X$
+		Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\S_X$
 	\end{enumerate}
 \end{propr}
 
@@ -1260,7 +1262,7 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 	\begin{enumerate}
 		\item On définit de façon analogue les notions correspondantes pour les actions à droite.
 		\item L'action de $G$ sur $X$ est transitive ssi $G\backslash X$ est un singleton.
-		\item L'action de $G$ sur $X$ est fidèle ssi le morphisme associé $G\rightarrow \sigma_X$ a pour noyau $\{e\}$, c'est à dire ssi $G\rightarrow \sigma_X$ est injectif.
+		\item L'action de $G$ sur $X$ est fidèle ssi le morphisme associé $G\rightarrow \S_X$ a pour noyau $\{e\}$, c'est à dire ssi $G\rightarrow \S_X$ est injectif.
 	\end{enumerate}	
 \end{remar}
 
@@ -1531,12 +1533,12 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 		
 		\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
 		$$\sigma = c_1'...c_s'$$
-		alors $k=s$ et il existe une permutation $\tau \in \sigma_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
+		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
 	\end{enumerate}
 \end{thm}
 
 \paragraph{Idée de la démonstration :}
-On fait agir le groupe $<\sigma> \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
+On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
 
 \begin{exem}
 	$$\sigma = \left(\begin{array}{llllllllllllll}
@@ -1547,10 +1549,10 @@ On fait agir le groupe $<\sigma> \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites 
 \end{exem}
 
 \begin{demo}
-	On fait agir le sous-groupe $<\sigma>$ engendré par $\sigma$ dans $\S_n$ sur l'ensemble $\{1,...,n\}$.\\
+	On fait agir le sous-groupe $\langle \sigma\rangle$ engendré par $\sigma$ dans $\S_n$ sur l'ensemble $\{1,...,n\}$.\\
 	Sur cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
 	Soient $\Omega_1,...,\Omega_r$ les orbites non ponctuelles.\\
-	Le sous-groupe $<\sigma>$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i1},...,a_{il_i}$ une énumération des éléments de $\Omega_i$ tq :
+	Le sous-groupe $\langle \sigma\rangle$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i_1},...,a_{i_{l_i}}$ une énumération des éléments de $\Omega_i$ tq :
 	$$\sigma(a_{i_j})\left\{\begin{array}{ll}
 	a_{i_{j+1}}&1\leq j \leq l_i-1\\
 	a_{i_1}&j=l_i
@@ -1619,14 +1621,14 @@ On fait agir le groupe $<\sigma> \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites 
 \end{remar}
 
 \section{La signature}
-Soit $n\geq 1$. Le groupe symétrique $\S_n$ agit sur l'ensemble $\Z[X_i,...,X_n]$ des polynômes en $\Xi_1,...,X_n$ à coefficients entiers par :
+Soit $n\geq 1$. Le groupe symétrique $\S_n$ agit sur l'ensemble $\Z[X_i,...,X_n]$ des polynômes en $X_1,...,X_n$ à coefficients entiers par :
 $$(\sigma~P)(X_1,...,X_n):= P(X_{\sigma(1)},...,X_{\sigma(n)})$$
 (clairement, $Id.P=P$ et $\sigma(\tau~P)=(\sigma~\tau)P, \forall \sigma,\tau \in \S_n$ et $\forall P\in \Z[X_i,...,X_n]$).\\
 
 Soit 
 $$\Delta_n := \prod_{i<j}(X_i-X_j)\in \Z[X_i,...,X_n]$$
 Par exemple, on a $\Delta_2=X_1-X_2$, $\Delta_3=(X_1-X_2)(X_1-X_3)(X_2-X_3)$.\\
-Toute permutation $\sigma$ envoie un $\Xi_i-X_j$ sur $X_{\sigma(i)}-X_{\sigma(j)}$ et on a $\sigma(i)<\sigma(j)$ ou $\sigma(j)<\sigma(j)$ si $i<j$.\\
+Toute permutation $\sigma$ envoie un $X_i-X_j$ sur $X_{\sigma(i)}-X_{\sigma(j)}$ et on a $\sigma(i)<\sigma(j)$ ou $\sigma(j)<\sigma(i)$ si $i<j$.\\
 Donc $\sigma$ envoie un facteur $X_i-X_j$ de $\Delta_n$ soit sur un autre facteur de $\Delta_n$ soit sur l'opposé d'un autre facteur de $\Delta_n$. Donc :
 $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \S_n$$
 
@@ -1645,7 +1647,7 @@ $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \S_n$$
 \begin{propr}
 	\begin{enumerate}
 		\item La signature est un morphisme de groupes
-		$$ \epsilon : \S_n\rightarrow (\{1,-1\},.)$$
+		$$ \epsilon : \S_n\rightarrow (\{1,-1\},\cdot)$$
 		
 		\item Toute transposition est de signature $-1$. Tout cycle de longueur $l$ est de signature $(-1)^{l-1}$
 	\end{enumerate}
@@ -1677,7 +1679,7 @@ $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \S_n$$
 	\begin{enumerate}
 		\item On dit que $\sigma$ est \textbf{paire} (respectivement \textbf{impaire}) si $\epsilon(\sigma)=1$ (respectivement $\epsilon(\sigma)=-1$)
 		\item $\sigma$ est pair (resp impair) ssi $\sigma$ est produit de nombre pair (resp impair) de transpositions.
-		\item Soient $l_1,...,l_r$ les cardinaux des orbites $\Omega_1,...,\Omega_r$ de $<\sigma>$ dans $\{1,...,n\}$ (y compris les orbites ponctuelles), alors on a :
+		\item Soient $l_1,...,l_r$ les cardinaux des orbites $\Omega_1,...,\Omega_r$ de $\langle \sigma\rangle$ dans $\{1,...,n\}$ (y compris les orbites ponctuelles), alors on a :
 		$$\epsilon(\sigma)=\epsilon(c_1...c_r)=(-1)^{l_1-1}...(-1)^{l_n-1}=(-1)^{(\sum l_i)-r}=(-1)^{n-r}$$
 	\end{enumerate}
 \end{remar}
@@ -1739,7 +1741,7 @@ $H$ est distingué dans $G$ ssi $N_G(H)=G$
 \end{remar}
 
 \begin{defi}
-	L'\textbf{indice} de $H$ dans $G$ est $[G:H]=|G/H| = |G|/|H|$ si $|G|$ et $|H|$ sont finis.
+	L'\textbf{indice} de $H$ dans $G$ est $[G:H]=|G/H| = \displaystyle \frac{|G|}{|H|}$ si $|G|$ et $|H|$ sont finis.
 \end{defi}
 
 \begin{exem}
@@ -1781,14 +1783,14 @@ $H$ est distingué dans $G$ ssi $N_G(H)=G$
 			\draw[->,>=latex] (1,0) arc (0:90:1) node[near end, above right] {$\rho$};	
 			
 			\node (E) at (8,-3) {$\{e\}$};
-			\node (1) at (4.5,-1) {$<\tau_1>$};
-			\node (3) at (6.25,-1) {$<\tau_3>$};
-			\node (R2) at (8,-1) {$<\rho^2>$};
-			\node (2) at (9.75,-1) {$<\tau_1>$};
-			\node (4) at (11.5,-1) {$<\tau_4>$};
-			\node (R) at (8,1) {$<\rho>$};
-			\node (13) at (6.25,1) {$<\tau_1,\tau_3>$};
-			\node (24) at (9.75,1) {$<\tau_2,\tau_4>$};
+			\node (1) at (4.5,-1) {$\gen{\tau_1}$};
+			\node (3) at (6.25,-1) {$\gen{\tau_3}$};
+			\node (R2) at (8,-1) {$\gen{\rho^2}$};
+			\node (2) at (9.75,-1) {$\gen{\tau_2}$};
+			\node (4) at (11.5,-1) {$\gen{\tau_4}$};
+			\node (R) at (8,1) {$\gen{\rho}$};
+			\node (13) at (6.25,1) {$\gen{\tau_1,\tau_3}$};
+			\node (24) at (9.75,1) {$\gen{\tau_2,\tau_4}$};
 			\node (D4) at (8,3) {$D_4$};
 			
 			\draw[->,>=latex] (E) -- (1);
@@ -1812,8 +1814,8 @@ $H$ est distingué dans $G$ ssi $N_G(H)=G$
 	
 	Notons $\sigma_D$ la symétrie orthogonale par rapport à une droite $D$ et $f$ une isométrie. Alors :
 	$$f\circ \sigma_D \circ f^{-1}=\sigma_{f(D)}$$
-	Donc $D_4$, $\{e\}$, $<\tau_1,\tau_3>$, $<\tau_2,\tau_4>$, $<\rho>$, $<\rho^2>$ sont distingués et $<\tau>$, $<\tau_3>$, $<\tau_2$ et $<\tau_4>$ ne sont pas distingués.\\
-	On a $N_{D_4}(<\tau_1>)=<\tau_1,\tau_3>$, $N_{D_4}(<\tau_2>)=<\tau_2,\tau_4>$.
+	Donc $D_4$, $\{e\}$, $\gen{\tau_1,\tau_3}$, $\gen{\tau_2,\tau_4}$, $\gen{\rho}$, $\gen{\rho^2}$ sont distingués et $\gen{\tau_1}$, $\gen{\tau_3}$, $\gen{\tau_2}$ et $\gen{\tau_4}$ ne sont pas distingués.\\
+	On a $N_{D_4}(\gen{\tau_1})=\gen{\tau_1,\tau_3}$, $N_{D_4}(\gen{\tau_2})=\gen{\tau_2,\tau_4}$.
 \end{exem}
 
 \begin{remar}
@@ -1899,7 +1901,7 @@ Les \sgs distingués de $G$ sont exactement les noyaux des \mdgs $G\underset{\va
 \item Si $E$ est un \ev sur $\R$ et $F$ un \sev alors $(F,+)$ est un \sg distingué de $(E,+)$ (qui est commutatif).\\
 Alors $E/F$ devient un \ev pour la multiplication par les scalaires définie par $\lambda.(v+F)=\lambda v+F$\\
 Si $F'\subseteq E$ est un supplémentaire de $F$ ($E=F'\oplus F$), alors la composition :
-$$F'~inj~E \rightarrow E/F$$
+$$F'~\inj~E \rightarrow E/F$$
 est un isomorphisme d'espaces vectoriels (exo !).\\
 En particulier, si $\dim E < \infty$, alors :
 $$\dim E/F = \dim E- \dim F$$
@@ -1912,13 +1914,13 @@ Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$
 \begin{center}
 	\begin{tikzpicture}[scale=0.65]
 	\node (E) at (0,0) {$\{e\}$};
-	\node (1234) at (-9,1.75) {$<(12)(34)>$};
-	\node (1324) at (-6,1.75) {$<(13)(24)>$};
-	\node (1423) at (-3,1.75) {$<(14)(23)>$};
-	\node (123) at (0,3.5) {$<(123)>$};
-	\node (124) at (3,3.5) {$<(124)>$};
-	\node (134) at (6,3.5) {$<(134)>$};
-	\node (234) at (9,3.5) {$<(234)>$};
+	\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+	\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+	\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+	\node (123) at (0,3.5) {$\gen{(123)}$};
+	\node (124) at (3,3.5) {$\gen{(124)}$};
+	\node (134) at (6,3.5) {$\gen{(134)}$};
+	\node (234) at (9,3.5) {$\gen{(234)}$};
 	\node (V) at (-6,4.75) {$V$};
 	\node (A4) at (0,7) {$A_4$};
 	
@@ -1942,8 +1944,8 @@ Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$
 \end{center}
 
 On a :
-$ N_{\A_4}(<(1~2)(3~4)>)=V$ est d'indice 3 dans $\A_4$\\
-$ N_{\A_4}(<(1~2~3)>)=<(1~2~3)$ est d'indice 4 dans $\A_4$
+$ N_{\A_4}(\gen{(1~2)(3~4)})=V$ est d'indice 3 dans $\A_4$\\
+$ N_{\A_4}(\gen{(1~2~3)})=\gen{(1~2~3)}$ est d'indice 4 dans $\A_4$
 \end{enumerate}
 \end{exem}
 
