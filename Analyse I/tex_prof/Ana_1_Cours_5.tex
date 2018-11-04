@@ -1,0 +1,182 @@
+\documentclass[10pt,a4paper]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[applemac]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lastpage}
+
+\setlength\textwidth{15.9cm}
+\setlength\oddsidemargin{0cm}
+\setlength\evensidemargin{0cm}
+\setlength\marginparwidth{0cm}
+\setlength\marginparsep{0.4cm}
+\setlength\marginparpush{0.4cm}
+\setlength\topmargin{0cm}
+\setlength\headheight{0.59cm}
+\setlength\headsep{1cm}
+\setlength\textheight{21.5cm}
+\setlength\footskip{2.2cm}
+
+\def\Nd{\mathbf{N}}
+\def\Zd{\mathbf{Z}}
+\def\Pd{\mathbf{P}}
+\def\Qd{\mathbf{Q}}
+\def\Rd{\mathbf{R}}
+
+\newtheorem{lemme}{Lemme}
+\newtheorem{theoreme}{Th\'eor\`eme}
+\newtheorem{algorithme}{Algorithme}
+\newtheorem{exercice}{Exercice}
+\newtheorem*{exemple*}{Exemple}
+\newtheorem{exemple}[subsection]{Exemple}
+\newtheorem*{rem*}{Remarque}
+\newtheorem{rem}[subsection]{Remarque}
+\newtheorem*{defn*}{D\'efinition}
+\newtheorem{defn}[subsection]{D\'efinition}
+\newtheorem*{lem*}{Lemme}
+\newtheorem{prop}[subsection]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[subsection]{Corollaire}
+\newtheorem*{cor*}{Corollaire}
+
+\pagestyle{fancy}
+\lhead{{\bf Universit\'e Paris Diderot Paris 7}}
+\chead{}
+\rhead{Analyse I}
+\lfoot{Patrice Perrin}
+\cfoot{Espaces vectoriels normés -- Ann\'ee 2018-2019}
+\rfoot{Page \thepage/\pageref{LastPage}}
+
+%------ Commandes symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}} 
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\bigskip
+
+\bigskip
+
+\centerline{\bf Analyse I}
+\centerline{\bf Espaces vectoriels normés}
+\centerline{Normes}
+
+\bigskip \begin{section}{\bf Normes. Définitions générales.} 
+\end{section}
+
+\begin{section}{\bf Exemples de normes.} 
+\end{section}
+
+\begin{section}{\bf Normes, distances et topologie.} 
+\end{section}
+
+\begin{section}{\bf Espaces de Banach.} 
+\end{section}
+
+\begin{section}{\bf Espaces normés et compacité.} 
+
+\begin{defn} Soit $X$ un espace muni d'une topologie $\mathcal T$ . On dit que $X$ est séparé si et seulement si, pour tout couple de points distincts $(x,y)$ , il existe deux ouverts disjoints de la topologie tels que $x\in U\ ,$ $y\in V$ et $U\cap V=\emptyset$ . \end{defn}
+
+\begin{rem} Un espace métrique ou un espace vectoriel normé sont des espaces topologiques séparés. \end{rem}
+\smallskip Prendre des boules ouvertes centrées en $x$ (resp.$y$) de rayon moitié de la distance de $x$ à $y$ ou de la norme de $y-x$. 
+
+\begin{defn} [Propriété de Borel-Lebesgue] Soit $(X,{\mathcal T})$ un espace topologique séparé. Une partie $K$ de $X$ est dite compacte si et seulement si de tout recouvrement de $K$ par des ouverts de $X$ , on peut extraire un recouvrement fini.\end{defn}
+
+\begin{exemple} La droite réelle $\R$ n'est pas compacte. En effet $\R$ est recouvert par la réunion des $]-n,n[$ pour $n$ entier mais pas par une réunion finie de tels intervalles (qui est forcément bornée).\end{exemple}
+
+\begin{exemple}On peut montrer que, par contre, $[0,1]$ est une partie compacte en ce sens. \end{exemple}
+\smallskip Démonstration. Soit un recouvrement $U_{\alpha}$ de $[0,1]$ . Considérer l'ensemble des réels $a$ tels que l'intervalle $[0,a]$ est recouvert par un nombre fini de tels $U_{\alpha}$ . Il est non vide car $0$ appartient à cet ensemble et borné (par $1$ . Il a donc une borne supérieure $b\leq 1$ . Il s'agit de vérifier que $b = 1$ . Mais $b$ appartient à l'un des $U_{\alpha}$ , soit $U_{\alpha_{b}}$ . D'où un intervalle $]b-\epsilon,b+\epsilon[\cap [0,1]$ contenu dans cet $U_{\alpha_{b}}$ . Mais $b$ est une borne supérieure. Il y a donc un élément $a$ de notre ensemble dans l'intervalle $]b-\epsilon,b]\cap [0,1]$ . On sait que, par construction,
+$$[0,a]\subset\bigcup_{\alpha\in I} U_{\alpha}$$
+où $I$ est finie. On considère alors 
+$$U_{\alpha_{b}}\cup\bigcup_{\alpha\in I} U_{\alpha}\ .$$
+Il contient $[0,a]$ et $]b-\epsilon,b+\epsilon[\cap [0,1]$ soit $[0,b+\epsilon[\cap[0,1]$ . Et cela impose $b=1$ (sinon ce ne serait pas la borne supérieure).
+
+\begin{prop} Soit $(K,{\mathcal T})$ un espace topologique séparé. L'espace $K$ est compact si, pour toute famille de fermés de $K$ d'intersection vide, il existe une sous-famille finie dont l'intersection est déjà vide. \end{prop}
+\smallskip Démonstration. Si $\bigcap_{\alpha\in A}F_{\alpha}=\emptyset$ , c'est que $\bigcup_{\alpha\in A}U_{\alpha}=K$ où l'on a posé $U_{\alpha}=K\smallsetminus F_{\alpha}$ . Mais on sait que $\bigcup_{i\in I}U_{\alpha}=K$ où $I$ est une partie finie de $A$ . D'où
+$\bigcap_{i\in I}F_{i}=\emptyset$ . La réciproque est immédiate.
+
+\begin{prop} Soit $(K,{\mathcal T})$ un espace compact. Soit une famille décroissante de fermés $F_n$ de $K$ . Alors si tous les $F_n$ sont non vides, l'intersection des $F_n$ est aussi non vide.\end{prop}
+\smallskip Démonstration. Il suffit de raisonner par l'absurde et d'appliquer le résultat précédent. Si $\bigcap_{n\geq 0}F_{n}$ était vide , c'est que $\bigcap_{n\in I}F_{n}$ est déjà vide pour $I$ partie finie de $\N$ . Mais, si l'on note $N$ la borne supérieure de $I$ , on a
+$$\bigcap_{n\in I}F_{n}=F_N\ .$$
+C'est absurde puisque ces parties ne sont pas vides.
+
+\begin{prop} Soit $(K,{\mathcal T})$ un espace (topologique) compact. Alors toute partie fermée de $K$ est compacte. \end{prop}
+\smallskip Démonstration. Prenons un recouvrement de cette partie fermée $F$ par des ouverts soit
+$$F\subset \bigcup_{\alpha\in A}U_{\alpha}\ {\rm soit\ aussi}\ F\subset \bigcup_{\alpha\in A}F\cap U_{\alpha}\ .$$
+Si l'on introduit $F_{\alpha}=K\smallsetminus U_{\alpha}$ , alors
+$$\bigcap_{\alpha\in A}F_{\alpha}\subset K\smallsetminus F\ {\rm soit}\ \bigcap_{\alpha\in A}F\cap F_{\alpha}=\emptyset\ .$$
+Mais les $F\cap F_{\alpha}$ sont des fermés de $K$ . Donc une intersection finie de tels fermés est déjà vide soit
+$$\bigcap_{i\in I}F\cap F_{i}=\emptyset\ {\rm soit}\ \bigcap_{i\in I}F_{i}\subset K\smallsetminus F\ .$$
+ D'où $F\subset \bigcup_{i\in I} U_{i}\ .$
+
+\begin{prop} Soit $(X,{\mathcal T})$ un espace topologique séparé. Alors toute partie $K$ compacte de $X$ est fermée. \end{prop}
+\smallskip Démonstration. Soit $x$ un élément du complémentaire de $K$ . Alors, pour tout $k$ dans $K$ , il existe des ouverts (disjoints) $U_k$ et $V_k$ tels que $k\in U_k$ et $x\in V_k$ . Donc $K$ est recouvert par les $U_k$ . On peut en extraire un nombre fini de $U_i$ tels que
+$$K\subset\bigcup_{i\in I} U_i\ .$$
+Alors la partie $\bigcap_{i\in I} V_i$ est un ouvert (intersection finie d'ouverts) qui contient $x$ et est disjointe de $\bigcup_{i\in I} U_i\ .$ Elle ne peut donc rencontrer $K$ et est contenue dans $X\smallsetminus K$ . Donc le complémentaire de $K$ dans $X$ est ouvert. Donc $K$ est fermé.
+
+\begin{rem} Nous avons montré un résultat intéressant en lui-même. Soit $(X,{\mathcal T})$ un espace topologique séparé et une partie $K$ compacte de $X$ . Pour tout point $x$ n'appartenant pas à $K$ , on peut séparer $x$ et $K$ au sens suivant: il existe deux ouverts disjoints $U$ et $V$ tels que $x\in V$ , $K\subset U$ .\end{rem}
+
+\begin{prop} Soit $(X,d)$ un espace métrique. Toute partie compacte $K$ de $X$ est fermée et bornée.\end{prop}
+\smallskip Démonstration. Un espace métrique est un espace topologique séparé. Une partie $K$ compacte est donc fermée dans $X$ d'après le résultat précédent. La partie $K$ est recouverte par la famille des boules $B(k,r)$ pour $k$ élément de $K$ et $r$ réel positif. Donc
+$$K\subset\bigcup_{i\in I}B(k_i,r_i)$$
+où $I$ est un ensemble fini. Soit $X_0$ un élément quelconque de $X$ . Posons
+$$M=\sup_{i\in I}\{d(x_0,k_i\}+\sup_{i\in I}\{r_i\}\ .$$
+Alors
+$$\forall k\in K\ d(x_0,k)\leq d(x_0,k_i)+d(k_i,k)\leq \sup_{i\in I}\{d(x_0,k_i\}+r_i\leq M$$
+(puisque $k$ appartient à $B(k_i,r_i)$ pour au moins un indice $i$).
+
+\begin{prop} Soit $(X,{\mathcal T})$ un espace topologique séparé et une partie $K$ compacte de $X$ . Toute partie $A$ infinie de $K$ admet un point d'accumulation.\end{prop}
+\smallskip Démonstration. Montrons qu'une partie $A$ sans point d'accumulation est finie. Si $x$ appartient au complémentaire de $A$ , il existe une boule de centre $x$ ne contenant aucun point de $A$ (sinon $A$ aurait un point d'accumulation). Donc le complémentaire de $A$ est ouvert. Donc $A$ est une partie fermée de $K$ donc elle est compacte. Or tout point $a$ de $A$ est le centre d'une boule ne contenant aucun autre point de $A$ (sinon ce serait un point d'accumulation). Donc $A$ est recouverte par des boules $B(a,r_a)$ . Il suffit donc d'un nombre fini de telles boules pour recouvrir $A$ . Mais $b\in B(a,r_a)\Rightarrow b=a$ . Donc $A$ est finie.
+
+\begin{rem} Nous avons en fait montré qu'une partie discrète (à la fois ouverte et fermée) dans un compact est finie. \end{rem}
+
+\begin{prop} Soit $(X,d)$ un espace métrique. Toute partie compacte $K$ de $X$ est complète.\end{prop}
+\smallskip Démonstration. Prenons donc une suite de Cauchy $k_n$ d'éléments de $K$ . Considérons la partie ${A=\{a\in K\  \exists n\ ;\ a=k_n\}}$ . Soit $A$ est finie, soit $A$ admet un point d'accumulation. 
+
+Si $A$ est finie, considérons le réel $\rho={\rm Inf}_{a\neq a'\in A}d(a,a')$ . L'une des valeurs de la suite au moins est atteinte une infinité de fois. Alors une boule centrée en cette valeur de rayon $\rho$ contient tous les termes de la suite pour $n$ assez grand. Ainsi la suite est stationnaire et est convergente vers un point de $K$ .
+
+Si $A$ n'est pas finie, d'après ce qui précède, elle admet un point d'accumulation donc une sous-suite (de notre suite) est convergente. Mais la suite est de Cauchy donc elle est convergente elle-même. La limite est adhérente à $A$ donc à $K$ donc lui appartient puisque $K$ est fermée. 
+
+\begin{defn} On dira que $K$ admet la propriété de Bolzano-Weierstrass si et seulement si, de toute suite de points de $K$ , on peut extraire une sous-suite convergente.\end{defn}
+
+\begin{prop} Soit $K$ un espace métrique admettant la propriété de Bolzano-Weierstrass. Soit $(U_{\alpha})$ un recouvrement de $K$ . Alors il existe un réel $\epsilon>0$ tel que
+$$\forall x\in K\,\exists\alpha\ ; B(x,\epsilon)\subset U_{\alpha}\ .$$\end{prop}
+
+\medskip Démonstration. Raisonnons par l'absurde. Soit $n\geq 0$ . La boule $B(x,2^{-n})$ ne peut être contenue dans un $U_{\alpha}$ pour tous les $x$ . Soit donc $x_n$ tel que $\forall\alpha\ B(x_n,2^{-n})\nsubseteq U_{\alpha}$ . Soit $x_{\varphi(n)}$ une suite extraite et convergente. Soit $\xi$ sa limite dans $K$ . Alors $\xi$ appartient nécessairement à un des ouverts du recouvrement soit $U_{\alpha_{\xi}}$ . La boule $B(\xi,r)$ est alors contenue dans $U_{\alpha_{\xi}}$ pour $r$ assez petit donc $B(\xi,2^{-n})$ pour $n$ assez grand. Il est alors immédiat de constater que $B(x_{\varphi(n+1)},2^{-n-1})$ est contenue dans $B(\xi,2^{-n})$ donc dans $U_{\alpha_{\xi}}$ . Ceci est absurde.
+
+\begin{defn} Un tel réel est appelé nombre de Lebesgue du recouvrement. \end{defn}
+
+\begin{prop} Soit $(E,N)$ un espace normé. Alors une partie $K$ de $E$ est compacte si et seulement si elle vérifie la propriété de Bolzano-Weierstrass. \end{prop}
+
+\smallskip Démonstration. Supposons que $K$ est compacte. Soit $(x_i)_{i\geq 0}$ une suite d'éléments de $K$ . On suppose qu'elle prend une infinité de valeurs (sinon il est facile d'en extraire une suite convergente). Alors nous avons vu que cette partie possède un point d'accumulation. Aussi peut-on extraire une sous-suite convergente de la suite $(x_i)_{i\geq 0}$ .
+
+Réciproquement supposons que $K$ vérifie la propriété de Bolzano-Weierstrass. Soit $(U_{\alpha})$ un recouvrement de $K$ . Par la proposition précédente, on sait qu'on peut lui associer un nombre de Lebesgue $\epsilon>0$ tel que
+$$\forall x\in K\,\exists\alpha\ ; B(x,\epsilon)\subset U_{\alpha}\ .$$
+Raisonnons par l'absurde et supposons que l'on ne peut extraire un recouvrement fini de  $(U_{\alpha})$ . Soit $x_0$ un point de $K$ . Alors
+$$x_0\in B(x_0,\epsilon)\subset U_0\ ;$$
+mais $U_0$ ne peut recouvrir $K$ d'où l'existence de $x_1\notin U_0$ donc $d(x_0,x_1)\geq \epsilon$ . Mais $x_1\in U_1$ . Montrons alors par récurrence l'existence d'une suite $x_n$ telle que
+$$\forall p\leq n,\ q\leq n,\ p\neq q\ ;\ d(x_p,x_q)\geq \epsilon\ .$$
+Pour construire $x_{n+1}$ , il suffit de constater que les ouverts $U_i$ associés à $x_i$ (contenant $B(x_i,\epsilon)$) sont supposés ne pas recouvrir $K$ . Soit $x_{n+1}$ un des points de $K$ non atteint. Or un tel point vérifie nécessairement $\forall i\leq n\ d(x_{n+1},x_i)\geq\epsilon$ . Nous venons de construire une suite qui n'est pas de Cauchy et dont aucune suite extraite ne peut être de Cauchy. C'est absurde.
+
+\begin{rem} Toute partie fermée et bornée dans $\R$ est compacte. \end{rem}
+\smallskip Démonstration. Si $A$ est fermée et bornée dans $\R$ , prenons une suite d'éléments de $A$ . Cette suite est bornée et donc contenue dans un intervalle $[m,M]$ . Par dichotomie et par récurrence, on peut trouver un intervalle de longueur $\frac{M-m}{2^n}$ contenant un nombre infini de termes de la suite. D'où une suite extraite et de Cauchy donc convergente dans $\R$ . Comme la partie est fermée, la limite est nécessairement élément de $A$ .
+
+\begin{prop} Soit $(\R^n,\|.\|_{\infty})$ l'espace de dimension finie muni de la norme $\|.\|_{\infty}$ . Alors toute partie fermée et bornée est compacte. En particulier la boule unité fermée est compacte. \end{prop}
+\smallskip Démonstration. Soit $A$ une partie fermée et bornée. Considérons donc une suite de points $x_n$ de $A\ .$ Alors chaque suite de coordonnées est bornée donc on peut en extraire une sous-suite convergente. Il existe donc un point de $\R^n$ limite d'une suite extraite de la suite de points $x_n$ . Ce point appartient à $A$ (partie fermée).
+
+\begin{defn} On dira qu'un espace topologique (métrique, normé) est localement compact si et seulement tout point admet un voisinage compact. \end{defn}
+
+\begin{exemple} Dans les espaces normés, une base de voisinage est formée par les boules (qu'elles soient ouvertes ou fermées). En dimension finie, nous venons de montrer que l'espace $\R^n$ est localement compact (pour la norme $\|.\|_{\infty}$).\end{exemple}
+
+\end{section}
+
+\end{document}
