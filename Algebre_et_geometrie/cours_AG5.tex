@@ -1074,11 +1074,11 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \begin{defi} 
 	Soient $X$ un ensemble, $G$ un groupe. Une action de $G$ sur $X$ est une application $\begin{array}{lll}
 	G\x X &\rightarrow & X\\
-	(g,x)&\rightarrow & g.x\\
+	(g,x)&\rightarrow & g \cdot x\\
 	\end{array}$ telle que :
 	\begin{enumerate}
-	\item $\forall x\in X$ $e.x=x$
-	\item $\forall g,h\in G$ $\forall x\in X$ $(gh).x=g.(h.x)$
+	\item $\forall x\in X$ $e \cdot x=x$
+	\item $\forall g,h\in G$ $\forall x\in X$ $(gh) \cdot x=g \cdot (h \cdot x)$
 	\end{enumerate}
 \end{defi}
 
@@ -1090,13 +1090,13 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \begin{exem}
 	\begin{enumerate}
 		\item Le groupe diédral $D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$ agit sur l'ensemble $\{1,2,3\}$ des sommets du triangle équilatéral.
-		\item Le groupe symétrique $\S_n$ agit sur l'ensemble $X=\{1,\cdots,n\}$ par $\sigma.x := \sigma(x), ~\forall \sigma \in \S_n,~\forall x\in X$.\\
+		\item Le groupe symétrique $\S_n$ agit sur l'ensemble $X=\{1,\cdots,n\}$ par $\sigma \cdot x := \sigma(x), ~\forall \sigma \in \S_n,~\forall x\in X$.\\
 		
 		Soit $G$ un groupe.
 		\item Soit $H\subseteq G$ un sous-groupe. Alors $H$ agit sur $G$ par :
 		$$H\x G \rightarrow G,~ (h,g)\mapsto hg$$
 		On appelle cette action, l'action de $H$ sur $G$, par transition à gauche.
-		\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e.x = e.x.e^{-1} =x$, $\forall x\in G$ et $(gh).x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
+		\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e \cdot x = e \cdot x \cdot e^{-1} = x$, $\forall x\in G$ et $(gh) \cdot x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
 		On l'appelle l'action de conjugaison de $G$ sur lui-même.
 		\item Soit $X$ l'ensemble des sous-groupes de $G$. L'application :
 		$$G\x X \rightarrow X,~(g,K)\mapsto gKg^{-1}$$
@@ -1119,7 +1119,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 	\begin{enumerate}
 		\item Une action de $G$ sur $X$ : pour tout $g\in G$, soit $\varphi_g :X \rightarrow X$ l'application $x\mapsto gx$, alors $\varphi_g \in \S_X$ et l'application $G\rightarrow \S_X~g\mapsto \varphi_g$ est un morphisme de groupes.
 		\item Soit $f:G\rightarrow \S_X$ est un morphisme de groupes. Alors il existe une unique action de $G$ sur $X$ tq :
-		$$g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
+		$$g \cdot x = (f(g))(x),~~\forall g\in G,\forall x\in X$$
 		Comme le montre la proposition, on a une bijection naturelle entre l'ensemble des actions de $G$ sur $X$ et l'ensemble des morphismes de groupes de $G$ vers $\S_X$
 	\end{enumerate}
 \end{propr}
@@ -1133,7 +1133,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		On a pour $g,h\in G$ :
 		$$\varphi_{gh}(x)=(gh)(x)=g(hx)=\varphi_g\circ \varphi_h(x),~~\forall x\in X$$
 		Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \sigma_X$
-		\item On définit l'application $G\x X \rightarrow X$ par $g.x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
+		\item On définit l'application $G\x X \rightarrow X$ par $g \cdot x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
 		$$ex=(f(e))x=Id_X(x)=x,~~\forall x\in X$$
 		et 
 		$$g(hx)=f(g(hx))=f(g)(f(h)(x))=(f(g)\circ f(h) )(x)=f(gh)(x)=gh.x$$
@@ -1147,8 +1147,8 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 	$$X\x G\rightarrow X,~(x,g)\mapsto x.g$$
 	telle que :
 	\begin{enumerate}
-		\item $x.e=x,~\forall x\in X$
-		\item $x.(gh)=(xg).h,~\forall g,h\in G,~\forall x\in X$
+		\item $x \cdot e=x,~\forall x\in X$
+		\item $x \cdot (gh)=(xg) \cdot h,~\forall g,h\in G,~\forall x\in X$
 	\end{enumerate}
 \end{defi}
 
@@ -1162,11 +1162,11 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \end{exem}
 
 \begin{remar}
-	Soit $X$ un ensemble muni d'une action à droite d'un groupe $G$. On définit $g.x := x.g^{-1}$ $\forall g\in G$.\\
+	Soit $X$ un ensemble muni d'une action à droite d'un groupe $G$. On définit $g \cdot x := x \cdot g^{-1}$ $\forall g\in G$.\\
 	C'est une action à gauche de $G$ sur $X$ car :
 	$$ex=xe^{-1}=xe=x$$
 	et 
-	$$(gh)x=x.(gh)^{-1}=x(h^{-1}g^{-1})=(xh^{-1})g^{-1}=(hx)g^{-1}=g(hx)$$
+	$$(gh) \cdot x=x(gh)^{-1}=x(h^{-1}g^{-1})=(xh^{-1})g^{-1}=(hx)g^{-1}=g \cdot (hx)$$
 	$\forall x\in X, ~\forall g,h\in G$.\\
 	On obtient ainsi une bijection entre les actions à droite de $G$ sur $X$ et les actions à gauche de $G$ sur $X$.
 \end{remar}
@@ -1176,9 +1176,9 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 
 \begin{defi}
 	Pour $x\in X$, l'orbite de $x$ est :
-	$$G.x=\{gx | g\in G \}$$
+	$$G \cdot x=\{g \cdot x | g\in G \}$$
 	Le stabilisateur de $x$ est :
-	$$Stab_G(x)=G_x=\{g\in G | gx=x \}$$
+	$$Stab_G(x)=G_x=\{g\in G | g \cdot x=x \}$$
 \end{defi}
 
 \begin{figure} [h]
@@ -1194,7 +1194,7 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 
 \begin{remar}
 	\begin{enumerate}
-		\item Soit $x\in X$. L'orbite $G.x$ contient $x=e.x$. Le stabilisateur $G_x$ est un sous-groupe car $e.x=x$, et $g(hx)=gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
+		\item Soit $x\in X$. L'orbite $G \cdot x$ contient $x=e \cdot x$. Le stabilisateur $G_x$ est un sous-groupe car $e \cdot x=x$, et $g(hx)= gx=x,~\forall g,h\in G_x$, et si $g\in G_x$ alors $g^{-1}\in G_x$ car $g^{-1}x = x \Leftrightarrow g(g^{-1}x)=gx \Leftrightarrow ex = x$.
 		\item On définit de façon analogue les orbites et stabilisateurs d'une action à droite.
 	\end{enumerate}
 \end{remar}
@@ -1269,7 +1269,7 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 \begin{exem}
 	\begin{enumerate}
 		\item Pour tout sous-groupe $H$ de $G$, l'action de $H$ sur $G$ par translations à gauche (ou à droite) est libre (car $Stab_H(g)=\{h\in H |hg=g \}=\{e\}$), donc fidèle.\\
-		Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H.e=H$)
+		Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H \cdot e=H$)
 		\item Soit $n\geq 1$. Considérons l'action :
 		$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
 		L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
@@ -1317,7 +1317,7 @@ Soit $G$ un groupe et soit $X$ un $G$-ensemble (ensemble muni d'une action de $G
 \begin{thm}
 	Soit $x\in X$. Soit $\pi : G \rightarrow G/Stab_G(x)$ la projection canonique.\\
 	Il existe une et une seule application :
-	$$\varphi : G/Stab_G(x) \rightarrow G.x$$
+	$$\varphi : G/Stab_G(x) \rightarrow G \cdot x$$
 	telle que $\varphi \circ \pi(g)=gx$ pour tout $g\in G$.\\
 	Cette application est bijective.
 \end{thm}
@@ -1326,23 +1326,23 @@ Soit $G$ un groupe et soit $X$ un $G$-ensemble (ensemble muni d'une action de $G
 	Soit $H=Stab_G(x)$. Comme $\pi$ est surjective, l'application $\varphi$, si elle existe, est unique.\\
 	Soient $g\in G$ et $h\in H$. On a :
 	$$(gh)x = g(hx)=gx\hspace{5em}h\in Stab_G(x)$$
-	Donc l'application $\tilde{\varphi}: G\rightarrow G.x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
-	Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G.x$ induit $\varphi :G/H \rightarrow G.x$. Clairement, $\varphi$ est surjective.\\
+	Donc l'application $\tilde{\varphi}: G\rightarrow G \cdot x$ vérifie $\tilde{\varphi}(gh)=\tilde{\varphi}(g), \forall h\in H, \forall g\in G$.\\
+	Donc $\tilde{\varphi}(g)$ ne dépend que de la classe $gH\in G/H$. Par passage au quotient par $H$, $\tilde{\varphi}:G \rightarrow G \cdot x$ induit $\varphi :G/H \rightarrow G \cdot x$. Clairement, $\varphi$ est surjective.\\
 	Supposons que $g_1, g_2\in G$ sont tels que $\varphi(g_1)=\varphi(g_2)$. Alors $g_1x=g_2x$, donc $x=g_1^{-1}g_2x$ et $g_1^{-1}g_2\in H$ et $g_2\in g_1H$. Donc on a $g_2H=g_1H$, ou $\pi(g_1)=\pi(g_2)$.\\
 	Cela montre que $\varphi$ est injective.
 \end{demo}
 
 \begin{remar}
 	L'ensemble $G/Stab_G(x)$ est un $G$-ensemble pour l'action naturelle :
-	$$ g.\pi(g') := \pi(gg'),\hspace{5em}\forall g,g'\in G$$
-	où $\pi : G\rightarrow G/Stab_G(x)$ est la projection canonique. La bijection canonique $G/Stab_G(x)\fong G.x$ est en fait un isomorphisme de $G$-ensembles.\\
+	$$ g \cdot \pi(g') := \pi(gg'),\hspace{5em}\forall g,g'\in G$$
+	où $\pi : G\rightarrow G/Stab_G(x)$ est la projection canonique. La bijection canonique $G/Stab_G(x)\fong G \cdot x$ est en fait un isomorphisme de $G$-ensembles.\\
 	En particulier, tout $G$-ensemble transitif est isomorphe à un $G$-ensemble de la forme $G/H$ pour un sous-groupe $H$ de $G$.
 \end{remar}
 
 \begin{cor}
 	On suppose $G$ et $X$ finis.
 	\begin{enumerate}
-		\item Pour tout $x\in X$, on a $|G.x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G.x|$ divise $|G|$.
+		\item Pour tout $x\in X$, on a $|G \cdot x|=\frac{|G|}{|Stab_G(x)|}$. En particulier, $|G \cdot x|$ divise $|G|$.
 		\item Choisissons un élément $x_i$ dans chaque orbite, $1\leq i \leq n$. On a :
 		$$|X|=\sum_{i=1}^{n}\frac{|G|}{|Stab_G(x_i)|}$$
 	\end{enumerate}
@@ -1364,9 +1364,9 @@ Soit $p$ un nombre premier. Supposons que $G$ est un $p$-groupe, c'est à dire s
 
 Soient $G$ un $p$-groupe, et $X$ un $G$-ensemble fini.
 
-Si $x\in X$ n'est pas un point fixe, le cardinal de l'orbite $|G.x|$ est un diviseur $>1$ de $|G|$.
+Si $x\in X$ n'est pas un point fixe, le cardinal de l'orbite $|G \cdot x|$ est un diviseur $>1$ de $|G|$.
 
-Donc $p$ divise $|G.x|$. D'où :
+Donc $p$ divise $|G \cdot x|$. D'où :
 
 \begin{cor}
 	Si $G$ est un $p$-groupe et $X$ un $G$-ensemble fini, alors :
