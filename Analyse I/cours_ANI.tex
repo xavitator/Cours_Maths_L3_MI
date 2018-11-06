@@ -15,6 +15,7 @@
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usepackage[amsthm]{ntheorem} % package pour les environnements de theorem
+\usepackage{mathtools} % pour de nombreuses choses mathématiques
 
 \theorempreskip {2em}
 \theorempostskip{2em}
@@ -59,6 +60,8 @@
 \newcommand{\fracun}[1]{\frac{1}{#1}}
 \newcommand{\cerc}[1]{\overset{\circ}{#1}}
 
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \begin{document}
 
 \title{Cours d'analyse I}
@@ -1286,13 +1289,13 @@ L'accroissement de $f$ est proportionnel à l'accroissement de $x$ à une foncti
 \end{propr}
 
 \begin{defi}
-$f$ de $\U \subseteq \R^n$ dans $\R$ est différentielle en $a\in \U$ ssi il existe une forme linéaire $df_a$ de $\R^n$ dans $\R$ telle que :
-$$f(x)-f(a)-df_a(x-a)=||x-a||_\infty \epsilon(x)$$
-où $\epsilon(x)\rightarrow 0$ si $x\rightarrow a$ (dans $\R^n$).
+$f$ de $\U \subseteq (E,N)$ (pareil si $\U \subseteq \R^n$) dans $\R$ est différentiable en $a\in \U$ ssi il existe une forme linéaire $df_a$ $\in \L_c(E,\R)$ telle que :
+$$f(x)-f(a)-df_a(x-a)=N(x-a) \epsilon(x)$$
+où $\epsilon(x)\rightarrow 0$ si $x\rightarrow a$ (dans $E$).\\
 \end{defi}
 
 \begin{propr}
-Si $df_a$ existe elle est unique.
+Si $df_a$ (sa différentielle) existe elle est unique.
 \end{propr}
 
 \begin{demo}
@@ -1321,8 +1324,84 @@ Si $f$ est différentiable en $a$, alors elle est continue en $a$.
 \end{itemize}
 \end{propr}
 
+\begin{propr}
+Si $E=E_1\x E_2$ (muni de la norme $N$ issue des normes $N_1$ et $N_2$ respectivement de $E_1$ et $E_2$), on a des applications partielles :\\
+Soit $a\in E$, $a=(a_1,...,a_n)$, on a :
+$$x_i \mapsto f(a_1,...a_{i-1},x_i,a_{i+1},...,a_n)$$
+\end{propr}
 
+\begin{defi}
+Si $f$ est différentiable en $a$ (selon la propriété juste avant), alors les applications partielles sont différentiables et 
+$$df_a= \partial_1f_a+\partial_2f_a$$
+avec $d_1$ la différentielle selon $E_1$ et $d_2$ la différentielle selon $E_2$.\\
+Dans $\R^n$, on a :
+$$df_a\Leftrightarrow (\frac{\partial f}{\partial x_1}(a),...,\frac{\partial f}{\partial x_n}(a))$$
+ou 
+$$df_a(h_1,...,h_n)=\sum_{i=1}^n h_i \frac{\partial f}{\partial x_i}(a)$$
+\end{defi}
 
+\begin{remar}
+\textbf{Attention} : Le contraire est faux en général.
+\end{remar}
+
+\begin{remar}
+Si $f$ possède des dérivées partielles en chaque élément de $x$, on n'a pas forcément que $f$ est différentiable en $x$.
+\end{remar}
+
+\begin{propr}
+$f$ est différentiable au voisinage de $a$ et sa différentielle est continue en $a\in \U (\subseteq (E,N))$ ssi $f$ admet des différentielles partielles sur $E_1$ et sur $E_2$ ($E=E_1\x E_2$) définies sur un voisinage de $a$ et continues en $a$.
+\end{propr}
+
+\begin{defi}
+$f \in \mathcal{C}^1(\U, \R)$ ssi $f$ est différentiable en tout point de $\U$ et $a\mapsto df_a$ est continue sur $\U$.
+\end{defi}
+
+\begin{cor}
+$f\in \mathcal{C}^1(\U(\subseteq E=E_1\x E_2),\R)$ ssi $a\mapsto \partial_1f$ et $a\mapsto \partial_2f$ existent sur $\U$ et sont continues.
+\end{cor}
+
+\subsection{Cas général}
+
+\begin{defi}
+$f : \U \subseteq (E,N_E) \rightarrow (F,N_F)$ ($a\in \U \subseteq (E,N_E) \rightarrow df_a\in \L_c(E,\R)$) est différentiable en $a$ ssi $\exists df_a \in \L_c(E,F)$ tq :
+$$f(u)+f(a)=df_a(u-a)+N_E(u-a)\epsilon(u)$$
+$\epsilon$ est une fonction de $E$ dans $F$ qui tend vers $0$ si $u$ tend vers $a$ ($N_F(\epsilon(u)) \rightarrow 0$ si $N_E(u-a)\rightarrow 0$)
+\end{defi}
+
+\begin{propr}
+Si $df_a$ existe elle est unique. Prenons $u=a+\rho u_0$ où $u_0\in S(0,1)$ $(N_E(u_0)=1)$ et $\rho > 0$.\\
+Alors 
+\begin{align*}
+f(a+\rho u_0)-f(a)&=l_1(\rho u_0)+N_E(\rho u_0)\epsilon_1()\\
+&=l_2(\rho u_0)+N_E(\rho u_0)\epsilon_2()
+\end{align*}
+On a donc $(l_2-l_1)(u_0)=(\epsilon_1(\rho)-\epsilon_2(\rho))$ d'où $l2-l1_{| S(0,1)}=0$
+\end{propr}
+
+\begin{propr}
+Si $f$ est différentiable en $a$ alors $f$ est continue en $a$.
+\end{propr}
+
+\begin{propr}
+\begin{align*}
+\partial(\lambda f)_a&=\lambda \partial f_a\\
+\partial (f+g)_a &=\partial f_a + \partial g_a
+\end{align*}
+\end{propr}
+
+\begin{propr}
+Soit $B$ est $f$ bilinéaire continue sur $F$, on a :
+$$\abs{B(v,w)}\leq \norm{B}N_F(v)\x N_F(w)$$
+et $B$ est bilinéaire (c'est à dire linéaire selon chacune des variables).\\
+Alors
+$$\partial (B(f,g))_a = B(f(a),\partial g_a)+ B(\partial f_a, g(a))$$
+\end{propr}
+
+\begin{thm}[Différentiation des composées (Chain Rule)]
+Soient $f:\U \subseteq E \rightarrow F$ différentiable en $a\in \U$ et $g:\mathcal{V} \subseteq F \rightarrow G$ différentiable en $b=f(a)\in \mathcal{V}$.\\
+Alors $g\circ f$ est différentiable en $a$ de différentielle 
+$$\partial(g\circ f)_a = \partial g_{f(a)}\circ \partial f_a$$
+\end{thm}
 
 
 
