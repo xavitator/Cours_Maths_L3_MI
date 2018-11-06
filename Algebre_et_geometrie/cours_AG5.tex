@@ -2089,6 +2089,10 @@ $$G/K \rightarrow (G/H)\big/(K/H)$$
 ~
 \end{demo}
 
+\begin{remar}
+En particulier, si $G$ et $K$ sont finis, alors $\abs{\Im(f)}$ diviser à la fois $\abs{G}$ et $\abs{K}$ 
+\end{remar}
+
 \begin{exemple}
 Soit $n \geq 1$ un entier. Soit $K$ un sous-groupe de $\Z/n\Z$. Alors $K = d \Z/n\Z$ pour un diviseur $d$ de $n$. On a
 \[
@@ -2103,9 +2107,9 @@ Soit $n \geq 1$ un entier. Soit $K$ un sous-groupe de $\Z/n\Z$. Alors $K = d \Z/
 \section{Définition et exemples}
 
 \begin{motivation}
-Le théorème de Lagrange affirme que si $H$ est un sous-groupe de $G$, alors l'ordre de $H$ est un diviseur de l'ordre de $G$. On peut de demander si réciproquement, pour tout diviseur d de l'ordre de $G$, il existe un sous-groupe d'ordre $d$.\\
+Le théorème de Lagrange affirme que si $H$ est un sous-groupe de $G$, alors l'ordre de $H$ est un diviseur de l'ordre de $G$. On peut se demander si réciproquement, pour tout diviseur d de l'ordre de $G$, il existe un sous-groupe d'ordre $d$.\\
 Ceci est faux, par exemple $A_4$ est d'ordre 12 et n'admet pas de sous-groupe d'ordre 6.\\
-Néanmoins, nous allons voir que si $d$ est une puissance maximale d'un nombre premier, il existe toujours un sous-groupe d'ordre $d$. Ces sous-groupes sont les sous-groupes de Sylow.
+Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un nombre premier} divisant l'ordre du groupe $G$, il existe toujours un sous-groupe d'ordre $d$. Ces sous-groupes sont les \textbf{sous-groupes de Sylow}.
 
 \vspace{1em}
 \medbreak
@@ -2114,35 +2118,92 @@ Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$
 \end{motivation}
 
 \begin{definition}
-Un \slign{p-sous-groupe de Sylow} \gray{(ou $p$-Sylow)} est un sous-groupe d'ordre $p^\alpha$ de $G$.
+Un \slign{p-sous-groupe de Sylow} \gray{(ou $p$-Sylow)} est un sous-groupe $P$ d'ordre $p^\alpha$ de $G$.
 \end{definition}
+
+\begin{remar}
+On montrera que tout diviseur premier $p$ de $\abs{G}=n$, il \textbf{existe} un $p$-Sylow, et que tous les $p$-Sylow sont \textbf{conjugués}.
+\end{remar}
 
 \begin{exemple}
 \begin{enumerate}
-\item $G = D_3$\\
+\item $G = D_3=\{Id, \sigma_A, \sigma_B, \sigma_C, \rho, \rho^2\}$\\
 
-\red{Figure 1}\\
+\begin{figure}[h]
+			\begin{center}
+				\begin{tikzpicture}
+				\node (ID) at (0,0) {$\{Id\}$};
+				\node (1) at (-2.25,1) {$\gen{\tau_1}$};
+				\node (2) at (-0.75,1) {$\gen{\tau_2}$};
+				\node (3) at (0.75,1) {$\gen{\tau_3}$};
+				\node (R) at (2.25,2) {$\gen{\rho}$};
+				\node (D3) at (0,3) {$\gen{D_3}$};
+				
+				\draw[->,>=latex] (ID) to (1);
+				\draw[->,>=latex] (ID) to (2);
+				\draw[->,>=latex] (ID) to (3);
+				\draw[->,>=latex] (ID) to[bend right] (R);
+				\draw[->,>=latex] (1) to (D3);
+				\draw[->,>=latex] (2) to (D3);
+				\draw[->,>=latex] (3) to (D3);
+				\draw[->,>=latex] (R) to (D3);
+				\end{tikzpicture}
+				\caption{Diagramme de Hasse du groupe diédral 3}
+			\end{center}	
+		\end{figure}
 
-$D_3$ admet $3$ 2-Sylow $\pro{\tau_1}, \; \pro{\tau_2}, \; \pro{\tau_3}$. Ils sont tous conjugués.\\
-$D_3$ admet un unique 3-Sylow. Il est distingué.\\
+On a $|D_3|=2\x 3$.\\
+$D_3$ admet trois 2-Sylow $\pro{\tau_1}, \; \pro{\tau_2}, \; \pro{\tau_3}$. Ils sont tous conjugués.\\
+$D_3$ admet un unique 3-Sylow $\pro{\rho}$. Il est distingué.\\
 
-\item $G = A_4$\\
+\item $G = \A_4$\\
 
-\red{Figure 2}\\
 
-$\abs{A_4} = 12 = 4 * 3$
-$A_4$ admet $v$ pour unique 2-Sylow. Il est distingué.\\
-$A_4$ admet $4$ 3-Sylow	$\pro{(1 \; 2 \; 3)}, \; \pro{(1 \; 2 \; 4)}, \; \pro{(1 \; 3 \; 4)}, \; \pro{(2 \; 3 \; 4)}$. Ils sont tous conjugués.\\
+\begin{center}
+	\begin{tikzpicture}[scale=0.65]
+	\node (E) at (0,0) {$\{e\}$};
+	\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+	\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+	\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+	\node (123) at (0,3.5) {$\gen{(123)}$};
+	\node (124) at (3,3.5) {$\gen{(124)}$};
+	\node (134) at (6,3.5) {$\gen{(134)}$};
+	\node (234) at (9,3.5) {$\gen{(234)}$};
+	\node (V) at (-6,4.75) {$V$};
+	\node (A4) at (0,7) {$A_4$};
+	
+	
+	\draw[->,>=latex] (E) to (1234);
+	\draw[->,>=latex] (E) to (1324);
+	\draw[->,>=latex] (E) to (1423);
+	\draw[->,>=latex] (E) to (123);
+	\draw[->,>=latex] (E) to (124);
+	\draw[->,>=latex] (E) to (134);
+	\draw[->,>=latex] (E) to (234);
+	\draw[->,>=latex] (1234) to (V);
+	\draw[->,>=latex] (1324) to (V);
+	\draw[->,>=latex] (1423) to (V);
+	\draw[->,>=latex] (V) to (A4);
+	\draw[->,>=latex] (123) to (A4);
+	\draw[->,>=latex] (124) to (A4);
+	\draw[->,>=latex] (134) to (A4);
+	\draw[->,>=latex] (234) to (A4);
+	\end{tikzpicture}
+\end{center}
 
-\item $G = \U_{12}$. On a $\abs{G} = 12 = 2^2 * 3$\\
+$\abs{\A_4} = 12 = 4 \x 3$ et $V=\{e,(1~2)(3~4),(1~3)(2~4), (1~4)(2~3)\}$.
+$\A_4$ admet $V$ pour unique 2-Sylow (on l'appelle le \sg de Klein $V$). Il est distingué.\\
+$\A_4$ admet quatre 3-Sylow	$\pro{(1 \; 2 \; 3)}, \; \pro{(1 \; 2 \; 4)}, \; \pro{(1 \; 3 \; 4)}, \; \pro{(2 \; 3 \; 4)}$. Ils sont tous conjugués.\\
+
+\item $G = \U_{12}$. On a $\abs{G} = 12 = 2^2 \x 3$\\
 Les 2-Sylow sont d'ordre $4$. Il y en a un seul : $\U_4 < \U_{12}$\\
 Les 3-Sylow sont d'ordre $3$. Il y en a un seul : $\U_3 < \U_{12}$.\\
 
-\item $G = \mathfrak{S}_4$. On a $\abs{\mathfrak{S}_4} = 24 = 2^3 * 3$.\\
+\item $G = \mathfrak{S}_4$. On a $\abs{\mathfrak{S}_4} = 24 = 2^3 \x 3$.\\
 Les 2-Sylow sont les sous-groupes d'ordre 8. Soit $\sigma$ un 4-cycle de $\mathfrak{S}_4$.\\
 Soient $a, b, c, d \in \ens{1, 2, 3, 4}$ tel que $\sigma = (a \; b \; c \; d)$\\
-Alors $\pro{\sigma, (a \; c)}$ est un 2-Sylow de $\mathfrak{S}_4$ constitué de :
-\begin{itemize}[label=$\bullet$]
+Alors $P=\pro{\sigma, (a \; c)}$ est un 2-Sylow de $\mathfrak{S}_4$ constitué de :
+\begin{itemize}
 \item Id
 
 \item les transpositions $(a \; c)$ et $(b \; d)$
@@ -2152,7 +2213,7 @@ Alors $\pro{\sigma, (a \; c)}$ est un 2-Sylow de $\mathfrak{S}_4$ constitué de 
 (1 \; 2)(3 \; 4), \; (1 \; 3)(2 \; 4), \; (1 \; 4)(2 \; 3)
 \]
 
-\item les 4-cycles $\sigma$ et 
+\item les deux 4-cycles : $\sigma$ et 
 \begin{align*}
 \sigma^{-1} &= (a \; b \; c \; d)
 \\
@@ -2161,10 +2222,11 @@ Alors $\pro{\sigma, (a \; c)}$ est un 2-Sylow de $\mathfrak{S}_4$ constitué de 
 &= (b \; d) \sigma (b \; d)^{-1}
 \end{align*}
 \end{itemize}
+Notons que $P$ n'est pas distingué dans $\S_4$.\\
 Les 3-Sylow de $\mathfrak{S}_4$ sont les sous-groupes d'ordre 3.\\
-Ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle.\\
+Ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle (exercice : compléter le nombre de 3-cycles et le nombre de \sg d'ordre 3). Ils sont tous conjugués.\\
 
-\item $G = \mathfrak{S}_3$. On a $\abs{G} = 120 = 2^3 * 3 * 5$\\
+\item $G = \mathfrak{S}_3$. On a $\abs{G} = 120 = 2^3 \x 3 \x 5$\\
 Les 2-Sylow de $\mathfrak{S}_3$ sont les sous-groupes d'ordre 8.\\
 Les 3-Sylow sont les sous-groupes d'ordre 3. Donc ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle.\\
 Les 5-Sylow sont les sous-groupes d'ordre 5. Ils sont tous de la forme $\pro{c}$, où $c$ est un 5-cycle.\\
@@ -2181,15 +2243,15 @@ Un \slign{anneau} est un triplet $(A, +, \bullet)$, où $(A, +)$ est un groupe a
 \bullet : A \times A \longrightarrow A
 \]
 un loi telle que:
-\begin{itemize}[label=$\bullet$]
+\begin{enumerate}
 \item est associative :	\quad	$(ab)c = a(bc),	\quad	\forall a, b, c \in A$
 \item admet un élément neutre 1:	\quad	$1.a = a = a.1,	\quad	\forall a \in A$
 \item est distributive à gauche et à droite par $"+"$:
 \[
 (a + b) c = ac + bc		\qquad	\text{et}	\qquad	a(b + c) = ab + ac, \quad	a, b, c \in A
 \]
+\end{enumerate}
 L'anneau $A$ est \slign{commutatif} si $ab = ba,	\quad	\forall a, b \in A$
-\end{itemize}
 \end{definition}
 
 \begin{exemple}
@@ -2202,40 +2264,40 @@ L'anneau $A$ est \slign{commutatif} si $ab = ba,	\quad	\forall a, b \in A$
 
 \medbreak
 
-Soit $n \geq 1$ un entier. Alors $\Z/n\Z$ est un anneau pour l'addition habituelle et la multiplication définie par 
+\item Soit $n \geq 1$ un entier. Alors $\Z/n\Z$ est un anneau pour l'addition habituelle et la multiplication définie par 
 \[
 \ol{a} . \ol{b} = \ol{ab},		\quad	\ol{a}, \ol{b} \in \Z/n\Z
 \]
 où $\ol{a} = a + n \Z$
 
-\bigbreak
+\medbreak
 
 \item Si $A$ est un anneau commutatif, alors
 \begin{align*}
-A[X] :&= \ens{\text{polynôme en} \; X \; \text{à coeff. dans} \; A}
+A[X] :&= \ens{\text{polynôme en} \; X \; \text{à coefficients dans} \; A}
 \\
 &= \ensem{\sum_{k = 1}^n a_k X^k \big| n \in \N, a_k \in A, \forall k}
 \end{align*}
-est un anneau commutatif pour l'addition et la multiplication naturelles des polynômes.
+est un anneau commutatif pour l'addition et la multiplication naturelles des polynômes.\\
 \end{enumerate}
 \end{exemple}
 
+\noindent Soit $p$ un nombre premier.
 \begin{lemme}
-Soit $p$ un nombre premier.\\
 Dans $(\Z/p\Z)[X]$, on a $(P + Q)^p = P^p + Q^p,	\quad	\forall P, Q \in (\Z/p\Z)[X]$
 \end{lemme}
 
 \begin{demonstration}
 Par le binôme de Newton \gray{(valable dans tout anneau commutatif)}, on a 
 \[
-(P + Q)^p = P^p + Q^p + \sum_{k = 1}^{n-1} \ol{\binom{p}{k}} . P^k . Q^{n-k}
+(P + Q)^p = P^p + Q^p + \sum_{k = 1}^{p-1} \binom{p}{k} . P^k . Q^{p-k}
 \]
 Il suffit de montrer que $p$ divise $\binom{p}{k}$ pour $1 \leq k \leq p - 1$.\\
 Or on a:
 \[
 \binom{p}{k} = \frac{p!}{k! (p-k)!}
 \]
-et $p$ divise le dénominateur mais non pas le dénominateur.
+et $p$ divise le numérateur mais pas le dénominateur.
 \end{demonstration}
 
 \begin{lemme}
