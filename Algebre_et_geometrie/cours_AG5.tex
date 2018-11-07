@@ -1036,7 +1036,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 \begin{lemme}
 	Soit $(X,R)$, $f$ vérifiant les assertions du théorème précédent :
 	\begin{enumerate}
-		\item $\bar{f}$ est surjective $\Leftrightarrow$ $f$ l'est aussi
+		\item $\bar{f}$ est surjective $\Leftrightarrow$ $f$ est surjective
 		\item $\bar{f}$ est injective $\Leftrightarrow$ ($\forall x,y\in X,~f(x)=f(y)\Rightarrow xRy$)
 	\end{enumerate}
 \end{lemme}
@@ -1272,14 +1272,14 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 		Elle est transitive ssi $H=G$ (s'il n'y a qu'une seule orbite, elle est égale à $G$, donc $G$ est l'orbite sous $H$ de $e$ mais cette orbite est $H \cdot e=H$)
 		\item Soit $n\geq 1$. Considérons l'action :
 		$$GL_n(\R)\x \R^n \rightarrow \R^n,~(g,v)\mapsto gv $$
-		L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1,...v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
+		L'orbite d'un vecteur $v\neq 0$ est $\R^n\backslash \{0\}$ (en effet si $v_1, …, v_n$ est une base tq $v_1 = v$ et $w_1,...,w_n$ est une base tq $w_1=w\neq 0$, il existe un unique $g\in GL_n(\R)$ tq $g(v_i)=w_i$, $\forall i$, en particulier $gv=w$).\\
 		L'orbite de $v=0$ est $\{0\}$.\\
 		Il y a donc exactement 2 orbites : $\R^n\backslash \{0\}$ et $\{0\}$.\\
 		Donc l'action n'est pas transitive.\\
 		Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
 		Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
 		
-		\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
+		\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,…,*]$ avec $*$ des vecteurs quelconques.
 		
 		\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_i= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
 		L'action :
@@ -1382,20 +1382,20 @@ Donc $p$ divise $|G \cdot x|$. D'où :
 
 \begin{demo}[d'après John McKay]
 	Soit :
-	$$X=\{(g_1,...,g_p)\in G^p | g_1g_2....g_p =e \}$$
+	$$X=\{(g_1,…,g_p)\in G^p | g_1g_2....g_p =e \}$$
 	Notons que :
-	$$g_1g_2...g_p = e$$
-	$$\Rightarrow g_2...g_p=g_1^{-1}$$
-	$$\Rightarrow g_2...g_pg_1=e$$
+	$$g_1g_2…g_p = e$$
+	$$\Rightarrow g_2…g_p=g_1^{-1}$$
+	$$\Rightarrow g_2…g_pg_1=e$$
 	Donc $X$ est stable par permutation cyclique des composantes. Donc le groupe cyclique $H=\U_p$ agit sur $X$ par :
-	$$\zeta(g_1,g_2...g_p) := (g_2...g_pg_1)$$
+	$$\zeta(g_1,g_2…g_p) := (g_2…g_pg_1)$$
 	où $\zeta = e^{\frac{2\pi i}{p}}$.\\
-	Les points fixes sont les $(g,...,g)\in G^p$ tq $g^p=e$. Cela veut dire que ou bien $g=e$ ou bien $g$ est un élément d'ordre $p$.\\
+	Les points fixes sont les $(g,…,g)\in G^p$ tq $g^p=e$. Cela veut dire que ou bien $g=e$ ou bien $g$ est un élément d'ordre $p$.\\
 	Par le corollaire précédent, on a :
 	$$|X^H|=|X|~mod~p$$
-	Or $X$ est de cardinal $|G|^{p-1}$ (l'application $X \rightarrow G^{p-1},~(g_1,...,g_p)\mapsto (g_2,...,g_p)$ est bijective). Donc :
+	Or $X$ est de cardinal $|G|^{p-1}$ (l'application $X \rightarrow G^{p-1},~(g_1,…,g_p)\mapsto (g_2,…,g_p)$ est bijective). Donc :
 	$$|X^H|=0~mod~p$$
-	Il existe donc au moins un point fixe autre que $(e,...,e)$.	
+	Il existe donc au moins un point fixe autre que $(e,…,e)$.	
 \end{demo}
 
 \chapter{Groupes symétriques}
@@ -1404,7 +1404,7 @@ Donc $p$ divise $|G \cdot x|$. D'où :
 
 \subsubsection{Rappel}
 Si $E$ est un ensemble, le groupe symétrique $\S_E$ est le groupe des bijections $f:E\rightarrow E$ avec la composition des applications pour loi. On note :
-$$\S_n := \sigma_{\{1,2,...,n \}} \hspace{5em} n\geq 1$$
+$$\S_n := \sigma_{\{1,2,…,n \}} \hspace{5em} n\geq 1$$
 et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 
 \begin{remar}
@@ -1416,25 +1416,25 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 \begin{nota}
 	Si $\sigma\in \S_n$, on le décrit à l'aide du tableau :
 	$$\begin{array}{llll}
-	1&2&...&n\\
-	\sigma(1)&\sigma(2)&...&\sigma(n)
+	1&2&…&n\\
+	\sigma(1)&\sigma(2)&…&\sigma(n)
 	\end{array}$$
 \end{nota}
 
 \begin{remar}
 	\begin{enumerate}
-		\item Le groupe $\S_n$ agit sur $\{1,...,n\}$ par :
-		$$\sigma.i=\sigma(i), \hspace{2em} \forall i\in \{1,...,n\}, \forall \sigma \in \S_n$$
+		\item Le groupe $\S_n$ agit sur $\{1,…,n\}$ par :
+		$$\sigma.i=\sigma(i), \hspace{2em} \forall i\in \{1,…,n\}, \forall \sigma \in \S_n$$
 		
 		\item Cette action est fidèle et transitive
 		
-		\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\S_n$ est isomorphe à $\sigma_{\{1,2,...,n \}\backslash \{i\}}$
+		\item Pour tout $i\in \{1,…,n\}$, la stabilisateur de $i$ dans $\S_n$ est isomorphe à $\sigma_{\{1,2,…,n \}\backslash \{i\}}$
 	\end{enumerate}
 \end{remar}
 
 \begin{defi}
 	Soit $\sigma \in \S_n$. Le support de $\sigma$ est l'ensemble :
-	$$supp(\sigma)=\{i\in \{1,...,n \} | \sigma(i)\neq i \}$$
+	$$supp(\sigma)=\{i\in \{1,…,n \} | \sigma(i)\neq i \}$$
 \end{defi}
 
 \begin{propr}
@@ -1460,7 +1460,7 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 		On conclut que $\sigma_1 \circ \sigma_2(i)= \sigma_2 \circ \sigma_1(i)$
 		
 		\item Soit $\sigma \in \S_n \backslash \{Id\}$.\\
-		Soient $i\in \{1,...,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,...,n\}\backslash \{i, \sigma(i) \}$.\\
+		Soient $i\in \{1,…,n\}$ tq $\sigma(i)\neq i$ et $k\in \{1,…,n\}\backslash \{i, \sigma(i) \}$.\\
 		Soit $\tau$ la permutation tq :
 		$$\tau(\sigma (i))=k,~\tau(k)=\sigma(i),~\tau(j)=j,~\forall j\notin \{k,\sigma(i) \}$$
 		Montrons que $\tau \circ \sigma \neq \sigma \circ \tau$. En effet :
@@ -1473,10 +1473,10 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 \subsection{Transpositions et cycles}
 
 \begin{defi}
-	Soit $n\geq 2$ et soit $2 \leq l \leq n$. Soit $(a_1,...,a_l)$ une suite d'éléments 2 à 2 distincts de $\{1,...,n\}$. \\
-	On note encore $(a_1,...,a_l)$ la permutation définition par :
+	Soit $n\geq 2$ et soit $2 \leq l \leq n$. Soit $(a_1,…,a_l)$ une suite d'éléments 2 à 2 distincts de $\{1,…,n\}$. \\
+	On note encore $(a_1,…,a_l)$ la permutation définition par :
 	$$\begin{array}{ll}
-	x\mapsto x & \forall x \in \{1,...,n \}\backslash \{a_1,...,a_l\}\\
+	x\mapsto x & \forall x \in \{1,…,n \}\backslash \{a_1,…,a_l\}\\
 	a_i\mapsto a_{i+1}& \forall 1\leq i \leq l-1\\
 	a_l\mapsto a_1&
 	\end{array}
@@ -1487,9 +1487,9 @@ Une telle permutation est appelée $l$-cycle (ou cycle). Sa longueur est $l$.\\
 Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 
 \begin{remar}
-	Soit $\sigma=(a_1,...,a_l)$ un $l$-cycle.
+	Soit $\sigma=(a_1,…,a_l)$ un $l$-cycle.
 	\begin{enumerate}
-		\item Soit $i\in \{1,...,l-1\}$, alors $\sigma^i(a_1)=a_{1+i}$. Plus généralement, on a :
+		\item Soit $i\in \{1,…,l-1\}$, alors $\sigma^i(a_1)=a_{1+i}$. Plus généralement, on a :
 		$$\sigma^i(a_j)= \left\{\begin{array}{ll}
 		a_{j+i}& 1\leq j \leq l-i\\
 		a_{j+i-l}& l-i+1\leq j \leq l
@@ -1497,14 +1497,14 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 		Le cycle est d'ordre $l$ dans $\S_n$.
 		
 		\item Pour tout $\tau \in \S_n$, on a :
-		$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+		$$\tau \circ (a_1,…,a_l) \circ \tau^{-1}=(\tau(a_1),…,\tau(a_l))$$
 		
 		\item 
-		$$ (a_1,...,a_n)=(a_1,a_2)\circ...\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
+		$$ (a_1,…,a_n)=(a_1,a_2)\circ…\circ (a_{l-2}, a_{l-1}) \circ (a_{l-1}, a_l)$$
 		Le $l$-cycle est produit de $l-1$ transpositions.
 		
 		\item 
-		$$(a_1,...,a_n)=(a_2,...,a_n,a_1)$$
+		$$(a_1,…,a_n)=(a_2,…,a_n,a_1)$$
 		
 		\item Soit $\tau_1$ et $\tau_2$ deux transpositions à support disjoint, alors $\tau_1\tau_2 = \tau_2\tau_1$ (qui est d'ordre 2) est appelé une \textbf{double transposition}.
 		
@@ -1528,17 +1528,17 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 \begin{thm}
 	Soit $\sigma\in \S_n$.
 	\begin{enumerate}
-		\item Il existe un entier naturel $k$ et des cycles $c_1,...,c_k$ de $\S_n$ à supports disjoints 2 à 2 tq :
-		$$\sigma = c_1...c_k$$
+		\item Il existe un entier naturel $k$ et des cycles $c_1,…,c_k$ de $\S_n$ à supports disjoints 2 à 2 tq :
+		$$\sigma = c_1…c_k$$
 		
-		\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
-		$$\sigma = c_1'...c_s'$$
+		\item Si $s$ est un entier naturel et $c_1',…,c_s'$ des cycles à supports disjoints 2 à 2 tq :
+		$$\sigma = c_1'…c_s'$$
 		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
 	\end{enumerate}
 \end{thm}
 
 \paragraph{Idée de la démonstration :}
-On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
+On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,…,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
 
 \begin{exem}
 	$$\sigma = \left(\begin{array}{llllllllllllll}
@@ -1549,22 +1549,22 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 \end{exem}
 
 \begin{demo}
-	On fait agir le sous-groupe $\langle \sigma\rangle$ engendré par $\sigma$ dans $\S_n$ sur l'ensemble $\{1,...,n\}$.\\
-	Sur cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
-	Soient $\Omega_1,...,\Omega_r$ les orbites non ponctuelles.\\
-	Le sous-groupe $\langle \sigma\rangle$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i_1},...,a_{i_{l_i}}$ une énumération des éléments de $\Omega_i$ tq :
+	On fait agir le sous-groupe $\langle \sigma\rangle$ engendré par $\sigma$ dans $\S_n$ sur l'ensemble $\{1,…,n\}$.\\
+	Sur cette action, l'ensemble $\{1,…,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
+	Soient $\Omega_1,…,\Omega_r$ les orbites non ponctuelles.\\
+	Le sous-groupe $\langle \sigma\rangle$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i_1},…,a_{i_{l_i}}$ une énumération des éléments de $\Omega_i$ tq :
 	$$\sigma(a_{i_j})\left\{\begin{array}{ll}
 	a_{i_{j+1}}&1\leq j \leq l_i-1\\
 	a_{i_1}&j=l_i
 	\end{array}\right. $$
-	Soit $c_i=(a_{i_1},...,a_{i_{l_i}})$, alors l'action de $c_i$ et de $\sigma$ sur l'orbite $\Omega_i$ est la même.\\
-	Donc l'action de $\sigma$ et de $c_1c_2...c_r$ sur $\{1,...,n\}$ est la même.\\
-	Donc $\sigma=c_1...c_r$.
+	Soit $c_i=(a_{i_1},…,a_{i_{l_i}})$, alors l'action de $c_i$ et de $\sigma$ sur l'orbite $\Omega_i$ est la même.\\
+	Donc l'action de $\sigma$ et de $c_1c_2…c_r$ sur $\{1,…,n\}$ est la même.\\
+	Donc $\sigma=c_1…c_r$.
 \end{demo}
 
 \subsubsection{Terminologie}
 \begin{enumerate}
-\item Avec les hypothèses et les notations du théorème, on dit que l'égalité $\sigma=c_1...c_r$ est la décomposition de $\sigma$ en \textbf{produit de cycles à supports disjoints}.
+\item Avec les hypothèses et les notations du théorème, on dit que l'égalité $\sigma=c_1…c_r$ est la décomposition de $\sigma$ en \textbf{produit de cycles à supports disjoints}.
 
 \item Si $\sigma$ et $\sigma '$ sont deux permutations, on dit que $\sigma$ et $\sigma '$ sont du \textbf{même type} si pour tout entier $2\leq l \leq n$, le nombre de $l$-cycles dans la décomposition de $\sigma$ en produit de cycles à support disjoints est égal au nombre de $l$-cycles dans la décomposition de $\sigma '$ en \pcsd.
 \end{enumerate}
@@ -1583,7 +1583,7 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 
 \begin{exo}
 	Monter que $\S_n$ est même engendré par les $n-1$ transpositions :
-	$$(1~2)(2~3)...(n-1~n)$$
+	$$(1~2)(2~3)…(n-1~n)$$
 \end{exo}
 
 \begin{cor}
@@ -1603,8 +1603,8 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 \end{cor}
 
 \begin{demo}
-	Cela provient du fait que pour un cycle $(a_1,...,a_l)$ et une permutation $\tau\in \S_n$, on a :
-	$$\tau \circ (a_1,...,a_l) \circ \tau^{-1}=(\tau(a_1),...,\tau(a_l))$$
+	Cela provient du fait que pour un cycle $(a_1,…,a_l)$ et une permutation $\tau\in \S_n$, on a :
+	$$\tau \circ (a_1,…,a_l) \circ \tau^{-1}=(\tau(a_1),…,\tau(a_l))$$
 ~
 \end{demo}
 
@@ -1621,12 +1621,12 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 \end{remar}
 
 \section{La signature}
-Soit $n\geq 1$. Le groupe symétrique $\S_n$ agit sur l'ensemble $\Z[X_i,...,X_n]$ des polynômes en $X_1,...,X_n$ à coefficients entiers par :
-$$(\sigma~P)(X_1,...,X_n):= P(X_{\sigma(1)},...,X_{\sigma(n)})$$
-(clairement, $Id.P=P$ et $\sigma(\tau~P)=(\sigma~\tau)P, \forall \sigma,\tau \in \S_n$ et $\forall P\in \Z[X_i,...,X_n]$).\\
+Soit $n\geq 1$. Le groupe symétrique $\S_n$ agit sur l'ensemble $\Z[X_i,…,X_n]$ des polynômes en $X_1,…,X_n$ à coefficients entiers par :
+$$(\sigma~P)(X_1,…,X_n):= P(X_{\sigma(1)},…,X_{\sigma(n)})$$
+(clairement, $Id.P=P$ et $\sigma(\tau~P)=(\sigma~\tau)P, \forall \sigma,\tau \in \S_n$ et $\forall P\in \Z[X_i,…,X_n]$).\\
 
 Soit 
-$$\Delta_n := \prod_{i<j}(X_i-X_j)\in \Z[X_i,...,X_n]$$
+$$\Delta_n := \prod_{i<j}(X_i-X_j)\in \Z[X_i,…,X_n]$$
 Par exemple, on a $\Delta_2=X_1-X_2$, $\Delta_3=(X_1-X_2)(X_1-X_3)(X_2-X_3)$.\\
 Toute permutation $\sigma$ envoie un $X_i-X_j$ sur $X_{\sigma(i)}-X_{\sigma(j)}$ et on a $\sigma(i)<\sigma(j)$ ou $\sigma(j)<\sigma(i)$ si $i<j$.\\
 Donc $\sigma$ envoie un facteur $X_i-X_j$ de $\Delta_n$ soit sur un autre facteur de $\Delta_n$ soit sur l'opposé d'un autre facteur de $\Delta_n$. Donc :
@@ -1655,11 +1655,11 @@ $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \S_n$$
 
 \begin{demo}
 	\begin{enumerate}
-		\item résulte du fait que $\S_n$ agit sur $\Z[X_i,...,X_n]$. En effet, pour $\sigma,\tau\in \S_n$, on a :
+		\item résulte du fait que $\S_n$ agit sur $\Z[X_i,…,X_n]$. En effet, pour $\sigma,\tau\in \S_n$, on a :
 		$$\epsilon(\sigma\tau).\Delta_n=(\sigma\tau)\Delta_n=\epsilon(\tau)\epsilon(\sigma)\Delta_n$$
 		et donc $\epsilon(\sigma\tau)=\epsilon(\sigma)\epsilon(\tau),\forall \sigma,\tau \in \S_n$.
 		
-		\item Soit $\sigma\in \S_n$. Une \textbf{inversion} de $\sigma$ est un couple $(u,v)$ de nombres dans $\{1,...,n\}$ tq $u<v$ mais $\sigma(u)>\sigma(v)$. Clairement, on a $\epsilon(\sigma)=(-1)^t$, où $t$ est le nombre d'inversions de $\sigma$. Soit maintenant $\sigma=(ij)$, où $1\leq i < j \leq n$.\\
+		\item Soit $\sigma\in \S_n$. Une \textbf{inversion} de $\sigma$ est un couple $(u,v)$ de nombres dans $\{1,…,n\}$ tq $u<v$ mais $\sigma(u)>\sigma(v)$. Clairement, on a $\epsilon(\sigma)=(-1)^t$, où $t$ est le nombre d'inversions de $\sigma$. Soit maintenant $\sigma=(ij)$, où $1\leq i < j \leq n$.\\
 		Les inversions de $\sigma$ sont :
 		\begin{itemize}
 			\item $(u,j)$ pour $i<u<j$
@@ -1679,8 +1679,8 @@ $$\sigma \Delta_n=\pm \Delta_n,~~\forall\sigma\in \S_n$$
 	\begin{enumerate}
 		\item On dit que $\sigma$ est \textbf{paire} (respectivement \textbf{impaire}) si $\epsilon(\sigma)=1$ (respectivement $\epsilon(\sigma)=-1$)
 		\item $\sigma$ est pair (resp impair) ssi $\sigma$ est produit de nombre pair (resp impair) de transpositions.
-		\item Soient $l_1,...,l_r$ les cardinaux des orbites $\Omega_1,...,\Omega_r$ de $\langle \sigma\rangle$ dans $\{1,...,n\}$ (y compris les orbites ponctuelles), alors on a :
-		$$\epsilon(\sigma)=\epsilon(c_1...c_r)=(-1)^{l_1-1}...(-1)^{l_n-1}=(-1)^{(\sum l_i)-r}=(-1)^{n-r}$$
+		\item Soient $l_1,…,l_r$ les cardinaux des orbites $\Omega_1,…,\Omega_r$ de $\langle \sigma\rangle$ dans $\{1,…,n\}$ (y compris les orbites ponctuelles), alors on a :
+		$$\epsilon(\sigma)=\epsilon(c_1…c_r)=(-1)^{l_1-1}…(-1)^{l_n-1}=(-1)^{(\sum l_i)-r}=(-1)^{n-r}$$
 	\end{enumerate}
 \end{remar}
 
@@ -2421,7 +2421,7 @@ On a $\abs{G} = 15 = 3 \times 5$\\
 $n_3(G)$ divise 5 et est congru à $1 \mod 3$, donc $n_3(G) = 1$ et $G$ admet un unique $3$-Sylow, qui est donc distingué et d'ordre 3.
 \end{exemple}
 
-[...]\\
+[…]\\
 et $\phi$ est injectif. Comme $\abs{P \times Q} = 15 = \abs{G}$, $\phi$ est aussi surjectif. Donc
 \[
 G \simeq P \times Q \simeq \U_3 \times \U_5 \os{\sim}{\rightarrow} \U_{15}	\quad	\text{car} \; \pgcd(3, 5) = 1
