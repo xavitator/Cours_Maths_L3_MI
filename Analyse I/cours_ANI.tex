@@ -60,6 +60,8 @@
 \newcommand{\fracun}[1]{\frac{1}{#1}}
 \newcommand{\cerc}[1]{\overset{\circ}{#1}}
 
+\newcommand{\norme}[2]{||#1||_#2}
+
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \begin{document}
@@ -74,33 +76,34 @@
 
 \section{Espace vectoriel normé et autres}
 
-À un \ev normé, on va chercher à ajouter une structure topologique pour savoir si 2 points sont proches.
+À un \ev normé, on va chercher à ajouter une structure topologique (ou une notion de distance), afin de pouvoir définir la notion de convergence de suites de points.
 
 \begin{defi}
+\label{def-norme}
 Soit E un \ev sur $\R$. Une application $N:E\rightarrow \R_+$ est une norme sur E ssi\\
-$\forall u, v \in E$, $\lambda \in \R$, on a :
-\begin{enumerate}
-\item $N(u)=0 \Leftrightarrow u=0$ \label{def_norme_prop_1}
-\item $N(\lambda u)=|\lambda| N(u)$\hspace{8.5em} (homogène) \label{def_norme_prop_2}
-\item $N(u+v)\leq N(u)+N(v)$ \hspace{3em} (inégalité triangulaire) \label{def_norme_prop_3}
-\end{enumerate}
+$\forall u, v \in E$, $\lambda \in \R$, on a : \\
+\begin{tabular}{lll}
+1.&$N(u)=0 \Leftrightarrow u=0$ & (annihilation) \\
+2.&$N(\lambda u)=|\lambda| N(u)$ & (homogénéité) \\
+3.&$N(u+v)\leq N(u)+N(v)$ &(inégalité triangulaire) \\
+\end{tabular} \\
 On dit alors que $(E, N)$ est un \evn.
 \end{defi}
 
 \begin{defi}
-\label{def-evm}
 Soit X un ensemble. Une application $d:X^2\rightarrow \R_+$ est une distance ssi\\
-$\forall x, y, z \in X$, on a :
-\begin{enumerate}
-\item $d(x,y) = 0 \Leftrightarrow x=y$
-\item $d(x,y)=d(y,x)$
-\item $d(x,z)\leq d(x,y)+d(y,z)$
-\end{enumerate}
+$\forall x, y, z \in X$, on a : \\
+\begin{tabular}{lll}
+1.&$d(x,y) = 0 \Leftrightarrow x=y$ &\\
+2.&$d(x,y)=d(y,x)$ &\\
+3.&$d(x,z)\leq d(x,y)+d(y,z)$ &\\
+\end{tabular} \\
 On dit alors que $(X,d)$ est un espace métrique.
 \end{defi}
 
 \begin{defi}
-Une application $n : E\rightarrow \R_+$ est dite semi-normée sur E (un \ev de $\R$) ssi $n$ vérifie les points \ref{def_norme_prop_2} et \ref{def_norme_prop_3} de la définition \ref{def-evm}.
+Une application $n : E\rightarrow \R_+$ est dite semi-normée sur E (un \ev de $\R$) ssi $n$ vérifie l'homogénéité et l'inégalité triangulaire de la définition \ref{def-norme}. \\
+Autrement dit, le vecteur nul n'est pas nécessairement le seul vecteur qui annule la semi-norme.
 \end{defi}
 
 
@@ -195,10 +198,15 @@ $\bar{B}(x_0,r)$ est fermé.
 
 
 \begin{defi}                    
-A$\subset$ ($(X,T), (X,d), (E,N)$)\\
-$\cerc{A}$ (intérieur de A), le plus grand ouvert contenu dans A\\
-$\bar{A}$ (adhérence de A), le plus petit fermé contenant A\\
-$Fr(A)= \bar{A} \backslash \cerc{A}$ (frontière de A) et $\cerc{A}\subset A \subset \bar{A}$\\
+Soit A$\subset$ ($(X,T), (X,d), (E,N)$)\\
+\begin{tabular}{ll}
+	$\cerc{A}$ (intérieur de A) & le plus grand ouvert contenu dans A \\
+	$\bar{A}$ (adhérence de A) & le plus petit fermé contenant A \\
+	$Fr(A)$ (frontière de A) & le complémentaire de $\cerc{A}$ dans $\bar{A}$ \\
+	&\\
+	$Fr(A) = \bar{A}~\backslash~\cerc{A}$ &\\
+	$\cerc{A}\subset A \subset \bar{A}$ &\\
+\end{tabular}
 \end{defi}
 
 \begin{exem}
@@ -218,12 +226,16 @@ $$\exists M>0~\exists x_0 \in E~tq~A\subset B(x_0,M)$$
 \end{defi}
 
 \begin{defi}                    
-On dit que $N_1$ et $N_2$ deux normes sur un même \evn E sont équivalentes ssi :
-$$\exists m>0~ \exists M>0~tq~\forall u\in E~mN_1(u)\leq N_2(u)\leq MN_1(u)~et~\fracun{M}N_2(u)\leq N_1(u)\leq \fracun{m}N_2(u)$$
+$N_1$ et $N_2$ deux normes sur un même \evn E sont équivalentes ssi : \\
+$\exists m>0~ \exists M>0$ tq \\
+$$\forall u\in E~mN_1(u)\leq N_2(u)\leq MN_1(u)$$
+On a bien sûr :
+$$mN_1(u)\leq N_2(u)\leq MN_1(u) \Leftrightarrow \fracun{M}N_2(u)\leq N_1(u)\leq \fracun{m}N_2(u)$$
 \end{defi}
 
 \begin{remar}
-Si $u=0$, on a $m0\leq 0 \leq M0$ et si $u\neq 0$, on a $m \leq \frac{N_2(u)}{N_1(u)} \leq M$.\\
+Si $u = 0$, on a $m0~\leq~0~\leq~M0$\\
+et si $u \neq 0$, on a $m \leq \frac{N_2(u)}{N_1(u)} \leq M$.\\
 $M$ est donc le plus petit possible et $m$ le plus grand possible.
 \end{remar}
 
@@ -267,6 +279,26 @@ Soit $E$ un \ev et $T$ une topologie sur $E$, alors $(E,T)$ est un \ev topologiq
 \end{itemize}
 \end{remar}
 
+\begin{remar}
+Soit u = $(u_1, ..., u_n)$ un point de $\R^n$. Soit p un entier strictement positif. On pose
+$$\norme{x}{p} = \left(\sum_{i}^{n}(|x_i|^p)\right)^\frac{1}{p}$$
+
+C'est une famille de normes sur $\R^n$. \\
+On appelle p-norme la norme d'entier p. \\
+La norme euclidienne est la 2-norme. \\
+La norme l1 (ou la norme manhattan) est la 1-norme. \\
+\end{remar}
+
+\begin{remar}
+Soit u = $(u_1, ..., u_n)$ un point de $\R^n$. Soit p un entier strictement positif. On pose
+$$\norme{x}{\infty} = Sup_1^n(|x_i|)$$
+
+Il s'agit de la norme infini.
+\end{remar}
+
+\begin{remar}
+	
+\end{remar}
 
 \section{Topologie et norme / distance}
 
