@@ -2284,6 +2284,7 @@ est un anneau commutatif pour l'addition et la multiplication naturelles des pol
 
 \noindent Soit $p$ un nombre premier.
 \begin{lemme}
+\label{lm_1}
 Dans $(\Z/p\Z)[X]$, on a $(P + Q)^p = P^p + Q^p,	\quad	\forall P, Q \in (\Z/p\Z)[X]$
 \end{lemme}
 
@@ -2307,21 +2308,21 @@ Si $s, m$ sont des entiers naturelles tel que $p$ ne divise pas $s$, alors $\bin
 \begin{demonstration}
 La quantité $\binom{s.p^m}{p^m}$ modulo $p$ est le coefficient de $X^{p^m}$ dans le développement du binôme 
 \[
-(X + 1)^{s.p^m} \in \Z/p\Z[X]
+(X + 1)^{p^m} \in \Z/p\Z[X]
 \]
 
 Or, on a:
 \[
-(X + 1)^{s.p^m} = \pa{(X+1)^{s.p^m}}^s \us{\text{lemme d'avant}}{=} (X^{p^m} + 1^{p^m})^s = 1 + s.X^{p^m} + \ldots 
+(X + 1)^{s.p^m} = \pa{(X+1)^{p^m}}^s \us{\text{lemme \ref{lm_1}}}{=} (X^{p^m} + 1^{p^m})^s = 1 + s.X^{p^m} + \ldots 
 \]
 \end{demonstration}
 
 \section{Les théorèmes de Sylow}
 
-Soit $G$ un groupe fini et $n = \abs{G}$. Soit $p$ un nombre premier qui divise $n$. Écrivons $n = s.p^m$, où $p$ ne divise pas $s$.
+Soit $G$ un groupe fini et $n = \abs{G}$. Soit $p$ un nombre premier qui divise $n$. Écrivons $n = s.p^m$, où $p$ ne divise pas $s$ ($i.e$ $p^m$ est la puissance maximale de $p$ qui divise $n$). Alors, par définition, les $p$-Sylow de $G$ sont les \sgs d'ordre $p^m$.
 
 \begin{thm}[Premier théorème de Sylow]
-Il existe des $p$-Sylow dans $G$.
+Il existe au moins un $p$-Sylow dans $G$.
 \end{thm}
 
 \begin{demonstration}
@@ -2332,16 +2333,19 @@ On a:
 \begin{pmatrix}
 s.p^n		\\	p^n
 \end{pmatrix} 
-\ub{\equiv}_{\text{lemme 2}} 5 \neq 0 \mod p
+\ub{\equiv}_{\text{lemme 2}} s \neq 0 \mod p
 \]
-La translation à gauche par un élément de $G$ transforme une partie à $p^n$ éléments en une partie à $p^n$ éléments. O peut donc faire agir $G$ sur $S$ par translation à gauche.\\
+La translation à gauche par un élément de $G$ transforme une partie à $p^n$ éléments en une partie à $p^n$ éléments (car $l_g : G\rightarrow G,~g'\mapsto gg'$ est bijective de réciproque $l_{g^{-1}}$). On a donc une action par translations à gauche :
+$$G\x S \rightarrow S,~(g,E)\mapsto gE = \{gs~|~s\in E\}$$
 L'équation aux classes associées est
 \[
-\abs{S} = \sum_{O \text{orbite}} \abs{O}
+\abs{S} = \sum_{O~\text{orbite}} \abs{O}
 \]
-Comme $\abs{S}$ n'est pas divisible par $p_1$ au moins l'une des orbites est de cardinal non divisible par $p$.\\
-Posons un élément $A$ d'une telle orbite et considérons son stabilisateur $H = \Stab_G(A)$. On va montrer que $\abs{H} = p^n$\\
-Puisque $\abs{G} = \abs{H} . \abs{\Orb(A)}$, et que $p$ ne divise pas $\abs{\Orb(A)}$, $p^n$ divise $\abs{H}$. De l'autre côté, l'action de $H$ par translation à gauche stabilise $A$. Donc $A$ est réunion de $H$-orbites $Hg$ pour certains $g \in G$.\\
+Comme $\abs{S}=\binom{sp^n}{p^n}\equiv s \mod p$ n'est pas divisible par $p$ au moins l'une des orbites est de cardinal non divisible par $p$. Posons un élément $A$ d'une telle orbite et considérons son stabilisateur $H = \Stab_G(A)$. On va montrer que $H$ est un $p$-Sylow, c'est à dire $\abs{H} = p^n$. Comme on a :
+$$\abs{G/H} = \abs{G\cdot A}~et~\abs{G}=\abs{H}\cdot\abs{G\cdot A}$$
+et $p$ ne divise pas $\abs{G\cdot A}$, $p^n$ doit diviser $\abs{H}$.\\
+De l'autre côté, on a $h\cdot A = A$ pour tout $h\in H$. Donc l'action de $H$ par translation à gauche laisse stable $A$ et $A$ est réunion de $H$-orbites $H\cdot a$, $a \in A$.\\
+Or $\abs{H\cdot a}=\abs{H}$ car $H\cdot a$ est en bijection avec $H$ via la translation à droite par $a^{-1}$.
 Donc $\abs{H}$ divise $\abs{A} = p^n$. Finalement, on obtient bien que $\abs{H} = p^n$.
 \end{demonstration}
 
@@ -2351,11 +2355,11 @@ Soit $K$ un sous-groupe de $G$ et soit $H$ un $p$-Sylow de $G$. Alors il existe 
 
 \begin{corollaire}
 \begin{enumerate}
-\item  Si $K < G$ est un $p$-groupe, alors $K$k est contenu dans un $p$-Sylow.
+\item  Si $K \leq G$ est un $p$-sous-groupe, alors $K$ est contenu dans un $p$-Sylow de $G$.
 
 \medbreak
 
-\item  Les $p$-Sylow de $G$ sont conjugués.
+\item  Les $p$-Sylow de $G$ sont tous conjugués.
 
 \end{enumerate}
 \end{corollaire}
@@ -2363,23 +2367,25 @@ Soit $K$ un sous-groupe de $G$ et soit $H$ un $p$-Sylow de $G$. Alors il existe 
 \begin{demonstration}[Démonstration du corollaire]
 \begin{enumerate}
 \item  Le théorème nous fournit un $p$-Sylow $H'$ de $G$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
-Comme $K$ est un $p$-groupe, on a $K = K \cap H'$, autrement dit: $K \subset H'$
+Comme $K$ est un $p$-groupe, on a $K = K \cap H'$, autrement dit: $K \subseteq H'$
 
 \medbreak
 
 \item  Soient $K$ et $H$ deux $p$-Sylow de $G$. Alors il existe $H'$, un conjugué de $H$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
-Donc $K \cap H' = K$ et $K \subset H'$. Comme $K$ et $H'$ sont du même ordre, ils sont égaux.
+Donc $K \cap H' = K$ et $K \subseteq H'$. Comme $K$ et $H'$ sont du même ordre, ils sont égaux, et $K$ est bien conjugué à $H'$.
 
 \end{enumerate}
 \end{demonstration}
 
 \begin{demonstration}[Démonstration du deuxième théorème de Sylow]
-On a un sous-groupe $K < G$ et un $p$-Sylow $H$ de $G$, et on veut montrer que $H' \cap K$ est un $p$-Sylow de $K$ pour un conjugué $H'$ de $H$.
+On a un sous-groupe $K \leq G$ et un $p$-Sylow $H \subseteq G$, et on doit montrer qu'on peut conjuguer $H$ en un $p$-Sylow $H'$ tq $H' \cap K$ est un $p$-Sylow de $K$.
 \medbreak
-Soit $S$ l'ensemble des classes $G/H$. On aura besoin des faits suivants : $G$ agit transitivement sur $S$ et $H$ est le stabilisateur de l'un des points de $S$, à savoir: $s = eH$.\\
-Donc le stabilisateur de $as, \; a \in G$ est : $aHa^{-1}$\\
-Nous restreignons l'action de $G$ à $K$. Comme $H$ est un $p$-Sylow, le cardinal de $S = G/H$ n'est pas divisible par $p$. Donc le cardinal d'au moins l'une des $K$-orbites, disons $O$, n'est pas divisible par $p$. Supposons que $O$ est la $K$-orbite du point $as$ pour un $a \in G$.\\
-Soit $H' = aHa^{-1}$ le stabilisateur de $as$ pour l'action de $G$. Alors le stabilisateur de $as$ pour l'action restreinte à $K$ est clairement $K \cap H'$ et l'indice $[K : H' \cap K]$ est $\abs{O}$, qui n'est pas divisible par $p$. En outre, $H$ est un $p$-groupe \gray{(car conjugué de $H$)}. Donc $H' \cap K$ est un $p$-groupe.\\
+Soit $S$ l'ensemble des classes $G/H$. On aura besoin des faits suivants : $G$ opère transitivement sur $G/H$ (par translation à gauche : $g\cdot xH = gxH$) et $H$ est le stabilisateur de l'un des points de $S$, à savoir: $s = eH$.\\
+Donc le stabilisateur de $as, \; a \in G$ est : $aHa^{-1}$ (si $G$ agit sur $X$ et $x\in X$ et $g\in G$, alors $Stab_G(gx)=gStab_G(x)g^{-1}$ comme on le vérifie facilement. La conjugaison $h\mapsto ghg^{-1}$ donne la bijection).\\
+Nous restreignons l'action de $G$ sur $S$ à $K$. Comme $H$ est un $p$-Sylow, le cardinal de $|S| = |G/H| = |G|/|H| = sp^m / p^m = s$ n'est pas divisible par $p$.\\
+Donc le cardinal d'au moins l'une des $K$-orbites, disons $O$, n'est pas divisible par $p$.\\
+Supposons que $O$ est l'orbite du point $as$ pour un $s \in G$.\\
+Soit $H' = aHa^{-1}$ le stabilisateur de $as$ pour l'action de $G$. Alors le stabilisateur de $as$ pour l'action restreinte à $K$ est clairement $K \cap H'$ et l'indice $[K : H' \cap K]$ est $\abs{O}$, qui n'est pas divisible par $p$. En outre, $K\cap H'$ est un $p$-groupe \gray{(car conjugué de $H$)} en tant que \sg de $H'$. Donc $H' \cap K$ est un $p$-groupe.\\
 Il s'ensuit que $H' \cap K$ est bien un $p$-Sylow de $K$.
 \end{demonstration}
 
@@ -2394,7 +2400,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \begin{itemize}
 \item $n_2(G) = 3$ divise bien $s = 3$ et est congru à $1 \mod 2$
 
-\item $n_1(G) = 1$ divise bien $s = 2$ et est congru à $1 \mod 3$
+\item $n_3(G) = 1$ divise bien $s = 2$ et est congru à $1 \mod 3$
 \end{itemize}
 
 \medbreak
@@ -2410,21 +2416,29 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \end{exemple}
 
 \begin{demonstration}[Démonstration du troisième théorème de Sylow]
-Par le corollaire, les $p$-Sylow de $G$ sont tous conjugués à l'un d'entre eux, disons $H$. Soit $N = N_G(H)$ le normalisateur de $H$. Alors $N$ est le stabilisateur de $H$ dans l'action de $G$ par conjugaison sur les $p$-Sylow. Donc $n_p(G) = [G:N]$ est le cardinal de l'orbite de $H$. Comme $H \subset N$, $[G:N]$ divise $[G:H] = 5$\\
-Pour montrer que $n_p(G) \equiv 1 \mod p$, on décompose l'ensemble des $p$-Sylow $\ens{H_1, H_2, \ldots, H_{n_p(G)}}$ en orbite sous l'action de conjugaison par $H = H_1$. Un orbite est formée d'un seul sous-groupe $H_i$ ssi $H$ est contenu dans le normalisateur  $N_i$ de $H_i$. Si c'est le cas, alors $H_i$ et $H$ sont tous les deux des $p$-Sylow de $N_i$. Comme $N_i$ agit transitivement sur l'ensemble de ses $p$-Sylow, on a $H = H_i$.\\
-Donc il n'existe qu'une suite orbite à un élément sous l'action de $H$ sur les $p$-Sylow, à savoir $\{H\}$. Les cardinaux des autres orbites divisent $\abs{H}$, donc sont des multiples de $p$. Il s'ensuit que $n_p(G) \equiv 1 \mod p$.
+Par le corollaire, les $p$-Sylow de $G$ sont tous conjugués à l'un d'entre eux, disons $H$. Soit $N = N_G(H)$ le normalisateur de $H$. Alors $N$ est le stabilisateur de $H$ dans l'action de $G$ par conjugaison sur les $p$-Sylow. Donc $n_p(G) = [G:N]$ est le cardinal de l'orbite de $H$.\\
+Comme $H \subseteq N$, $[G:N]$ divise $[G:H] = s$\\
+Pour montrer que $n_p(G) \equiv 1 \mod p$, on décompose l'ensemble des $p$-Sylow $\ens{H_1, H_2, \ldots, H_{n_p(G)}}$ en orbite sous l'action de conjugaison par $H = H_1$.\\
+Une orbite ponctuelle est formée d'un seul sous-groupe $H_i$ ssi $H$ est contenu dans le normalisateur  $N_i$ de $H_i$. Si c'est le cas, alors $H_i$ et $H$ sont tous les deux des $p$-Sylow de $N_i$. Donc ils sont conjugués par un élément de $N_i$. Or $H_i$ est distingué dans $N_i$, donc $H = H_i$.\\
+Donc il n'existe qu'une seule orbite ponctuelle sous l'action de $H$ sur les $p$-Sylow, à savoir $\{H\} = \{H_1\}$.\\
+Les cardinaux des autres orbites divisent $\abs{H}$, donc sont des multiples de $p$. Il s'ensuit que $n_p(G) \equiv 1 \mod p$.
 \end{demonstration}
 
 \begin{exemple}
 Soit $G$ un groupe d'ordre 15. On va montrer que $G$ est cyclique.\\
 On a $\abs{G} = 15 = 3 \times 5$\\
-$n_3(G)$ divise 5 et est congru à $1 \mod 3$, donc $n_3(G) = 1$ et $G$ admet un unique $3$-Sylow, qui est donc distingué et d'ordre 3.
-\end{exemple}
-
-[...]\\
-et $\phi$ est injectif. Comme $\abs{P \times Q} = 15 = \abs{G}$, $\phi$ est aussi surjectif. Donc
+$n_3(G)$ divise 5 et est congru à $1 \mod 3$, donc $n_3(G) = 1$ et $G$ admet un unique $3$-Sylow $P$, qui est donc distingué (car pour $g\in G$, le conjugué $gPg^{-1}$ est encore un $3-Sylow$ et donc $gPg^{-1}= P$) et d'ordre 3.\\
+$n_5(G)$ divise 3 et est congru à 1 modulo 5. Donc $n_5(G)=1$. Donc $G$ admet un unique $5$-Sylow $Q$ qui forcément est distingué.\\
+On a $P\cap Q = \{e\}$ car $\abs{P\cap Q}$ divise à la fois $\abs{P}=3$ et $\abs{Q}=5$.\\
+On a $P\cong \U_3$ et $Q\cong \U_5$ car $3$ et $5$ sont premiers.\\
+Pour $x\in P$ et $y\in Q$, on a $xy=yx$, car $P$ et $Q$ sont distingués.\\
+Donc on a un \mdg bien défini :
+$$\varphi : P\x Q \rightarrow G,~(x,y)\mapsto xy$$
+Son noyau est formé des $(x,y)$ tq $xy=e \Leftrightarrow x = y^{-1}$.\\
+Donc $\ker (\varphi) = \{e\}$. Donc $\varphi$ est injectif. Comme $\abs{P\x Q}=15=\abs{G}$, $\varphi$ est aussi surjectif.\\
+Donc $\varphi$ est
 \[
-G \simeq P \times Q \simeq \U_3 \times \U_5 \os{\sim}{\rightarrow} \U_{15}	\quad	\text{car} \; \pgcd(3, 5) = 1
+G \simeq P \times Q \simeq \U_3 \times \U_5 \cong \U_{15}	\quad	\text{car} \; \pgcd(3, 5) = 1
 \]
 
 \chapter{Théorèmes de classification}
