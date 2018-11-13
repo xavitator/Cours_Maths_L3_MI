@@ -1929,7 +1929,7 @@ Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$
 		\node (134) at (6,3.5) {$\gen{(134)}$};
 		\node (234) at (9,3.5) {$\gen{(234)}$};
 		\node (V) at (-6,4.75) {$V$};
-		\node (A4) at (0,7) {$A_4$};
+		\node (A4) at (0,7) {$\A_4$};
 		
 		
 		\draw[->,>=latex] (E) to (1234);
@@ -2120,7 +2120,7 @@ Soit $n \geq 1$ un entier. Soit $K$ un sous-groupe de $\Z/n\Z$. Alors $K = d \Z/
 
 \begin{motivation}
 Le théorème de Lagrange affirme que si $H$ est un sous-groupe de $G$, alors l'ordre de $H$ est un diviseur de l'ordre de $G$. On peut se demander si réciproquement, pour tout diviseur d de l'ordre de $G$, il existe un sous-groupe d'ordre $d$.\\
-Ceci est faux, par exemple $A_4$ est d'ordre 12 et n'admet pas de sous-groupe d'ordre 6.\\
+Ceci est faux, par exemple $\A_4$ est d'ordre 12 et n'admet pas de sous-groupe d'ordre 6.\\
 Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un nombre premier} divisant l'ordre du groupe $G$, il existe toujours un sous-groupe d'ordre $d$. Ces sous-groupes sont les \textbf{sous-groupes de Sylow}.
 
 \vspace{1em}
@@ -2184,7 +2184,7 @@ $D_3$ admet un unique 3-Sylow $\pro{\rho}$. Il est distingué.\\
 		\node (134) at (6,3.5) {$\gen{(134)}$};
 		\node (234) at (9,3.5) {$\gen{(234)}$};
 		\node (V) at (-6,4.75) {$V$};
-		\node (A4) at (0,7) {$A_4$};
+		\node (A4) at (0,7) {$\A_4$};
 		
 		
 		\draw[->,>=latex] (E) to (1234);
@@ -2381,13 +2381,12 @@ Soit $K$ un sous-groupe de $G$ et soit $H$ un $p$-Sylow de $G$. Alors il existe 
 
 \begin{demonstration}[Démonstration du corollaire]
 \begin{enumerate}
-\item  Le théorème nous fournit un $p$-Sylow $H'$ de $G$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
+\item  Le deuxième théorème nous fournit un $p$-Sylow $H'$ de $G$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
 Comme $K$ est un $p$-groupe, on a $K = K \cap H'$, autrement dit: $K \subset H'$
 
 \medbreak
 
-\item  Soient $K$ et $H$ deux $p$-Sylow de $G$. Alors il existe $H'$, un conjugué de $H$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
-Donc $K \cap H' = K$ et $K \subset H'$. Comme $K$ et $H'$ sont du même ordre, ils sont égaux.
+\item Soient $K$ et $H$ deux $p$-Sylow de G. Par le deuxième théorème, il existe un conjugué $H'$ de $H$ tel que $H' \cap K$ est un $p$-Sylow de K. Or $K$ est un $p$-groupe. Donc $H' \cap K = K$ et $K \subset H'$. Or $K$ et $H'$ sont tous les deux d'ordre $p^m$. Donc $K = H'$ est bien conjugué à H.   
 
 \end{enumerate}
 \end{demonstration}
@@ -2418,7 +2417,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 
 \medbreak
 
-\item $G = A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
+\item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
 \red{Figure 2}
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
@@ -2813,7 +2812,7 @@ Tout groupe d'ordre 12 est isomorphe à l'un des uniques groupes suivants:
 
 \item $\Z/3 \times \Z/2 \times \Z/2$
 
-\item $A_4$
+\item $\A_4$
 
 \item $D_6$
 
@@ -2855,7 +2854,7 @@ A cette action est associé un morphisme
 \[
 \phi : G \longrightarrow \mathfrak{S}_4
 \]
-On va montrer que $\phi$ contient un isomorphisme de $G$ sur $A_4$, le stabilisateur de $K_1$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est 4 et c'est aussi l'indice de $N_G(K_i)$ dans $G$.\\
+On va montrer que $\phi$ contient un isomorphisme de $G$ sur $\A_4$, le stabilisateur de $K_1$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est 4 et c'est aussi l'indice de $N_G(K_i)$ dans $G$.\\
 Donc $N_G(K_i)$ est d'ordre 3 et $N_G(K_i) = K_i$. L'intersection des $N_G(K_i)$ est l'intersection des $K_i$, c'est-à-dire $\ens{e}$.\\
 Donc 
 \[
@@ -2863,7 +2862,7 @@ Donc
 \]
 et $G$ est isomorphe à $\Im(\phi)$\\
 Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est une permutation d'ordre 3 donc pair.\\
-Donc $\Im(\phi) \in A_4$, et comme les deux sont d'ordre 12, on a $\Im(\phi) = A_4$
+Donc $\Im(\phi) \in \A_4$, et comme les deux sont d'ordre 12, on a $\Im(\phi) = \A_4$
 
 \item 3ème cas: $K$ est distingué mais $H$ ne l'est pas\\
 Dans ce cas, on a $G = K \os{i}{\rtimes} H \simeq K \us{u}{\rtimes} H$ pour un morphisme $u : H \longrightarrow \Aut(K)$ à déterminer.\\
