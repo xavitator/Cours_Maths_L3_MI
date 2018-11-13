@@ -1538,12 +1538,12 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 		
 		\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
 		$$\sigma = c_1'...c_s'$$
-		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
+		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$.
 	\end{enumerate}
 \end{thm}
 
 \paragraph{Idée de la démonstration :}
-On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
+On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$.
 
 \begin{exem}
 	$$\sigma = \left(\begin{array}{llllllllllllll}
@@ -2452,25 +2452,46 @@ G \simeq P \times Q \simeq \U_3 \times \U_5 \os{\sim}{\rightarrow} \U_{15}	\quad
 \begin{definition}
 Soient $G$ un groupe et $N \triangleleft G$ un sous-groupe distingué. Un \slign{complément} de $N$ dans $G$ est un sous-groupe $K < G$ tel que
 \[
-K \cap N = \ens{e}		\quad	\text{et}	\quad	K.N = G
+K \cap N = \ens{e}		\quad	\text{et}	\quad	K \cdot N = G
 \]
 \end{definition}
 
 \begin{remarque}
-Notons que comme $N$ est distingué, $K.N$ est un sous-groupe et en fait égal à $\vec{K, N}$
+Notons que comme $N$ est distingué, $K \cdot N$ est un sous-groupe et en fait égal à $\vec{K, N}$
 \end{remarque}
 
 \begin{exemple}
 \begin{enumerate}
 \item Rappelons-nous le treillis des sous-groupes de $D_3$\\
 
-\red{Figure 1.1}\\
+\begin{center}
+	\begin{tikzpicture}
+		\node (ID) at (0,0) {$\{Id\}$};
+		\node (1) at (-2.25,1) {$\gen{\tau_1}$};
+		\node (2) at (-0.75,1) {$\gen{\tau_2}$};
+		\node (3) at (0.75,1) {$\gen{\tau_3}$};
+		\node (R) at (2.25,2) {$\gen{\rho}$};
+		\node (D3) at (0,3) {$\gen{D_3}$};
+		
+		\draw[->,>=latex] (ID) to (1);
+		\draw[->,>=latex] (ID) to (2);
+		\draw[->,>=latex] (ID) to (3);
+		\draw[->,>=latex] (ID) to[bend right] (R);
+		\draw[->,>=latex] (1) to (D3);
+		\draw[->,>=latex] (2) to (D3);
+		\draw[->,>=latex] (3) to (D3);
+		\draw[-,dashed]   (1) -- (2);
+		\draw[-,dashed]   (2) -- (3);
+		\draw[->,>=latex] (R) to (D3);
+	\end{tikzpicture}
+\end{center}
 
-Le sous-groupe $N = \vec{\zeta}$ est distingué et chacun des $\vec{\tau_i}$ est un complément.
+
+Le sous-groupe $N = \gen{\rho}$ est distingué et chacun des $\gen{\tau_i}$, où $\tau_i$ est la i-ème symétrie, est un complément.
 
 \medbreak
 
-\item Plus généralement, soit $G = D_n$. Le sous-groupe des rotations $N$ est distingué et le sous-groupe $K$ engendré par toute symétrie en est un complément.
+\item Plus généralement, dans $G = D_n$, le sous-groupe des rotations $N = \gen{\rho} $ est distingué et chaque sous-groupe $K = \gen{\tau}$, où $\tau$ est une symétrie, est un complément.
 
 \medbreak
 
@@ -2480,26 +2501,26 @@ Le sous-groupe $N = \vec{\zeta}$ est distingué et chacun des $\vec{\tau_i}$ est
 \end{exemple}
 
 \begin{remarque}
-Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément. Alors par le deuxième théorème d'isomorphisme
+Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément. Alors par le deuxième théorème d'isomorphisme, on a
 \[
-G / N = K / N \big/ N \os{\sim}{\leftarrow} K \big/ N \cap K = K
+G / N = KN \big/ N \cong K \big/ N \cap K = K
 \]
-Donc tous les compléments sont isomorphes à $G / N$, en particulier isomorphes entre eux.
+Donc si $K_1$ et $K_2$ sont deux compléments, alors $K_1 \cong K_2$.
 \end{remarque}
 
 \begin{definition}
-Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément.\\
+Soient $G$ un groupe, $N$ un sous-groupe distingué et $K$ un complément de $N$.\\
 Alors $G$ est \slign{le produit semi-direct interne} de $N$ par $K$, en symboles : $G = N \os{i}{\rtimes} K$
 \end{definition}
 
 \begin{exemple}
-$D_n = \vec{\zeta} \os{i}{\rtimes} \vec{\tau}$, où $\zeta$ engendre le sous-groupe des rotations et $\tau$ est une symétrie quelconque.
+$D_n = \gen{\rho} \os{i}{\rtimes} \gen{\tau}$, où $\rho$ engendre le sous-groupe des rotations et $\tau$ est une symétrie quelconque.
 \end{exemple}
 
 \section{Produit semi-direct externe}
 
 \begin{rappel}
-Si $G$ est un groupe. $\Aut(G)$ désigne le groupe des automorphismes de $G$, i.e. des morphismes bijectifs $G \os{\sim}{\rightarrow} G$.
+Si $G$ est un groupe. $\Aut(G)$ désigne le groupe des automorphismes de $G$, i.e. des morphismes de groupes bijectifs $\varphi : G \fong G$.
 \end{rappel}
 
 
@@ -2509,7 +2530,7 @@ Soient $K$ et $N$ des groupes et
 \[
 u : K \rightarrow \Aut(N), \; k \mapsto u_k
 \]
-un morphisme de groupes. Le \slign{produit semi-direct externe} $N \us{u}{\rtimes} K$ est l'ensemble $N \times K$, muni de la loi définie par $(n, k) . (n', k') = \pa{n . u_k(n'), k.k'},	\quad	\forall n, n' \in N, \; \forall k, k' \in K$
+un morphisme de groupes. Le \slign{produit semi-direct externe} $N \us{u}{\rtimes} K$ est l'ensemble $N \times K$, muni de la loi définie par $(n, k) \cdot (n', k') = \pa{n \cdot u_k(n'), k \cdot k'},	\quad	\forall n, n' \in N, \; \forall k, k' \in K$
 \end{definition}
 
 \begin{remarque}
