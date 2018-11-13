@@ -21,7 +21,6 @@
 \usepackage{mathtools} % pour de nombreuses choses mathématiques
 \usepackage{fourier} % sigle
 \usepackage{enumitem}
-
 %%%%%%%%%%%% Fin package %%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%% Environnements %%%%%%%%%%%%%%
@@ -394,7 +393,7 @@ Chaque élément admet un inverse.
 		Soit $0\neq x\in H$. Alors $-x\in H$. Donc H contient au moins un entier strictement positif. Soit $E=\{x\in H | x>0 \}$. Alors E est une partie non vide de $\N$.\\
 		Donc il existe dans E un plus petit élément n. Comme $n\in H$, on a $n\Z \subseteq H$.\\
 		Montrons que $n\Z \supseteq H$. Soit $x\in H$. Supposons $x>0$, alors $x\in E$ et $x\geq n$.\\
-		La division euclidienne de $x$ par $n$ s'écrit $x=n.q+r$, où $q,r\in \Z$ et $0\leq r< n$.\\
+		La division euclidienne de $x$ par $n$ s'écrit $x=nq+r$, où $q,r\in \Z$ et $0\leq r< n$.\\
 		Comme $x$ et $nq$ sont dans $H$, $r$ est dans $H$.\\
 		Or on a $0\leq r<n$ et $n$ était le plus petit entier positif contenu dans $H$. Donc $r=0$ et $x=nq \in n\Z$.\\
 		Donc $H=n\Z$. Finalement, si $m,n$ sont des entiers positifs et $m\Z=n\Z$, alors $m=n$.
@@ -543,15 +542,15 @@ Soit $G$ un groupe.
 
 \begin{exem}
 	Pour tout $g\in G$, on a l'application de conjugaison par $g$ :
-	$$cg : G \rightarrow G,~x\mapsto gxg^{-1}$$
-	C'est un \mdg  car $cg(xy)=cg(x)cg(y)$\\
-	C'est bijectif : sa réciproque est $cg^{-1}$ car $cg^{-1}(cg(x))=x$ $\forall x\in G$ et $cg(cg^{-1}(x)) = x$ $ \forall x\in G$\\
-	Donc $cg$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
+	$$c_g : G \rightarrow G,~x\mapsto gxg^{-1}$$
+	C'est un \mdg  car $c_g(xy)=c_g(x)c_g(y)$\\
+	C'est bijectif : sa réciproque est $c_g^{-1}$ car $c_g^{-1}(c_g(x))=x$ $\forall x\in G$ et $c_g(c_g^{-1}(x)) = x$ $ \forall x\in G$\\
+	Donc $c_g$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
 \end{exem}
 
 \begin{propr}
 	\begin{enumerate}
-		\item L'application $G\rightarrow Aut(G)$, $g\mapsto cg$ est un \mdg
+		\item L'application $G\rightarrow Aut(G)$, $g\mapsto c_g$ est un \mdg
 		\item L'ensemble des \auts intérieurs est un sous-groupe de $Aut(G)$
 	\end{enumerate}
 \end{propr}
@@ -877,11 +876,15 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 				\draw[->,>=latex] (1) to (D3);
 				\draw[->,>=latex] (2) to (D3);
 				\draw[->,>=latex] (3) to (D3);
+				\draw[-,dashed]   (1) -- (2);
+				\draw[-,dashed]   (2) -- (3);
 				\draw[->,>=latex] (R) to (D3);
 				\end{tikzpicture}
 				\caption{Diagramme de Hasse du groupe diédral 3}
 			\end{center}	
 		\end{figure}
+	
+		Ici, comme dans tout les diagrammes de groupes diédraux à venir, les " \tikz[baseline=-0.5ex]\draw [dashed] (0,0) -- (0.6,0);" représentent la relation de conjugaison par $\rho$.
 		
 		
 		\item Treillis des sous-groupes de $D_4$, on pose :
@@ -917,11 +920,13 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 				\draw[->,>=latex] (E) to (4);
 				\draw[->,>=latex] (1) to (13);
 				\draw[->,>=latex] (3) to (13);
+				\draw[-,dashed]   (1) -- (3);
 				\draw[->,>=latex] (R2) to (13);
 				\draw[->,>=latex] (R2) to (R);
 				\draw[->,>=latex] (R2) to (24);
 				\draw[->,>=latex] (2) to (24);
 				\draw[->,>=latex] (4) to (24);
+				\draw[-,dashed]   (2) -- (4);
 				\draw[->,>=latex] (13) to (D4);
 				\draw[->,>=latex] (R) to (D4);
 				\draw[->,>=latex] (24) to (D4);
@@ -1533,12 +1538,12 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 		
 		\item Si $s$ est un entier naturel et $c_1',...,c_s'$ des cycles à supports disjoints 2 à 2 tq :
 		$$\sigma = c_1'...c_s'$$
-		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$
+		alors $k=s$ et il existe une permutation $\tau \in \S_k$ tq $c_i'=c_{\tau(i)}$, $\forall 1\leq i \leq k$.
 	\end{enumerate}
 \end{thm}
 
 \paragraph{Idée de la démonstration :}
-On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$
+On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. Les orbites nous fournissent les cycles $c_i$, $1\leq i \leq k$.
 
 \begin{exem}
 	$$\sigma = \left(\begin{array}{llllllllllllll}
@@ -1800,11 +1805,13 @@ $H$ est distingué dans $G$ ssi $N_G(H)=G$
 			\draw[->,>=latex] (E) -- (4);
 			\draw[->,>=latex] (1) -- (13);
 			\draw[->,>=latex] (3) -- (13);
+			\draw[-,dashed]   (1) -- (3);
 			\draw[->,>=latex] (R2) -- (13);
 			\draw[->,>=latex] (R2) -- (R);
 			\draw[->,>=latex] (R2) -- (24);
 			\draw[->,>=latex] (2) -- (24);
 			\draw[->,>=latex] (4) -- (24);
+			\draw[-,dashed]   (2) -- (4);
 			\draw[->,>=latex] (13) -- (D4);
 			\draw[->,>=latex] (R) -- (D4);
 			\draw[->,>=latex] (24) -- (D4);
@@ -1913,33 +1920,38 @@ Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$
 
 \begin{center}
 	\begin{tikzpicture}[scale=0.65]
-	\node (E) at (0,0) {$\{e\}$};
-	\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
-	\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
-	\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
-	\node (123) at (0,3.5) {$\gen{(123)}$};
-	\node (124) at (3,3.5) {$\gen{(124)}$};
-	\node (134) at (6,3.5) {$\gen{(134)}$};
-	\node (234) at (9,3.5) {$\gen{(234)}$};
-	\node (V) at (-6,4.75) {$V$};
-	\node (A4) at (0,7) {$A_4$};
-	
-	
-	\draw[->,>=latex] (E) to (1234);
-	\draw[->,>=latex] (E) to (1324);
-	\draw[->,>=latex] (E) to (1423);
-	\draw[->,>=latex] (E) to (123);
-	\draw[->,>=latex] (E) to (124);
-	\draw[->,>=latex] (E) to (134);
-	\draw[->,>=latex] (E) to (234);
-	\draw[->,>=latex] (1234) to (V);
-	\draw[->,>=latex] (1324) to (V);
-	\draw[->,>=latex] (1423) to (V);
-	\draw[->,>=latex] (V) to (A4);
-	\draw[->,>=latex] (123) to (A4);
-	\draw[->,>=latex] (124) to (A4);
-	\draw[->,>=latex] (134) to (A4);
-	\draw[->,>=latex] (234) to (A4);
+		\node (E) at (0,0) {$\{e\}$};
+		\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+		\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+		\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+		\node (123) at (0,3.5) {$\gen{(123)}$};
+		\node (124) at (3,3.5) {$\gen{(124)}$};
+		\node (134) at (6,3.5) {$\gen{(134)}$};
+		\node (234) at (9,3.5) {$\gen{(234)}$};
+		\node (V) at (-6,4.75) {$V$};
+		\node (A4) at (0,7) {$\A_4$};
+		
+		
+		\draw[->,>=latex] (E) to (1234);
+		\draw[->,>=latex] (E) to (1324);
+		\draw[->,>=latex] (E) to (1423);
+		\draw[->,>=latex] (E) to (123);
+		\draw[->,>=latex] (E) to (124);
+		\draw[->,>=latex] (E) to (134);
+		\draw[->,>=latex] (E) to (234);
+		\draw[->,>=latex] (1234) to (V);
+		\draw[->,>=latex] (1324) to (V);
+		\draw[->,>=latex] (1423) to (V);
+		\draw[-,dashed]   (1234) -- (1324);
+		\draw[-,dashed]   (1324) -- (1423);
+		\draw[->,>=latex] (V) to (A4);
+		\draw[->,>=latex] (123) to (A4);
+		\draw[->,>=latex] (124) to (A4);
+		\draw[->,>=latex] (134) to (A4);
+		\draw[->,>=latex] (234) to (A4);
+		\draw[-,dashed]   (123) -- (124);
+		\draw[-,dashed]   (124) -- (134);
+		\draw[-,dashed]   (134) -- (234);
 	\end{tikzpicture}
 \end{center}
 
@@ -2108,7 +2120,7 @@ Soit $n \geq 1$ un entier. Soit $K$ un sous-groupe de $\Z/n\Z$. Alors $K = d \Z/
 
 \begin{motivation}
 Le théorème de Lagrange affirme que si $H$ est un sous-groupe de $G$, alors l'ordre de $H$ est un diviseur de l'ordre de $G$. On peut se demander si réciproquement, pour tout diviseur d de l'ordre de $G$, il existe un sous-groupe d'ordre $d$.\\
-Ceci est faux, par exemple $A_4$ est d'ordre 12 et n'admet pas de sous-groupe d'ordre 6.\\
+Ceci est faux, par exemple $\A_4$ est d'ordre 12 et n'admet pas de sous-groupe d'ordre 6.\\
 Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un nombre premier} divisant l'ordre du groupe $G$, il existe toujours un sous-groupe d'ordre $d$. Ces sous-groupes sont les \textbf{sous-groupes de Sylow}.
 
 \vspace{1em}
@@ -2146,6 +2158,8 @@ On montrera que tout diviseur premier $p$ de $\abs{G}=n$, il \textbf{existe} un 
 				\draw[->,>=latex] (1) to (D3);
 				\draw[->,>=latex] (2) to (D3);
 				\draw[->,>=latex] (3) to (D3);
+				\draw[-,dashed]   (1) to (2);
+				\draw[-,dashed]   (2) to (3);
 				\draw[->,>=latex] (R) to (D3);
 				\end{tikzpicture}
 				\caption{Diagramme de Hasse du groupe diédral 3}
@@ -2161,33 +2175,38 @@ $D_3$ admet un unique 3-Sylow $\pro{\rho}$. Il est distingué.\\
 
 \begin{center}
 	\begin{tikzpicture}[scale=0.65]
-	\node (E) at (0,0) {$\{e\}$};
-	\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
-	\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
-	\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
-	\node (123) at (0,3.5) {$\gen{(123)}$};
-	\node (124) at (3,3.5) {$\gen{(124)}$};
-	\node (134) at (6,3.5) {$\gen{(134)}$};
-	\node (234) at (9,3.5) {$\gen{(234)}$};
-	\node (V) at (-6,4.75) {$V$};
-	\node (A4) at (0,7) {$A_4$};
-	
-	
-	\draw[->,>=latex] (E) to (1234);
-	\draw[->,>=latex] (E) to (1324);
-	\draw[->,>=latex] (E) to (1423);
-	\draw[->,>=latex] (E) to (123);
-	\draw[->,>=latex] (E) to (124);
-	\draw[->,>=latex] (E) to (134);
-	\draw[->,>=latex] (E) to (234);
-	\draw[->,>=latex] (1234) to (V);
-	\draw[->,>=latex] (1324) to (V);
-	\draw[->,>=latex] (1423) to (V);
-	\draw[->,>=latex] (V) to (A4);
-	\draw[->,>=latex] (123) to (A4);
-	\draw[->,>=latex] (124) to (A4);
-	\draw[->,>=latex] (134) to (A4);
-	\draw[->,>=latex] (234) to (A4);
+		\node (E) at (0,0) {$\{e\}$};
+		\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+		\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+		\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+		\node (123) at (0,3.5) {$\gen{(123)}$};
+		\node (124) at (3,3.5) {$\gen{(124)}$};
+		\node (134) at (6,3.5) {$\gen{(134)}$};
+		\node (234) at (9,3.5) {$\gen{(234)}$};
+		\node (V) at (-6,4.75) {$V$};
+		\node (A4) at (0,7) {$\A_4$};
+		
+		
+		\draw[->,>=latex] (E) to (1234);
+		\draw[->,>=latex] (E) to (1324);
+		\draw[->,>=latex] (E) to (1423);
+		\draw[->,>=latex] (E) to (123);
+		\draw[->,>=latex] (E) to (124);
+		\draw[->,>=latex] (E) to (134);
+		\draw[->,>=latex] (E) to (234);
+		\draw[->,>=latex] (1234) to (V);
+		\draw[->,>=latex] (1324) to (V);
+		\draw[->,>=latex] (1423) to (V);
+		\draw[-,dashed]   (1234) to (1324);
+		\draw[-,dashed]   (1324) to (1423);
+		\draw[->,>=latex] (V) to (A4);
+		\draw[->,>=latex] (123) to (A4);
+		\draw[->,>=latex] (124) to (A4);
+		\draw[->,>=latex] (134) to (A4);
+		\draw[->,>=latex] (234) to (A4);
+		\draw[-,dashed]   (123) to (124);
+		\draw[-,dashed]   (124) to (134);
+		\draw[-,dashed]   (134) to (234);
 	\end{tikzpicture}
 \end{center}
 
@@ -2366,13 +2385,13 @@ Soit $K$ un sous-groupe de $G$ et soit $H$ un $p$-Sylow de $G$. Alors il existe 
 
 \begin{demonstration}[Démonstration du corollaire]
 \begin{enumerate}
-\item  Le théorème nous fournit un $p$-Sylow $H'$ de $G$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
-Comme $K$ est un $p$-groupe, on a $K = K \cap H'$, autrement dit: $K \subseteq H'$
+
+\item  Le deuxième théorème nous fournit un $p$-Sylow $H'$ de $G$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
+Comme $K$ est un $p$-groupe, on a $K = K \cap H'$, autrement dit: $K \subset H'$
 
 \medbreak
 
-\item  Soient $K$ et $H$ deux $p$-Sylow de $G$. Alors il existe $H'$, un conjugué de $H$ tel que $K \cap H'$ est un $p$-Sylow de $K$.\\
-Donc $K \cap H' = K$ et $K \subseteq H'$. Comme $K$ et $H'$ sont du même ordre, ils sont égaux, et $K$ est bien conjugué à $H'$.
+\item Soient $K$ et $H$ deux $p$-Sylow de G. Par le deuxième théorème, il existe un conjugué $H'$ de $H$ tel que $H' \cap K$ est un $p$-Sylow de K. Or $K$ est un $p$-groupe. Donc $H' \cap K = K$ et $K \subset H'$. Or $K$ et $H'$ sont tous les deux d'ordre $p^m$. Donc $K = H'$ est bien conjugué à H.   
 
 \end{enumerate}
 \end{demonstration}
@@ -2405,7 +2424,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 
 \medbreak
 
-\item $G = A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
+\item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
 \red{Figure 2}
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
@@ -2448,25 +2467,46 @@ G \simeq P \times Q \simeq \U_3 \times \U_5 \cong \U_{15}	\quad	\text{car} \; \p
 \begin{definition}
 Soient $G$ un groupe et $N \triangleleft G$ un sous-groupe distingué. Un \slign{complément} de $N$ dans $G$ est un sous-groupe $K < G$ tel que
 \[
-K \cap N = \ens{e}		\quad	\text{et}	\quad	K.N = G
+K \cap N = \ens{e}		\quad	\text{et}	\quad	K \cdot N = G
 \]
 \end{definition}
 
 \begin{remarque}
-Notons que comme $N$ est distingué, $K.N$ est un sous-groupe et en fait égal à $\vec{K, N}$
+Notons que comme $N$ est distingué, $K \cdot N$ est un sous-groupe et en fait égal à $\vec{K, N}$
 \end{remarque}
 
 \begin{exemple}
 \begin{enumerate}
 \item Rappelons-nous le treillis des sous-groupes de $D_3$\\
 
-\red{Figure 1.1}\\
+\begin{center}
+	\begin{tikzpicture}
+		\node (ID) at (0,0) {$\{Id\}$};
+		\node (1) at (-2.25,1) {$\gen{\tau_1}$};
+		\node (2) at (-0.75,1) {$\gen{\tau_2}$};
+		\node (3) at (0.75,1) {$\gen{\tau_3}$};
+		\node (R) at (2.25,2) {$\gen{\rho}$};
+		\node (D3) at (0,3) {$\gen{D_3}$};
+		
+		\draw[->,>=latex] (ID) to (1);
+		\draw[->,>=latex] (ID) to (2);
+		\draw[->,>=latex] (ID) to (3);
+		\draw[->,>=latex] (ID) to[bend right] (R);
+		\draw[->,>=latex] (1) to (D3);
+		\draw[->,>=latex] (2) to (D3);
+		\draw[->,>=latex] (3) to (D3);
+		\draw[-,dashed]   (1) -- (2);
+		\draw[-,dashed]   (2) -- (3);
+		\draw[->,>=latex] (R) to (D3);
+	\end{tikzpicture}
+\end{center}
 
-Le sous-groupe $N = \vec{\zeta}$ est distingué et chacun des $\vec{\tau_i}$ est un complément.
+
+Le sous-groupe $N = \gen{\rho}$ est distingué et chacun des $\gen{\tau_i}$, où $\tau_i$ est la i-ème symétrie, est un complément.
 
 \medbreak
 
-\item Plus généralement, soit $G = D_n$. Le sous-groupe des rotations $N$ est distingué et le sous-groupe $K$ engendré par toute symétrie en est un complément.
+\item Plus généralement, dans $G = D_n$, le sous-groupe des rotations $N = \gen{\rho} $ est distingué et chaque sous-groupe $K = \gen{\tau}$, où $\tau$ est une symétrie, est un complément.
 
 \medbreak
 
@@ -2476,26 +2516,26 @@ Le sous-groupe $N = \vec{\zeta}$ est distingué et chacun des $\vec{\tau_i}$ est
 \end{exemple}
 
 \begin{remarque}
-Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément. Alors par le deuxième théorème d'isomorphisme
+Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément. Alors par le deuxième théorème d'isomorphisme, on a
 \[
-G / N = K / N \big/ N \os{\sim}{\leftarrow} K \big/ N \cap K = K
+G / N = KN \big/ N \cong K \big/ N \cap K = K
 \]
-Donc tous les compléments sont isomorphes à $G / N$, en particulier isomorphes entre eux.
+Donc si $K_1$ et $K_2$ sont deux compléments, alors $K_1 \cong K_2$.
 \end{remarque}
 
 \begin{definition}
-Soient $G$ un groupe, $N \triangleleft G$ et $K$ un complément.\\
+Soient $G$ un groupe, $N$ un sous-groupe distingué et $K$ un complément de $N$.\\
 Alors $G$ est \slign{le produit semi-direct interne} de $N$ par $K$, en symboles : $G = N \os{i}{\rtimes} K$
 \end{definition}
 
 \begin{exemple}
-$D_n = \vec{\zeta} \os{i}{\rtimes} \vec{\tau}$, où $\zeta$ engendre le sous-groupe des rotations et $\tau$ est une symétrie quelconque.
+$D_n = \gen{\rho} \os{i}{\rtimes} \gen{\tau}$, où $\rho$ engendre le sous-groupe des rotations et $\tau$ est une symétrie quelconque.
 \end{exemple}
 
 \section{Produit semi-direct externe}
 
 \begin{rappel}
-Si $G$ est un groupe. $\Aut(G)$ désigne le groupe des automorphismes de $G$, i.e. des morphismes bijectifs $G \os{\sim}{\rightarrow} G$.
+Si $G$ est un groupe. $\Aut(G)$ désigne le groupe des automorphismes de $G$, i.e. des morphismes de groupes bijectifs $\varphi : G \fong G$.
 \end{rappel}
 
 
@@ -2505,7 +2545,7 @@ Soient $K$ et $N$ des groupes et
 \[
 u : K \rightarrow \Aut(N), \; k \mapsto u_k
 \]
-un morphisme de groupes. Le \slign{produit semi-direct externe} $N \us{u}{\rtimes} K$ est l'ensemble $N \times K$, muni de la loi définie par $(n, k) . (n', k') = \pa{n . u_k(n'), k.k'},	\quad	\forall n, n' \in N, \; \forall k, k' \in K$
+un morphisme de groupes. Le \slign{produit semi-direct externe} $N \us{u}{\rtimes} K$ est l'ensemble $N \times K$, muni de la loi définie par $(n, k) \cdot (n', k') = \pa{n \cdot u_k(n'), k \cdot k'},	\quad	\forall n, n' \in N, \; \forall k, k' \in K$
 \end{definition}
 
 \begin{remarque}
@@ -2808,7 +2848,7 @@ Tout groupe d'ordre 12 est isomorphe à l'un des uniques groupes suivants:
 
 \item $\Z/3 \times \Z/2 \times \Z/2$
 
-\item $A_4$
+\item $\A_4$
 
 \item $D_6$
 
@@ -2850,7 +2890,7 @@ A cette action est associé un morphisme
 \[
 \phi : G \longrightarrow \mathfrak{S}_4
 \]
-On va montrer que $\phi$ contient un isomorphisme de $G$ sur $A_4$, le stabilisateur de $K_1$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est 4 et c'est aussi l'indice de $N_G(K_i)$ dans $G$.\\
+On va montrer que $\phi$ contient un isomorphisme de $G$ sur $\A_4$, le stabilisateur de $K_1$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est 4 et c'est aussi l'indice de $N_G(K_i)$ dans $G$.\\
 Donc $N_G(K_i)$ est d'ordre 3 et $N_G(K_i) = K_i$. L'intersection des $N_G(K_i)$ est l'intersection des $K_i$, c'est-à-dire $\ens{e}$.\\
 Donc 
 \[
@@ -2858,7 +2898,7 @@ Donc
 \]
 et $G$ est isomorphe à $\Im(\phi)$\\
 Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est une permutation d'ordre 3 donc pair.\\
-Donc $\Im(\phi) \in A_4$, et comme les deux sont d'ordre 12, on a $\Im(\phi) = A_4$
+Donc $\Im(\phi) \in \A_4$, et comme les deux sont d'ordre 12, on a $\Im(\phi) = \A_4$
 
 \item 3ème cas: $K$ est distingué mais $H$ ne l'est pas\\
 Dans ce cas, on a $G = K \os{i}{\rtimes} H \simeq K \us{u}{\rtimes} H$ pour un morphisme $u : H \longrightarrow \Aut(K)$ à déterminer.\\
