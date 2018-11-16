@@ -616,7 +616,7 @@ Soient $G$ et $H$ deux groupes et $f:G\rightarrow H$ un morphisme.
 		\item Soit $G'\leq G$ un sous-groupe contenant $Ker(f)$, alors clairement $G'\subseteq f^{-1}(f(G'))$\\
 		Réciproquement, soit $x\in f^{-1}(f(G'))$. Alors $f(x)\in f(G')$. Soit $y\in G'$ tq $f(x)=f(y)$.\\
 		Alors $y^{-1}x\in Ker(f)\subseteq G'$. Donc :
-		$$x = y.y^{-1}x \in G'$$
+		$$x = y \cdot y^{-1}x \in G'$$
 		Soit $H'$ un sous-groupe de $Im(f)$. Alors clairement $H'\supseteq f(f^{-1}(H'))$.\\
 		Réciproquement, soit $f(g)\in H'$. Alors $g\in f^{-1}(H')$ et $f(g)\in f(f^{-1}(H'))$.
 	\end{enumerate}
@@ -1149,7 +1149,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 
 \begin{defi}
 	Soient $G$ un groupe et $X$ un ensemble. Une action à droite de $G$ sur $X$ est une application :
-	$$X\x G\rightarrow X,~(x,g)\mapsto x.g$$
+	$$X\x G\rightarrow X,~(x,g)\mapsto x \cdot g$$
 	telle que :
 	\begin{enumerate}
 		\item $x \cdot e=x,~\forall x\in X$
@@ -1906,7 +1906,7 @@ Les \sgs distingués de $G$ sont exactement les noyaux des \mdgs $G\underset{\va
 \begin{exem}
 \begin{enumerate}
 \item Si $E$ est un \ev sur $\R$ et $F$ un \sev alors $(F,+)$ est un \sg distingué de $(E,+)$ (qui est commutatif).\\
-Alors $E/F$ devient un \ev pour la multiplication par les scalaires définie par $\lambda.(v+F)=\lambda v+F$\\
+Alors $E/F$ devient un \ev pour la multiplication par les scalaires définie par $\lambda \cdot (v+F)=\lambda v+F$\\
 Si $F'\subseteq E$ est un supplémentaire de $F$ ($E=F'\oplus F$), alors la composition :
 $$F'~\inj~E \rightarrow E/F$$
 est un isomorphisme d'espaces vectoriels (exo !).\\
@@ -2079,7 +2079,7 @@ $$F/F\cap G \fong F+G/F$$
 
 \begin{demo}
 Montrons que $HK$ est un \sg :\\
-$e=e.e \in HK$. Si $x,x'\in H$ et $y,y' \in K$, on a :
+$e=e \cdot e \in HK$. Si $x,x'\in H$ et $y,y' \in K$, on a :
 $$(xy)^{-1}=y^{-1}x^{-1}=y^{-1}x^{-1}yy^{-1}\in HK$$
 et 
 $$xyx'y'=xyx'y^{-1}yy'\in HK$$
@@ -2111,7 +2111,6 @@ Soit $n \geq 1$ un entier. Soit $K$ un sous-groupe de $\Z/n\Z$. Alors $K = d \Z/
 \Z/d\Z \fong \Z/n\Z \big/ d\Z/n\Z
 \]
 
-\gray{(Fin du programme du partiel)}
 \end{exemple}
 
 \chapter{Sous-groupes de Sylow}
@@ -2264,7 +2263,7 @@ Un \slign{anneau} est un triplet $(A, +, \bullet)$, où $(A, +)$ est un groupe a
 un loi telle que:
 \begin{enumerate}
 \item est associative :	\quad	$(ab)c = a(bc),	\quad	\forall a, b, c \in A$
-\item admet un élément neutre 1:	\quad	$1.a = a = a.1,	\quad	\forall a \in A$
+\item admet un élément neutre 1:	\quad	$1.a = a = a \cdot 1,	\quad	\forall a \in A$
 \item est distributive à gauche et à droite par $"+"$:
 \[
 (a + b) c = ac + bc		\qquad	\text{et}	\qquad	a(b + c) = ab + ac, \quad	a, b, c \in A
@@ -2285,7 +2284,7 @@ L'anneau $A$ est \slign{commutatif} si $ab = ba,	\quad	\forall a, b \in A$
 
 \item Soit $n \geq 1$ un entier. Alors $\Z/n\Z$ est un anneau pour l'addition habituelle et la multiplication définie par 
 \[
-\ol{a} . \ol{b} = \ol{ab},		\quad	\ol{a}, \ol{b} \in \Z/n\Z
+\ol{a} \cdot \ol{b} = \ol{ab},		\quad	\ol{a}, \ol{b} \in \Z/n\Z
 \]
 où $\ol{a} = a + n \Z$
 
@@ -2310,7 +2309,7 @@ Dans $(\Z/p\Z)[X]$, on a $(P + Q)^p = P^p + Q^p,	\quad	\forall P, Q \in (\Z/p\Z)
 \begin{demonstration}
 Par le binôme de Newton \gray{(valable dans tout anneau commutatif)}, on a 
 \[
-(P + Q)^p = P^p + Q^p + \sum_{k = 1}^{p-1} \binom{p}{k} . P^k . Q^{p-k}
+(P + Q)^p = P^p + Q^p + \sum_{k = 1}^{p-1} \binom{p}{k} \cdot P^k \cdot Q^{p-k}
 \]
 Il suffit de montrer que $p$ divise $\binom{p}{k}$ pour $1 \leq k \leq p - 1$.\\
 Or on a:
@@ -2332,13 +2331,13 @@ La quantité $\binom{s.p^m}{p^m}$ modulo $p$ est le coefficient de $X^{p^m}$ dan
 
 Or, on a:
 \[
-(X + 1)^{s.p^m} = \pa{(X+1)^{p^m}}^s \us{\text{lemme \ref{lm_1}}}{=} (X^{p^m} + 1^{p^m})^s = 1 + s.X^{p^m} + \ldots 
+(X + 1)^{s.p^m} = \pa{(X+1)^{p^m}}^s \us{\text{lemme \ref{lm_1}}}{=} (X^{p^m} + 1^{p^m})^s = 1 + s \cdot X^{p^m} + \ldots 
 \]
 \end{demonstration}
 
 \section{Les théorèmes de Sylow}
 
-Soit $G$ un groupe fini et $n = \abs{G}$. Soit $p$ un nombre premier qui divise $n$. Écrivons $n = s.p^m$, où $p$ ne divise pas $s$ ($i.e$ $p^m$ est la puissance maximale de $p$ qui divise $n$). Alors, par définition, les $p$-Sylow de $G$ sont les \sgs d'ordre $p^m$.
+Soit $G$ un groupe fini et $n = \abs{G}$. Soit $p$ un nombre premier qui divise $n$. Écrivons $n = s \cdot p^m$, où $p$ ne divise pas $s$ ($i.e$ $p^m$ est la puissance maximale de $p$ qui divise $n$). Alors, par définition, les $p$-Sylow de $G$ sont les \sgs d'ordre $p^m$.
 
 \begin{thm}[Premier théorème de Sylow]
 Il existe au moins un $p$-Sylow dans $G$.
@@ -2459,6 +2458,7 @@ Donc $\varphi$ est
 \[
 G \simeq P \times Q \simeq \U_3 \times \U_5 \cong \U_{15}	\quad	\text{car} \; \pgcd(3, 5) = 1
 \]
+\end{exemple}
 
 \chapter{Théorèmes de classification}
 
@@ -2567,18 +2567,18 @@ Si $u$ est trivial \gray{(i.e. $u_k = \Id_N, \; \forall k \in K$)}, alors le pro
 \begin{enumerate}
 \item  Montrons l'associativité de la multiplication :
 \begin{align*}
-\pa{(n, k), (n', k')} . (n'', k'') &= \pa{n . u_k (n'), k.k'}.(n'', k'')
+\pa{(n, k), (n', k')} \cdot (n'', k'') &= \pa{n \cdot u_k (n'), k \cdot k'} \cdot (n'', k'')
 \\
-&= \pa{n . u_k(n') . u_{k.k'}(n''), k.k'.k''}
+&= \pa{n \cdot u_k(n') \cdot u_{k \cdot k'}(n''), k \cdot k' \cdot k''}
 \\
-&= \pa{n . u_k(n') . u_k . u_{k'} . (n''), k.k'.k''}
+&= \pa{n \cdot u_k(n') \cdot u_k \cdot u_{k'} \cdot (n''), k \cdot k' \cdot k''}
 \\
 \\
-(n, k) . \pa{(n', k'), (n'', k'')} &= (n, k) . \pa{n' . u_{k'}(n''), k'.k''}
+(n, k) \cdot \pa{(n', k'), (n'', k'')} &= (n, k) \cdot \pa{n' \cdot u_{k'}(n''), k' \cdot k''}
 \\
-&= \Pa{n . u_k\pa{n'.u_{k'}(n'')}, k.k'.k''}
+&= \Pa{n \cdot u_k\pa{n' \cdot u_{k'}(n'')}, k \cdot k' \cdot k''}
 \\
-&= \Pa{n . u_k(n').u_k\pa{u_{k'}(n'')}, k.k'.k''}
+&= \Pa{n \cdot u_k(n') \cdot u_k\pa{u_{k'}(n'')}, k \cdot k' \cdot k''}
 \end{align*}\\
 Montrons que $(e,e)$ est un élément neutre:
 \begin{align*}
@@ -2597,12 +2597,12 @@ Montrons que $(e,e)$ est un élément neutre:
 \end{align*}\\
 Montrons que $\pa{u_{K^{-1}}(n^{-1}), k^{-1}}$ est l'inverse de $(n,k) \in N \us{u}{\rtimes} K$
 \begin{align*}
-\pa{u_{K^{-1}}(n^{-1}}(n, k) &= \pa{u_{K^{-1}}(n^{-1}) . u_{K^{-1}}(n), k^{-1}k} 
+\pa{u_{K^{-1}}(n^{-1}}(n, k) &= \pa{u_{K^{-1}}(n^{-1}) \cdot u_{K^{-1}}(n), k^{-1}k} 
 \\
-&= \pa{u_{K^{-1}}(n^{-1}.n), k^{-1}k} = (e, e)
+&= \pa{u_{K^{-1}}(n^{-1} \cdot n), k^{-1}k} = (e, e)
 \\
 \\
-(n,k)\pa{u_{K^{-1}}(n^{-1}, k^{-1}} &= \Pa{n . u_K \pa{u_{K^{-1}}(n^{-1})}, kk^{-1}} 
+(n,k)\pa{u_{K^{-1}}(n^{-1}, k^{-1}} &= \Pa{n \cdot u_K \pa{u_{K^{-1}}(n^{-1})}, kk^{-1}} 
 \\
 &= \pa{n u_{KK^{-1}}(n^{-1}), kk^{-1}} 
 \\
@@ -2615,14 +2615,14 @@ Montrons que $\pa{u_{K^{-1}}(n^{-1}), k^{-1}}$ est l'inverse de $(n,k) \in N \us
 \begin{align*}
 (n, k)(n', e)\pa{u_{K^{-1}}(n^{-1}), k ^{-1}} &= \pa{n u_K(n'), k)(u_{K^{-1}}(n^{-1}), k^{-1}}
 \\
-&= \Pa{n . u_K(n') . u_K\pa{u_{K^{-1}}(n^{-1})}, kk^{-1}}
+&= \Pa{n \cdot u_K(n') \cdot u_K\pa{u_{K^{-1}}(n^{-1})}, kk^{-1}}
 \\
-&= \pa{n . u_K(n')n^{-1}, e} \in N \times \ens{e}
+&= \pa{n \cdot u_K(n')n^{-1}, e} \in N \times \ens{e}
 \end{align*}
 Il est clair que $\para{N \times \ens{e}} \cap \para{\ens{e} \times K} = \ens{e} \times \ens{e} = e_{N \us{u}{\rtimes} K}$\\
-Montrons que $\para{N \times \ens{e}} . \para{\ens{e} \times K} = N \us{u}{\rtimes K}$
+Montrons que $\para{N \times \ens{e}} \cdot \para{\ens{e} \times K} = N \us{u}{\rtimes K}$
 \[
-(n, e).(e, k) = (n u_e(e), ek) = (n,k)
+(n, e) \cdot (e, k) = (n u_e(e), ek) = (n,k)
 \]
 pour $n \in N, \; k \in K$
 \end{enumerate}
@@ -2661,13 +2661,13 @@ Vérifions que $\varphi$ est un morphisme
 \begin{align*}
 \varphi \pa{(n, k), (n', k')} &= \varphi\pa{(n u_K(n'), kk'} 
 \\
-&= n . u_K(n') kk' 
+&= n \cdot u_K(n') kk' 
 \\
 &= nkn'k^{-1}kk' 
 \\
 &= nkn'k'
 \\
-&= \varphi\pa{(n,k)} . \varphi\pa{(n', k')}
+&= \varphi\pa{(n,k)} \cdot \varphi\pa{(n', k')}
 \end{align*}
 où $n, n' \in N, \quad k, k' \in K$. Clairement $\varphi$ est surjectif. Le noyau de $\varphi$ est formé des couples $(n, k)$ tel que $nk = e$, i.e. $n = k^{-1} \in N \cap K = \ens{e}$.
 \end{demonstration}
@@ -2774,7 +2774,7 @@ Le 3ème théorème de Sylow nous indique si $n_q(G)$ est le nombre de $q$-Sylow
 Puisque $p < q$, la seule possibilité est $n_q(G) = 1$. Ainsi $G$ admet $Q$ pour $q$-Sylow unique et $Q$ est donc distingué dans $G$.\\
 Nous avons donc
 \begin{align*}
-G &= \vec{P, Q} \us{Q \text{dist}}{=} Q . P = Q \os{i}{\rtimes} P
+G &= \vec{P, Q} \us{Q \text{dist}}{=} Q \cdot P = Q \os{i}{\rtimes} P
 \\
 &\simeq Q \us{u}{\rtimes} P
 \\
@@ -2874,7 +2874,7 @@ Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces
 
 Le 2-Sylow $H$ est d'ordre $4$ et $H \cup K_i = \ens{e}, \; \forall i$.\\
 Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.\\
-Par le lemme, $H.K$ est un sous-groupe de $G$. Puisque $H \cup K = \ens{e}$, chaque élément de $HK$ a une unique expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
+Par le lemme, $H \cdot K$ est un sous-groupe de $G$. Puisque $H \cup K = \ens{e}$, chaque élément de $HK$ a une unique expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
 \begin{itemize}
 \item 1er cas: $H$ et $K$ sont tous les deux distingués.\\
 Dans ce cas, on a $hk = kh$, pour tous $h \in H, \; k \in K$, car	\quad	$hkh^{-1}k^{-1} \in  H \cup K = \ens{e}$, avec $hkh^{-1} \in K, \; k^{-1} \in K, khk^{-1} \in H, \; h \in H$\\
@@ -3204,19 +3204,5 @@ Soit $\varepsilon$ un espace affine de direction $E$.
 Soit $\ensF$ un espace affine de direction $F$\\
 Une application $f : \varepsilon \rightarrow \ensF$ est \slign{affine}.
 \end{definition}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \end{document}
