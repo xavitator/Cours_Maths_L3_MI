@@ -5,6 +5,7 @@
 \usepackage{lmodern}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage[utf8]{inputenc}
+%\usepackage[applemac]{inputenc}
 \usepackage[francais]{babel}
 \usepackage{graphicx}
 \usepackage{polynom}
@@ -161,8 +162,10 @@
 \begin{document}
 
 \title{Cours d'Algèbre et géométrie I}
-\date{11/09/2018}
-\author{Bernhard Keller}
+\date{11/09/2018 - 11/12/18}
+\author{Bernhard Keller\\
+\\
+écrit par Xavier Durand avec les graphes de Tristan François}
 \maketitle
 
 \tableofcontents{}
@@ -257,7 +260,7 @@ Chaque élément admet un inverse.
 		\item Soit $n\geq 1$ un entier, alors l'ensemble $GL_n(\R)$ des matrices inversibles $n\x n$ est un groupe pour la multiplication des matrices. Il est abélien ssi $n=1$.\\
 		De même pour $GL_n(\Q)$ et $GL_n(\C)$.\\
 		\item Soit $X$ un ensemble (fini ou infini). Le groupe symétrique $\S_X$ est formé des bijections $f:X\rightarrow X$. Sa multiplication est la composition des applications. Son élément neutre est $Id_X$. L'inverse d'une bijection $f:X\rightarrow X$ est la bijection réciproque $f^{-1}:X\rightarrow X$. En particulier, pour $n\geq 1$, on a le groupe symétrique :
-		$$\S_n = \sigma_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
+		$$\S_n = \S_{\{1,2,...,n\}} = \text{groupe de permutations de } \{1,...,n\}$$
 		Notons que $|\S_n|=n!$.
 	\end{enumerate}	
 \end{exem}
@@ -544,8 +547,10 @@ Soit $G$ un groupe.
 	Pour tout $g\in G$, on a l'application de conjugaison par $g$ :
 	$$c_g : G \rightarrow G,~x\mapsto gxg^{-1}$$
 	C'est un \mdg  car $c_g(xy)=c_g(x)c_g(y)$\\
-	C'est bijectif : sa réciproque est $c_g^{-1}$ car $c_g^{-1}(c_g(x))=x$ $\forall x\in G$ et $c_g(c_g^{-1}(x)) = x$ $ \forall x\in G$\\
-	Donc $c_g$ est un automorphisme de $G$ appelé l'automorphisme intérieur associé à $g$
+	C'est bijectif : sa réciproque est $c_{g^{-1}}$ car $c_{g^{-1}}(c_g(x))=x$ 
+	$\forall x\in G$ et $c_g(c_{g^{-1}}(x)) = x$ $ \forall x\in G$\\
+	Donc $c_g$ est un automorphisme de $G$ appelé l'automorphisme 
+	intérieur associé à $g$.
 \end{exem}
 
 \begin{propr}
@@ -565,7 +570,7 @@ Soient $G$ et $H$ deux groupes et $f:G\rightarrow H$ un morphisme.
 	Le noyau de $f$ est :
 	$$Ker(f)=\{g\in G | f(g) =e \} \subseteq G$$
 	L'image de $f$ est :
-	$$Im(f)=\{f(g)| g\in G\} \subseteq H$$
+	$$Im(f)=\{f(g)| g\in G\} \subseteq H.$$.
 \end{defi}
 
 \begin{thm}
@@ -668,7 +673,7 @@ Soit $G$ un groupe.\\
 
 \begin{remar}
 	\begin{enumerate}
-		\item Donc on a que l'ordre de $g$ est égale à l'ordre de $\langle g\rangle$
+		\item Donc on a que l'ordre de $g$ est égal à l'ordre de $\langle g\rangle$
 		\item Si $d<\infty$ est l'ordre de $G$, alors :
 		$$d\Z=\{n\in \Z | g^n =e \}$$
 		\item Etant donné $t\geq 1$, l'élément $g$ est d'ordre $t$ ssi $g^t=e$ et $g^{t'}\neq e$ pour tout diviseur strict $t'$ de $t$.
@@ -685,7 +690,7 @@ Soit $G$ un groupe.\\
 \end{thm}
 
 \begin{cor}
-	Soit $G$ un groupe fini, alors tout élément $g\in G$ est d'ordre fini et son ordre divise l'ordre de $G$.
+	Soit $G$ un groupe fini. Alors tout élément $g\in G$ est d'ordre fini et son ordre divise l'ordre de $G$.
 \end{cor}
 
 \begin{cons}
@@ -699,7 +704,8 @@ Soit $G$ un groupe.\\
 	
 	Pour $g\in G$, on pose :
 	$$gH=\{gh | h\in H \}$$
-	alors $|gH|=|H|$, $\forall g\in G$, car on a les bijections réciproques l'une de l'autre.
+	alors $|gH|=|H|$, $\forall g\in G$, car on a les bijections réciproques l'une de l'autre:
+	$H \to gH$, $h \mapsto gh$ et $gH \to H$, $x \mapsto g^{-1}x$.
 	
 	Montrons que pour tous $g,g'\in G$, on a :
 	$$gH\cap g'H \neq 0 \Rightarrow gH=g'H$$
@@ -714,7 +720,7 @@ Soit $G$ un groupe.\\
 	Donc $|G| = |H| \cdot |\{gH | g\in G \}|$.
 \end{demo}
 
-\section{Les treillis des sous-groupes}
+\section{Les treillis de sous-groupes}
 
 \begin{defi}
 	Soit $X$ un ensemble. Une relation $R$ sur $X$ est un sous-ensemble $R\subseteq X\x X$.
@@ -726,8 +732,8 @@ Soit $G$ un groupe.\\
 	Une relation $R$ est une relation d'ordre ssi :
 	\begin{itemize}
 	\item (réflexivité) $\forall x \in X$, $xRx$
-	\item (antisymétrique) $\forall x,y\in X$ $(xRy~et~yRx)\Rightarrow x=y$
-	\item (transitive) $\forall x,y,z\in X$ $(xRy~et~yRz) \Rightarrow xRz$
+	\item (antisymétrie) $\forall x,y\in X$ $(xRy~et~yRx)\Rightarrow x=y$
+	\item (transitivité) $\forall x,y,z\in X$ $(xRy~et~yRz) \Rightarrow xRz$
 	\end{itemize}
 \end{defi}
 
@@ -769,7 +775,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 	Soit $(X,\leq )$ un treillis. Son diagramme de Hasse est le graphe orienté où :
 	\begin{itemize}
 		\item les sommets sont les éléments $x\in X$
-		\item on met une flèche $x\rightarrow y$ si $y$ est minimal parmi les éléments $\geq x$ distincts.
+		\item on met une flèche $x\rightarrow y$ si $y$ est minimal parmi les éléments $>x$.
 	\end{itemize}
 \end{defi}
 
@@ -857,7 +863,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		\begin{itemize}
 			\item $|H| = 1\Rightarrow H=\{Id\}$
 			\item $|H|=2\Rightarrow H=\gen{\sigma_A}, \gen{\sigma_B}, \gen{\sigma_C}$
-			\item $|H|=3 \Rightarrow H= \gen{\rho}, \gen{\rho^2}$
+			\item $|H|=3 \Rightarrow H= \gen{\rho}=\gen{\rho^2}$
 		\end{itemize}
 		\begin{figure}[h]
 			\begin{center}
@@ -884,7 +890,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 			\end{center}	
 		\end{figure}
 	
-		Ici, comme dans tout les diagrammes de groupes diédraux à venir, les " \tikz[baseline=-0.5ex]\draw [dashed] (0,0) -- (0.6,0);" représentent la relation de conjugaison par $\rho$.
+		Ici, comme dans tous les diagrammes de Hasse de groupes à venir, les " \tikz[baseline=-0.5ex]\draw [dashed] (0,0) -- (0.6,0);" représentent la relation de conjugaison par $\rho$.
 		
 		
 		\item Treillis des sous-groupes de $D_4$, on pose :
@@ -932,7 +938,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 				\draw[->,>=latex] (24) to (D4);
 				\end{tikzpicture}
 			\end{center}
-			\caption{Diagramme de Hasse du groupe diédral 4}	
+			\caption{Diagramme de Hasse du groupe diédral $D_4$}	
 		\end{figure}
 		
 	\end{enumerate}	
@@ -1100,7 +1106,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		Soit $G$ un groupe.
 		\item Soit $H\subseteq G$ un sous-groupe. Alors $H$ agit sur $G$ par :
 		$$H\x G \rightarrow G,~ (h,g)\mapsto hg$$
-		On appelle cette action, l'action de $H$ sur $G$, par transition à gauche.
+		On appelle cette action, l'action de $H$ sur $G$ par translation à gauche.
 		\item L'application $G\x G \rightarrow G,~ (g,x) \mapsto gxg^{-1}$ est une action de $G$ sur lui-même (en effet, on a $e \cdot x = e \cdot x \cdot e^{-1} = x$, $\forall x\in G$ et $(gh) \cdot x=ghx(gh)^{-1}g(hxh^{-1})g^{-1}=g(hx),~\forall g,h\in G, \forall x\in G$).\\
 		On l'appelle l'action de conjugaison de $G$ sur lui-même.
 		\item Soit $X$ l'ensemble des sous-groupes de $G$. L'application :
@@ -1137,7 +1143,7 @@ Dorénavant notons $\leq $ toute relation d'ordre sur un ensemble $X$.
 		$$\varphi_{g^{-1}}\varphi_g(x)=ex=x$$
 		On a pour $g,h\in G$ :
 		$$\varphi_{gh}(x)=(gh)(x)=g(hx)=\varphi_g\circ \varphi_h(x),~~\forall x\in X$$
-		Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \sigma_X$
+		Donc l'application $g\mapsto \varphi_g$ est bien un morphisme de groupe $G\rightarrow \S_X$
 		\item On définit l'application $G\x X \rightarrow X$ par $g \cdot x = (f(g))(x),~~\forall g\in G,\forall x\in X$, vérifions qu'il s'agit d'une action.\\
 		$$ex=(f(e))x=Id_X(x)=x,~~\forall x\in X$$
 		et 
@@ -1284,7 +1290,8 @@ Soient $G$ un groupe et $X$ un $G$-ensemble.
 		Elle est fidèle (car si $gv=v~\forall v$, alors $ge_i=e_i$, pour $i\in [|1,n|]$ et $g=Id$).\\
 		Elle n'est pas libre car $Stab_{GL_n(\R)}(0)=GL_n(\R)$
 		
-		\item L'action $GL_n(\R)\x \R^n* \rightarrow \R^n*,~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
+		\item L'action $GL_n(\R)\x (\R^n\setminus\{0\}) \rightarrow 
+		(\R^n\setminus\{0\}),~(g,v)\mapsto gv $ est transitive, fidèle et non libre. En effet, $Stab_{GL_n(\R)}(e_1)=[e_1,*,*,...,*]$ avec $*$ des vecteurs quelconques.
 		
 		\item Soit $C=\{(x_1,x_2,x_3) \in \R | \forall i\text{ on a } x_i= \pm 1 \}$ l'ensemble des sommets d'un cube de $\R^3$ centré en l'origine. Soit $G = \{g \in O_3(\R) | g(C)=C \}$ ($O_n$ est l'ensemble des matrices orthogonales de taille $n\x n$).\\
 		L'action :
@@ -1409,7 +1416,7 @@ Donc $p$ divise $|G \cdot x|$. D'où :
 
 \subsubsection{Rappel}
 Si $E$ est un ensemble, le groupe symétrique $\S_E$ est le groupe des bijections $f:E\rightarrow E$ avec la composition des applications pour loi. On note :
-$$\S_n := \sigma_{\{1,2,...,n \}} \hspace{5em} n\geq 1$$
+$$\S_n := \S_{\{1,2,...,n \}} \hspace{5em} n\geq 1$$
 et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 
 \begin{remar}
@@ -1433,7 +1440,7 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 		
 		\item Cette action est fidèle et transitive
 		
-		\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\S_n$ est isomorphe à $\sigma_{\{1,2,...,n \}\backslash \{i\}}$
+		\item Pour tout $i\in \{1,...,n\}$, la stabilisateur de $i$ dans $\S_n$ est isomorphe à $\S_{\{1,2,...,n \}\backslash \{i\}}$
 	\end{enumerate}
 \end{remar}
 
@@ -1445,7 +1452,8 @@ et on l'appelle le $n$-ième groupe symétrique. Il est d'ordre $n!$.
 \begin{propr}
 	\begin{enumerate}
 		\item Deux permutations à supports disjoints commutent
-		\item Les groupes symétriques $\sigma_1$ et $\sigma_2$ sont abéliens. Pour $n\geq 3$, le centre de $\S_n$ est trivial.
+		\item Les groupes symétriques $\S_1$ et $\S_2$ sont abéliens. 
+		Pour $n\geq 3$, le centre de $\S_n$ est trivial.
 	\end{enumerate}	
 \end{propr}
 
@@ -1518,11 +1526,11 @@ Si $l=2$, elle est appelée la transposition de $a_1$ et $a_2$
 
 \begin{exem}
 	\begin{enumerate}
-		\item $$\sigma_2=\{e, (12)\}$$
-		\item $$\sigma_3=\{e, (12), (13), (23), (123), (132)\}$$
+		\item $$\S_2=\{e, (12)\}$$
+		\item $$\S_3=\{e, (12), (13), (23), (123), (132)\}$$
 		\item
 		\begin{center}
-			$\sigma_4$=\{e, (12), (13), (23), (14), (24), (34),\\
+			$\S_4$=\{e, (12), (13), (23), (14), (24), (34),\\
 			(12)(34), (13)(24), (14)(23),\\
 			(123), (132), (124),(142),(134),(143),(234),(243),\\
 			(1234),(1243),(1324),(1342),(1423),(1432)\}
@@ -1550,12 +1558,12 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 	1&2&3&4&5&6&7&8&9&10&11&12&13&14\\
 	6&7&9&4&5&10&2&3&12&13&8&11&1&14
 	\end{array}\right)$$
-	$\sigma = (1~6~10~13)(2~7)(3~9~12~11~8)$ est une décomposition en produit de cycles à supports disjoints 2 à 2 de $\sigma \in \sigma_{14}$.
+	$\sigma = (1~6~10~13)(2~7)(3~9~12~11~8)$ est une décomposition en produit de cycles à supports disjoints 2 à 2 de $\sigma \in \S_{14}$.
 \end{exem}
 
 \begin{demo}
 	On fait agir le sous-groupe $\langle \sigma\rangle$ engendré par $\sigma$ dans $\S_n$ sur l'ensemble $\{1,...,n\}$.\\
-	Sur cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
+	Sous cette action, l'ensemble $\{1,...,n\}$ se décompose en orbites disjointes 2 à 2. Les orbites ponctuelles sont exactement les points fixes de $\sigma$.\\
 	Soient $\Omega_1,...,\Omega_r$ les orbites non ponctuelles.\\
 	Le sous-groupe $\langle \sigma\rangle$ permute cycliquement les éléments de chaque $\Omega_i$. Soit $a_{i_1},...,a_{i_{l_i}}$ une énumération des éléments de $\Omega_i$ tq :
 	$$\sigma(a_{i_j})\left\{\begin{array}{ll}
@@ -1588,7 +1596,7 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 
 \begin{exo}
 	Monter que $\S_n$ est même engendré par les $n-1$ transpositions :
-	$$(1~2)(2~3)...(n-1~n)$$
+	$$(1~2),(2~3),...,(n-1~n)$$.
 \end{exo}
 
 \begin{cor}
@@ -1622,7 +1630,7 @@ On fait agir le groupe $\langle\sigma\rangle \subseteq \S_n$ sur $\{1,...,n\}$. 
 \end{exem}
 
 \begin{remar}
-	Deux permutations conjuguées ont même ordre (et même signature, voir au-dessus).
+	Deux permutations conjuguées ont même ordre (et même signature, voir ci-dessous).
 \end{remar}
 
 \section{La signature}
@@ -1956,8 +1964,10 @@ Il est instructif de voir la position de $V$ dans le treillis des \sgs de $\A_4$
 \end{center}
 
 On a :
-$ N_{\A_4}(\gen{(1~2)(3~4)})=V$ est d'indice 3 dans $\A_4$\\
-$ N_{\A_4}(\gen{(1~2~3)})=\gen{(1~2~3)}$ est d'indice 4 dans $\A_4$
+$ N_{\A_4}(\gen{(1~2)(3~4)})=V$ est d'indice 3 dans $\A_4$ et cet indice est \'egal
+au nombre de sous-groupes conjugu\'es \`a $\gen{(1~2)(3~4)}$.\\
+$ N_{\A_4}(\gen{(1~2~3)})=\gen{(1~2~3)}$ est d'indice 4 dans $\A_4$ et cet
+indice est \'egal au nombre de sous-groupes conjugu\'es \`a $\gen{(1~2~3)}$.
 \end{enumerate}
 \end{exem}
 
@@ -2062,7 +2072,7 @@ Pour $p=2$, on retrouve le fait qu'un \sg d'indice 2 est toujours distingué.
 \begin{demo}
 Faisons agir $G$ sur $G/H$ par translation à gauche :
 $$g.xH := gxH,~\forall g\in G,\forall x\in G$$
-Comme $|G/H|=p$, cela définit un \mdg $f:G\rightarrow \sigma_p$. Ce morphisme est non trivial car l'action est transitive.\\
+Comme $|G/H|=p$, cela définit un \mdg $f:G\rightarrow \S_p$. Ce morphisme est non trivial car l'action est transitive.\\
 Notons $K$ son image. Alors $|K|$ divise à la fois $|G|$ et $|\sigma_p|=p!$. Donc il divise $pgcd(|G|,p!)=p$. Donc $|K|=p$.\\
 Comme $G/\ker(f)\fong K$, l'indice de $\ker (f)$ dans $G$ est $p$. Or les éléments de $\ker(f)$ laissent fixe $eH$. Donc $\ker (f)\subseteq H$. Comme les deux sont d'indice $p$ dans $G$, ils sont égaux et $H=\ker (f)$ est distingué.
 \end{demo}
@@ -2102,7 +2112,8 @@ $$G/K \rightarrow (G/H)\big/(K/H)$$
 \end{demo}
 
 \begin{remar}
-En particulier, si $G$ et $K$ sont finis, alors $\abs{\Im(f)}$ diviser à la fois $\abs{G}$ et $\abs{K}$ 
+En particulier, si $G$ et $K$ sont finis et $f: G \to K$ est un morphisme
+de groupes, alors l'ordre de l'image de $f$ divise à la fois $\abs{G}$ et $\abs{K}$ 
 \end{remar}
 
 \begin{exemple}
@@ -2133,7 +2144,7 @@ Un \slign{p-sous-groupe de Sylow} \gray{(ou $p$-Sylow)} est un sous-groupe $P$ d
 \end{definition}
 
 \begin{remar}
-On montrera que tout diviseur premier $p$ de $\abs{G}=n$, il \textbf{existe} un $p$-Sylow, et que tous les $p$-Sylow sont \textbf{conjugués}.
+On montrera que pour tout diviseur premier $p$ de $\abs{G}=n$, il \textbf{existe} un $p$-Sylow, et que tous les $p$-Sylow sont \textbf{conjugués}.
 \end{remar}
 
 \begin{exemple}
@@ -2242,9 +2253,9 @@ Alors $P=\pro{\sigma, (a \; c)}$ est un 2-Sylow de $\mathfrak{S}_4$ constitué d
 \end{itemize}
 Notons que $P$ n'est pas distingué dans $\S_4$.\\
 Les 3-Sylow de $\mathfrak{S}_4$ sont les sous-groupes d'ordre 3.\\
-Ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle (exercice : compléter le nombre de 3-cycles et le nombre de \sg d'ordre 3). Ils sont tous conjugués.\\
+Ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle (exercice : compter le nombre de 3-cycles et le nombre de \sg d'ordre 3). Ils sont tous conjugués.\\
 
-\item $G = \mathfrak{S}_3$. On a $\abs{G} = 120 = 2^3 \x 3 \x 5$\\
+\item $G = \mathfrak{S}_5$. On a $\abs{G} = 120 = 2^3 \x 3 \x 5$\\
 Les 2-Sylow de $\mathfrak{S}_3$ sont les sous-groupes d'ordre 8.\\
 Les 3-Sylow sont les sous-groupes d'ordre 3. Donc ils sont tous de la forme $\pro{c}$, où $c$ est un 3-cycle.\\
 Les 5-Sylow sont les sous-groupes d'ordre 5. Ils sont tous de la forme $\pro{c}$, où $c$ est un 5-cycle.\\
@@ -2292,7 +2303,7 @@ où $\ol{a} = a + n \Z$
 
 \item Si $A$ est un anneau commutatif, alors
 \begin{align*}
-A[X] :&= \ens{\text{polynôme en} \; X \; \text{à coefficients dans} \; A}
+A[X] :&= \ens{\text{polynômes en} \; X \; \text{à coefficients dans} \; A}
 \\
 &= \ensem{\sum_{k = 1}^n a_k X^k \big| n \in \N, a_k \in A, \forall k}
 \end{align*}
@@ -2344,7 +2355,7 @@ Il existe au moins un $p$-Sylow dans $G$.
 \end{thm}
 
 \begin{demonstration}
-Soit $S$ l'ensemble de $G$ ayant $p^n$ éléments.\\
+Soit $S$ l'ensemble des parties de $G$ ayant $p^n$ éléments.\\
 On a:
 \[
 \abs{S} = 
@@ -2359,7 +2370,7 @@ L'équation aux classes associées est
 \[
 \abs{S} = \sum_{O~\text{orbite}} \abs{O}
 \]
-Comme $\abs{S}=\binom{sp^n}{p^n}\equiv s \mod p$ n'est pas divisible par $p$ au moins l'une des orbites est de cardinal non divisible par $p$. Posons un élément $A$ d'une telle orbite et considérons son stabilisateur $H = \Stab_G(A)$. On va montrer que $H$ est un $p$-Sylow, c'est à dire $\abs{H} = p^n$. Comme on a :
+Comme $\abs{S}=\binom{sp^n}{p^n}\equiv s \mod p$ n'est pas divisible par $p$ au moins l'une des orbites est de cardinal non divisible par $p$. Prenons un élément $A$ d'une telle orbite et considérons son stabilisateur $H = \Stab_G(A)$. On va montrer que $H$ est un $p$-Sylow, c'est à dire $\abs{H} = p^n$. Comme on a :
 $$\abs{G/H} = \abs{G\cdot A}~et~\abs{G}=\abs{H}\cdot\abs{G\cdot A}$$
 et $p$ ne divise pas $\abs{G\cdot A}$, $p^n$ doit diviser $\abs{H}$.\\
 De l'autre côté, on a $h\cdot A = A$ pour tout $h\in H$. Donc l'action de $H$ par translation à gauche laisse stable $A$ et $A$ est réunion de $H$-orbites $H\cdot a$, $a \in A$.\\
@@ -2403,7 +2414,7 @@ Donc le stabilisateur de $as, \; a \in G$ est : $aHa^{-1}$ (si $G$ agit sur $X$ 
 Nous restreignons l'action de $G$ sur $S$ à $K$. Comme $H$ est un $p$-Sylow, le cardinal de $|S| = |G/H| = |G|/|H| = sp^m / p^m = s$ n'est pas divisible par $p$.\\
 Donc le cardinal d'au moins l'une des $K$-orbites, disons $O$, n'est pas divisible par $p$.\\
 Supposons que $O$ est l'orbite du point $as$ pour un $s \in G$.\\
-Soit $H' = aHa^{-1}$ le stabilisateur de $as$ pour l'action de $G$. Alors le stabilisateur de $as$ pour l'action restreinte à $K$ est clairement $K \cap H'$ et l'indice $[K : H' \cap K]$ est $\abs{O}$, qui n'est pas divisible par $p$. En outre, $K\cap H'$ est un $p$-groupe \gray{(car conjugué de $H$)} en tant que \sg de $H'$. Donc $H' \cap K$ est un $p$-groupe.\\
+Soit $H' = aHa^{-1}$ le stabilisateur de $as$ pour l'action de $G$. Alors le stabilisateur de $as$ pour l'action restreinte à $K$ est clairement $K \cap H'$ et l'indice $[K : H' \cap K]$ est $\abs{O}$, qui n'est pas divisible par $p$. En outre, $K\cap H'$ est un $p$-groupe en tant que \sg de $H'$ (qui est un $p$-groupe car conjugu\'e de $H$). Donc $H' \cap K$ est un $p$-groupe.\\
 Il s'ensuit que $H' \cap K$ est bien un $p$-Sylow de $K$.
 \end{demonstration}
 
@@ -2424,7 +2435,42 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \medbreak
 
 \item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
-\red{Figure 2}
+\begin{center}
+	\begin{tikzpicture}[scale=0.65]
+		\node (E) at (0,0) {$\{e\}$};
+		\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+		\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+		\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+		\node (123) at (0,3.5) {$\gen{(123)}$};
+		\node (124) at (3,3.5) {$\gen{(124)}$};
+		\node (134) at (6,3.5) {$\gen{(134)}$};
+		\node (234) at (9,3.5) {$\gen{(234)}$};
+		\node (V) at (-6,4.75) {$V$};
+		\node (A4) at (0,7) {$\A_4$};
+		
+		
+		\draw[->,>=latex] (E) to (1234);
+		\draw[->,>=latex] (E) to (1324);
+		\draw[->,>=latex] (E) to (1423);
+		\draw[->,>=latex] (E) to (123);
+		\draw[->,>=latex] (E) to (124);
+		\draw[->,>=latex] (E) to (134);
+		\draw[->,>=latex] (E) to (234);
+		\draw[->,>=latex] (1234) to (V);
+		\draw[->,>=latex] (1324) to (V);
+		\draw[->,>=latex] (1423) to (V);
+		\draw[-,dashed]   (1234) to (1324);
+		\draw[-,dashed]   (1324) to (1423);
+		\draw[->,>=latex] (V) to (A4);
+		\draw[->,>=latex] (123) to (A4);
+		\draw[->,>=latex] (124) to (A4);
+		\draw[->,>=latex] (134) to (A4);
+		\draw[->,>=latex] (234) to (A4);
+		\draw[-,dashed]   (123) to (124);
+		\draw[-,dashed]   (124) to (134);
+		\draw[-,dashed]   (134) to (234);
+	\end{tikzpicture}
+\end{center}
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
 
@@ -2449,12 +2495,13 @@ $n_3(G)$ divise 5 et est congru à $1 \mod 3$, donc $n_3(G) = 1$ et $G$ admet un
 $n_5(G)$ divise 3 et est congru à 1 modulo 5. Donc $n_5(G)=1$. Donc $G$ admet un unique $5$-Sylow $Q$ qui forcément est distingué.\\
 On a $P\cap Q = \{e\}$ car $\abs{P\cap Q}$ divise à la fois $\abs{P}=3$ et $\abs{Q}=5$.\\
 On a $P\cong \U_3$ et $Q\cong \U_5$ car $3$ et $5$ sont premiers.\\
-Pour $x\in P$ et $y\in Q$, on a $xy=yx$, car $P$ et $Q$ sont distingués.\\
+Pour $x\in P$ et $y\in Q$, on a $xy=yx$, car le commutateur 
+$xyx^{-1}y^{-1}$ appartient \`a la fois \`a $P$ et \`a $Q$ car $P$ et $Q$ sont distingués.\\
 Donc on a un \mdg bien défini :
 $$\varphi : P\x Q \rightarrow G,~(x,y)\mapsto xy$$
 Son noyau est formé des $(x,y)$ tq $xy=e \Leftrightarrow x = y^{-1}$.\\
 Donc $\ker (\varphi) = \{e\}$. Donc $\varphi$ est injectif. Comme $\abs{P\x Q}=15=\abs{G}$, $\varphi$ est aussi surjectif.\\
-Donc $\varphi$ est
+Donc $\varphi$ est un isomorphisme
 \[
 G \simeq P \times Q \simeq \U_3 \times \U_5 \cong \U_{15}	\quad	\text{car} \; \pgcd(3, 5) = 1
 \]
@@ -2472,7 +2519,8 @@ K \cap N = \ens{e}		\quad	\text{et}	\quad	K \cdot N = G
 \end{definition}
 
 \begin{remarque}
-Notons que comme $N$ est distingué, $K \cdot N$ est un sous-groupe et en fait égal à $\vec{K, N}$
+Notons que comme $N$ est distingué, $K \cdot N$ est un sous-groupe et en fait
+égal à $N\cdot K$.
 \end{remarque}
 
 \begin{exemple}
@@ -2721,7 +2769,7 @@ Le morphisme naturel
 \\
 a &\mapsto (b \mapsto ab)
 \end{align*}
-est un morphisme.
+est un isomorphisme.
 \end{lemme}
 
 \begin{demonstration}
