@@ -11,6 +11,7 @@
 *.cb
 *.cb2
 .*.lb
+*.pdf
 
 ## Intermediate documents:
 *.dvi
@@ -240,3 +241,12 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+
+# other files than .tex
+\!*.tex
+Algebre_et_geometrie/.debris/*
+Algebre_et_geometrie/Cours/*
+Analyse\ I/.debris/*
+Calcul_Integral/*
+Logique\ I/*
