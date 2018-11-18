@@ -2424,7 +2424,44 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \medbreak
 
 \item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
-\red{Figure 2}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.65]
+	\node (E) at (0,0) {$\{e\}$};
+	\node (1234) at (-9,1.75) {$\gen{(12)(34)}$};
+	\node (1324) at (-6,1.75) {$\gen{(13)(24)}$};
+	\node (1423) at (-3,1.75) {$\gen{(14)(23)}$};
+	\node (123) at (0,3.5) {$\gen{(123)}$};
+	\node (124) at (3,3.5) {$\gen{(124)}$};
+	\node (134) at (6,3.5) {$\gen{(134)}$};
+	\node (234) at (9,3.5) {$\gen{(234)}$};
+	\node (V) at (-6,4.75) {$V$};
+	\node (A4) at (0,7) {$\A_4$};
+	
+	
+	\draw[->,>=latex] (E) to (1234);
+	\draw[->,>=latex] (E) to (1324);
+	\draw[->,>=latex] (E) to (1423);
+	\draw[->,>=latex] (E) to (123);
+	\draw[->,>=latex] (E) to (124);
+	\draw[->,>=latex] (E) to (134);
+	\draw[->,>=latex] (E) to (234);
+	\draw[->,>=latex] (1234) to (V);
+	\draw[->,>=latex] (1324) to (V);
+	\draw[->,>=latex] (1423) to (V);
+	\draw[-,dashed]   (1234) -- (1324);
+	\draw[-,dashed]   (1324) -- (1423);
+	\draw[->,>=latex] (V) to (A4);
+	\draw[->,>=latex] (123) to (A4);
+	\draw[->,>=latex] (124) to (A4);
+	\draw[->,>=latex] (134) to (A4);
+	\draw[->,>=latex] (234) to (A4);
+	\draw[-,dashed]   (123) -- (124);
+	\draw[-,dashed]   (124) -- (134);
+	\draw[-,dashed]   (134) -- (234);
+	\end{tikzpicture}
+\end{center}
+
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
 
