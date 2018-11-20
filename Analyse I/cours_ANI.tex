@@ -48,6 +48,7 @@
 \newcommand{\T}{\mathcal{T}}
 \newcommand{\U}{\mathcal{U}}
 \renewcommand{\L}{\mathcal{L}}
+\renewcommand{\S}{\mathfrak{S}}
 \newcommand{\displayastyle}{\displaystyle}
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
@@ -1405,7 +1406,7 @@ $$\partial(g\circ f)_a = \partial g_{f(a)}\circ \partial f_a$$
 
 \begin{remar}[Cas particulier]
 Soit $f:\U\subseteq \R^n \rightarrow \R^p$ avec $f(x_1,\ldots, x_n)\mapsto (f_1(x_1,\ldots, x_n),\ldots, f_p(x_1,\ldots, x_n))$.\\
-$f$ est continue / différentiable en $a$ ssi tous les $f_i$ sony continues / différentiables en $a$.
+$f$ est continue / différentiable en $a$ ssi tous les $f_i$ sont continues / différentiables en $a$.
 $$\norm{f(u)-f(a)} = \sup_i \abs{f_i(u)-f_i(a)}$$
 $\partial f_a \in \L(\R^n, \R^p)$ et :
 \begin{align*}
@@ -1472,7 +1473,7 @@ $$f(b)-f(a)=\int_0^1df_{a+s(b-a)}(b-a)ds$$
 \section{Différentielle d'ordre supérieur}
 
 \begin{defi}
-Soit $f: \U \subseteq E \rightarrow F$ ($E,F normés$) différentiable sur $\U$.\\
+Soit $f: \U \subseteq E \rightarrow F$ ($E,F$ normés) différentiable sur $\U$.\\
 Si 
 $$u\in \U \mapsto df_u\in \L_c(E,F)$$
 est une application différentiable en $a$ alors on dira que $f$ est différentiable à l'ordre $2$.\\
@@ -1485,13 +1486,94 @@ Puis par récurrence, on est $C^n$ et enfin $C^\infty$ (si $\forall n \in n$ $C^
 Si $f$ est différentiable deux fois, alors $d^2f(a)$ est bilinéaire \textbf{symétrique}.
 \end{thm}
 
+\begin{cor}
+$f$ est différentielle à l'ordre $n$ en $a$, alors $d^nf$ est une application $n$-linéaire continue de $E$ dans $F$ \textbf{symétrique} :
+$$d^nf(h_1,\ldots, h_n) = d^nf(h_{\sigma(1)},\ldots, h_{\sigma(1)})$$
+Pour tout $\sigma \in \S_n$
+\end{cor}
 
+\begin{remar}[Cas particulier]
+Soit $f : \U \subseteq \R^n\rightarrow \R^p$. $f$ est différentiable d'ordre 2 équivalent à $f_i$ ($0\leq i \leq n$)est différentiable d'ordre 2.\\
+On a pour $f(u)=v=(f_1(x_1,\ldots, x_n), \ldots,f_p(x_1,\ldots, x_n))$ :
+$$d^2 f_a \Leftrightarrow (\frac{\partial^2f}{\partial x_i \partial x_j})_{i,j}$$
+On l'appelle la matrice symétrique.
+\end{remar}
 
+\subsection{Formules de Taylor}
 
+\begin{thm}[Taylor-Young]
+Soit $f$ différentiable à l'ordre 2 en $a$ alors :
+$$f(a+h)-f(a)-df_a(h)-\fracun{2}d^2f_a(h,h)=N_E(h)^2\epsilon()$$
+Et à l'ordre $n$ :
+$$f(a+h)= f(a)+df_a(h)+\ldots + \frac{d^nf_a}{n!}(h,\ldots, h)+N_E(h)^n\epsilon()$$
+\end{thm}
 
+\begin{thm}[Taylor Reste Intégrale]
+Soit $f$ de classe $\C^2$ sur le segment $[a,b]$ ($b=a+h$) dans un Banach alors :
+$$f(a+h)-f(a)-df_a(h)=\int_0^1\frac{(1-s)}{1!}d^2f_{a+sh}(h,h)ds$$
+Et à l'ordre $n$ :
+$$f(a+h)= f(a)+df_a(h)+\ldots + \frac{d^nf_a}{n!}(h,\ldots, h)+\int_0^1\frac{(1-s)^n}{n!}d^{n+1}f_{a+sh}(h,\ldots, h)ds$$
+\end{thm}
 
+\begin{thm}[Taylor-Lagrange]
+Soit $f$ différentiable à l'ordre 2 sur $[a,b]$ et $\norm{d^2f_c}\leq M$, $c\in [a,b]$, alors :
+$$N_F(f(a+h)-f(a)-df_a(h)) \leq M N_E(h)^2$$
+Et à l'ordre $n$ :
+$$N_F(f(a+h)-f(a)-\ldots-\frac{d^nf_a}{n!}(h,\ldots, h)) \leq \frac{M}{(n+1)!} N_E(h)^{n+1}$$
+\end{thm}
 
+\begin{lemme}
+Soit $f$ tq $f(a)=0$ et $df_a = 0$. Si :
+$$\frac{\norm{df_{a+h}}}{N_E(h)^{n-1}}\rightarrow 0$$
+alors 
+$$\frac{N_F(f(a+h))}{N_E(h)^n}\rightarrow 0$$
+\end{lemme}
 
+\subsection{Application}
+
+\subsubsection{Recherche d'extrema locaux}
+On prend $f : \U \subseteq E \rightarrow \R$.
+
+\begin{defi}
+$f$ a un minimum local en $a \in \U$ ssi $\forall u \in V_a$(voisinage de $a$) $\subseteq \U$ $f(u) \geq f(a)$\\
+$f$ a un maximum local en $a \in \U$ ssi $\forall u \in V_a$(voisinage de $a$) $\subseteq \U$ $f(u) \leq f(a)$
+\end{defi}
+
+\begin{propo}
+Si $f$ est différentiable en $a$ alors $df_a=0$
+\end{propo}
+
+\begin{propo}
+Si $f$ est différentiable en $a$ à l'ordre 2, alors $df_a = 0$ et $d^2f_a(h,h) \geq 0$ (minimum local) ou $d^2f_a(h,h) \leq 0$ (maximum local).\\
+$d^2f_a$ est une forme bilinéaire positive (minimum) ou négative (maximum).
+\end{propo}
+
+\begin{propo}
+Soit $g(t)=f(a+th)-f(a)$. On a :
+$$g(t)=df_a(th)+N_E(th)+\epsilon (th)$$
+On a donc :
+$$g(t)\geq g(0)=0 \Leftrightarrow df_a(h)+N_E(h)\epsilon(th)\geq 0$$
+Donc $\forall h$ $df_a(h)\geq 0$ et en particulier $df_a(-h)=-df_a(h)\geq 0$.\\
+Donc $\forall h$ $df_a(h)=0$
+\end{propo}
+
+\begin{propo}
+Soit $g(t)=f(a+th)-f(a)-tdf_a(h)-t^2d^2f_a(h,h)-t^2N_E(h)^2\epsilon (th)$. On a :
+$$g(t)\geq g(0)=0 \Leftrightarrow d^2f_a(h)\leq N_E(h)\epsilon(th)$$
+D'où le signe de $d^2f_a(h,h)$ ($h$ sur une sphère assez petite donc pour tout $h$).
+\end{propo}
+
+\begin{defi}
+Si $B$ bilinéaire (symétrique) continue sur $E$, alors $B$ est dite non-dégénérée si $u\mapsto B(u,\cdot)$ induit un isomorphisme bi-continue (homéo-linéaire) de $E$ dans $\L_c(E,\R)$
+\end{defi}
+
+\begin{remar}
+Si $E=\R^n$ alors $B(u,u)\geq mN_E(u),~m>0$.
+\end{remar}
+
+\begin{thm}
+Si $f$ est différentiable de différentielle nulle, différentiable à l'ordre 2 en $a$ et que $d^2f_a$ est bilinéaire (symétrique) non dégénéré et positive (ou négative) alors $f$ a un extremum local en $a$.
+\end{thm}
 
 
 
