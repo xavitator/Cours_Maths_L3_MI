@@ -2729,7 +2729,7 @@ On note $A^*$ l'ensemble des éléments inversibles.
 \end{definition}
 
 \begin{remarque}
-$A^*$ est un groupe pour la multiplication
+$A^*$ est un groupe pour la multiplication.
 \end{remarque}
 
 \begin{exemple}
@@ -2738,7 +2738,7 @@ $A^*$ est un groupe pour la multiplication
 
 \medbreak
 
-\item  on a:
+\item  On a:
 \begin{align*}
 (\Z/n\Z)^* &= \Ens{\ol{a} \in \Z/n\Z \big| \exists \ol{a'}	\quad	\text{tel que}	\quad	\ol{a}\ol{a'} = \ol{1}}
 \\
@@ -2756,7 +2756,7 @@ On peut montrer qu'en fait $(\Z/p\Z)^*$ est \slign{cyclique} d'ordre $p - 1$
 \end{exemple}
 
 \begin{defi}
-Un \textbf{corps} est un anneau $A$ où $1\neq 0$ et tout élément non nul est inversible.
+Un \textbf{corps commutatif} est un anneau commutatif $A$ où $1\neq 0$ et tout élément non nul est inversible.
 \end{defi}
 
 \begin{exem}
@@ -2764,7 +2764,7 @@ Si $p$ est premier, l'anneau $\Z/p\Z$ est un corps. Les anneaux $\Q, \R, \C$ son
 \end{exem}
 
 \begin{thm}
-Si $K$ est un corps (commutatif) fini (i.e $K$ n'a qu'un nombre fini d'éléments), alors $K^*=K\backslash \{0\}$ est cyclique.\\
+Si $K$ est un corps commutatif fini (i.e $K$ n'a qu'un nombre fini d'éléments), alors $K^*=K\backslash \{0\}$ est cyclique.\\
 En particulier, si $p$ est premier, le groupe $(\Z/p\Z)^*$ est cyclique d'ordre $p-1$.
 \end{thm}
 
@@ -2773,13 +2773,13 @@ Si $A$ est un anneau, on a un morphisme naturel
 \[
 A^* \rightarrow \Aut\pa{(A, +)}, 	\quad	a \mapsto (b \mapsto ab)
 \]
-En effet, on a $a(b+b') = ab + ab'$ et $(aa') b = a(a'b),	\quad	\forall a, a' \in A, \; \forall b, b' \in A$
+En effet, on a $a(b+b') = ab + ab'$ et $(aa') b = a(a'b),	\quad	\forall a, a' \in A^*, \; \forall b, b' \in A$
 \end{remarque}
 
 \begin{lemme}
 Le morphisme naturel
 \begin{align*}
-(\Z/n\Z)^* &\rightarrow \Aut(\Z/n\Z)
+f: (\Z/n\Z)^* &\rightarrow \Aut(\Z/n\Z)
 \\
 \bar{a} &\mapsto (\bar{b} \mapsto \bar{a}\bar{b})
 \end{align*}
@@ -2817,7 +2817,7 @@ Comme $\Aut(\Z/q\Z)$ est cyclique d'ordre $q - 1$, il existe un
 \[
 u : \Z/p\Z \rightarrow \Aut(\Z/q\Z)
 \]
-non trivial ssi $\Z/(q-1)\Z$ admet un sous-groupe d'ordre $p$.\\
+non trivial ssi $\Z/(q-1)\Z$ admet un sous-groupe d'ordre $p$\\
 ssi $p$ divise $q - 1$ ssi $q \equiv 1 \mod p$. Donc pour $p<q$ :\\
 \begin{itemize}
 \item $q\neq 1 \mod p$ $\Rightarrow$ tout groupe d'ordre $pq$ est cyclique.
@@ -2836,7 +2836,7 @@ Soit $G$ un groupe d'ordre $15=3\x 5$. On a $5\neq 1 \mod 3$. Donc par le théor
 \end{exemple}
 
 \begin{demonstration}
-Le premier théorème de Sylow nous affirme l'existence d'au moins un sous-groupe $P$ d'ordre $p$ et d'au moins un sous-groupe $Q$ d'ordre $q$. Tous deux sont d'ordre cycliques et isomorphes à $\Z/p\Z$ et $\Z/q\Z$ respectivement. Remarquons que comme $\pgcd(p,q) = 1$, on a $P \cap Q = \ens{e}$\\
+Le premier théorème de Sylow nous affirme l'existence d'au moins un sous-groupe $P$ d'ordre $p$ et d'au moins un sous-groupe $Q$ d'ordre $q$. Tous deux sont cycliques et isomorphes à $\Z/p\Z$ et $\Z/q\Z$ respectivement. Remarquons que comme $\pgcd(p,q) = 1$, on a $P \cap Q = \ens{e}$\\
 Enfin $P$ et $Q$ engendrent le sous-groupe $G$, seul sous-groupe contenant strictement $P$ et $Q$.\\
 Le 3ème théorème de Sylow nous indique si $n_q(G)$ est le nombre de $q$-Sylow de $G$, alors $n_q(G)$ divise $p$ est est congru à 1 modulo $q$.\\
 Puisque $p < q$, la seule possibilité est $n_q(G) = 1$. Ainsi $G$ admet $Q$ pour $q$-Sylow unique et $Q$ est donc distingué dans $G$.\\
@@ -2887,7 +2887,7 @@ Soit $G$ un groupe d'ordre $p^2$. On va montrer que pour tout $x \in G$, le cent
 \Z_G(x) = \Ens{y \in G \big| xy = yx}
 \]
 est le groupe $G$ tout entier.\\
-Soit $x \in G$, si $x \in Z(G)$, alors $Z_G(x) = G$ comme annoncé.\\
+Soit $x \in G$. Si $x \in Z(G)$, alors $Z_G(x) = G$ comme annoncé.\\
 Supposons donc que $x \notin Z(G)$. Alors $Z_G(x)$ est strictement plus grand que $Z(G)$ car il contient $Z(G)$ et en plus l'élément $x$. Or les ordres de $Z(G)$ et $Z_G(x)$ divisent $p^2$ et d'après le lemme précédent, l'ordre de $Z(G)$ est $\geq p$. Donc $\abs{Z_G(x)}>p$ et divise $p^2=|G|$. La seule possibilité est $\abs{Z_G(x)} = p^2$ et $Z_G(x)= G$.
 \end{demonstration}
 
@@ -2898,9 +2898,9 @@ Tout groupe d'ordre $p^2$ est ou bien cyclique isomorphe à $\Z/p^2\Z$ ou bien i
 \begin{demonstration}
 Comme l'ordre d'un élément divise $p^2$, deux cas sont possibles:
 \begin{itemize}
-\item 1er cas: Il existe un élément d'ordre $p^2$ et $G \simeq \Z/p^2\Z$ est cyclique
+\item 1er cas: Il existe un élément d'ordre $p^2$ et $G \simeq \Z/p^2\Z$ est cyclique.
 
-\item 2ème cas : Tout élément autre que $e$ est d'ordre $p$
+\item 2ème cas : Tout élément autre que $e$ est d'ordre $p$.
 \end{itemize}
 Soient $x$ et $y$ deux éléments d'ordre $p$ et $H_1$ et $H_2$ les sous-groupes qu'ils engendrent.\\
 On peut choisir $y$ de telle façon qu'il ne soit pas une puissance de $x$.\\
