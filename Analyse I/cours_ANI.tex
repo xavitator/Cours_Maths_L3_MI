@@ -1282,7 +1282,7 @@ Cherchons ce que veut dire différentielle pour $f$ d'un espace normé dans un a
 \section{Une différentielle}
 
 \begin{propr}
-$$\frac{f(x)-f(a)}{x-a}=l \Leftrightarrow \frac{f(x)-f(a)}{x-a}-l=\epsilon(x)\underset{x\rightarrow a}{\rightarrow} 0$$
+$$\lim\limits_{x \rightarrow a}\frac{f(x)-f(a)}{x-a}=l \Leftrightarrow \frac{f(x)-f(a)}{x-a}-l=\epsilon(x)\underset{x\rightarrow a}{\rightarrow} 0$$
 
 On a donc :
 $$f(x)-f(a)=l(x-a)+(x-a)\epsilon(x)$$
@@ -1334,7 +1334,7 @@ $$x_i \mapsto f(a_1,...a_{i-1},x_i,a_{i+1},...,a_n)$$
 \begin{defi}
 Si $f$ est différentiable en $a$ (selon la propriété juste avant), alors les applications partielles sont différentiables et 
 $$df_a= \partial_1f_a+\partial_2f_a$$
-avec $d_1$ la différentielle selon $E_1$ et $d_2$ la différentielle selon $E_2$.\\
+avec $\partial_1$ la différentielle selon $E_1$ et $\partial_2$ la différentielle selon $E_2$.\\
 Dans $\R^n$, on a :
 $$df_a\Leftrightarrow (\frac{\partial f}{\partial x_1}(a),...,\frac{\partial f}{\partial x_n}(a))$$
 ou 
@@ -1385,35 +1385,37 @@ Si $f$ est différentiable en $a$ alors $f$ est continue en $a$.
 
 \begin{propr}
 \begin{align*}
-\partial(\lambda f)_a&=\lambda \partial f_a\\
-\partial (f+g)_a &=\partial f_a + \partial g_a
+d(\lambda f)_a&=\lambda d f_a\\
+d (f+g)_a &=d f_a + d g_a
 \end{align*}
 \end{propr}
 
 \begin{propr}
-Soit $B$ est $f$ bilinéaire continue sur $F$, on a :
+Soit $B$ une forme bilinéaire continue sur $F$, on a :
 $$\abs{B(v,w)}\leq \norm{B}N_F(v)\x N_F(w)$$
 et $B$ est bilinéaire (c'est à dire linéaire selon chacune des variables).\\
 Alors
-$$\partial (B(f,g))_a = B(f(a),\partial g_a)+ B(\partial f_a, g(a))$$
+$$d (B(f,g))_a = B(f(a),d g_a)+ B(d f_a, g(a))$$
+Correspondance avec la dérivée du produit en dimension 1.
 \end{propr}
 
 \begin{thm}[Différentiation des composées (Chain Rule)]
 Soient $f:\U \subseteq E \rightarrow F$ différentiable en $a\in \U$ et $g:\mathcal{V} \subseteq F \rightarrow G$ différentiable en $b=f(a)\in \mathcal{V}$.\\
 Alors $g\circ f$ est différentiable en $a$ de différentielle 
-$$\partial(g\circ f)_a = \partial g_{f(a)}\circ \partial f_a$$
+$$d(g\circ f)_a = d g_{f(a)}\circ d f_a$$
+Correspondance avec la dérivée de la composée en dimension 1.
 \end{thm}
 
 \begin{remar}[Cas particulier]
 Soit $f:\U\subseteq \R^n \rightarrow \R^p$ avec $f(x_1,\ldots, x_n)\mapsto (f_1(x_1,\ldots, x_n),\ldots, f_p(x_1,\ldots, x_n))$.\\
 $f$ est continue / différentiable en $a$ ssi tous les $f_i$ sont continues / différentiables en $a$.
 $$\norm{f(u)-f(a)} = \sup_i \abs{f_i(u)-f_i(a)}$$
-$\partial f_a \in \L(\R^n, \R^p)$ et :
+$d f_a \in \L(\R^n, \R^p)$ et :
 \begin{align*}
-\partial f_a (h_1,\ldots, h_n)&=(\partial f_1(a) (h_1,\ldots, h_n),\ldots, \partial f_p(a) (h_1,\ldots, h_n))
+d f_a (h_1,\ldots, h_n)&=(d f_1(a) (h_1,\ldots, h_n),\ldots, d f_p(a) (h_1,\ldots, h_n))
 &=(h_1\frac{\partial f_1}{x_1}(a)+\ldots + h_n\frac{\partial f_1}{x_n}(a), \ldots)
 \end{align*}
-On peut y associer une matrice, la matrice Jacobienne ($J_{f_a}$) avec $\frac{\partial f_i}{\partial x_j}$ avec $i$ la ligne et $j$ la colonne.\\
+On peut y associer une matrice, la matrice Jacobienne ($J_{f_a}$) avec $\displayastyle\frac{\partial f_i}{\partial x_j}$ avec $i$ la ligne et $j$ la colonne.\\
 $d(g\circ f)_a$ a pour matrice $J_g(f(a)) \x J_f(a)$.
 \end{remar}
 
@@ -1429,21 +1431,23 @@ $$\exists c \in ]a,b[~tq~f(b)-f(a)=f'(c)(b-a)$$
 \begin{thm}[Énoncé 2]
 $f$ continue sur $I=[a,b]$, dérivable sur $]a,b[$, avec $\abs{f'(x)}\leq M$, alors :
 $$\abs{f(b)-f(a)}\leq M (b-a)$$
-Souvent appliqué avec $f'$ continue sur $[a,b]$, $i.e$ $f\in C^1([a,b])$.
+Souvent appliqué avec $f'$ continue sur $[a,b]$, $i.e$ $f\in  \mathcal{C}^1([a,b])$.
 \end{thm}
 
 \begin{thm}[Énoncé 3 : Formule de Taylor avec reste intégrale]
-Soit $f\in C^1([a,b])$, on a :
+Soit $f\in \mathcal{C}^1([a,b])$, on a :
 $$f(b)-f(a)=(b-a)\int_0^1f'(a+s(b-a))ds$$
 \end{thm}
 
-Soit $f:\U \subseteq E \rightarrow \R$.\\
+\noindent Soit $f:\U \subseteq E \rightarrow \R$.\\
 Si $a,b\in \U$ et que $[a,b]\subseteq \U$\\
-Posons $\phi(t)=f(a+t(b-a))$, $t\in [0,1]$.
+Posons $\phi(t)=f(a+t(b-a))$, $t\in [0,1]$.\\
+On utilisera en générale la fonction $\phi$ pour la formule :
+$$f(b)-f(a)=(b-a)\int_0^1\phi(s)ds$$
 
 \begin{propo}
 Si $f$ (numérique) $\U\subseteq E \rightarrow \R$ et continue sur $[a,b]\subseteq \U$ et différentiable sur $[a,b]$, alors :
-$$\exists c \in [a,b]~tq~f(b)-f(a)=\partial f_c(b-a)$$
+$$\exists c \in [a,b]~tq~f(b)-f(a)=d f_c(b-a)$$
 \end{propo}
 
 \begin{remar}
@@ -1461,7 +1465,7 @@ $$N_F(f(b)-f(a))\leq M N_E(b-a)$$
 \begin{remar}
 \begin{enumerate}
 \item Si $f$ est de différentielle nulle sur $\U$, alors $f$ est une constante sur $\U$.
-\item Si $f$ est $C^1$ ($i.e$ $f$ est continue, différentiable en tout point de $\U$ et que sa différentielle est continue sur $\U$) alors $\sup_{c \in [a,b]}\norm{df_c} \leq M$, pour $M>0$.
+\item Si $f$ est $\mathcal{C}^1$ ($i.e$ $f$ est continue, différentiable en tout point de $\U$ et que sa différentielle est continue sur $\U$) alors $\sup_{c \in [a,b]}\norm{df_c} \leq M$, pour $M>0$.
 \end{enumerate}
 \end{remar}
 
@@ -1476,10 +1480,10 @@ $$f(b)-f(a)=\int_0^1df_{a+s(b-a)}(b-a)ds$$
 Soit $f: \U \subseteq E \rightarrow F$ ($E,F$ normés) différentiable sur $\U$.\\
 Si 
 $$u\in \U \mapsto df_u\in \L_c(E,F)$$
-est une application différentiable en $a$ alors on dira que $f$ est différentiable à l'ordre $2$.\\
+est une application différentiable sur $E$ alors on dira que $f$ est différentiable à l'ordre $2$.\\
 Si $df$ est différentiable à l'ordre $n$, alors $f$ est différentiable à l'ordre $n+1$.\\
 Si, de plus, la différentielle de la différentielle est continue sur $\U$, on dira que $f$ est de classe $C^2$.\\
-Puis par récurrence, on est $C^n$ et enfin $C^\infty$ (si $\forall n \in n$ $C^n$).
+De la même façon, si on est $\mathcal{C}^n$, on est $C^\infty$ (si $\forall n \in n$ $\mathcal{C}^n$).
 \end{defi}
 
 \begin{thm}[Schwarz]
@@ -1509,9 +1513,9 @@ $$f(a+h)= f(a)+df_a(h)+\ldots + \frac{d^nf_a}{n!}(h,\ldots, h)+N_E(h)^n\epsilon(
 \end{thm}
 
 \begin{thm}[Taylor Reste Intégrale]
-Soit $f$ de classe $\C^2$ sur le segment $[a,b]$ ($b=a+h$) dans un Banach alors :
+Soit $f$ de classe $\mathcal{C}^2$ sur le segment $[a,b]$ ($b=a+h$) dans un Banach alors :
 $$f(a+h)-f(a)-df_a(h)=\int_0^1\frac{(1-s)}{1!}d^2f_{a+sh}(h,h)ds$$
-Et à l'ordre $n$ :
+Et à l'ordre $n+1$ :
 $$f(a+h)= f(a)+df_a(h)+\ldots + \frac{d^nf_a}{n!}(h,\ldots, h)+\int_0^1\frac{(1-s)^n}{n!}d^{n+1}f_{a+sh}(h,\ldots, h)ds$$
 \end{thm}
 
@@ -1540,17 +1544,17 @@ $f$ a un maximum local en $a \in \U$ ssi $\forall u \in V_a$(voisinage de $a$) $
 \end{defi}
 
 \begin{propo}
-Si $f$ est différentiable en $a$ alors $df_a=0$
+Si $f$ est différentiable en $a$ un extremum local, alors $df_a=0$
 \end{propo}
 
 \begin{propo}
-Si $f$ est différentiable en $a$ à l'ordre 2, alors $df_a = 0$ et $d^2f_a(h,h) \geq 0$ (minimum local) ou $d^2f_a(h,h) \leq 0$ (maximum local).\\
+Si $f$ est différentiable en $a$, un extremum local, à l'ordre 2, alors $df_a = 0$ et $d^2f_a(h,h) \geq 0$ (minimum local) ou $d^2f_a(h,h) \leq 0$ (maximum local).\\
 $d^2f_a$ est une forme bilinéaire positive (minimum) ou négative (maximum).
 \end{propo}
 
 \begin{propo}
 Soit $g(t)=f(a+th)-f(a)$. On a :
-$$g(t)=df_a(th)+N_E(th)+\epsilon (th)$$
+$$g(t)=df_a(th)+N_E(th)\epsilon (th)$$
 On a donc :
 $$g(t)\geq g(0)=0 \Leftrightarrow df_a(h)+N_E(h)\epsilon(th)\geq 0$$
 Donc $\forall h$ $df_a(h)\geq 0$ et en particulier $df_a(-h)=-df_a(h)\geq 0$.\\
@@ -1558,7 +1562,7 @@ Donc $\forall h$ $df_a(h)=0$
 \end{propo}
 
 \begin{propo}
-Soit $g(t)=f(a+th)-f(a)-tdf_a(h)-t^2d^2f_a(h,h)-t^2N_E(h)^2\epsilon (th)$. On a :
+Soit $g(t)=f(a+th)-f(a)-tdf_a(h)-\fracun{2}t^2d^2f_a(h,h)-t^2N_E(h)^2\epsilon (th)$. On a :
 $$g(t)\geq g(0)=0 \Leftrightarrow d^2f_a(h)\leq N_E(h)\epsilon(th)$$
 D'où le signe de $d^2f_a(h,h)$ ($h$ sur une sphère assez petite donc pour tout $h$).
 \end{propo}
