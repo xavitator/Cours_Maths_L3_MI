@@ -21,7 +21,7 @@ re: fclean all
 
 .PHONY: docker
 docker:
-	docker build -t latex_math -f docker/Dockerfile .
+	docker build -t latex_math .
 
 .PHONY: docker-run
 docker-run: docker
