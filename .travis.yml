@@ -1,3 +1,5 @@
 
+os: linux
+
 install: make docker
 script: make docker-run
