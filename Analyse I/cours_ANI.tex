@@ -1441,7 +1441,7 @@ $$f(b)-f(a)=(b-a)\int_0^1f'(a+s(b-a))ds$$
 
 \noindent Soit $f:\U \subseteq E \rightarrow \R$.\\
 Si $a,b\in \U$ et que $[a,b]\subseteq \U$\\
-Posons $\phi(t)=f(a+t(b-a))$, $t\in [0,1]$.\\
+Posons $\phi(t)=f'(a+t(b-a))$, $t\in [0,1]$.\\
 On utilisera en générale la fonction $\phi$ pour la formule :
 $$f(b)-f(a)=(b-a)\int_0^1\phi(s)ds$$
 
@@ -1521,8 +1521,8 @@ $$f(a+h)= f(a)+df_a(h)+\ldots + \frac{d^nf_a}{n!}(h,\ldots, h)+\int_0^1\frac{(1-
 
 \begin{thm}[Taylor-Lagrange]
 Soit $f$ différentiable à l'ordre 2 sur $[a,b]$ et $\norm{d^2f_c}\leq M$, $c\in [a,b]$, alors :
-$$N_F(f(a+h)-f(a)-df_a(h)) \leq M N_E(h)^2$$
-Et à l'ordre $n$ :
+$$N_F(f(a+h)-f(a)-df_a(h)) \leq \frac{M}{2} N_E(h)^2$$
+Et à l'ordre $n +1$ :
 $$N_F(f(a+h)-f(a)-\ldots-\frac{d^nf_a}{n!}(h,\ldots, h)) \leq \frac{M}{(n+1)!} N_E(h)^{n+1}$$
 \end{thm}
 
