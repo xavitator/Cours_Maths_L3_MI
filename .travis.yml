@@ -1,0 +1,4 @@
+sudo : true
+
+install : make docker
+script : make docker-run
