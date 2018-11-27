@@ -1572,11 +1572,71 @@ Si $B$ bilinéaire (symétrique) continue sur $E$, alors $B$ est dite non-dégé
 \end{defi}
 
 \begin{remar}
-Si $E=\R^n$ alors $B(u,u)\geq mN_E(u),~m>0$.
+Si $E=\R^n$ alors $B(u,u)\geq mN_E(u)^2,~m>0$.
 \end{remar}
 
 \begin{thm}
 Si $f$ est différentiable de différentielle nulle, différentiable à l'ordre 2 en $a$ et que $d^2f_a$ est bilinéaire (symétrique) non dégénéré et positive (ou négative) alors $f$ a un extremum local en $a$.
+\end{thm}
+
+\begin{remar}[Points (critiques)]
+$a$ tq $df_a = 0$.\\
+Dans $\R^n$, si $d^2f_a$ existe et est non dégénéré (Hessien $\neq 0$), alors elle a une signature $(p,q)$, $p+q=n$ :
+$$d^2f_a(h) = \sum_{i=0}^p\lambda_i h^2 - \sum_{j=0}^q \mu_j h_{p+j}^2$$
+On l'appelle le point "selle" ou le point "col".
+\end{remar}
+
+\section{Supplément gratuit}
+
+\subsection{Fonctions implicites / Inversion locale}
+
+Exemple caractéristique d'étude : $x^2+ y^2 = 1$, on a :
+\begin{align*}
+y&= \pm \sqrt{1-x^2}\\
+ou\\
+x&=\pm \sqrt{1-y^2}
+\end{align*}
+
+Posons $f : \mathcal{W}\subseteq E\x F \rightarrow G$ (normés), et $f(a,b)=0$, $(a,b)\in \mathcal{W}$.
+
+\begin{thm}
+Si $f$ est continue sur $\mathcal{W}$, si $\partial_2 f$ existe et est continue au voisinage de $(a,b)$ et si $\partial_2 f_{(a,b)}$ est un isomorphisme bi-continue, si $F$ et $G$ sont des espaces de Banach.\\
+Alors il existe $\mathcal{U}$ un voisinage de $a$ et $\mathcal{V}$ un voisinage de $b$ tq $\mathcal{U}\x \mathcal{V} \subseteq \mathcal{W}$, avec :
+$$(u,v)\in \mathcal{U}\x \mathcal{V}\text{ et } f(u,v)=0 \Leftrightarrow v=\varphi(u)$$
+avec $\varphi$ une fonction continue sur $\mathcal{U}$.
+\end{thm}
+
+\begin{thm}[Théorème du point fixe avec paramètre]
+$\Lambda$ un espace topologique, $X$ un métrique complet, et $f:\Lambda \x X \rightarrow X$ tq :
+\begin{enumerate}
+\item $\forall \lambda \in \Lambda$ et $u,v \in X$, $d(f(\lambda, x),f(\lambda, y))\leq k d(x,y)$ $k<1$.
+\item $\lambda \in \Lambda \mapsto f(\lambda, u) \in X$ continue en $\lambda$ (quelque soit $u\in X$)
+\end{enumerate}
+Alors, $x_\lambda$ le point fixe de $f(\lambda, x) = x$ dépend de façon continue de $\lambda$.
+\end{thm}
+
+\begin{thm}
+Soit $f:\mathcal{W}\subseteq E\x F \rightarrow G$ continue, différentiable avec des différentielles partielles continues en $(a,b) \in \mathcal{W}$ (où $f(a,b) = 0$) et soit 
+$(a,b)\in \mathcal{U}\x \mathcal{V}\subseteq \mathcal{W}$ et $\varphi$ une application continue telle que $(u,v)\in \mathcal{U}\x \mathcal{V}~f(u,v)=0 \Leftrightarrow v=\varphi(u)$.\\
+Alors $\varphi$ est différentiable en $a$ et $d\varphi_a=-\partial_2^{-1}f_{(a,b)}\circ \partial_1f_{(a,b)}$.
+\end{thm}
+
+\begin{note}
+On a que $f(u,\varphi(u))= 0$ si $\mathcal{U}$ est un voisinage de $a$.\\
+Si on sait que $\varphi$ est différentiable en $a$, alors :
+$$\partial_1 f_{(u,\varphi(u))}+\partial_2 f_{(u,\varphi(u))}\circ d\varphi_u = 0$$
+En particulier, on obtient :
+$$d\varphi_a=-\partial_2^{-1}f_{(a,b)}\circ \partial_1f_{(a,b)}$$
+\end{note}
+
+\begin{thm}
+Soit $f : \mathcal{U}\subseteq E \rightarrow F$, $F$ de Banach. On suppose que $f$ est continue sur $\mathcal{U}$.
+\begin{enumerate}
+\item Si $f$ est différentiable en $a$ et que $df_a$ est une isométrie bi-continue. Alors il existe un voisinage $\mathcal{V}$ de $a$ et $\mathcal{W}$ de $b=f(a)$ tq $f$ est une bijection de $\mathcal{V}$ dans $\mathcal{W}$, bi-continue (dont la différentielle est une isométrie bi-continue), on dit que $f$ est un difféomorphisme local en $a$.
+
+\item Si $df$ existe et est continue sur $\mathcal{U}$ alors $f(\mathcal{U})=\mathcal{V}$ est un ouvert.\\
+Si $f$ est injective sur $\mathcal{U}$ alors $f$ est un difféomorphisme de $\mathcal{U}$ sur $\mathcal{V}$.
+\end{enumerate}
 \end{thm}
 
 
