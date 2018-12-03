@@ -2686,24 +2686,25 @@ u : K \rightarrow \Aut(N), \quad	k \mapsto (n \mapsto k n k^{-1})
 \]
 Alors on a un isomorphisme canonique:
 \[
-\varphi : N \us{u}{\rtimes} K \rightarrow N \os{i}{\rtimes} K = G, \quad	(n,k) \mapsto nk
+\varphi : N \us{u}{\rtimes} K \fong N \os{i}{\rtimes} K = G, \quad	(n,k) \mapsto nk
 \]
 \end{lemme}
 
 \begin{exemple}
-On a $D_n = \vec{\zeta} \ub{\os{i}{\rtimes}}_{N} \ub{\vec{\tau}}_{K}$, où $\zeta$ engendre le sous-groupe des rotations et $\tau$ est une symétrie.\\
-On a $\tau\zeta\tau^{-1} = \zeta^{-1}$. Soit donc 
+On a $D_n = \ub{\pro{\rho}}_{N} \os{i}{\rtimes} \ub{\pro{\tau}}_{K}$, où $\rho$ engendre le sous-groupe des rotations et $\tau$ est une symétrie.\\
+On a $\tau\rho\tau^{-1} = \rho^{-1}$.
+Donc si :
 \[
-u : \vec{\tau} \rightarrow \Aut(\vec{\zeta}), \quad	\tau \mapsto (\zeta^l \mapsto \zeta^{-l})
+u : \pro{\tau} \rightarrow \Aut(\pro{\rho}), \quad	\tau \mapsto (\rho^l \mapsto \rho^{-l})
 \]
-Alors: $D_n \os{\sim}{\leftarrow} \vec{\zeta} \us{u}{\rtimes} \vec{\tau}$\\
-Notons qu'on a $\vec{\zeta} \simeq \Z/n, \quad	\vec{\tau} \simeq \Z/2\Z$ et donc 
+Alors: $D_n \os{\sim}{\leftarrow} \pro{\rho} \us{u}{\rtimes} \pro{\tau}$\\
+Notons qu'on a $\pro{\rho} \simeq \Z/n\Z, \quad	\pro{\tau} \simeq \Z/2\Z$ et donc 
 \[
-D_n \os{\sim}{\leftarrow} \Z/n \us{u}{\rtimes} \Z/2\Z
+D_n \os{\sim}{\leftarrow} \Z/n\Z \us{u}{\rtimes} \Z/2\Z
 \]
 où
 \[
-u : \Z/2\Z \rightarrow \Aut(\Z/n), \quad	I \mapsto (\ol{a} \mapsto -\ol{a})
+u : \Z/2\Z \rightarrow \Aut(\Z/n\Z), \quad	\bar{1} \mapsto (\ol{a} \mapsto -\ol{a})
 \]
 \end{exemple}
 
@@ -2726,12 +2727,12 @@ où $n, n' \in N, \quad k, k' \in K$. Clairement $\varphi$ est surjectif. Le noy
 \section{Les groupes d'automorphismes des groupes cycliques}
 
 \begin{definition}
-Soit $A$ un anneau. Un élément de $A$ est \slign{inversible} s'il existe $a \in A$ tel que $aa' = 1 = a'a$.\\
+Soit $A$ un anneau. Un élément de $a\in A$ est \slign{inversible} s'il existe $a \in A$ tel que $aa' = 1 = a'a$.\\
 On note $A^*$ l'ensemble des éléments inversibles.
 \end{definition}
 
 \begin{remarque}
-$A^*$ est un groupe pour la multiplication
+$A^*$ est un groupe pour la multiplication.
 \end{remarque}
 
 \begin{exemple}
@@ -2740,9 +2741,9 @@ $A^*$ est un groupe pour la multiplication
 
 \medbreak
 
-\item  on a:
+\item  On a:
 \begin{align*}
-(Z/n\Z)^* &= \Ens{\ol{a} \in \Z/n\Z \big| \exists \ol{a'}	\quad	\text{tel que}	\quad	\ol{a}\ol{a'} = \ol{1}}
+(\Z/n\Z)^* &= \Ens{\ol{a} \in \Z/n\Z \big| \exists \ol{a'}	\quad	\text{tel que}	\quad	\ol{a}\ol{a'} = \ol{1}}
 \\
 &= \Ens{\ol{a} \in \Z/n\Z \big| \exists a', k \in \Z		\quad	\text{tel que}		\quad	a'a+kn = 1}	\quad	\text{identité de Bézout}
 \\
@@ -2757,30 +2758,43 @@ On peut montrer qu'en fait $(\Z/p\Z)^*$ est \slign{cyclique} d'ordre $p - 1$
 \end{enumerate}
 \end{exemple}
 
+\begin{defi}
+Un \textbf{corps commutatif} est un anneau commutatif $A$ où $1\neq 0$ et tout élément non nul est inversible.
+\end{defi}
+
+\begin{exem}
+Si $p$ est premier, l'anneau $\Z/p\Z$ est un corps. Les anneaux $\Q, \R, \C$ sont des corps. L'anneau $\Z$ n'est pas un corps car $\Z^*=\{1,-1\}$.
+\end{exem}
+
+\begin{thm}
+Si $K$ est un corps commutatif fini (i.e $K$ n'a qu'un nombre fini d'éléments), alors $K^*=K\backslash \{0\}$ est cyclique.\\
+En particulier, si $p$ est premier, le groupe $(\Z/p\Z)^*$ est cyclique d'ordre $p-1$.
+\end{thm}
+
 \begin{remarque}
 Si $A$ est un anneau, on a un morphisme naturel
 \[
 A^* \rightarrow \Aut\pa{(A, +)}, 	\quad	a \mapsto (b \mapsto ab)
 \]
-En effet, on a $a(b+b') = ab + ab'$ et $(aa') b = a(a'b),	\quad	\forall a, a' \in A, \; \forall b, b' \in A$
+En effet, on a $a(b+b') = ab + ab'$ et $(aa') b = a(a'b),	\quad	\forall a, a' \in A^*, \; \forall b, b' \in A$
 \end{remarque}
 
 \begin{lemme}
 Le morphisme naturel
 \begin{align*}
-(\Z/n\Z)^* &\rightarrow \Aut(\Z/n)
+f: (\Z/n\Z)^* &\rightarrow \Aut(\Z/n\Z)
 \\
-a &\mapsto (b \mapsto ab)
+\bar{a} &\mapsto (\bar{b} \mapsto \bar{a}\bar{b})
 \end{align*}
-est un isomorphisme.
+est un isomorphisme. En particulier, si $p$ est premier, alors $\Aut(\Z/p\Z)$ est cyclique d'ordre $p-1$.
 \end{lemme}
 
 \begin{demonstration}
 Clairement $f$ est un morphisme.\\
-$f$ est injectif car $b \mapsto ab$ est l'identité ssi $a = 1$\\
-Montrons que $f$ est surjectif. Soit $\varphi : \Z/n \rightarrow \Z/n$ un automorphisme. Alors $\varphi(\ol{1})$ est un générateur de $\Z/n$\\
+$f$ est injectif car $\bar{b} \mapsto \bar{a}\bar{b}$ est l'identité ssi $\bar{a}\cdot 1 = 1$\\
+Montrons que $f$ est surjectif. Soit $\varphi : \Z/n\Z \rightarrow \Z/n\Z$ un automorphisme. Alors $\varphi(\ol{1})$ est un générateur de $\Z/n\Z$\\
 Or cela signifie que $\varphi(\ol{1}) = \ol{a}$ pour un $a \in \Z$ tel que $\pgcd(a, n) = 1$\\
-Pour $\ol{b} \in \Z/n$, on a:
+Pour $\ol{b} \in \Z/n\Z$, on a:
 \begin{align*}
 \varphi(\ol{b}) &= \varphi(\ub{1 + 1 + \ldots + 1}_{b}) 
 \\
@@ -2792,22 +2806,26 @@ Pour $\ol{b} \in \Z/n$, on a:
 \\
 &= \pa{f(\ol{a})}(\ol{b})
 \end{align*}
-~
+Donc $\varphi = f(\bar{a})$
 \end{demonstration}
 
 \section{Classification des groupes d'ordre pq, p < q premiers}
 
 \begin{thm}
-Soient $p < q$ premiers et $G$ un groupe d'ordre $pq$. Alors ou bien $G$ est cyclique ou bien isomorphe à un produit semi-direct $\Z/q \us{u}{\rtimes} \Z/p$ pour un $u : \Z/p \rightarrow \Aut(\Z/q)$ non trivial.
+Soient $p < q$ premiers et $G$ un groupe d'ordre $pq$. Alors ou bien $G$ est cyclique ou bien isomorphe à un produit semi-direct $\Z/q\Z \us{u}{\rtimes} \Z/p\Z$ pour un $u : \Z/p\Z \rightarrow \Aut(\Z/q\Z)\cong \Z/(q-1)\Z$ non trivial.
 \end{thm}
 
 \begin{remarque}
-Comme $\Aut(\Z/q)$ est cyclique d'ordre $q - 1$, il existe un 
+Comme $\Aut(\Z/q\Z)$ est cyclique d'ordre $q - 1$, il existe un 
 \[
-u : \Z/p \rightarrow \Aut(\Z/q)
+u : \Z/p\Z \rightarrow \Aut(\Z/q\Z)
 \]
-non trivial ssi $\Z/q-1$ admet un sous-groupe d'ordre $p$.\\
-ssi $p$ divise $q - 1$ ssi $q \equiv 1 \mod p$.\\
+non trivial ssi $\Z/(q-1)\Z$ admet un sous-groupe d'ordre $p$\\
+ssi $p$ divise $q - 1$ ssi $q \equiv 1 \mod p$. Donc pour $p<q$ :\\
+\begin{itemize}
+\item $q\neq 1 \mod p$ $\Rightarrow$ tout groupe d'ordre $pq$ est cyclique.
+\item $q\equiv 1 \mod p$ $\Rightarrow$ tout groupe d'ordre $pq$ est ou bien cyclique ou bien un produit semi-direct $\Z/q\Z \us{u}{\rtimes} \Z/p\Z$
+\end{itemize}
 C'est le cas par exemple pour $pq = 21$ car $7 \equiv 1 \mod 3$.
 \end{remarque}
 
@@ -2816,24 +2834,27 @@ Un groupe d'ordre $6 = 2 \times 3$ est ou bien cyclique ou bien isomorphe à
 \[
 \Z/3 \us{u}{\rtimes} \Z/2 \simeq D_3	\simeq \mathfrak{S}_3, \quad	D_3 \; \text{permute les sommets au triangle}
 \]
+Donc à isomorphisme près, $\Z/6$ et $D_3 \simeq \S_3$ sont les seuls groupes d'ordre 6.\\
+Soit $G$ un groupe d'ordre $15=3\x 5$. On a $5\neq 1 \mod 3$. Donc par le théorème, $G$ est cyclique.
 \end{exemple}
 
 \begin{demonstration}
-Le premier théorème de Sylow nous affirme l'existence d'au moins un sous-groupe $P$ d'ordre $p$ et d'au moins un sous-groupe $Q$ d'ordre $q$. Tous deux sont d'ordre cycliques et isomorphes à $\Z/p$ et $\Z/q$ respectivement. Remarquons que comme $\pgcd(p,q) = 1$, on a $P \cap Q = \ens{e}$\\
-Enfin $P$ et $Q$ engendrent le sous-groupe $\vec{P, Q} = G$, seul sous-groupe contenant strictement $P$ et $Q$.\\
+Le premier théorème de Sylow nous affirme l'existence d'au moins un sous-groupe $P$ d'ordre $p$ et d'au moins un sous-groupe $Q$ d'ordre $q$. Tous deux sont cycliques et isomorphes à $\Z/p\Z$ et $\Z/q\Z$ respectivement. Remarquons que comme $\pgcd(p,q) = 1$, on a $P \cap Q = \ens{e}$\\
+Enfin $P$ et $Q$ engendrent le sous-groupe $G$, seul sous-groupe contenant strictement $P$ et $Q$.\\
 Le 3ème théorème de Sylow nous indique si $n_q(G)$ est le nombre de $q$-Sylow de $G$, alors $n_q(G)$ divise $p$ est est congru à 1 modulo $q$.\\
 Puisque $p < q$, la seule possibilité est $n_q(G) = 1$. Ainsi $G$ admet $Q$ pour $q$-Sylow unique et $Q$ est donc distingué dans $G$.\\
 Nous avons donc
 \begin{align*}
-G &= \vec{P, Q} \us{Q \text{dist}}{=} Q \cdot P = Q \os{i}{\rtimes} P
+G &= P\cdot Q = Q \os{i}{\rtimes} P
 \\
 &\simeq Q \us{u}{\rtimes} P
 \\
-&\simeq \Z/q \us{u}{\simeq} \Z/p
+&\simeq \Z/q\Z \us{u}{\rtimes} \Z/p\Z
 \end{align*}\\
+Pour un $u : \Z/p \rightarrow \Aut (\Z/p) \simeq \Z/(q-1)$.\\
 Si $u$ est trivial, alors
 \[
-\Z/q \us{u}{\rtimes} \Z/p = \Z/q \times \Z/p \simeq \Z/pq
+\Z/q\Z \us{u}{\rtimes} \Z/p\Z \simeq \Z/q\Z \times \Z/p\Z \simeq \Z/pq\Z
 \]
 \end{demonstration}
 
@@ -2855,7 +2876,7 @@ Donc $\abs{Z(G)}$ est congru à 0 modulo $p$, et comme $e \in Z(G)$, l'ordre de 
 \end{demonstration}
 
 \begin{lemme}
-Tout groupe $p^2$ est abélien.
+Tout groupe d'ordre $p^2$ est abélien.
 \end{lemme}
 
 \begin{remarque}
@@ -2867,27 +2888,28 @@ Soit $G$ un groupe d'ordre $p^2$. On va montrer que pour tout $x \in G$, le cent
 \[
 \Z_G(x) = \Ens{y \in G \big| xy = yx}
 \]
-est le groupe $G$ tout entier. soit $x \in G$, si $x \in Z(G)$, alors $Z_G(x) = G$ comme annoncé.\\
-Supposons donc que $x \notin Z(G)$. Alors $Z_G(x)$ est strictement plus grand que $Z(G)$ car il contient $Z(G)$ et en plus l'élément $x$. Or les ordres de $Z(G)$ et $Z_G(x)$ divisent $p^2$ et d'après le lemme précédent, l'ordre de $Z(G)$ est $\geq p$. La seule possibilité est $\abs{Z_G(x)} = p^2$ et $x \in Z(G)$ après tout.
+est le groupe $G$ tout entier.\\
+Soit $x \in G$. Si $x \in Z(G)$, alors $Z_G(x) = G$ comme annoncé.\\
+Supposons donc que $x \notin Z(G)$. Alors $Z_G(x)$ est strictement plus grand que $Z(G)$ car il contient $Z(G)$ et en plus l'élément $x$. Or les ordres de $Z(G)$ et $Z_G(x)$ divisent $p^2$ et d'après le lemme précédent, l'ordre de $Z(G)$ est $\geq p$. Donc $\abs{Z_G(x)}>p$ et divise $p^2=|G|$. La seule possibilité est $\abs{Z_G(x)} = p^2$ et $Z_G(x)= G$.
 \end{demonstration}
 
 \begin{thm}
-Tout groupe d'ordre $p^2$ est ou bien cyclique isomorphe à $\Z/p^2$ ou bien isomorphe à $\Z/p \times \Z/p$
+Tout groupe d'ordre $p^2$ est ou bien cyclique isomorphe à $\Z/p^2\Z$ ou bien isomorphe à $\Z/p\Z \times \Z/p\Z$
 \end{thm}
 
 \begin{demonstration}
 Comme l'ordre d'un élément divise $p^2$, deux cas sont possibles:
 \begin{itemize}
-\item 1er cas: Il existe un élément d'ordre $p^2$ et $G \simeq \Z/p^2$
+\item 1er cas: Il existe un élément d'ordre $p^2$ et $G \simeq \Z/p^2\Z$ est cyclique.
 
-\item 2ème cas : Tout élément autre que $e$ est d'ordre $p$
+\item 2ème cas : Tout élément autre que $e$ est d'ordre $p$.
 \end{itemize}
 Soient $x$ et $y$ deux éléments d'ordre $p$ et $H_1$ et $H_2$ les sous-groupes qu'ils engendrent.\\
 On peut choisir $y$ de telle façon qu'il ne soit pas une puissance de $x$.\\
 Alors comme $y \notin H_1$, le sous-groupe $H_1 \cap H_2$ est strictement plus petit que $H_2$ qui est d'ordre $p$.\\
 Donc $H_1 \cap H_2 = \ens{e}$. De plus, $H_1$ et $H_2$ sont distingués dans $G$ qui est abélien.\\
 Puisque $y \notin H_1$, le groupe $H_1 H_2$ est strictement plus grand que $H_1$ et son ordre divise $p^2$.\\
-Donc $H_1 . H_2 = G$ et 
+Donc $H_1 \cdot H_2 = G$ et on a un isomorphisme $\Z/p \x \Z/p \simeq H_1\x H_2 \fong G$.
 \end{demonstration}
 
 \section{Classification des groupes d'ordre 12}
@@ -2903,23 +2925,40 @@ Tout groupe d'ordre 12 est isomorphe à l'un des uniques groupes suivants:
 
 \item $D_6$
 
-\item $\Z/3 \us{u}{\rtimes} \Z/4$, $u$ non trivial
+\item $\tilde{\S_3} := \Z/3 \us{u}{\rtimes} \Z/4$, $u$ non trivial
 \end{itemize}
 \end{thm}
 
-\begin{demonstration}
-Soit $G$ un groupe d'ordre $12 = 3 \times 2^2$. Soit $H$ un 2-Sylow de $G$ \gray{(il est d'ordre 4)} et soit $K$ un 3-Sylow de $G$ \gray{(il est d'ordre 3)}. D'après le 3ème thm de Sylow, le nombre $n_2(G)$ divise 3 et est congru à 1 modulo 2.\\
-Donc $n_2(G) \in \ens{1, 3}$. De même, le nombre $n_3(G)$ divise 4 et est congru à 1 modulo 3.\\
+\begin{remar}
+Notons que $\Z/3 \times \Z/4 \cong \Z/12$ et $\Z/3 \times \Z/2 \times \Z/2 \cong \Z/6 \x \Z/2$. Ce sont les seuls \sgs abéliens d'ordre $12$ à \isom près.\\
+Le morphisme $u: \Z/4 \rightarrow \Aut(\Z/3)\cong \Z/2$ est l'\textbf{unique} morphisme \textbf{non trivial}.\\
+Le groupe $\tilde{\S_3}$ contient le \sg $N=\gen{(\bar{0}, \bar{2})} \cong \Z/2$ qui est distingué dans $\tilde{\S_3}$.\\
+Le quotient $\tilde{\S_3}/N$ est isomorphe à $\Z/3 \rtimes \Z/2 \cong\S_3$. On a donc ce qu'on appelle une \textbf{suite exacte} :
+$$\{e\} \rightarrow \Z/2 \overset{i}{\rightarrow} \tilde{\S_3} \overset{p}{\rightarrow} \S_3 \rightarrow \{e\}$$
+i.e $i$ est injectif, $p$ est surjectif et $\ker (p)= Im(i)$
+\end{remar}
+
+\begin{demonstration}[Théorème]
+
+Soit $G$ un groupe d'ordre $12 = 3 \times 2^2$. Soit $H$ un 2-Sylow de $G$ \gray{(il est d'ordre 4)} et soit $K$ un 3-Sylow de $G$ \gray{(il est d'ordre 3)}. D'après le 3ème théorème de Sylow, le nombre $n_2(G)$ divise 3 et est congru à 1 modulo 2.\\
+Donc $n_2(G) \in \ens{1, 3}$. De même, le nombre $n_3(G)$ divise 4 et est congru à 1 modulo 3. En outre, $K\cong \Z/3$.\\
 Donc $n_3(G) \in \ens{1, 4}$. En outre, $H$ est d'ordre 4 et donc isomorphe à $\Z/4$ ou à $\Z/2 \times \Z/2$.
-\end{demonstration}
 
 \begin{lemme}
 L'un au moins parmi les groupes $H$ et $K$ est distingué dans $G$.
 \end{lemme}
 
 \begin{demonstration}
-Supposons que $K$ n'est pas distingué. Alors $K$ a 4 sous-groupes conjugués $K = K$, $K_2$, $K_3$, $K_4$.\\
-Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduit à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
+Supposons que $K$ n'est pas distingué. Alors $K$ a 4 sous-groupes conjugués $K = K_1$, $K_2$, $K_3$, $K_4$.\\
+Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduite à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
+
+\red{figure avec les ensembles $K_i$ contenant chacun 2 éléments et ayant pour intersection $e$}\\
+
+Le 2-Sylow $H$ est d'ordre $4$ et $H \cap K_i = \ens{e}, \; \forall i$.\\
+Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.
+\end{demonstration}
+
+$HK$ est un sous-groupe de $G$. Puisque $H \cap K = \ens{e}$, chaque élément de $HK$ a une \textbf{unique} expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
 
 \newcommand\ellipsebyfoci[4]{% options, focus pt1, focus pt2, cste
 	\path[#1] let \p1=(#2), \p2=(#3), \p3=($(\p1)!.5!(\p2)$)
@@ -2967,38 +3006,37 @@ Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces
 	\end{tikzpicture}
 \end{center}
 
-Le 2-Sylow $H$ est d'ordre $4$ et $H \cup K_i = \ens{e}, \; \forall i$.\\
-Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.\\
-Par le lemme, $H \cdot K$ est un sous-groupe de $G$. Puisque $H \cup K = \ens{e}$, chaque élément de $HK$ a une unique expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
 \begin{itemize}
 \item 1er cas: $H$ et $K$ sont tous les deux distingués.\\
-Dans ce cas, on a $hk = kh$, pour tous $h \in H, \; k \in K$, car	\quad	$hkh^{-1}k^{-1} \in  H \cup K = \ens{e}$, avec $hkh^{-1} \in K, \; k^{-1} \in K, khk^{-1} \in H, \; h \in H$\\
-Donc on a un isomorphisme $H \times K \fong HK = G$ et donc $G \simeq \Z/4 \times \Z/3$ ou $G \simeq \Z/2 \times \Z/2 \times \Z/3$.
+Dans ce cas, on a $hk = kh$, pour tous $h \in H, \; k \in K$, car	
+$$hkh^{-1}k^{-1} \in  H \cap K = \ens{e}$$
+avec $hkh^{-1} \in K, \; k^{-1} \in K, khk^{-1} \in H, \; h \in H$\\
+Donc on a un isomorphisme $H \times K \fong HK = G$, $(h,k)\mapsto hk$ et donc $G \simeq \Z/4 \times \Z/3$ ou $G \simeq \Z/2 \times \Z/2 \times \Z/3$, suivant que $H\cong \Z/4$ ou $H\cong \Z/2\x \Z/2$.
 
 \begin{remarque}
 On verra que ce sont les seuls groupes abéliens d'ordre 12.
 \end{remarque}
 
 \item 2ème cas: $H$ est distingué mais $K$ ne l'est pas.\\
-Il y a donc 4 3-Sylow conjugués $K_1, \; K_2, \; K_3, \; K_4$. $G$ agit par conjugaison sur cet ensemble de 4 sous-groupes.\\
-A cette action est associé un morphisme
+Il y a donc 4 3-Sylow conjugués $K_1, \; K_2, \; K_3, \; K_4$. $G$ agit par conjugaison sur cet ensemble $X$ de 4 sous-groupes conjugués.\\
+À cette action est associé un morphisme de groupes
 \[
 \phi : G \longrightarrow \mathfrak{S}_4
 \]
-On va montrer que $\phi$ contient un isomorphisme de $G$ sur $\A_4$, le stabilisateur de $K_1$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est 4 et c'est aussi l'indice de $N_G(K_i)$ dans $G$.\\
+On va montrer que $\phi$ induit un isomorphisme de $G$ sur $\A_4 \subseteq \S_4$. Le stabilisateur de $K_i$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est $4$ et c'est aussi l'indice de $N_G(K_i)$ dans $G$ (le cardinal d'une orbite est l'indice du stabilisateur de tout point de l'orbite).\\
 Donc $N_G(K_i)$ est d'ordre 3 et $N_G(K_i) = K_i$. L'intersection des $N_G(K_i)$ est l'intersection des $K_i$, c'est-à-dire $\ens{e}$.\\
 Donc 
 \[
 \Ker(\phi) = \bigcap_{i = 1}^4 N_G(K_i) = \ens{e}
 \]
-et $G$ est isomorphe à $\Im(\phi)$\\
-Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est une permutation d'ordre 3 donc pair.\\
-Donc $\Im(\phi) \in \A_4$, et comme les deux sont d'ordre 12, on a $\Im(\phi) = \A_4$
+$\phi$ est injectif et $G$ est isomorphe à $Im(\phi)$\\
+Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est d'ordre 3 donc un 3-cycle donc une permutation paire.\\
+Donc $Im(\phi) \in \A_4$, et comme les deux sont d'ordre 12, on a $Im(\phi) = \A_4$
 
 \item 3ème cas: $K$ est distingué mais $H$ ne l'est pas\\
 Dans ce cas, on a $G = K \os{i}{\rtimes} H \simeq K \us{u}{\rtimes} H$ pour un morphisme $u : H \longrightarrow \Aut(K)$ à déterminer.\\
-Comme $K \simeq \Z/3$, on a $\Aut(K) \simeq \Z/2$, et il reste à voir comment les éléments de $H$ agissent sur $K$ par conjugaison. Supposons que $H$ est cyclique engendré par $x$. Soit $y$ un générateur de $K$. Comme $G$ n'est pas abélien, on a $xy \neq yx$ et donc $xyx^{-1} = y^2$. Donc $u : \us{\Z/4}{H} \longrightarrow \Aut(K)$ est l'unique morphisme non trivial et on a $G \simeq \Z/3 \us{u}{\rtimes} \Z/4$.\\
-La dernière possibilité est que $H \simeq \Z/2 \times \Z/2$.\\
+Comme $K \simeq \Z/3$, on a $\Aut(K) \simeq \Z/2$, et il reste à voir comment les éléments de $H$ agissent sur $K$ par conjugaison (c'est cette action qui donne $u$). Supposons que $H$ est cyclique engendré par $x$. Soit $y$ un générateur de $K$. Comme $G$ n'est pas abélien, on a $xy \neq yx$ et donc $xyx^{-1} = y^2$ (car $y$ et $y^2$ sont les seuls générateurs de $K\cong \Z/3$). Donc $u : \us{\Z/4}{H} \longrightarrow \us{\Z/2}{\Aut(K)}$ est l'unique morphisme non trivial et on a $G \simeq \Z/3 \us{u}{\rtimes} \Z/4 = \tilde{\S_3}$.\\
+La dernière possibilité est que $H \simeq \Z/2 \times \Z/2$. $H$ contient 3 éléments d'ordre 2.\\
 Puisque $K$ n'a que deux automorphismes et $H$ est d'ordre 4, il existe un élément $w \in H$ autre que l'identité qui agit trivialement sur $K : wyw^{-1} = y$.\\
 Puisque $G$ n'est pas abélien, il y a aussi un élément $v \in H$, qui agit non trivialement : $vyv^{-
 1} = y^2$. Alors on a 
@@ -3010,17 +3048,145 @@ L'élément $x = wy$ est d'ordre 6 et
 \[
 vxv^{-1} = vwyv^{-1} = wy^2 = y^2w = x^{-1}
 \]
-On a donc $x^6 = e, \; v^2 = e$ et $vxv^{-1} = x^{-1}$, d'où un isomorphisme:
+On a donc $x$ est d'ordre 6, $v$ est d'ordre 2 et $vxv^{-1} = x^{-1}$, d'où un isomorphisme:
 \begin{align*}
-G &\fong D_6
+D_6 &\fong G
 \\
-x &\mapsto \zeta
+\rho &\mapsto x
 \\
-v &\mapsto \tau
+\tau &\mapsto v
 \end{align*}
 \end{itemize}
 ~
 \end{demonstration}
+
+\section{Classification des groupes abéliens finis}
+
+\subsubsection{Notations dans les groupes abéliens}
+\begin{enumerate}
+\item Soit $A$ un groupe abélien. Soit $a\in A$. Pour $n\in \N$, on note $na = a+\ldots+a$ (cela correspond à $g^n$ dans un groupe noté multiplicativement). On note $(-n)a=-na$ pour $n\in\N$. L'\textbf{ordre} de $a$ est le plus petit entier $n\geq 1$, tq $na=0$, respectivement $+\infty$ s'il existe pas de tel entier. On a $ma=0$ ssi $m$ est multiple de l'ordre de $a$. Si $a$ est d'ordre $n$, on a un unique morphisme de groupes injectif :
+$$\Z/n\Z\inj A, \bar{k}\mapsto ka$$
+Son image est le \sg $\gen{a}$ engendré par $a$.
+
+\item Si $A$ et $B$ sont deux groupes abéliens, on note $A\oplus B := A\x B$ (somme directe externe).\\
+Si $A$ est un groupe abélien et $B,C \subseteq A$ des \sgs on note $A=B\oplus C$ (somme directe interne) si $A=B+C$ et $B\cap C = \{0\}$ (i.e $C$ est un complément de $B$ dans $A$).\\
+
+\item Si $A$ est un groupe abélien et $A_1,\ldots, A_n$ des \sgs, on note $A=A_1\oplus \ldots \oplus A_n$ si tout $a\in A$ s'écrit de façon unique sous la forme :
+$$a = a_1+\ldots+ a_n$$
+pour des $a_i \in A_i$, $1\leq i \leq n$. De façon équivalente :
+\begin{enumerate}
+\item $A=A_1+\ldots + A_n$
+\item $A_i\cap  (A_1+\ldots + Â_i+\ldots + A_n)= \{0\}$ ($Â_i$ = on omet $A_i$) pour tout $1\leq i \leq n$.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Décomposition en $p$-Sylow}
+
+\begin{remar}
+Si $A$ est abélien fini, tout \sg est distingué. Donc $A$ admet un \textbf{unique} $p$-Sylow noté $A_p$ pour tout nombre premier $p$.
+\end{remar}
+
+\begin{thm}
+Soit $A$ un groupe abélien fini. Alors $A$ est la somme directe de ses $p$-Sylow. Autrement dit, on a :
+$$A=A_{p_1}\oplus \ldots \oplus A_{p_k}$$
+où les $p_i$ sont les diviseurs premiers de $\abs{A}$. 
+\end{thm}
+
+\begin{exem}
+\begin{align*}
+\Z/12 &= (\Z/12)_2\oplus (\Z/12)_3\\
+&\cong \Z/4 \oplus \Z/3
+\end{align*}
+\end{exem}
+
+\begin{demo}
+Par récurrence sur $|A|$. Si $|A|=1$, alors $A=\{0\}$ et il n'y a rien à démontrer. Supposons $|A| >1$.\\
+Soit $p$ un diviseur premier de $|A|$. Écrivons $|A| = p^es$ où $p$ ne divise pas $s$.\\
+Décrivons $A_p \subseteq A$. On a :
+$$\begin{array}{lll}
+p^e a = 0 &\Leftrightarrow & \text{ l'ordre de } a \text{ divise } p^e\\
+&\Leftrightarrow & \gen{a} \text{ est un }p\text{-groupe}\\
+&\Leftrightarrow & \gen{a}\subseteq A_p ~(\text{car }A_p\text{ est le \textbf{seul} }p\text{-Sylow de }A)\\
+&\Leftrightarrow &a\in A_p
+\end{array}$$
+Donc $A_p = \{a\in A| p^ea = 0 \}$. Posons $A_s := \{a\in A | sa=0\}$. Montrons que $A=A_p \oplus A_s$.\\
+Soit 
+$$1=up^e+vs\quad, u,v \in \Z$$
+est une identité de Bézout. Soit $a \in A_p \cap A_s$. Alors :
+$$a=1\cdot a = (up^e+vs)\cdot a = up^ea+vsa= 0$$
+Soit $a\in A$. On a $a=1\cdot a= up^ea+vsa$ et :
+\begin{align*}
+s(up^ea)&=usp^ea=0\Rightarrow up^ea \in A_s\\
+p^e(vsa)&=vp^esa=0\Rightarrow vsa \in A_p
+\end{align*}
+Par l'hypothèse de récurrence, on a :
+$$A_s = (A_s)_{p_2} \oplus \ldots \oplus (A_s)_{p_k}$$
+où les $p_i$ sont les diviseurs premiers de $|A|$ autres que $p$. Et on a :
+\begin{align*}
+(A_s)_{p_i}&=\{a\in A_s | p_i^{e_i}a=0 \}, \text{ où } s=p_i^{e_i}s_i,~p_i\text{ ne divise pas } s_i\\
+&=\{a\in A | p_i^{e_i}a=0 \}, \text{ où } |A| = p_i^{e_i}p^es, p_i \text{ ne divise pas }p^e s \\
+&= A_{p_i}
+\end{align*}
+Donc $A=A_p\oplus \ldots \oplus A_{p_k}$
+\end{demo}
+
+\subsection{Classification des $p$-groupes abéliens}
+
+\begin{remar}
+On va montrer que tout $p$-groupe abélien est isomorphe à une somme directe de groupes $\Z/p^m$, $m\in \N$.
+\end{remar}
+
+\begin{lemme}
+Soit $A$ un $p$-groupe abélien. Soit $a \in A$ un élément d'ordre maximal. Soit $\pi : A\rightarrow A/\gen{a}$ la
+projection canonique. Alors il existe $c\in A$ tel que $\pi(c)=b$ et tq $c$ a même ordre que $b$.
+\end{lemme}
+
+\begin{demo}
+Notons $ord(x)$ l'ordre d'un élément $x$. Soit $c' \in A$ tq $\pi(c')=b$.\\
+Soit $k= ord(b)$. Alors $ord(c')\cdot b = ord(c')\pi(c')=\pi(ord(c')c')=\pi(0)=0$. Donc $ord(c')$ est un multiple de $ord(b)=k$. Disons $ord(c')=kl$. Comme $a$ est d'ordre maximal,$ord(c')=kl$ divise $ord(a)$. Disons $ord(a)=klm$. On a :
+$$\pi(kc')=k\pi(c')=k\cdot b =0$$
+Donc $kc' = ia$ pour un $i\in \N$. On a $lia = lk\cdot c'=0$. Donc $li$ est divisible par $klm=ord(a)$ et $i$ est divisible par $km$. Disons $i=jkm$. Posons $c=c'-jma$.\\
+Alors $\pi(c)=\pi(c')=b$ et $k\cdot c=k(c'-jma)=kc'-kjma=kc'-ia=0$. Donc $k$ divise $ord(c)$.\\
+Mais $ord(c)$ divise $ord(\pi(c))=ord(b)=k$.\\
+Donc $ord(c)=k=ord(b)$.
+\end{demo}
+
+\begin{thm}
+Soit $A$ un $p$-groupe abélien. Alors, on a :
+$$A\cong \Z/p^{m_1} \oplus \ldots \oplus \Z/p^{m_k}$$
+pour un unique $k\in \N$ et des $m_i \geq 1$ uniques à permutation près.
+\end{thm}
+
+\begin{defi}
+Le \textbf{diagramme de Young} associé à $A$ est un diagramme formé de $k$ lignes chacune à $m_i$ cases, où l'on a ordonné les $m_i$ tels que $m_1 \geq m_2 \geq \ldots \geq m_k$.
+\end{defi}
+
+\begin{exem}
+figure avec carré\\
+
+diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
+$$ \Z/p^{6} \oplus \Z/p^{3} \oplus \Z/p^{3} \oplus \Z/p^{2} \oplus \Z/p$$
+\end{exem}
+
+\begin{demo}
+\textbf{Unicité :} On va montrer que $A$ détermine son diagramme de Young. Considérons le noyau de la multiplication par $p^r$ :
+\begin{align*}
+p^k :&\Z/p^m \rightarrow \Z/p^m\\
+&\bar{k} \mapsto p^r\bar{k}
+\end{align*}
+Si $r \geq m$, alors le noyau est $\Z/p^m$ tout entier.\\
+Si $r < m$, alors le noyau est le \sg engendré par $\overline{p^{m-r}}$. Dans ce cas, il est donc d'ordre $p^r$.\\
+Donc :
+$$\abs{\ker(p^r : \Z/p^m \rightarrow \Z/p^m)}=\left\{\begin{array}{ll}
+p^m& si~r\geq m\\
+p^r& si~r \leq m
+\end{array}\right.$$
+\end{demo}
+
+
+
+
+
 
 \chapter{Un peu de géométrie affine}
 
