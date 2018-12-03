@@ -16,7 +16,8 @@
 \usepackage{pgf,tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\usetikzlibrary{arrows,calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
 \usepackage[amsthm, thmmarks]{ntheorem} % package pour les environnements de theorem
 \usepackage{xcolor} % ajout de couleur
 \usepackage{mathtools} % pour de nombreuses choses mathématiques
@@ -2136,7 +2137,7 @@ Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un 
 \vspace{1em}
 \medbreak
 
-Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha . m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
+Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha \cdot m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
 \end{motivation}
 
 \begin{definition}
@@ -2920,7 +2921,51 @@ L'un au moins parmi les groupes $H$ et $K$ est distingué dans $G$.
 Supposons que $K$ n'est pas distingué. Alors $K$ a 4 sous-groupes conjugués $K = K$, $K_2$, $K_3$, $K_4$.\\
 Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduit à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
 
-\red{Figure 3.1}\\
+\newcommand\ellipsebyfoci[4]{% options, focus pt1, focus pt2, cste
+	\path[#1] let \p1=(#2), \p2=(#3), \p3=($(\p1)!.5!(\p2)$)
+	in \pgfextra{
+		\pgfmathsetmacro{\angle}{atan2(\y2-\y1,\x2-\x1)}
+		\pgfmathsetmacro{\focal}{veclen(\x2-\x1,\y2-\y1)/2/1cm}
+		\pgfmathsetmacro{\lentotcm}{\focal*2*#4}
+		\pgfmathsetmacro{\axeone}{(\lentotcm - 2 * \focal)/2+\focal}
+		\pgfmathsetmacro{\axetwo}{sqrt((\lentotcm/2)*(\lentotcm/2)-\focal*\focal}
+	}
+	(\p3) ellipse[x radius=\axeone cm,y radius=\axetwo cm, rotate=\angle];
+}
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) circle (3);
+	\coordinate (e) at (0,0);
+	\coordinate (a) at (0:2.5);
+	\coordinate (b) at (90:2.5);
+	\coordinate (c) at (180:2.5);
+	\coordinate (d) at (270:2.5);
+	
+	\node (G) at (45:3.3) {$G$};
+	\node (K1) at (0:1.5) {$K_1$};
+	\node (K2) at (90:1.5) {$K_2$};
+	\node (K3) at (180:1.5) {$K_3$};
+	\node (K4) at (270:1.5) {$K_4$};
+	
+	\draw[fill=black] (e) circle (0.05) node[above right] {$e$};
+	\draw[fill=black] (45:2.5) circle (0.05);
+	\draw[fill=black] (125:2.5) circle (0.05);
+	\draw[fill=black] (145:2.5) circle (0.05);
+	\draw[fill=black] (10:2) circle (0.05);
+	\draw[fill=black] (80:2) circle (0.05);
+	\draw[fill=black] (100:2) circle (0.05);
+	\draw[fill=black] (170:2) circle (0.05);
+	\draw[fill=black] (190:2) circle (0.05);
+	\draw[fill=black] (260:2) circle (0.05);
+	\draw[fill=black] (280:2) circle (0.05);
+	\draw[fill=black] (350:2) circle (0.05);
+	\ellipsebyfoci{draw}{e}{a}{1.3}
+	\ellipsebyfoci{draw}{e}{b}{1.3}
+	\ellipsebyfoci{draw}{e}{c}{1.3}
+	\ellipsebyfoci{draw}{e}{d}{1.3}
+	\end{tikzpicture}
+\end{center}
 
 Le 2-Sylow $H$ est d'ordre $4$ et $H \cup K_i = \ens{e}, \; \forall i$.\\
 Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.\\
