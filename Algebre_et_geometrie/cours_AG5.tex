@@ -98,6 +98,7 @@
 \newcommand{\fong}{\overset{\sim}{\rightarrow}}
 \newcommand{\inj}{\hookrightarrow}
 \newcommand{\surj}{\twoheadrightarrow}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
 
 %math ensemble
 \DeclareMathOperator{\R}{\mathbb{R}}
@@ -3150,14 +3151,16 @@ Donc $ord(c)=k=ord(b)$.
 \end{demo}
 
 \begin{thm}
-Soit $A$ un $p$-groupe abélien, $|A|=p^m$. Alors, on a :
+Soit $A$ un $p$-groupe abélien, $|A|=p^m$. Alors on a 
 $$A\cong \Z/p^{m_1} \oplus \ldots \oplus \Z/p^{m_k}$$
 pour un unique $k\in \N$ et des $m_i \geq 1$ uniques à permutation près.
 \end{thm}
 
 \begin{remar}
-Soit $A$ un $p$-groupe abélien, $|A|=p^m=p^{m_1}+\ldots+p^{m_k}$.\\
-On a $m=\sum_{i=1}^k m_i$. La suite des $m_i$ est une partition de $m$.\\
+Soit $A$ un $p$-groupe abélien, $|A|=p^m=p^{m_1}\times\ldots\times p^{m_k}$.\\
+On a donc $m=\sum_{i=1}^k m_i$. Supposons $m_1 \geq m_2 \geq \ldots \geq m_1$.\\
+La suite des $m_i$ est alors une \textbf{partition} de $m$, , i.e. elle est
+d\'ecroissante et la somme des termes est $m$.\\
 Donc les $p$-groupes abéliens d'ordre $p^m$ sont classifiés par les partitions de $m$.\\
 De façon équivalente, ils ont classifiés par les \textbf{diagrammes de Young} à $m$ cases.
 \end{remar}
@@ -3167,8 +3170,7 @@ Le \textbf{diagramme de Young} associé à $A$ est un diagramme formé de $k$ li
 \end{defi}
 
 \begin{exem}
-	
-diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
+Diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
 $$ \Z/p^{6} \oplus \Z/p^{3} \oplus \Z/p^{3} \oplus \Z/p^{2} \oplus \Z/p$$
 
 \begin{center}
@@ -3195,21 +3197,21 @@ $$ \Z/p^{6} \oplus \Z/p^{3} \oplus \Z/p^{3} \oplus \Z/p^{2} \oplus \Z/p$$
 \begin{demo}
 \textbf{Unicité :} On va montrer que $A$ détermine son diagramme de Young. Considérons le noyau de la multiplication par $p^r$ :
 \begin{align*}
-p^k :&\Z/p^m \rightarrow \Z/p^m\\
+p^r :&\Z/p^l \rightarrow \Z/p^l\\
 &\bar{k} \mapsto p^r\bar{k}
 \end{align*}
-Si $r \geq m$, alors le noyau est $\Z/p^m$ tout entier.\\
-Si $r < m$, alors le noyau est le \sg engendré par $\overline{p^{m-r}}$. Dans ce cas, il est donc d'ordre $p^r$.\\
+Si $r \geq l$, alors le noyau est $\Z/p^l$ tout entier.\\
+Si $r < l$, alors le noyau est le \sg engendré par $\overline{p^{l-r}}$. Dans ce cas, il est donc d'ordre $p^r$.\\
 Donc :
-$$\abs{\ker(p^r : \Z/p^m \rightarrow \Z/p^m)}=\left\{\begin{array}{ll}
-p^m& si~r\geq m\\
-p^r& si~r \leq m
+$$\abs{\ker(p^r : \Z/p^l \rightarrow \Z/p^l)}=\left\{\begin{array}{ll}
+p^l& si~r\geq l\\
+p^r& si~r \leq l
 \end{array}\right.$$
-Si $B$ et $C$ sont deux groupes abéliens, alors le noyau de $p^r:B\oplus \rightarrow B\oplus C$ est la somme directe des noyaux de $p^r:B\rightarrow B$ et de $p^r:C\rightarrow C$, car :
+Si $B$ et $C$ sont deux groupes abéliens, alors le noyau de $p^r:B\oplus C \rightarrow B\oplus C$ est la somme directe des noyaux de $p^r:B\rightarrow B$ et de $p^r:C\rightarrow C$, car :
 $$p^r\cdot (b,c)=(p^rb, p^r c)= (0,0)\Leftrightarrow p^rb=0~\text{et}~p^rc=0$$
 On a $A\cong \Z/p^{m_1}\oplus \ldots \oplus \Z/p^{m_k}$. Le noyau de $p^r:A\rightarrow A$ est la somme directe des noyaux de $p^r:\Z/p^{m_i}\rightarrow \Z/p^{m_i}$. Donc :
 $$\abs{\ker(p^r : A \rightarrow A)}=\prod_{m_i\leq r}p^{m_i}\prod_{m_i> r}p^r = p^{O_r}$$
-avec $O_r=\sum_{m_i\leq r}m_i\sum_{m_i> r}r$.\\
+avec $O_r=\sum_{m_i\leq r}m_i+\sum_{m_i> r}r$.\\
 Montrons que la suite des nombres $O_r$ détermine la tableau de Young associé à $m_1\geq \ldots \geq m_k$.\\
 Donc $O_r$ est le nombre de cases à gauche de la droite $x=r$.\\
 $O_r-o_{r-1}$ est le nombre de cases de la $r$-ième colonne du diagramme de Young ($O_{-1}=0$).\\
@@ -3254,54 +3256,55 @@ Soit $D\subseteq \R^2$ une droite qui \textbf{ne passe pas par l'origine} :
 Soit $K$ un corps \gray{(par ex. $\Q, \; \R, \; \C$)}
 
 \begin{definition}
-Un \slign{espace affine} sur $K$ est un triplet \gray{$(\varepsilon, \; E, \; \phi)$}, où
+Un \slign{espace affine} sur $K$ est un triplet 
+\gray{$(\mathcal{E}, \; E, \; \phi)$}, où
 \begin{itemize}[label=$\bullet$]
-\item $\varepsilon$ est un ensemble non vide
+\item $\mathcal{E}$ est un ensemble non vide
 
 \item $E$ est un $\K$-espace vectoriel
 
-\item $\phi : \varepsilon \times E \longrightarrow \varepsilon$ est une action \textbf{libre et transitive} du groupe $(E, +)$ sur l'ensemble $\varepsilon$.
+\item $\phi : \mathcal{E} \times E \longrightarrow \mathcal{E}$ est une action \textbf{libre et transitive} du groupe $(E, +)$ sur l'ensemble $\mathcal{E}$.
 \end{itemize}
 \end{definition}
 
 \begin{remarque}
-Dans la situation de la définition, on abrège $(\varepsilon, E, \phi)$ en $\varepsilon$ et on dit que $\varepsilon$ est un \textbf{espace affine de direction} $E$.\\
-Les éléments de $\varepsilon$ sont appelés \slign{points}, ceux de $E$ \slign{vecteurs}.
+Dans la situation de la définition, on abrège $(\mathcal{E}, E, \phi)$ en $\mathcal{E}$ et on dit que $\mathcal{E}$ est un \textbf{espace affine de direction} $E$.
+Les éléments de $\mathcal{E}$ sont appelés \slign{points}, ceux de $E$ \slign{vecteurs}.
 \end{remarque}
 
 \begin{exemple}
-Soit $E$ un $\K$-espace vectoriel. Soit $\varepsilon = E$, et 
-$$\phi: \varepsilon \x E \rightarrow \varepsilon,~(P,v)\mapsto P+v $$
-Alors $(\varepsilon, E, \phi)$ est un espace affine appelé l'espace affine associé à l'espace vectoriel $E$. Sa direction est $E$.
+Soit $E$ un $\K$-espace vectoriel. Soit $\mathcal{E} = E$, et 
+$$\phi: \mathcal{E} \x E \rightarrow \mathcal{E},~(P,v)\mapsto P+v $$
+Alors $(\mathcal{E}, E, \phi)$ est un espace affine appelé l'espace affine associé à l'espace vectoriel $E$. Sa direction est $E$.
 \end{exemple}
 
 \begin{notation}
-Soit $\varepsilon$ un espace affine de direction $E$. On note:
+Soit $\mathcal{E}$ un espace affine de direction $E$. On note:
 \[
-\phi(P, v) = P + v,		\qquad	\forall P \in \varepsilon, \forall v \in E
+\phi(P, v) = P + v,		\qquad	\forall P \in \mathcal{E}, \forall v \in E
 \]
 \end{notation}
 
 \begin{remarque}
-Pour tous $P, Q \in \varepsilon$, et $v,w \in E$, on a:
+Pour tous $P, Q \in \mathcal{E}$, et $v,w \in E$, on a:
 \begin{itemize}[label=$\bullet$]
 \item $P + 0 = P$
 
 \item $(P + v) + w = P (v + w)$
 
-\item $\forall P,Q \in \varepsilon,~\exists ! u \in E$ tel que $Q = P + u$ (l'action est libre et transitive)
+\item $\forall P,Q \in \mathcal{E},~\exists ! u \in E$ tel que $Q = P + u$ (l'action est libre et transitive)
 \end{itemize}
 \end{remarque}
 
 \begin{notation}
-Pour tous $P, Q \in \varepsilon$, on note $\vec{PQ}$ l'unique vecteur tel que
+Pour tous $P, Q \in \mathcal{E}$, on note $\vec{PQ}$ l'unique vecteur tel que
 \[
 Q = P + \vec{PQ}
 \]
 \end{notation}
 
 \begin{remarque}
-Pour tous $P, Q, R \in \varepsilon$ et $u, v \in E$, on a
+Pour tous $P, Q, R \in \mathcal{E}$ et $u, v \in E$, on a
 \begin{itemize}[label=$\bullet$]
 \item $\vec{PQ} = 0		\quad	\Leftrightarrow	\quad		P = Q$
 
@@ -3318,10 +3321,10 @@ Pour tous $P, Q, R \in \varepsilon$ et $u, v \in E$, on a
 
 \section{Sous-espaces affines}
 
-Soit $\varepsilon$ un espace affine de direction $E$.
+Soit $\mathcal{E}$ un espace affine de direction $E$.
 
 \begin{definition}
-Un sous-espace affine de $\varepsilon$ est une partie $\ensF \in \varepsilon$ telle qu'il existe un point $P \in \varepsilon$ et sous-espace vectoriel $F \subset E$ tel que
+Un sous-espace affine de $\mathcal{E}$ est une partie $\ensF \subseteq \mathcal{E}$ telle qu'il existe un point $P \in \mathcal{E}$ et sous-espace vectoriel $F \subset E$ tel que
 \[
 \ensF = \Ens{P + v \big| v \in F} = P + F
 \]
@@ -3331,11 +3334,11 @@ Un sous-espace affine de $\varepsilon$ est une partie $\ensF \in \varepsilon$ te
 
 \begin{exemple}
 \begin{enumerate}
-\item  $\ensF = \varepsilon$ est un sous-espace affine \gray{($F = E$)}
+\item  $\ensF = \mathcal{E}$ est un sous-espace affine \gray{($F = E$)}
 
 \medbreak
 
-\item  Pour tout point $P \in \varepsilon$, le singleton $\ens{P}$ est un sous-espace affine de direction $\ens{0} \subseteq E$.
+\item  Pour tout point $P \in \mathcal{E}$, le singleton $\ens{P}$ est un sous-espace affine de direction $\ens{0} \subseteq E$.
 
 \medbreak
 
@@ -3348,13 +3351,13 @@ est un sous-espace affine de $\R^2$ considéré comme espace affine.
 \end{exemple}
 
 \begin{remarque}
-Soient $\varepsilon$ un espace affine, $P \in \varepsilon$ et $F \subset E$ un sous-espace vectoriel.\\
+Soient $\mathcal{E}$ un espace affine, $P \in \mathcal{E}$ et $F \subset E$ un sous-espace vectoriel.\\
 Posons $\ensF = P + F$.
 \begin{enumerate}
 \item On a $F = \Ens{\vec{QR} \big| Q, R \in \ensF}$.\\
 Donc $F$ est \textbf{uniquement} déterminé par $\ensF$
 
-\item $\forall Q \in \varepsilon		\qquad	Q \in \ensF		\quad	\Leftrightarrow	\quad	\vec{PQ} \in F$
+\item $\forall Q \in \mathcal{E}		\qquad	Q \in \ensF		\quad	\Leftrightarrow	\quad	\vec{PQ} \in F$
 
 \item $\forall Q \in \ensF				\qquad	\ensF = Q + F$
 
@@ -3363,32 +3366,32 @@ Donc $F$ est \textbf{uniquement} déterminé par $\ensF$
 \end{remarque}
 
 \begin{definition}
-Soit $\ensF \subseteq \varepsilon$ un sous-espace affine
+Soit $\ensF \subseteq \mathcal{E}$ un sous-espace affine
 \begin{enumerate}
 \item L'unique sous-espace vectoriel $F$ de $E$ tel que $\ensF = P + F$, $\forall P \in \ensF$, est appelé la \slign{direction} de $\ensF$ et parfois noté $\vec{\ensF}$
 
 \item On appelle \slign{dimension} de $\ensF$ la dimension de $F$
 
-\item Si $\dim(\ensF) = 1$ \gray{(resp. 2)}, on dit que $\ensF$ est une \slign{droite affine} \gray{(resp. un \slign{plan affine})} de $\varepsilon$
+\item Si $\dim(\ensF) = 1$ \gray{(resp. 2)}, on dit que $\ensF$ est une \slign{droite affine} \gray{(resp. un \slign{plan affine})} de $\mathcal{E}$
 \end{enumerate}
 \end{definition}
 
 \begin{exemple}
 \begin{enumerate}
-\item  On suppose que $\dim(E) = 2$. Soit $e_1, e_2$ une base de $E$. soit $P \in \varepsilon$ et soit $u \in E \backslash \ens{0}$.
+\item  On suppose que $\dim(E) = 2$. Soit $e_1, e_2$ une base de $E$. soit $P \in \mathcal{E}$ et soit $u \in E \backslash \ens{0}$.
 
 Soit $\ensD$ la droite affine $P + \Vect(u)$. On a
 \[
-\forall M \in \varepsilon :	\qquad		M \in \ensD \Leftrightarrow	\quad	\det_{(e_1, e_2)}(u, \vec{PM}) = 0
+\forall M \in \mathcal{E} :	\qquad		M \in \ensD \Leftrightarrow	\quad	\det_{(e_1, e_2)}(u, \vec{PM}) = 0
 \]
 
 \medbreak
 
-\item  On suppose que $\dim(E) = 3$. Soit $e_1, e_2, e_3$ une base de $E$. Soit $P \in \varepsilon$ et soient $u, v \in E$ linéairement indépendants.\\
+\item  On suppose que $\dim(E) = 3$. Soit $e_1, e_2, e_3$ une base de $E$. Soit $P \in \mathcal{E}$ et soient $u, v \in E$ linéairement indépendants.\\
 On note $\ensP$ de plan affine $P + \Vect(u, v)$.\\
 On a:
 \[
-\forall M \in \varepsilon	\qquad		\det_{(e_1, e_2, e_3)}(u, v, \vec{PM}) = 0
+\forall M \in \mathcal{E}	\qquad		\det_{(e_1, e_2, e_3)}(u, v, \vec{PM}) = 0
 \]
 \end{enumerate}
 \end{exemple}
@@ -3400,17 +3403,17 @@ De façon naturelle, $\ensF$ est lui-même un espace affine de direction $F$.
 
 \medbreak
 
-\item $\varepsilon$ est l'unique sous-espace affine de direction $E$
+\item $\mathcal{E}$ est l'unique sous-espace affine de direction $E$
 
 \medbreak
 
-\item  Les sous-espaces affines de direction $\ens{0}$ sont exactement les singletons de $\varepsilon$
+\item  Les sous-espaces affines de direction $\ens{0}$ sont exactement les singletons de $\mathcal{E}$
 \end{enumerate}
 \end{remarque}
 
 \begin{exemple}
 \begin{enumerate}
-\item  $\Ens{(x, y, z) \in \K^3 \big| x + y + z = 1}$ est un sous-espace affine de $\varepsilon = \K^3$.\\
+\item  $\Ens{(x, y, z) \in \K^3 \big| x + y + z = 1}$ est un sous-espace affine de $\mathcal{E} = \K^3$.\\
 C'est un plan de direction
 \[
 \Ens{(x, y, z) \in \K^3 \big| x + y + z = 0} \subseteq E = \R^3
@@ -3418,7 +3421,7 @@ C'est un plan de direction
 
 \red{figure 7 tristan francois}
 
-\item  Soit $n \in \N$. Alors $\ensF = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 1}$ est un sous-espace affine de $\varepsilon = \K^{n+1}$ de dimension $n$ et de direction
+\item  Soit $n \in \N$. Alors $\ensF = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 1}$ est un sous-espace affine de $\mathcal{E} = \K^{n+1}$ de dimension $n$ et de direction
 \[
 F = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 0}
 \]
@@ -3427,10 +3430,10 @@ F = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 0}
 \[
 \ensF = \Ens{v \in V \big| f(v) = 1}
 \]
-est un sous-espace affine de $\varepsilon = V$ de direction $\Ker(f) \subset E = V$. Si $\dim(V) < \infty$, $\ensF$ est de dimension $\dim(V) = 1$. On dit que $\ensF$ est un \slign{hyperplan affine} dans $\varepsilon = V$.
+est un sous-espace affine de $\mathcal{E} = V$ de direction $\Ker(f) \subset E = V$. Si $\dim(V) < \infty$, $\ensF$ est de dimension $\dim(V) - 1$. On dit que $\ensF$ est un \slign{hyperplan affine} dans $\mathcal{E} = V$.
 
 \item Soit $f:V\rightarrow W$ une application linéaire et $w\in W$. Supposons qu'il existe $P_0 \in V$ tel que $f(P_0)=w$ et soit :
-$$\ensF = \{P\in V \big| f(P)=w\}\subseteq V=\varepsilon$$
+$$\ensF = \{P\in V \big| f(P)=w\}\subseteq V=\mathcal{E}$$
 Alors $\ensF$ est un sous-espace affine de direction $\ker(f)$.\\
 En effet, on a :
 $$P\in \ensF \Leftrightarrow f(P)=w=f(P_0)\Leftrightarrow f(\vec{P_0P})=0 \Leftrightarrow P=P_0+v\quad v\in \ker(f)$$
@@ -3495,6 +3498,8 @@ P + u = Q - v
 \]
 appartient à $\ensF \cap \ensG$. Si $E = F \oplus G$, alors la direction de $\ensF \cap \ensG$ est $E \cap F = \ens{0}$, donc $\ensF \cap \ensG$ est un singleton.
 \end{demonstration}
+
+
 
 %\begin{exemple}
 %Soit un système à $m$ équations linéaires à $n$ inconnues, et à coefficients dans $\K$? Soit $\ensF_i, \; 1 \leq i \leq m$, l'ensemble des solutions de la $i$-ème équation. Supposons $\ensF_i \neq \emptyset, \; \forall i$.\\
