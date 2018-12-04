@@ -16,7 +16,8 @@
 \usepackage{pgf,tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\usetikzlibrary{arrows,calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
 \usepackage[amsthm, thmmarks]{ntheorem} % package pour les environnements de theorem
 \usepackage{xcolor} % ajout de couleur
 \usepackage{mathtools} % pour de nombreuses choses mathématiques
@@ -2136,7 +2137,7 @@ Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un 
 \vspace{1em}
 \medbreak
 
-Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha . m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
+Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha \cdot m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
 \end{motivation}
 
 \begin{definition}
@@ -2360,7 +2361,7 @@ On a:
 \[
 \abs{S} = 
 \begin{pmatrix}
-s.p^n		\\	p^n
+s \cdot p^n		\\	p^n
 \end{pmatrix} 
 \ub{\equiv}_{\text{lemme 2}} s \neq 0 \mod p
 \]
@@ -2435,6 +2436,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \medbreak
 
 \item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
+
 \begin{center}
 	\begin{tikzpicture}[scale=0.65]
 		\node (E) at (0,0) {$\{e\}$};
@@ -2471,6 +2473,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 		\draw[-,dashed]   (134) to (234);
 	\end{tikzpicture}
 \end{center}
+
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
 
@@ -2949,15 +2952,57 @@ L'un au moins parmi les groupes $H$ et $K$ est distingué dans $G$.
 Supposons que $K$ n'est pas distingué. Alors $K$ a 4 sous-groupes conjugués $K = K_1$, $K_2$, $K_3$, $K_4$.\\
 Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduite à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
 
-\red{figure avec les ensembles $K_i$ contenant chacun 2 éléments et ayant pour intersection $e$}\\
+\newcommand\ellipsebyfoci[4]{% options, focus pt1, focus pt2, cste
+	\path[#1] let \p1=(#2), \p2=(#3), \p3=($(\p1)!.5!(\p2)$)
+	in \pgfextra{
+		\pgfmathsetmacro{\angle}{atan2(\y2-\y1,\x2-\x1)}
+		\pgfmathsetmacro{\focal}{veclen(\x2-\x1,\y2-\y1)/2/1cm}
+		\pgfmathsetmacro{\lentotcm}{\focal*2*#4}
+		\pgfmathsetmacro{\axeone}{(\lentotcm - 2 * \focal)/2+\focal}
+		\pgfmathsetmacro{\axetwo}{sqrt((\lentotcm/2)*(\lentotcm/2)-\focal*\focal}
+	}
+	(\p3) ellipse[x radius=\axeone cm,y radius=\axetwo cm, rotate=\angle];
+}
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) circle (3);
+	\coordinate (e) at (0,0);
+	\coordinate (a) at (0:2.5);
+	\coordinate (b) at (90:2.5);
+	\coordinate (c) at (180:2.5);
+	\coordinate (d) at (270:2.5);
+	
+	\node (G) at (45:3.3) {$G$};
+	\node (K1) at (0:1.5) {$K_1$};
+	\node (K2) at (90:1.5) {$K_2$};
+	\node (K3) at (180:1.5) {$K_3$};
+	\node (K4) at (270:1.5) {$K_4$};
+	
+	\draw[fill=black] (e) circle (0.05) node[above right] {$e$};
+	\draw[fill=black] (45:2.5) circle (0.05);
+	\draw[fill=black] (125:2.5) circle (0.05);
+	\draw[fill=black] (145:2.5) circle (0.05);
+	\draw[fill=black] (10:2) circle (0.05);
+	\draw[fill=black] (80:2) circle (0.05);
+	\draw[fill=black] (100:2) circle (0.05);
+	\draw[fill=black] (170:2) circle (0.05);
+	\draw[fill=black] (190:2) circle (0.05);
+	\draw[fill=black] (260:2) circle (0.05);
+	\draw[fill=black] (280:2) circle (0.05);
+	\draw[fill=black] (350:2) circle (0.05);
+	\ellipsebyfoci{draw}{e}{a}{1.3}
+	\ellipsebyfoci{draw}{e}{b}{1.3}
+	\ellipsebyfoci{draw}{e}{c}{1.3}
+	\ellipsebyfoci{draw}{e}{d}{1.3}
+	\end{tikzpicture}
+\end{center}
 
 Le 2-Sylow $H$ est d'ordre $4$ et $H \cap K_i = \ens{e}, \; \forall i$.\\
 Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.
 \end{demonstration}
 
 $HK$ est un sous-groupe de $G$. Puisque $H \cap K = \ens{e}$, chaque élément de $HK$ a une \textbf{unique} expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
-
-
 
 \begin{itemize}
 \item 1er cas: $H$ et $K$ sont tous les deux distingués.\\
@@ -3122,10 +3167,29 @@ Le \textbf{diagramme de Young} associé à $A$ est un diagramme formé de $k$ li
 \end{defi}
 
 \begin{exem}
-figure avec carré\\
-
+	
 diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
 $$ \Z/p^{6} \oplus \Z/p^{3} \oplus \Z/p^{3} \oplus \Z/p^{2} \oplus \Z/p$$
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,-1) -- (0,6);
+		\draw (1,0) -- (1,5);
+		\draw (2,0) -- (2,4);
+		\draw (3,0) -- (3,3);
+		\draw (4,0) -- (4,1);
+		\draw (5,0) -- (5,1);
+		\draw (6,0) -- (6,1);
+		
+		\draw (-1,0) -- (7,0);
+		\draw (0,1) -- (6,1);
+		\draw (0,2) -- (3,2);
+		\draw (0,3) -- (3,3);
+		\draw (0,4) -- (2,4);
+		\draw (0,5) -- (1,5);
+	\end{tikzpicture}
+\end{center}
+
 \end{exem}
 
 \begin{demo}
