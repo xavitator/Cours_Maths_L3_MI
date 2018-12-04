@@ -1641,10 +1641,137 @@ Si $f$ est injective sur $\mathcal{U}$ alors $f$ est un difféomorphisme de $\ma
 
 
 
-
-
-
-
 \chapter{Séries de Fourier}
+
+Soit $f\in \mathcal{C}(\R / 2\pi \Z, \C)$ continue, périodique de période $2\pi$.\\
+On a pour $n\in \Z$ :
+$$\widehat{f}(n)=c_n=\fracun{2\pi}\int_0^{2\pi}f(s)e^{-ins}ds$$
+ou $\forall a\in \R$ :
+$$\widehat{f}(n)=c_n=\fracun{2\pi}\int_a^{a+2\pi}f(s)e^{-ins}ds$$
+En particulier, on a :
+$$\widehat{f}(n)=c_n=\fracun{2\pi}\int_{-\pi}^{\pi}f(s)e^{-ins}ds$$
+
+
+\subsection{Existence de l'intégrale}
+$s\mapsto f(s)e^{-ins}$ est continue sur $\R$, d'où une intégrale au sens de Riemann.\\
+\begin{itemize}
+\item (Relation de Chasles) valable pour des fonctions continues par morceaux (exemple des fonctions en escalier)
+\item fonctions périodiques ($2\pi$) et réglées (limite uniforme de fonctions en escalier).
+\item Dès que vous connaîtrez Lebesgue : $f$ intégrable ($f$ mesurable + $\int_0^{2\pi}|f|ds<+\infty$)
+\end{itemize}
+
+\subsection{Expression de $c_n$}
+\begin{align*}
+c_n&=\fracun{2\pi}\int_0^{2\pi}f(s)e^{-ins}ds\\
+&=\fracun{2\pi} \int_0^{2\pi}f(s)cos(ns)ds-\frac{i}{2\pi} \int_0^{2\pi}f(s)sin(ns)ds\\
+c_n+c_{-n}&=\fracun{\pi}\int_0^{2\pi}f(s)cos(ns)ds
+\end{align*}
+Pour $n=0$, on a $c_0=\int_0^{2\pi}f(s)ds$.\\
+\begin{align*}
+-c_n+c_{-n}&=\frac{i}{\pi}\int_0^{2\pi}f(s)sin(ns)ds
+\end{align*}
+On pose :
+\begin{align*}
+a_0&=c_0=\fracun{2\pi}\int_0^{2\pi}f(s)ds\\
+a_n &=\fracun{\pi}\int_0^{2\pi}f(s)cos(ns)ds\\
+b_n&=\frac{i}{\pi}\int_0^{2\pi}f(s)sin(ns)ds
+\end{align*}
+On a :
+\begin{align*}
+k=\sum_{-n}^{n}c_ke^{ikt}&=c_0+\sum_{k=1}^n(c_ke^{ikt}+c_{-k}e^{ikt})\\
+&=c_0+\sum_{k=1}^nc_k(cos(kt)+i sin(kt))+\sum_{k=1}^nc_{-k}(cos(kt)-i sin(kt))\\
+&=c_0+\sum_{k=1}^n a_kcos(kt)+ \sum_{k=1}^n(-i)(-c_k+c_{-k})sin(kt)\\
+&=c_0+\sum_{k=1}^n a_kcos(kt)+ \sum_{k=1}^nb_nsin(kt)\\
+&=\sum_{-n}^{n} c_ke^{ikt}
+\end{align*}
+
+\begin{propr}
+$$\begin{array}{lll}
+f \text{ réelle } &\Rightarrow& \overline{c_n}=c_{-n}\Leftrightarrow a_n, b_n \text{ réels }\\
+f \text{ paire } &\Rightarrow& b_n=0\\
+f \text{ impaire } &\Rightarrow& a_n=0\\
+f \text{ réelle } &\Leftrightarrow& \overline{f(s)}=f(s)
+\end{array}$$
+\end{propr}
+
+\subsection{Rapport entre $f$ et $\sum_{-\infty}^{+\infty}\widehat{f}(n)e^{int}$}
+
+\begin{propr}
+Soit $f\in \mathcal{C}^{N}(\R/2\pi \Z, \C)$ (classe $\mathcal{C}^N$, périodique) pour $N\geq 1$. On remarque que :
+$$\widehat{f}(n)=\fracun{in}\widehat{f'}(n)$$
+alors $\widehat{f}(n)=\mathcal{O}(n^{-N})$, c'est à dire $|\widehat{f}(n)| \leq \frac{C}{|n|^N}$, avec $C$ une constante positive.
+\end{propr}
+
+\begin{cor}
+$f\in \mathcal{C}^0(\R/2\pi\Z, \C)\mapsto (\widehat{f}(n))_{n\in \Z}$ est une application linéaire continue par les normes infinies :
+$$Sup_{n\in \Z}|\widehat{f}(n)| \leq ||f||_\infty$$
+\end{cor}
+
+\begin{remar}
+Si $f\in \mathcal{C}^\infty(\R/2\pi\Z, \C)$, alors on dit que $(\widehat{f}(n))_{n\in \Z}$ est à décroissance rapide (c'est à dire $\forall N$ $|n^N \widehat{f}(n)| \leq C < +\infty$).
+\end{remar}
+
+\begin{thm}[Riemann-Lebesgue]
+Si $f\in \mathcal{C}^0(\R/2\pi\Z, \C)$, alors $|\widehat{f}(n)| \underset{|n| \rightarrow +\infty}{\rightarrow}$.
+\end{thm}
+
+\section{Convergence simple des séries de Fourier}
+Est ce que $t\mapsto \sum_{-\infty}^{+\infty}\widehat{f}(k)e^{ikt}$ a un sens ?\\
+
+Posons :
+$$S_n(f)(t)= \sum_{k=-n}^{n}\widehat{f}(k)e^{ikt}$$
+C'est un polynôme trigonométrique (somme de produit entre coefficients et une puissance de l'exponentielle).\\
+On a :
+\begin{align*}
+2\pi S_n(f)(t)&=\sum_{k=-n}^{n}(\int_0^{2\pi}f(s)e^{-iks}ds)e^{ikt}\\
+&=\int_0^{2\pi}f(s)(\sum_{k=-n}^{n}e^{ik(t-s)})ds\\
+&= \int_0^{2\pi}f(s)\frac{sin((2n + 1)\frac{t-s}{2})}{sin(\frac{t-s}{2})}ds
+\end{align*}
+
+On pose :
+$$D_n(\tau) = \left\{
+\begin{array}{ll}
+\frac{sin((2n + 1)\frac{\tau}{2})}{sin(\frac{\tau}{2})} & \tau \neq 0\\
+2n+1 & \tau = 0
+\end{array}
+\right.$$
+
+\begin{propr}[Noyau de Dirichlet]
+On a :
+$$2\pi S_n(f)(t)=\int_0^{2\pi}f(s)D_n(t-s)ds$$
+\end{propr}
+
+\begin{note}
+$$S_n(f)(t)=f * D_n(t)$$
+avec l'opérateur $*$ correspondant à la convolution :
+$$f*g(t)= \fracun{2\pi}\int_0^{2\pi}f(s)g(t-s)ds$$
+\end{note}
+
+\begin{remar}
+On a :
+$$f*g(t)= \fracun{2\pi}\int_0^{2\pi}f(t-s)g(s)ds$$
+en posant $\sigma = t-s$.\\
+On a donc :
+$$2\pi S_n(f)(t)=\int_{-\pi}^{\pi}f(t-s)D_n(s)ds$$
+\end{remar}
+
+On pose :
+$$T_n(f)(t)=\fracun{n+1}\sum_{k=0}^nS_k(f)(t)$$
+On a :
+\begin{align*}
+2\pi T_n(f)(t)&=\fracun{n+1}\int_{-\pi}^\pi f(t-s)(\sum_{k=0}^n D_k(s))\\
+&=f*F_n(t)
+\end{align*}
+avec $F_n$ le noyau de Fejer :
+$$F_n(s) = \left\{
+\begin{array}{ll}
+\frac{sin^2((n + 1)\frac{s}{2})}{sin^2(\frac{s}{2})} & s \neq 0\\
+n+1 & s = 0
+\end{array}
+\right.$$
+
+
+
+
 
 \end{document}
