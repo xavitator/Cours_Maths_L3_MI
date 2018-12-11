@@ -16,7 +16,8 @@
 \usepackage{pgf,tikz} % \begin{tikzpicture}
 \usepackage{pdfpages} %\includepdf[page={1-5}]{truc.pdf}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\usetikzlibrary{arrows,calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
 \usepackage[amsthm, thmmarks]{ntheorem} % package pour les environnements de theorem
 \usepackage{xcolor} % ajout de couleur
 \usepackage{mathtools} % pour de nombreuses choses mathématiques
@@ -97,6 +98,7 @@
 \newcommand{\fong}{\overset{\sim}{\rightarrow}}
 \newcommand{\inj}{\hookrightarrow}
 \newcommand{\surj}{\twoheadrightarrow}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
 
 %math ensemble
 \DeclareMathOperator{\R}{\mathbb{R}}
@@ -2136,7 +2138,7 @@ Néanmoins, nous allons voir que si $d$ est une \textbf{puissance maximale d'un 
 \vspace{1em}
 \medbreak
 
-Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha . m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
+Soit $G$ un groupe fini. soit $n$ son ordre. Soit $p$ un diviseur premier de $n$. On a donc $n = p^\alpha \cdot m$, où $\alpha$ est un entier $\geq 1$, et $m$ n'est pas divisible par $p$.
 \end{motivation}
 
 \begin{definition}
@@ -2360,7 +2362,7 @@ On a:
 \[
 \abs{S} = 
 \begin{pmatrix}
-s.p^n		\\	p^n
+s \cdot p^n		\\	p^n
 \end{pmatrix} 
 \ub{\equiv}_{\text{lemme 2}} s \neq 0 \mod p
 \]
@@ -2435,6 +2437,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 \medbreak
 
 \item $G = \A_4$, $\abs{G} = 12 = 2^2 \times 3$\\
+
 \begin{center}
 	\begin{tikzpicture}[scale=0.65]
 		\node (E) at (0,0) {$\{e\}$};
@@ -2471,6 +2474,7 @@ Alors $n_p(G)$ divise $s$ et est congru à $1\mod p$.
 		\draw[-,dashed]   (134) to (234);
 	\end{tikzpicture}
 \end{center}
+
 \begin{itemize}
 \item $n_2(G) = 1$ divise $3$ et est congru à $1 \mod 2$
 
@@ -2842,13 +2846,13 @@ Le 3ème théorème de Sylow nous indique si $n_q(G)$ est le nombre de $q$-Sylow
 Puisque $p < q$, la seule possibilité est $n_q(G) = 1$. Ainsi $G$ admet $Q$ pour $q$-Sylow unique et $Q$ est donc distingué dans $G$.\\
 Nous avons donc
 \begin{align*}
-G &= P\cdot = Q \os{i}{\rtimes} P
+G &= Q \cdot P = Q \os{i}{\rtimes} P
 \\
 &\simeq Q \us{u}{\rtimes} P
 \\
 &\simeq \Z/q\Z \us{u}{\rtimes} \Z/p\Z
 \end{align*}\\
-Pour un $u : \Z/p \rightarrow \Aut (\Z/p) \simeq \Z/(q-1)$.\\
+Pour un $u : \Z/p \rightarrow \Aut (\Z/q) \simeq \Z/(q-1)$.\\
 Si $u$ est trivial, alors
 \[
 \Z/q\Z \us{u}{\rtimes} \Z/p\Z \simeq \Z/q\Z \times \Z/p\Z \simeq \Z/pq\Z
@@ -2873,7 +2877,7 @@ Donc $\abs{Z(G)}$ est congru à 0 modulo $p$, et comme $e \in Z(G)$, l'ordre de 
 \end{demonstration}
 
 \begin{lemme}
-Tout groupe $p^2$ est abélien.
+Tout groupe d'ordre $p^2$ est abélien.
 \end{lemme}
 
 \begin{remarque}
@@ -2930,10 +2934,16 @@ Tout groupe d'ordre 12 est isomorphe à l'un des uniques groupes suivants:
 Notons que $\Z/3 \times \Z/4 \cong \Z/12$ et $\Z/3 \times \Z/2 \times \Z/2 \cong \Z/6 \x \Z/2$. Ce sont les seuls \sgs abéliens d'ordre $12$ à \isom près.\\
 Le morphisme $u: \Z/4 \rightarrow \Aut(\Z/3)\cong \Z/2$ est l'\textbf{unique} morphisme \textbf{non trivial}.\\
 Le groupe $\tilde{\S_3}$ contient le \sg $N=\gen{(\bar{0}, \bar{2})} \cong \Z/2$ qui est distingué dans $\tilde{\S_3}$.\\
-Le quotient $\tilde{\S_3}/N$ est isomorphe à $\Z/3 \rtimes \Z/2 \cong \tilde{\S_3}$. On a donc ce qu'on appelle une \textbf{suite exacte} :
+Le quotient $\tilde{\S_3}/N$ est isomorphe à $\Z/3 \rtimes \Z/2 \cong\S_3$. On a donc ce qu'on appelle une \textbf{suite exacte} :
 $$\{e\} \rightarrow \Z/2 \overset{i}{\rightarrow} \tilde{\S_3} \overset{p}{\rightarrow} \S_3 \rightarrow \{e\}$$
 i.e $i$ est injectif, $p$ est surjectif et $\ker (p)= Im(i)$
 \end{remar}
+
+\begin{demonstration}[Théorème]
+
+Soit $G$ un groupe d'ordre $12 = 3 \times 2^2$. Soit $H$ un 2-Sylow de $G$ \gray{(il est d'ordre 4)} et soit $K$ un 3-Sylow de $G$ \gray{(il est d'ordre 3)}. D'après le 3ème théorème de Sylow, le nombre $n_2(G)$ divise 3 et est congru à 1 modulo 2.\\
+Donc $n_2(G) \in \ens{1, 3}$. De même, le nombre $n_3(G)$ divise 4 et est congru à 1 modulo 3. En outre, $K\cong \Z/3$.\\
+Donc $n_3(G) \in \ens{1, 4}$. En outre, $H$ est d'ordre 4 et donc isomorphe à $\Z/4$ ou à $\Z/2 \times \Z/2$.
 
 \begin{lemme}
 L'un au moins parmi les groupes $H$ et $K$ est distingué dans $G$.
@@ -2941,24 +2951,64 @@ L'un au moins parmi les groupes $H$ et $K$ est distingué dans $G$.
 
 \begin{demonstration}
 Supposons que $K$ n'est pas distingué. Alors $K$ a 4 sous-groupes conjugués $K = K_1$, $K_2$, $K_3$, $K_4$.\\
-Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduit à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
+Puisque $\abs{K_i} = 3, \; \forall i$, l'intersection de deux quelconques de ces sous-groupes est réduite à l'identité. En comptant les éléments de $G$, on voit que seuls 3 éléments de $G$ ne sont dans aucun des sous-groupes $K_i$.\\
 
-\red{Figure 3.1}\\
+\newcommand\ellipsebyfoci[4]{% options, focus pt1, focus pt2, cste
+	\path[#1] let \p1=(#2), \p2=(#3), \p3=($(\p1)!.5!(\p2)$)
+	in \pgfextra{
+		\pgfmathsetmacro{\angle}{atan2(\y2-\y1,\x2-\x1)}
+		\pgfmathsetmacro{\focal}{veclen(\x2-\x1,\y2-\y1)/2/1cm}
+		\pgfmathsetmacro{\lentotcm}{\focal*2*#4}
+		\pgfmathsetmacro{\axeone}{(\lentotcm - 2 * \focal)/2+\focal}
+		\pgfmathsetmacro{\axetwo}{sqrt((\lentotcm/2)*(\lentotcm/2)-\focal*\focal}
+	}
+	(\p3) ellipse[x radius=\axeone cm,y radius=\axetwo cm, rotate=\angle];
+}
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) circle (3);
+	\coordinate (e) at (0,0);
+	\coordinate (a) at (0:2.5);
+	\coordinate (b) at (90:2.5);
+	\coordinate (c) at (180:2.5);
+	\coordinate (d) at (270:2.5);
+	
+	\node (G) at (45:3.3) {$G$};
+	\node (K1) at (0:1.5) {$K_1$};
+	\node (K2) at (90:1.5) {$K_2$};
+	\node (K3) at (180:1.5) {$K_3$};
+	\node (K4) at (270:1.5) {$K_4$};
+	
+	\draw[fill=black] (e) circle (0.05) node[above right] {$e$};
+	\draw[fill=black] (45:2.5) circle (0.05);
+	\draw[fill=black] (125:2.5) circle (0.05);
+	\draw[fill=black] (145:2.5) circle (0.05);
+	\draw[fill=black] (10:2) circle (0.05);
+	\draw[fill=black] (80:2) circle (0.05);
+	\draw[fill=black] (100:2) circle (0.05);
+	\draw[fill=black] (170:2) circle (0.05);
+	\draw[fill=black] (190:2) circle (0.05);
+	\draw[fill=black] (260:2) circle (0.05);
+	\draw[fill=black] (280:2) circle (0.05);
+	\draw[fill=black] (350:2) circle (0.05);
+	\ellipsebyfoci{draw}{e}{a}{1.3}
+	\ellipsebyfoci{draw}{e}{b}{1.3}
+	\ellipsebyfoci{draw}{e}{c}{1.3}
+	\ellipsebyfoci{draw}{e}{d}{1.3}
+	\end{tikzpicture}
+\end{center}
 
 Le 2-Sylow $H$ est d'ordre $4$ et $H \cap K_i = \ens{e}, \; \forall i$.\\
-Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.\\
-$HK$ est un sous-groupe de $G$. Puisque $H \cup K = \ens{e}$, chaque élément de $HK$ a une \textbf{unique} expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
+Donc $H$ est formé de $e$ et de ces 3 éléments. Donc $H$ est unique et par conséquent distingué.
 \end{demonstration}
 
-\begin{demonstration}[Théorème]
-Soit $G$ un groupe d'ordre $12 = 3 \times 2^2$. Soit $H$ un 2-Sylow de $G$ \gray{(il est d'ordre 4)} et soit $K$ un 3-Sylow de $G$ \gray{(il est d'ordre 3)}. D'après le 3ème théorème de Sylow, le nombre $n_2(G)$ divise 3 et est congru à 1 modulo 2.\\
-Donc $n_2(G) \in \ens{1, 3}$. De même, le nombre $n_3(G)$ divise 4 et est congru à 1 modulo 3. En outre, $K\cong \Z/3$.\\
-Donc $n_3(G) \in \ens{1, 4}$. En outre, $H$ est d'ordre 4 et donc isomorphe à $\Z/4$ ou à $\Z/2 \times \Z/2$.
+$HK$ est un sous-groupe de $G$. Puisque $H \cap K = \ens{e}$, chaque élément de $HK$ a une \textbf{unique} expression comme produit $hk, \; h \in H, \; k \in K$. Puisque $\abs{G} = 12$, on a $G = HK$.
 
 \begin{itemize}
 \item 1er cas: $H$ et $K$ sont tous les deux distingués.\\
 Dans ce cas, on a $hk = kh$, pour tous $h \in H, \; k \in K$, car	
-$$hkh^{-1}k^{-1} \in  H \cup K = \ens{e}$$
+$$hkh^{-1}k^{-1} \in  H \cap K = \ens{e}$$
 avec $hkh^{-1} \in K, \; k^{-1} \in K, khk^{-1} \in H, \; h \in H$\\
 Donc on a un isomorphisme $H \times K \fong HK = G$, $(h,k)\mapsto hk$ et donc $G \simeq \Z/4 \times \Z/3$ ou $G \simeq \Z/2 \times \Z/2 \times \Z/3$, suivant que $H\cong \Z/4$ ou $H\cong \Z/2\x \Z/2$.
 
@@ -2972,19 +3022,19 @@ Il y a donc 4 3-Sylow conjugués $K_1, \; K_2, \; K_3, \; K_4$. $G$ agit par con
 \[
 \phi : G \longrightarrow \mathfrak{S}_4
 \]
-On va montrer que $\phi$ contient un isomorphisme de $G$ sur $\A_4 \subseteq \S_4$, le stabilisateur de $K_i$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est $4$ et c'est aussi l'indice de $N_G(K_i)$ dans $G$ (le cardinal d'une orbite est l'indice du stabilisateur de tout point de l'orbite).\\
+On va montrer que $\phi$ induit un isomorphisme de $G$ sur $\A_4 \subseteq \S_4$. Le stabilisateur de $K_i$ pour l'action de conjugaison est le normalisateur $N_G(K_i)$, qui contient $K_i$. Le cardinal de l'orbite est $4$ et c'est aussi l'indice de $N_G(K_i)$ dans $G$ (le cardinal d'une orbite est l'indice du stabilisateur de tout point de l'orbite).\\
 Donc $N_G(K_i)$ est d'ordre 3 et $N_G(K_i) = K_i$. L'intersection des $N_G(K_i)$ est l'intersection des $K_i$, c'est-à-dire $\ens{e}$.\\
 Donc 
 \[
 \Ker(\phi) = \bigcap_{i = 1}^4 N_G(K_i) = \ens{e}
 \]
 $\phi$ est injectif et $G$ est isomorphe à $Im(\phi)$\\
-Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est d'ordre 3 donc un 3-cycle donc une permutation pair.\\
+Puisque $G$ a 4 sous-groupes d'ordre 3, il contient 8 éléments d'ordre 3 et ces 8 éléments engendrent $G$. Si $x$ est d'ordre 3, $\phi(x)$ est d'ordre 3 donc un 3-cycle donc une permutation paire.\\
 Donc $Im(\phi) \in \A_4$, et comme les deux sont d'ordre 12, on a $Im(\phi) = \A_4$
 
 \item 3ème cas: $K$ est distingué mais $H$ ne l'est pas\\
 Dans ce cas, on a $G = K \os{i}{\rtimes} H \simeq K \us{u}{\rtimes} H$ pour un morphisme $u : H \longrightarrow \Aut(K)$ à déterminer.\\
-Comme $K \simeq \Z/3$, on a $\Aut(K) \simeq \Z/2$, et il reste à voir comment les éléments de $H$ agissent sur $K$ par conjugaison (c'est cette action qui donne $u$). Supposons que $H$ est cyclique engendré par $x$. Soit $y$ un générateur de $K$. Comme $G$ n'est pas abélien, on a $xy \neq yx$ et donc $xyx^{-1} = y^2$ (car $y$ et $y^2$ sont les seuls générateurs de $K\cong \Z/3$). Donc $u : \us{\Z/4}{H} \longrightarrow \us{\Z/4}{\Aut(K)}$ est l'unique morphisme non trivial et on a $G \simeq \Z/3 \us{u}{\rtimes} \Z/4 = \tilde{\S_3}$.\\
+Comme $K \simeq \Z/3$, on a $\Aut(K) \simeq \Z/2$, et il reste à voir comment les éléments de $H$ agissent sur $K$ par conjugaison (c'est cette action qui donne $u$). Supposons que $H$ est cyclique engendré par $x$. Soit $y$ un générateur de $K$. Comme $G$ n'est pas abélien, on a $xy \neq yx$ et donc $xyx^{-1} = y^2$ (car $y$ et $y^2$ sont les seuls générateurs de $K\cong \Z/3$). Donc $u : \us{\Z/4}{H} \longrightarrow \us{\Z/2}{\Aut(K)}$ est l'unique morphisme non trivial et on a $G \simeq \Z/3 \us{u}{\rtimes} \Z/4 = \tilde{\S_3}$.\\
 La dernière possibilité est que $H \simeq \Z/2 \times \Z/2$. $H$ contient 3 éléments d'ordre 2.\\
 Puisque $K$ n'a que deux automorphismes et $H$ est d'ordre 4, il existe un élément $w \in H$ autre que l'identité qui agit trivialement sur $K : wyw^{-1} = y$.\\
 Puisque $G$ n'est pas abélien, il y a aussi un élément $v \in H$, qui agit non trivialement : $vyv^{-
@@ -2999,11 +3049,11 @@ vxv^{-1} = vwyv^{-1} = wy^2 = y^2w = x^{-1}
 \]
 On a donc $x$ est d'ordre 6, $v$ est d'ordre 2 et $vxv^{-1} = x^{-1}$, d'où un isomorphisme:
 \begin{align*}
-G &\fong D_6
+D_6 &\fong G
 \\
-x &\mapsto \zeta
+\rho &\mapsto x
 \\
-v &\mapsto \tau
+\tau &\mapsto v
 \end{align*}
 \end{itemize}
 ~
@@ -3013,12 +3063,12 @@ v &\mapsto \tau
 
 \subsubsection{Notations dans les groupes abéliens}
 \begin{enumerate}
-\item Soit $A$ un groupe abélien. Soit $a\in A$. Pour $n\in \N$, on note $na = a+\ldots+a$ (cela correspond à $g^n$ dans un groupe noté multiplicativement). L'\textbf{ordre} de $a$ est le plus petit entier $n\geq 1$, tq $na=0$, respectivement $+\infty$ s'il existe pas de tel entier. On a $ma=0$ ssi $m$ est multiple de l'ordre de $a$. Si $a$ est d'ordre $n$, on a un unique morphisme de groupes injectif :
+\item Soit $A$ un groupe abélien. Soit $a\in A$. Pour $n\in \N$, on note $na = a+\ldots+a$ (cela correspond à $g^n$ dans un groupe noté multiplicativement). On note $(-n)a=-na$ pour $n\in\N$. L'\textbf{ordre} de $a$ est le plus petit entier $n\geq 1$, tq $na=0$, respectivement $+\infty$ s'il existe pas de tel entier. On a $ma=0$ ssi $m$ est multiple de l'ordre de $a$. Si $a$ est d'ordre $n$, on a un unique morphisme de groupes injectif :
 $$\Z/n\Z\inj A, \bar{k}\mapsto ka$$
 Son image est le \sg $\gen{a}$ engendré par $a$.
 
 \item Si $A$ et $B$ sont deux groupes abéliens, on note $A\oplus B := A\x B$ (somme directe externe).\\
-Si $A$ est un groupe abélien et $B,C \subseteq A$ des \sgs on note $A=B\oplus C$ (somme directe interne) si $A=B+X$ et $B\cap C = \{0\}$ (i.e $C$ est un complément de $B$ dans $A$).\\
+Si $A$ est un groupe abélien et $B,C \subseteq A$ des \sgs on note $A=B\oplus C$ (somme directe interne) si $A=B+C$ et $B\cap C = \{0\}$ (i.e $C$ est un complément de $B$ dans $A$).\\
 
 \item Si $A$ est un groupe abélien et $A_1,\ldots, A_n$ des \sgs, on note $A=A_1\oplus \ldots \oplus A_n$ si tout $a\in A$ s'écrit de façon unique sous la forme :
 $$a = a_1+\ldots+ a_n$$
@@ -3065,15 +3115,15 @@ est une identité de Bézout. Soit $a \in A_p \cap A_s$. Alors :
 $$a=1\cdot a = (up^e+vs)\cdot a = up^ea+vsa= 0$$
 Soit $a\in A$. On a $a=1\cdot a= up^ea+vsa$ et :
 \begin{align*}
-s(up^ea)&=usp^ea&=0&\Rightarrow up^ea \in A_s\\
-p^e(vsa)&=vp^esa&=0&\Rightarrow vsa \in A_p
+s(up^ea)&=usp^ea=0\Rightarrow up^ea \in A_s\\
+p^e(vsa)&=vp^esa=0\Rightarrow vsa \in A_p
 \end{align*}
 Par l'hypothèse de récurrence, on a :
 $$A_s = (A_s)_{p_2} \oplus \ldots \oplus (A_s)_{p_k}$$
 où les $p_i$ sont les diviseurs premiers de $|A|$ autres que $p$. Et on a :
 \begin{align*}
 (A_s)_{p_i}&=\{a\in A_s | p_i^{e_i}a=0 \}, \text{ où } s=p_i^{e_i}s_i,~p_i\text{ ne divise pas } s_i\\
-&=\{a\in A | p_i^{e_i}a=0 \}, \text{ où } |A| = p_i^{e_i}p^es, p_i \text{ ne divise pas }p^es=|A|\\
+&=\{a\in A | p_i^{e_i}a=0 \}, \text{ où } |A| = p_i^{e_i}p^es, p_i \text{ ne divise pas }p^e s \\
 &= A_{p_i}
 \end{align*}
 Donc $A=A_p\oplus \ldots \oplus A_{p_k}$
@@ -3082,156 +3132,232 @@ Donc $A=A_p\oplus \ldots \oplus A_{p_k}$
 \subsection{Classification des $p$-groupes abéliens}
 
 \begin{remar}
-On va montrer que tout $p$-groupe abélien est isomorphe à une somme directe de groupes $\ENS/p^m$, $m\in \N$.
+On va montrer que tout $p$-groupe abélien est isomorphe à une somme directe de groupes $\Z/p^m$, $m\in \N$.
 \end{remar}
 
 \begin{lemme}
-Soit $A$ un $p$-groupe abélien. Soit $a \in A$ un élément d'ordre maximal. Soit $\pi : A\rightarrow A/\gen{a}$. Alors il existe $c\in A$ tq $\pi(c)=b$ et tq $c$ a même ordre que $b$.
+Soit $A$ un $p$-groupe abélien. Soit $a \in A$ un élément d'ordre maximal. Soit $\pi : A\rightarrow A/\gen{a}$ la
+projection canonique. Alors il existe $c\in A$ tel que $\pi(c)=b$ et tq $c$ a même ordre que $b$.
 \end{lemme}
 
 \begin{demo}
 Notons $ord(x)$ l'ordre d'un élément $x$. Soit $c' \in A$ tq $\pi(c')=b$.\\
 Soit $k= ord(b)$. Alors $ord(c')\cdot b = ord(c')\pi(c')=\pi(ord(c')c')=\pi(0)=0$. Donc $ord(c')$ est un multiple de $ord(b)=k$. Disons $ord(c')=kl$. Comme $a$ est d'ordre maximal,$ord(c')=kl$ divise $ord(a)$. Disons $ord(a)=klm$. On a :
 $$\pi(kc')=k\pi(c')=k\cdot b =0$$
-Donc $kc' = ia$ pour un $i\in \N$. On a $lia = lk\cdot c'=0$. Donc il est divisible par $klm=ord(a)$ et $i$ est divisible par $km$. Disons $i=jkm$. Posons $c=c'-jma$.\\
+Donc $kc' = ia$ pour un $i\in \N$. On a $lia = lk\cdot c'=0$. Donc $li$ est divisible par $klm=ord(a)$ et $i$ est divisible par $km$. Disons $i=jkm$. Posons $c=c'-jma$.\\
 Alors $\pi(c)=\pi(c')=b$ et $k\cdot c=k(c'-jma)=kc'-kjma=kc'-ia=0$. Donc $k$ divise $ord(c)$.\\
 Mais $ord(c)$ divise $ord(\pi(c))=ord(b)=k$.\\
 Donc $ord(c)=k=ord(b)$.
 \end{demo}
 
 \begin{thm}
-Soit $A$ un $p$-groupe abélien. Alors, on a :
-$$A\cong \Z/p^m \oplus \ldots \oplus \Z/p^{m_k}$$
+Soit $A$ un $p$-groupe abélien, $|A|=p^m$. Alors on a 
+$$A\cong \Z/p^{m_1} \oplus \ldots \oplus \Z/p^{m_k}$$
 pour un unique $k\in \N$ et des $m_i \geq 1$ uniques à permutation près.
 \end{thm}
 
+\begin{remar}
+Soit $A$ un $p$-groupe abélien, $|A|=p^m=p^{m_1}\times\ldots\times p^{m_k}$.\\
+On a donc $m=\sum_{i=1}^k m_i$. Supposons $m_1 \geq m_2 \geq \ldots \geq m_1$.\\
+La suite des $m_i$ est alors une \textbf{partition} de $m$, , i.e. elle est
+d\'ecroissante et la somme des termes est $m$.\\
+Donc les $p$-groupes abéliens d'ordre $p^m$ sont classifiés par les partitions de $m$.\\
+De façon équivalente, ils ont classifiés par les \textbf{diagrammes de Young} à $m$ cases.
+\end{remar}
+
 \begin{defi}
-Le \textbf{diagramme de Young} associé à $A$ un diagramme formé de $k$ lignes chacune à $m_i$ cases, où l'on a ordonné les $m_i$ tq $m_1 \geq m_2 \geq \ldots \geq m_k$.
+Le \textbf{diagramme de Young} associé à $A$ est un diagramme formé de $k$ lignes chacune à $m_i$ cases, où l'on a ordonné les $m_i$ tels que $m_1 \geq m_2 \geq \ldots \geq m_k$.
 \end{defi}
 
 \begin{exem}
-figure avec carré\\
-
-diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
+Diagramme de Young associé à $6\geq 3 \geq 3 \geq 2 \geq 1$ respectivement au groupe :
 $$ \Z/p^{6} \oplus \Z/p^{3} \oplus \Z/p^{3} \oplus \Z/p^{2} \oplus \Z/p$$
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,-1) -- (0,6);
+		\draw (1,0) -- (1,5);
+		\draw (2,0) -- (2,4);
+		\draw (3,0) -- (3,3);
+		\draw (4,0) -- (4,1);
+		\draw (5,0) -- (5,1);
+		\draw (6,0) -- (6,1);
+		
+		\draw (-1,0) -- (7,0);
+		\draw (0,1) -- (6,1);
+		\draw (0,2) -- (3,2);
+		\draw (0,3) -- (3,3);
+		\draw (0,4) -- (2,4);
+		\draw (0,5) -- (1,5);
+	\end{tikzpicture}
+\end{center}
+
 \end{exem}
 
 \begin{demo}
 \textbf{Unicité :} On va montrer que $A$ détermine son diagramme de Young. Considérons le noyau de la multiplication par $p^r$ :
 \begin{align*}
-p^k :&\Z/p^m &\rightarrow \Z/p^m\\
-&\bar{k}&\mapsto p^r\bar{k}
+p^r :&\Z/p^l \rightarrow \Z/p^l\\
+&\bar{k} \mapsto p^r\bar{k}
 \end{align*}
-Si $r \geq m$, alors le noyau est $\Z/p^m$ tout entier.\\
-Si $r < m$, alors le noyau est le \sg engendré par $\overline{p^{m-r}}$. Dans ce cas, il est donc d'ordre $p^r$.\\
+Si $r \geq l$, alors le noyau est $\Z/p^l$ tout entier.\\
+Si $r < l$, alors le noyau est le \sg engendré par $\overline{p^{l-r}}$. Dans ce cas, il est donc d'ordre $p^r$.\\
 Donc :
-$$\abs{\ker(p^r : \Z/p^m \rightarrow \Z/p^m)}=\left\{\begin{array}{ll}
-p^m& si~r\geq m\\
-p^r& si~r \leq m
+$$\abs{\ker(p^r : \Z/p^l \rightarrow \Z/p^l)}=\left\{\begin{array}{ll}
+p^l& si~r\geq l\\
+p^r& si~r \leq l
 \end{array}\right.$$
+Si $B$ et $C$ sont deux groupes abéliens, alors le noyau de $p^r:B\oplus C \rightarrow B\oplus C$ est la somme directe des noyaux de $p^r:B\rightarrow B$ et de $p^r:C\rightarrow C$, car :
+$$p^r\cdot (b,c)=(p^rb, p^r c)= (0,0)\Leftrightarrow p^rb=0~\text{et}~p^rc=0$$
+On a $A\cong \Z/p^{m_1}\oplus \ldots \oplus \Z/p^{m_k}$. Le noyau de $p^r:A\rightarrow A$ est la somme directe des noyaux de $p^r:\Z/p^{m_i}\rightarrow \Z/p^{m_i}$. Donc :
+$$\abs{\ker(p^r : A \rightarrow A)}=\prod_{m_i\leq r}p^{m_i}\prod_{m_i> r}p^r = p^{O_r}$$
+avec $O_r=\sum_{m_i\leq r}m_i+\sum_{m_i> r}r$.\\
+Montrons que la suite des nombres $O_r$ détermine la tableau de Young associé à $m_1\geq \ldots \geq m_k$.\\
+Donc $O_r$ est le nombre de cases à gauche de la droite $x=r$.\\
+$O_r-o_{r-1}$ est le nombre de cases de la $r$-ième colonne du diagramme de Young ($O_{-1}=0$).\\
+Donc les $O_r$ déterminent le diagramme de Young et la suite $m_1\geq \ldots \geq m_k$.\\
+\textbf{Existence :} Par récurrence sur $|A|$. Si $|A|=1$, alors $A=\{0\}$ et il n'y a rien à démontrer (la suite des $m_i$ est vide).\\
+Supposons $|A|>1$. Soit $a\in A$ d'ordre maximal. Par l'hypothèse de récurrence, on a un \isom :
+$$\varphi : \Z/q_2 \oplus \ldots \oplus \Z/q_k\fong A/\gen{a}$$
+pour certaines puissances $q_i=p^m_i$, $2\leq i \leq k$. Notons :
+$$e_i=(\bar{0},\ldots,\bar{1},\ldots, \bar{0})\in \Z/q_2 \oplus \ldots \oplus \Z/q_k \text{   (}\bar{1} \text{ à la i-ème position)}$$
+pour $2\leq i\leq k$. Alors $e_i$ est d'ordre $q_i$.\\
+Par le lemme précédent, il existe $x_i\in A$ tel que $\pi(x_i)=\varphi(e_i)$ et $x_i$ est d'ordre $q_i$ :
+
+\red{figure by tristan Francois}
+
+On définit :
+$$
+\begin{array}{lrl}
+\psi :& \Z/q_2 \oplus \ldots \oplus \Z/q_k &\rightarrow A\\
+&(\overline{j_i},\ldots, \overline{j_k})&\mapsto \sum_{l=2}^kj_lx_l
+\end{array}
+$$
+Comme $x_l$ est d'ordre $q_l$, $\psi$ est bien défini. Par construction, on a $\pi \circ \psi = Id_{A/\gen{a}}$ car $\pi \circ \psi(e_i)=\pi(x_i)=\varphi(e_i)$ et les $e_i$ engendrent $\Z/q_2 \oplus \ldots \oplus \Z/q_k$.\\
+Donc $\psi$ est injectif. Donc $\psi$ est un \isom de $\Z/q_2 \oplus \ldots \oplus \Z/q_k$ sur $Im(\psi)$. Comme $\pi\circ \psi$ est surjectif, on a $Im(\psi)+\gen{a}=A$. Comme $\pi \circ \psi$ est injectif, on a $Im(\psi)\cap\gen{a}=\{0\}$.\\
+Soit $q_1$ l'ordre de $a$. Alors $\Z/q_1\fong \gen{a}$, $\bar{1}\mapsto a$. Donc $A=\gen{a}\oplus Im(\psi)\cong \Z/p_1 \oplus \Z/q_2 \oplus \ldots \oplus \Z/q_k$.
 \end{demo}
-
-
-
-
 
 
 \chapter{Un peu de géométrie affine}
 
 \section{Espaces affines}
 
+\subsubsection*{Philosophie}
+Un espace affine est un "espace vectoriel sans origine".
+
+\begin{exem}
+Soit $D\subseteq \R^2$ une droite qui \textbf{ne passe pas par l'origine} :
+
+\red{figure 2 de tristan francois}
+
+\end{exem}
+
 Soit $K$ un corps \gray{(par ex. $\Q, \; \R, \; \C$)}
 
 \begin{definition}
-Un \slign{espace affine} sur $K$ est un triplet \gray{$(\varepsilon, \; E, \; \phi)$}, où
+Un \slign{espace affine} sur $K$ est un triplet 
+\gray{$(\mathcal{E}, \; E, \; \phi)$}, où
 \begin{itemize}[label=$\bullet$]
-\item $\varepsilon$ est un ensemble non vide
+\item $\mathcal{E}$ est un ensemble non vide
 
 \item $E$ est un $\K$-espace vectoriel
 
-\item $\phi : \varepsilon \times E \longrightarrow \varepsilon$ est une action libre et transitive du groupe $(E, +)$ sur l'ensemble $\varepsilon$.
+\item $\phi : \mathcal{E} \times E \longrightarrow \mathcal{E}$ est une action \textbf{libre et transitive} du groupe $(E, +)$ sur l'ensemble $\mathcal{E}$.
 \end{itemize}
 \end{definition}
 
 \begin{remarque}
-Dans la situation de la définition, on dit aussi que $\varepsilon$ est un espace affine de \slign{direction} $E$.\\
-Les éléments de $\varepsilon$ sont appelés \slign{points}, ceux de $E$ \slign{vecteurs}.
+Dans la situation de la définition, on abrège $(\mathcal{E}, E, \phi)$ en $\mathcal{E}$ et on dit que $\mathcal{E}$ est un \textbf{espace affine de direction} $E$.
+Les éléments de $\mathcal{E}$ sont appelés \slign{points}, ceux de $E$ \slign{vecteurs}.
 \end{remarque}
 
 \begin{exemple}
-Soit $E$ un $\K$-espace vectoriel. On pose $\varepsilon = E$, et on note $\phi$ l'action de $(E, +)$, sur $\varepsilon = E$ par translation. Alors $\varepsilon$ est un espace affine de direction $E$.
+Soit $E$ un $\K$-espace vectoriel. Soit $\mathcal{E} = E$, et 
+$$\phi: \mathcal{E} \x E \rightarrow \mathcal{E},~(P,v)\mapsto P+v $$
+Alors $(\mathcal{E}, E, \phi)$ est un espace affine appelé l'espace affine associé à l'espace vectoriel $E$. Sa direction est $E$.
 \end{exemple}
 
 \begin{notation}
-Soit $\varepsilon$ un espace affine de direction $E$. On note:
+Soit $\mathcal{E}$ un espace affine de direction $E$. On note:
 \[
-\phi(P, v) = P + v,		\qquad	\forall P \in \varepsilon, \forall v \in E
+\phi(P, v) = P + v,		\qquad	\forall P \in \mathcal{E}, \forall v \in E
 \]
 \end{notation}
 
 \begin{remarque}
-Pour tous $P, Q \in \varepsilon$, et $v,w \in E$, on a:
+Pour tous $P, Q \in \mathcal{E}$, et $v,w \in E$, on a:
 \begin{itemize}[label=$\bullet$]
 \item $P + 0 = P$
 
 \item $(P + v) + w = P (v + w)$
 
-\item $\exists u \in E$ tel que $Q = P + u$
+\item $\forall P,Q \in \mathcal{E},~\exists ! u \in E$ tel que $Q = P + u$ (l'action est libre et transitive)
 \end{itemize}
 \end{remarque}
 
 \begin{notation}
-Pour tous $P, Q \in \varepsilon$, on note $\vec{PQ}$ l'unique vecteur tel que
+Pour tous $P, Q \in \mathcal{E}$, on note $\vec{PQ}$ l'unique vecteur tel que
 \[
 Q = P + \vec{PQ}
 \]
 \end{notation}
 
 \begin{remarque}
-Pour tous $P, Q, R \in \varepsilon$ et $u, v \in E$, on a
+Pour tous $P, Q, R \in \mathcal{E}$ et $u, v \in E$, on a
 \begin{itemize}[label=$\bullet$]
 \item $\vec{PQ} = 0		\quad	\Leftrightarrow	\quad		P = Q$
 
 \item $\vec{PQ} = u		\quad	\Leftrightarrow	\quad		P + u = Q$
 
-\item $\vec{PQ} + \vec{QR} = \vec{PR}$
-\newline
-\gray{(relation de Chasles)}
+\item $\vec{PQ} + \vec{QR} = \vec{PR} \quad$ \gray{(relation de Chasles)}
+
+\red{figure 3 tristan francois}
 
 \item $P + u = Q + v		\quad	\Leftrightarrow	\quad		\vec{PQ} = u - v$
+\red{figure 4 tristan francois}
 \end{itemize}
 \end{remarque}
 
 \section{Sous-espaces affines}
 
-Soit $\varepsilon$ un espace affine de direction $E$.
+Soit $\mathcal{E}$ un espace affine de direction $E$.
 
 \begin{definition}
-Un sous-espace affine de $\varepsilon$ est une partie $\ensF \in \varepsilon$ telle qu'il existe un point $P \in \varepsilon$ et sous-espace vectoriel $F \subset E$ tel que
+Un sous-espace affine de $\mathcal{E}$ est une partie $\ensF \subseteq \mathcal{E}$ telle qu'il existe un point $P \in \mathcal{E}$ et sous-espace vectoriel $F \subset E$ tel que
 \[
 \ensF = \Ens{P + v \big| v \in F} = P + F
 \]
+
+\red{figure 5 tristan francois}
 \end{definition}
 
 \begin{exemple}
 \begin{enumerate}
-\item  $\ensF = \varepsilon$ est un sous-espace affine \gray{($F = E$)}
+\item  $\ensF = \mathcal{E}$ est un sous-espace affine \gray{($F = E$)}
 
 \medbreak
 
-\item  Pour $P \in \varepsilon$, $\ensF = \ens{P}$ est un sous-espace affine \gray{($F = \ens{0}$)}
+\item  Pour tout point $P \in \mathcal{E}$, le singleton $\ens{P}$ est un sous-espace affine de direction $\ens{0} \subseteq E$.
+
+\medbreak
+
+\item Soit  $P\in \R^2$ un point et $\vec{D}\subseteq \R^2$ une droite vectorielle. Alors :
+$$D=P+\vec{D}$$
+est un sous-espace affine de $\R^2$ considéré comme espace affine.
+
+\red{figure 6 tristan francois}
 \end{enumerate}
 \end{exemple}
 
 \begin{remarque}
-Soient $P \in \varepsilon$ et $F \subset E$ un sous-espace vectoriel.\\
+Soient $\mathcal{E}$ un espace affine, $P \in \mathcal{E}$ et $F \subset E$ un sous-espace vectoriel.\\
 Posons $\ensF = P + F$.
 \begin{enumerate}
-\item On a $F = \Ens{\vec{QR} \big| Q, R \in \ensF}$
-\newline
-Donc $F$ est uniquement déterminé par $\ensF$
+\item On a $F = \Ens{\vec{QR} \big| Q, R \in \ensF}$.\\
+Donc $F$ est \textbf{uniquement} déterminé par $\ensF$
 
-\item $\forall Q \in \varepsilon		\qquad	Q \in \ensF		\quad	\Leftrightarrow	\quad	\vec{PQ} \in F$
+\item $\forall Q \in \mathcal{E}		\qquad	Q \in \ensF		\quad	\Leftrightarrow	\quad	\vec{PQ} \in F$
 
 \item $\forall Q \in \ensF				\qquad	\ensF = Q + F$
 
@@ -3240,32 +3366,32 @@ Donc $F$ est uniquement déterminé par $\ensF$
 \end{remarque}
 
 \begin{definition}
-Soit $\ensF \in \varepsilon$ un sous-espace affine
+Soit $\ensF \subseteq \mathcal{E}$ un sous-espace affine
 \begin{enumerate}
-\item l'unique sous-espace vectoriel $F$ de $E$ pour lequel il existe $P \in \varepsilon$ tel que $\ensF = P + F$ est appelé la \slign{direction} de $\ensF$ et parfois noté $\vec{\ensF}$
+\item L'unique sous-espace vectoriel $F$ de $E$ tel que $\ensF = P + F$, $\forall P \in \ensF$, est appelé la \slign{direction} de $\ensF$ et parfois noté $\vec{\ensF}$
 
 \item On appelle \slign{dimension} de $\ensF$ la dimension de $F$
 
-\item Si $\dim(\ensF) = 1$ \gray{(resp. 2)}, on dit que $\ensF$ est une \slign{droite affine} \gray{(resp. un \slign{plan affine})} de $\varepsilon$
+\item Si $\dim(\ensF) = 1$ \gray{(resp. 2)}, on dit que $\ensF$ est une \slign{droite affine} \gray{(resp. un \slign{plan affine})} de $\mathcal{E}$
 \end{enumerate}
 \end{definition}
 
 \begin{exemple}
 \begin{enumerate}
-\item  On suppose que $\dim(E) = 2$. Soit $e_1, e_2$ une base de $E$. soit $P \in \varepsilon$ et soit $u \in E \backslash \ens{0}$.
+\item  On suppose que $\dim(E) = 2$. Soit $e_1, e_2$ une base de $E$. soit $P \in \mathcal{E}$ et soit $u \in E \backslash \ens{0}$.
 
 Soit $\ensD$ la droite affine $P + \Vect(u)$. On a
 \[
-\forall M \in \varepsilon :	\qquad		M \in \ensD \Leftrightarrow	\quad	\det_{(e_1, e_2)}(u, \vec{PM}) = 0
+\forall M \in \mathcal{E} :	\qquad		M \in \ensD \Leftrightarrow	\quad	\det_{(e_1, e_2)}(u, \vec{PM}) = 0
 \]
 
 \medbreak
 
-\item  On suppose que $\dim(E) = 3$. Soit $e_1, e_2, e_3$ une base de $E$. Soit $P \in \varepsilon$ et soient $u, v \in E$ linéairement indépendants.\\
+\item  On suppose que $\dim(E) = 3$. Soit $e_1, e_2, e_3$ une base de $E$. Soit $P \in \mathcal{E}$ et soient $u, v \in E$ linéairement indépendants.\\
 On note $\ensP$ de plan affine $P + \Vect(u, v)$.\\
 On a:
 \[
-\forall M \in \varepsilon	\qquad		\det_{(e_1, e_2, e_3)}(u, v, \vec{PM}) = 0
+\forall M \in \mathcal{E}	\qquad		\det_{(e_1, e_2, e_3)}(u, v, \vec{PM}) = 0
 \]
 \end{enumerate}
 \end{exemple}
@@ -3277,23 +3403,25 @@ De façon naturelle, $\ensF$ est lui-même un espace affine de direction $F$.
 
 \medbreak
 
-\item $\varepsilon$ est l'unique sous-espace affine de direction $E$
+\item $\mathcal{E}$ est l'unique sous-espace affine de direction $E$
 
 \medbreak
 
-\item  Les sous-espaces affines de direction $\ens{0}$ sont exactement les singletons de $\varepsilon$
+\item  Les sous-espaces affines de direction $\ens{0}$ sont exactement les singletons de $\mathcal{E}$
 \end{enumerate}
 \end{remarque}
 
 \begin{exemple}
 \begin{enumerate}
-\item  $\Ens{(x, y, z) \in \K^3 \big| x + y + z = 1}$ est un sous-espace affine de $\varepsilon = \K^3$.\\
+\item  $\Ens{(x, y, z) \in \K^3 \big| x + y + z = 1}$ est un sous-espace affine de $\mathcal{E} = \K^3$.\\
 C'est un plan de direction
 \[
-\Ens{(x, y, z) \in \K^3 \big| x + y + z = 0}
+\Ens{(x, y, z) \in \K^3 \big| x + y + z = 0} \subseteq E = \R^3
 \]
 
-\item  Soit $n \in \N$. Alors $\ensF = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 1}$ est un sous-espace affine de $\varepsilon = \K^{n+1}$ de dimension $n$ et de direction
+\red{figure 7 tristan francois}
+
+\item  Soit $n \in \N$. Alors $\ensF = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 1}$ est un sous-espace affine de $\mathcal{E} = \K^{n+1}$ de dimension $n$ et de direction
 \[
 F = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 0}
 \]
@@ -3302,44 +3430,60 @@ F = \Ens{(x_1, \ldots, x_{n+1}) \in \K^{n+1} \big| x_1 + \ldots + x_{n+1} = 0}
 \[
 \ensF = \Ens{v \in V \big| f(v) = 1}
 \]
-est un sous-espace affine de $\varepsilon = V$ de direction $\Ker(f) \subset E = V$. Si $\dim(V) < \infty$, $\ensF$ est de dimension $\dim(V) = 1$. On dit que $\ensF$ est un \slign{hyperplan affine} dans $\varepsilon = V$.
+est un sous-espace affine de $\mathcal{E} = V$ de direction $\Ker(f) \subset E = V$. Si $\dim(V) < \infty$, $\ensF$ est de dimension $\dim(V) - 1$. On dit que $\ensF$ est un \slign{hyperplan affine} dans $\mathcal{E} = V$.
 
+\item Soit $f:V\rightarrow W$ une application linéaire et $w\in W$. Supposons qu'il existe $P_0 \in V$ tel que $f(P_0)=w$ et soit :
+$$\ensF = \{P\in V \big| f(P)=w\}\subseteq V=\mathcal{E}$$
+Alors $\ensF$ est un sous-espace affine de direction $\ker(f)$.\\
+En effet, on a :
+$$P\in \ensF \Leftrightarrow f(P)=w=f(P_0)\Leftrightarrow f(\vec{P_0P})=0 \Leftrightarrow P=P_0+v\quad v\in \ker(f)$$
+Donc $\ensF = P_0+\ker(f)$.
+
+\item Soit $A\in M_{n,p}(\R)$ et $b\in \R^n$. Considérons le système inhomogène :
+$$A\cdot x = b\quad x\in \R^p$$
+Soit $\ensF = \{x \in \R^p \big| A\cdot x = b \}$. Alors ou bien $\ensF$ est vide, ou bien $\ensF$ est non vide.\\
+Supposons $\ensF$ non vide et soit $x_{part}$ une solution du système inhomogène, alors on sait que :
+\begin{align*}
+\ensF &= \{x_{part} + x_{hom} \big|~Ax_{hom}=0 \}\\
+&=x_{part}+\ker(A)
+\end{align*}
+Donc $\ensF \subseteq \R^p$ est un sous-espace affine de direction $\ker(A)$.
 \end{enumerate}
 \end{exemple}
 
-\begin{definition}
-Deux sous-espaces affines sont \slign{parallèles} si leurs directions sont égales.
-\end{definition}
-
-\begin{remarque}
-\begin{enumerate}
-\item  Deux sous-espaces affines parallèles ont même dimension
-
-\medbreak
-
-\item  Soient $\ensF$ et $\ensG$ deux sous-espaces affines $F$ $G$.\\
-Si $\ensF \subset \ensG$, alors $F \subset G$. Si de plus : $F = G$, alors $\ensF = \ensG$
-
-\end{enumerate}
-\end{remarque}
+%\begin{definition}
+%Deux sous-espaces affines sont \slign{parallèles} si leurs directions sont égales.
+%\end{definition}
+%
+%\begin{remarque}
+%\begin{enumerate}
+%\item  Deux sous-espaces affines parallèles ont même dimension
+%
+%\medbreak
+%
+%\item  Soient $\ensF$ et $\ensG$ deux sous-espaces affines $F$ $G$.\\
+%Si $\ensF \subset \ensG$, alors $F \subset G$. Si de plus : $F = G$, alors $\ensF = \ensG$
+%
+%\end{enumerate}
+%\end{remarque}
+%
+%\begin{lemme}
+%Soit $(\ensF_i)_{i \in I}$ une famille de sous-espaces affines. Soit $F_i$ la direction de $\ensF_i$.\\
+%Si $\bigcap\limits_{i \in I} \ensF_i$ est non vide, alors c'est un sous-espace affine de direction $\bigcap\limits_{i \in I} F_i$.
+%\end{lemme}
+%
+%\begin{demonstration}
+%Supposons que $P \in \bigcap\limits_{i \in I} F_i$. On a:
+%\begin{align*}
+%u \in \bigcap_{i \in I} F_i 	\quad	&\Leftrightarrow	\quad	\ensF_i, \; \forall i \in I
+%\\
+%&\Leftrightarrow	\quad	P + u \in \bigcap_{i \in I} \ensF_i
+%\end{align*}
+%Donc $\bigcap\limits_{i \in I} \ensF_i = P + \bigcap\limits_{i \in I} F_i$
+%\end{demonstration}
 
 \begin{lemme}
-Soit $(\ensF_i)_{i \in I}$ une famille de sous-espaces affines. Soit $F_i$ la direction de $\ensF_i$.\\
-Si $\bigcap\limits_{i \in I} \ensF_i$ est non vide, alors c'est un sous-espace affine de direction $\bigcap\limits_{i \in I} F_i$.
-\end{lemme}
-
-\begin{demonstration}
-Supposons que $P \in \bigcap\limits_{i \in I} F_i$. On a:
-\begin{align*}
-u \in \bigcap_{i \in I} F_i 	\quad	&\Leftrightarrow	\quad	\ensF_i, \; \forall i \in I
-\\
-&\Leftrightarrow	\quad	P + u \in \bigcap_{i \in I} \ensF_i
-\end{align*}
-Donc $\bigcap\limits_{i \in I} \ensF_i = P + \bigcap\limits_{i \in I} F_i$
-\end{demonstration}
-
-\begin{lemme}
-Soient deux sous-espaces affines $\ensF$ et $\ensG$ de directions $F$ et $G$. Si $E = F  + G$, alors $\ensF \\cap \ensG$ est non vide et donc c'est un sous-espace affine de direction $F \cap G$. Si de plus $E = F \oplus G$, alors $\ensF \cap \ensG$ est un singleton.
+Soient deux sous-espaces affines $\ensF$ et $\ensG$ de directions $F$ et $G$. Si $E = F  + G$, alors $\ensF \cap \ensG$ est non vide et donc c'est un sous-espace affine de direction $F \cap G$. Si de plus $E = F \oplus G$, alors $\ensF \cap \ensG$ est un singleton.
 \end{lemme}
 
 \begin{demonstration}
@@ -3355,63 +3499,65 @@ P + u = Q - v
 appartient à $\ensF \cap \ensG$. Si $E = F \oplus G$, alors la direction de $\ensF \cap \ensG$ est $E \cap F = \ens{0}$, donc $\ensF \cap \ensG$ est un singleton.
 \end{demonstration}
 
-\begin{exemple}
-Soit un système à $m$ équations linéaires à $n$ inconnues, et à coefficients dans $\K$? Soit $\ensF_i, \; 1 \leq i \leq m$, l'ensemble des solutions de la $i$-ème équation. Supposons $\ensF_i \neq \emptyset, \; \forall i$.\\
-Alors $\ensF_i$ est un sous-espace affine de direction $F_i$, l'espace des solutions de l'équation homogène associée. L'ensemble $\ensF$ des solutions du système est l'intersection $\bigcap_{i = 1}^m \ensF_i$.\\
-S'il est non vide, c'est un sous-espace affine de $\K^n$ de direction $\ensF = \bigcap_{i = 1}^m \ensF_i$ l'espace des solutions du système homogène associé.
-\end{exemple}
 
-\begin{consequence}[en petit dimension]
-\begin{enumerate}
-\item On suppose que $\varepsilon$ est un plan affine. Soient $\ensD, \ensD'$ des droites \slign{distinctes} de $\varepsilon$ de directions $D, D'$\\
-Alors une et une seule des assertions suivantes est vrai:
-\begin{itemize}[label=$\bullet$]
-\item $\ensD$ et $\ensD'$ sont parallèles et disjointes
 
-\item $\ensD \cap \ensD'$ est un singleton
-\end{itemize}
-
-\medbreak
-
-\item On suppose que $\varepsilon$ est de dimension 3.\\
-Soient $\ensD$ et $\ensD'$ des droites affines \slign{distinctes} de $\varepsilon$ de direction $D$ et $D'$.\\
-Alors une seule des assertions est vrai:
-\begin{itemize}[label=$\bullet$]
-\item $\ensD$ et $\ensD'$ sont disjointes
-
-\item $\ensD \cap \ensD'$ est un singleton
-\end{itemize}
-
-\medbreak
-
-\item On suppose que $\varepsilon$ est de dimension 3. Soit $\ensD$ une droite affine de direction $D$. Soit $\ensP$ un plan affine de direction $P$.\\
-Alors une et une seule des assertions suivantes est vraie:
-\begin{itemize}[label=$\bullet$]
-\item $\ensD \subset \ensP$	\quad	\gray{(et alors $D \subset P$)}
-
-\item $\ensD \cap \ensP$ est vide 	\quad	\gray{(et alors $D \subset P$)}
-
-\item $\ensD \cap \ensP$ est un singleton.
-\end{itemize}
-
-\medbreak
-
-\item On suppose que $\varepsilon$ est de dimension 3. Soient $\ensP$ et $\ensP'$ des plans affines \slign{distinctes} de direction $P$ et $P'$. Alors une et une seule des assertions suivantes est vraie:
-\begin{itemize}[label=$\bullet$]
-\item $\ensP$ et $\ensP'$ sont parallèles et disjoints.
-
-\item $\ensP \cap \ensP'$ est une droite affine de direction $P \cap P'$
-\end{itemize}
-\end{enumerate}
-\end{consequence}
-
-\section{Applications affines}
-
-Soit $\varepsilon$ un espace affine de direction $E$.
-
-\begin{definition}
-Soit $\ensF$ un espace affine de direction $F$\\
-Une application $f : \varepsilon \rightarrow \ensF$ est \slign{affine}.
-\end{definition}
+%\begin{exemple}
+%Soit un système à $m$ équations linéaires à $n$ inconnues, et à coefficients dans $\K$? Soit $\ensF_i, \; 1 \leq i \leq m$, l'ensemble des solutions de la $i$-ème équation. Supposons $\ensF_i \neq \emptyset, \; \forall i$.\\
+%Alors $\ensF_i$ est un sous-espace affine de direction $F_i$, l'espace des solutions de l'équation homogène associée. L'ensemble $\ensF$ des solutions du système est l'intersection $\bigcap_{i = 1}^m \ensF_i$.\\
+%S'il est non vide, c'est un sous-espace affine de $\K^n$ de direction $\ensF = \bigcap_{i = 1}^m \ensF_i$ l'espace des solutions du système homogène associé.
+%\end{exemple}
+%
+%\begin{consequence}[en petit dimension]
+%\begin{enumerate}
+%\item On suppose que $\varepsilon$ est un plan affine. Soient $\ensD, \ensD'$ des droites \slign{distinctes} de $\varepsilon$ de directions $D, D'$\\
+%Alors une et une seule des assertions suivantes est vrai:
+%\begin{itemize}[label=$\bullet$]
+%\item $\ensD$ et $\ensD'$ sont parallèles et disjointes
+%
+%\item $\ensD \cap \ensD'$ est un singleton
+%\end{itemize}
+%
+%\medbreak
+%
+%\item On suppose que $\varepsilon$ est de dimension 3.\\
+%Soient $\ensD$ et $\ensD'$ des droites affines \slign{distinctes} de $\varepsilon$ de direction $D$ et $D'$.\\
+%Alors une seule des assertions est vrai:
+%\begin{itemize}[label=$\bullet$]
+%\item $\ensD$ et $\ensD'$ sont disjointes
+%
+%\item $\ensD \cap \ensD'$ est un singleton
+%\end{itemize}
+%
+%\medbreak
+%
+%\item On suppose que $\varepsilon$ est de dimension 3. Soit $\ensD$ une droite affine de direction $D$. Soit $\ensP$ un plan affine de direction $P$.\\
+%Alors une et une seule des assertions suivantes est vraie:
+%\begin{itemize}[label=$\bullet$]
+%\item $\ensD \subset \ensP$	\quad	\gray{(et alors $D \subset P$)}
+%
+%\item $\ensD \cap \ensP$ est vide 	\quad	\gray{(et alors $D \subset P$)}
+%
+%\item $\ensD \cap \ensP$ est un singleton.
+%\end{itemize}
+%
+%\medbreak
+%
+%\item On suppose que $\varepsilon$ est de dimension 3. Soient $\ensP$ et $\ensP'$ des plans affines \slign{distinctes} de direction $P$ et $P'$. Alors une et une seule des assertions suivantes est vraie:
+%\begin{itemize}[label=$\bullet$]
+%\item $\ensP$ et $\ensP'$ sont parallèles et disjoints.
+%
+%\item $\ensP \cap \ensP'$ est une droite affine de direction $P \cap P'$
+%\end{itemize}
+%\end{enumerate}
+%\end{consequence}
+%
+%\section{Applications affines}
+%
+%Soit $\varepsilon$ un espace affine de direction $E$.
+%
+%\begin{definition}
+%Soit $\ensF$ un espace affine de direction $F$\\
+%Une application $f : \varepsilon \rightarrow \ensF$ est \slign{affine}.
+%\end{definition}
 
 \end{document}
