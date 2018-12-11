@@ -3,7 +3,7 @@
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{lmodern}
 \usepackage[top=3cm, bottom = 3cm, left = 3cm, right = 3cm]{geometry}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage{graphicx}
@@ -1755,7 +1755,7 @@ On a donc :
 $$2\pi S_n(f)(t)=\int_{-\pi}^{\pi}f(t-s)D_n(s)ds$$
 \end{remar}
 
-On pose :
+On pose, à l'aide du procédé de Césaro :
 $$T_n(f)(t)=\fracun{n+1}\sum_{k=0}^nS_k(f)(t)$$
 On a :
 \begin{align*}
@@ -1765,13 +1765,86 @@ On a :
 avec $F_n$ le noyau de Fejer :
 $$F_n(s) = \left\{
 \begin{array}{ll}
-\frac{sin^2((n + 1)\frac{s}{2})}{sin^2(\frac{s}{2})} & s \neq 0\\
+\frac{sin^2((n + 1)\frac{s}{2})}{(n+1)sin^2(\frac{s}{2})} & s \neq 0\\
 n+1 & s = 0
 \end{array}
 \right.$$
 
+On a :
+\begin{align*}
+\fracun{2\pi}\int_{-\pi}^{\pi} D_n(s)ds &= \left\{\begin{array}{ll}
+[\frac{e^{ik}}{ik}]_{-\pi}^{\pi}&k\neq 0\\
+1 & k=0
+\end{array}\right.\\
+\fracun{2\pi}\int_{-\pi}^{\pi} F_n(s)ds &=1
+\end{align*}
 
+On a :
+\begin{align*}
+2n(T_n(f)(t)-1\x f(t))&=\int_{-\pi}^{\pi}[f(t-s)-f(t)]F_n(s)ds\\
+|2n(T_n(f)(t)-1\x f(t))| &\leq \epsilon + \frac{2\norm{f}_\infty}{sin^2(\frac{\eta}{2})\x (n+1)}
+\end{align*}
 
+\begin{thm}
+Si $f\in \mathcal{C}^0(\R/2\pi\Z; \C)$, alors $\norm{f-T_n(f)}_\infty \underset{n\rightarrow +\infty}{\rightarrow}0$. $T_n(f)$ converge uniformément vers $f$.
+\end{thm}
+
+\begin{thm}
+Si $f\in \mathcal{C}^0(\R/2\pi\Z; \C)$ et si le série (double) $(\widehat{f}(n))_{n\in \Z}$ est absolument convergente, alors $f$ est représentée par sa Série de Fourier.
+\end{thm}
+
+\begin{cor}
+Si $f \in \mathcal{C}^0$, et $\widehat{f}(n)=0$ (pour tout $n\in \Z$), alors $f=0$.
+\end{cor}
+
+\begin{cor}
+Si $f \in \mathcal{C}^N$ $(N\geq 2)$, alors $f(t)=\sum_{-\infty}^{+\infty}\widehat{f}(k)e^{ikt}$.
+\end{cor}
+
+\begin{note}
+Si $f$ seulement \textbf{réglée}, alors $T_n(f)(t) \rightarrow \frac{f(t^+)+f(t^-)}{2}$ (limite à droite et à gauche).
+\end{note}
+
+\begin{thm}[Dirichlet]
+Si $f$ est dérivable en $t$, alors $S_n(f)(t)\rightarrow f(t)$ (convergence simple).
+\end{thm}
+
+\begin{note}
+Si $f$ est réglée et $f$ dérivable à gauche et à droite en $t$ ($\frac{f(t^+)+f(t^-)}{2}$ a une limite), alors $S_n(f)(t)\rightarrow \frac{f(t^+)+f(t^-)}{2}$
+\end{note}
+
+\begin{thm}[Théorie $L^2$ des Séries de Fourier]
+Soient $f,g \in \mathcal{C}^0(\R/2\pi\Z; \C)$, alors :
+$$<f,g> = \fracun{2\pi}\int_{-\pi}^{\pi}f(s)\bar{g(s)}ds$$
+est une forme sesquilinéaire.\\
+De plus :
+$$<\lambda g, \mu g> = \lambda \bar{\mu} <f,g>$$
+est définie positive.
+\end{thm}
+
+\begin{thm}[Inégalité de Parseval Bessel]
+Si $f \in \mathcal{C}^0(\R/2\pi\Z; \C)$, alors :
+$$\sum_{-m}^{n}|\widehat{f}(k)|^2\leq \norm{f}_2^2$$
+\end{thm}
+
+\begin{cor}
+Il existe une application suivante :
+$$f \in \mathcal{C}^0(\R/2\pi\Z; \C) \mapsto (\widehat{f}(n))_{n\in \Z}\in l^2(\Z)$$
+\end{cor}
+
+\begin{thm}
+On a $\sum |\widehat{f}(n)|^2=\norm{f}_2^2$ (c'est une isométrie).
+\end{thm}
+
+\begin{cor}
+On a :
+$$L^2(\R/2\pi\Z; \C) \cong l^2(\Z)$$
+L'inégalité de Parseval Bessel est en fait une égalité.
+\end{cor}
+
+\begin{cor}
+Si $f\in \mathcal{C}^1$, alors $f = \sum_{-\infty}^{+\infty}\widehat{f}(h)e^{ikt}$
+\end{cor}
 
 
 \end{document}
